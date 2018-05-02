@@ -1,0 +1,8 @@
+{% load render_html_field %}
+
+<h1>Glossary</h1>
+
+{% for glossary_term in glossary_terms %}
+  <h2>{{ glossary_term.term }}</h2>
+  <p>{{ glossary_term.description }}</p>
+{% endfor %}

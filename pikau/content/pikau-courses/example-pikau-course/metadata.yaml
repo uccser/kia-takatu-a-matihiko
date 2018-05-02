@@ -1,0 +1,32 @@
+name: Example Pīkau course
+overview: overview.md
+language: English
+topic: Example topic
+level: Example level
+tags:
+  - example-tag-1
+  - example-tag-2
+trailer-video: https://www.youtube.com/watch?v=v5yeq5u2RMI
+cover-photo: images/example.png
+study-plan: none
+resources:
+  - files/example.txt
+
+content:
+  - name: Topic 1
+    units:
+    - topic-1/unit-1.md
+    - topic-1/unit-2.md
+    - topic-1/unit-3.md
+  - name: Topic 2
+    units:
+    - topic-2/unit-1.md
+    - topic-2/unit-2.md
+
+glossary:
+  - example-term-1
+  - example-term-2
+  - example-term-3
+
+assessment-description: assessment-description.md
+assessment-items: assessment-items.md
