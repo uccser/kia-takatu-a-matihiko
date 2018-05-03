@@ -12,6 +12,7 @@
       <tr>
         <th scope="col">Slug</th>
         <th scope="col">Name</th>
+        <th scope="col">Usage Count</th>
       </tr>
     </thead>
     <tbody>
@@ -19,6 +20,7 @@
         <tr>
           <td><code>{{ tag.slug }}</code></td>
           <td>{{ tag.name }}</td>
+          <td>{{ tag.pikau_courses.count }}</td>
         </tr>
       {% endfor %}
     </tbody>

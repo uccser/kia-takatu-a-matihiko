@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block page_heading %}
+  Progress Outcomes
+{% endblock page_heading %}
+
+{% block content %}
+  <p>This page lists all the progress outcomes available within Pīkau, ordered by name.</p>
+
+  <table class="table table-hover table-responsive">
+    <thead>
+      <tr>
+        <th scope="col">Slug</th>
+        <th scope="col">Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for progress_outcome in progress_outcomes %}
+        <tr>
+          <td class="no-wrap"><code>{{ progress_outcome.slug }}</code></td>
+          <td>
+            <p class="h4">{{ progress_outcome.name }}</p>
+            <p>{{ progress_outcome.description }}</p>
+            <p><a href="{{ progress_outcome.exemplars }}">TKI Exemplars</a></p>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock content %}

@@ -65,6 +65,8 @@ class BaseLoader():
                 file.
             MarkdownStyleError: when a verto StyleError is thrown.
         """
+        md_file_path = os.path.join(self.base_path, md_file_path)
+        config_file_path = os.path.join(self.base_path, config_file_path)
         try:
             # Check file exists
             content = open(md_file_path, encoding="UTF-8").read()

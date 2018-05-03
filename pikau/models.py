@@ -84,6 +84,24 @@ class Level(models.Model):
         return self.name
 
 
+class ProgressOutcome(models.Model):
+    """Model for progress outcome."""
+
+    #  Auto-incrementing 'id' field is automatically set by Django
+    slug = models.SlugField(unique=True)
+    name = models.CharField(max_length=100, unique=True)
+    description = models.TextField()
+    exemplars = models.URLField()
+
+    def __str__(self):
+        """Text representation of ProgressOutcome object.
+
+        Returns:
+            String describing ProgressOutcome.
+        """
+        return self.name
+
+
 class PikauCourse(models.Model):
     """Model for Pikau Course."""
 

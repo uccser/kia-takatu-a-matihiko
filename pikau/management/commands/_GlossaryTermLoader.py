@@ -5,7 +5,7 @@ from pikau.models import GlossaryTerm
 from utils.BaseLoader import BaseLoader
 
 
-class GlossaryTermsLoader(BaseLoader):
+class GlossaryTermLoader(BaseLoader):
     """Custom loader for loading glossary terms."""
 
     @transaction.atomic

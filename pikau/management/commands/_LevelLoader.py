@@ -5,7 +5,7 @@ from pikau.models import Level
 from utils.BaseLoader import BaseLoader
 
 
-class LevelsLoader(BaseLoader):
+class LevelLoader(BaseLoader):
     """Custom loader for loading levels."""
 
     @transaction.atomic

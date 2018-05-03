@@ -6,6 +6,7 @@ from pikau.models import (
     Goal,
     Level,
     PikauCourse,
+    ProgressOutcome,
     Tag,
     Topic,
 )
@@ -35,10 +36,33 @@ class GoalList(generic.ListView):
 
 
 class LevelList(generic.ListView):
-    """View for the goal list page."""
+    """View for the level list page."""
 
     context_object_name = "levels"
     model = Level
+    ordering = "name"
+
+
+class PikauCourseList(generic.ListView):
+    """View for the pīkau course list page."""
+
+    context_object_name = "pikau_courses"
+    model = PikauCourse
+    ordering = "name"
+
+
+class PikauCourseDetail(generic.DetailView):
+    """View for the pīkau course detail page."""
+
+    context_object_name = "pikau_course"
+    model = PikauCourse
+
+
+class ProgressOutcomeList(generic.ListView):
+    """View for the progress outcome list page."""
+
+    context_object_name = "progress_outcomes"
+    model = ProgressOutcome
     ordering = "name"
 
 

@@ -5,7 +5,7 @@ from pikau.models import Goal
 from utils.BaseLoader import BaseLoader
 
 
-class GoalsLoader(BaseLoader):
+class GoalLoader(BaseLoader):
     """Custom loader for loading goals."""
 
     @transaction.atomic

@@ -13,7 +13,6 @@ def check_converter_required_files(required_files, md_file_path):
     Args:
         required_files: Dictionary of required files data (dict).
     """
-    render_scratch_images(required_files["scratch_images"])
     find_image_files(required_files["images"], md_file_path)
 
 

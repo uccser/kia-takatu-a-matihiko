@@ -5,7 +5,7 @@ from pikau.models import Topic
 from utils.BaseLoader import BaseLoader
 
 
-class TopicsLoader(BaseLoader):
+class TopicLoader(BaseLoader):
     """Custom loader for loading topics."""
 
     @transaction.atomic

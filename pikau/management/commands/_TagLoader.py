@@ -5,7 +5,7 @@ from pikau.models import Tag
 from utils.BaseLoader import BaseLoader
 
 
-class TagsLoader(BaseLoader):
+class TagLoader(BaseLoader):
     """Custom loader for loading tags."""
 
     @transaction.atomic

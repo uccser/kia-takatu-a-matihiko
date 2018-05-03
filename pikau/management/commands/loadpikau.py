@@ -2,11 +2,13 @@
 
 from django.conf import settings
 from django.core import management
-from pikau.management.commands._GlossaryTermsLoader import GlossaryTermsLoader
-from pikau.management.commands._GoalsLoader import GoalsLoader
-from pikau.management.commands._LevelsLoader import LevelsLoader
-from pikau.management.commands._TagsLoader import TagsLoader
-from pikau.management.commands._TopicsLoader import TopicsLoader
+from pikau.management.commands._GlossaryTermLoader import GlossaryTermLoader
+from pikau.management.commands._GoalLoader import GoalLoader
+from pikau.management.commands._LevelLoader import LevelLoader
+from pikau.management.commands._ProgressOutcomeLoader import ProgressOutcomeLoader
+from pikau.management.commands._TagLoader import TagLoader
+from pikau.management.commands._TopicLoader import TopicLoader
+from pikau.management.commands._PikauCourseLoader import PikauCourseLoader
 
 class Command(management.base.BaseCommand):
     """Required command class for the custom Django loadpikau command."""
@@ -18,8 +20,10 @@ class Command(management.base.BaseCommand):
 
         base_path = settings.PIKAU_CONTENT_BASE_PATH
         management.call_command("flush", interactive=False)
-        GlossaryTermsLoader(base_path).load()
-        GoalsLoader(base_path).load()
-        LevelsLoader(base_path).load()
-        TagsLoader(base_path).load()
-        TopicsLoader(base_path).load()
+        GlossaryTermLoader(base_path).load()
+        GoalLoader(base_path).load()
+        LevelLoader(base_path).load()
+        ProgressOutcomeLoader(base_path).load()
+        TagLoader(base_path).load()
+        TopicLoader(base_path).load()
+        PikauCourseLoader(base_path).load()
