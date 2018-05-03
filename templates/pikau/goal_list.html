@@ -1,26 +1,24 @@
 {% extends "base.html" %}
 
 {% block page_heading %}
-  Glossary
+  Goals
 {% endblock page_heading %}
 
 {% block content %}
-  <p>This page lists all the glossary terms available within Pīkau.</p>
+  <p>This page lists all the goals available within Pīkau.</p>
 
   <table class="table table-hover table-responsive">
     <thead>
       <tr>
-        <th scope="col">Term</th>
         <th scope="col">Slug</th>
         <th scope="col">Description</th>
       </tr>
     </thead>
     <tbody>
-      {% for glossary_term in glossary_terms %}
+      {% for goal in goals %}
         <tr>
-          <td>{{ glossary_term.term }}</td>
-          <td><code>{{ glossary_term.slug }}</code></td>
-          <td>{{ glossary_term.description }}</td>
+          <td><code>{{ goal.slug }}</code></td>
+          <td>{{ goal.description }}</td>
         </tr>
       {% endfor %}
     </tbody>

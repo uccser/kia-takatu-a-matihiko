@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block page_heading %}
+  Topics
+{% endblock page_heading %}
+
+{% block content %}
+  <p>This page lists all the topics available within Pīkau, ordered by name.</p>
+
+  <table class="table table-hover table-responsive">
+    <thead>
+      <tr>
+        <th scope="col">Slug</th>
+        <th scope="col">Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for topic in topics %}
+        <tr>
+          <td><code>{{ topic.slug }}</code></td>
+          <td>{{ topic.name }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock content %}

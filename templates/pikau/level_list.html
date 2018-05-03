@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block page_heading %}
+  Levels
+{% endblock page_heading %}
+
+{% block content %}
+  <p>This page lists all the levels available within Pīkau, ordered by name.</p>
+
+  <table class="table table-hover table-responsive">
+    <thead>
+      <tr>
+        <th scope="col">Slug</th>
+        <th scope="col">Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for level in levels %}
+        <tr>
+          <td><code>{{ level.slug }}</code></td>
+          <td>{{ level.name }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock content %}
