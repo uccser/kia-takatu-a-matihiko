@@ -11,14 +11,13 @@
     This page details the content pipeline for used for developing Pīkau content for the <a href="http://www.kiatakatu.ac.nz/">Kia Takatū ā-Matihi</a>.
   </p>
 
-  <h2>Available Pages</h2>
-  <ul>
-    <li><a href="{% url 'pikau:glossary' %}">Glossary</a></li>
-    <li><a href="{% url 'pikau:goal_list' %}">Goals</a></li>
-    <li><a href="{% url 'pikau:level_list' %}">Levels</a></li>
-    <li><a href="{% url 'pikau:pikau_course_list' %}">Pīkau Courses</a></li>
-    <li><a href="{% url 'pikau:progress_outcome_list' %}">Progress Outcomes</a></li>
-    <li><a href="{% url 'pikau:tag_list' %}">Tags</a></li>
-    <li><a href="{% url 'pikau:topic_list' %}">Topics</a></li>
-  </ul>
+  <a class="btn btn-lg btn-primary" href="{% url 'pikau:pikau_course_list' %}" role="button">View Pīkau Courses</a>
+
+  <h2 class="mt-3">View metadata</h2>
+  <p><a class="btn btn-outline-primary" href="{% url 'pikau:glossary' %}">Glossary</a></p>
+  <p><a class="btn btn-outline-primary" href="{% url 'pikau:goal_list' %}">Goals</a></p>
+  <p><a class="btn btn-outline-primary" href="{% url 'pikau:level_list' %}">Levels</a></p>
+  <p><a class="btn btn-outline-primary" href="{% url 'pikau:progress_outcome_list' %}">Progress Outcomes</a></p>
+  <p><a class="btn btn-outline-primary" href="{% url 'pikau:tag_list' %}">Tags</a></p>
+  <p><a class="btn btn-outline-primary" href="{% url 'pikau:topic_list' %}">Topics</a></p>
 {% endblock content %}
