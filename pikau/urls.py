@@ -44,6 +44,12 @@ urlpatterns = [
         views.LevelList.as_view(),
         name="level_list"
     ),
+    # eg: /pikau/levels/level-1/
+    path(
+        "levels/<slug:slug>/",
+        views.LevelDetail.as_view(),
+        name="level"
+    ),
     # eg: /pikau/pikau-courses/
     path(
         "pikau-courses/",
@@ -68,10 +74,22 @@ urlpatterns = [
         views.TagList.as_view(),
         name="tag_list"
     ),
+    # eg: /pikau/tags/tag-1/
+    path(
+        "tags/<slug:slug>/",
+        views.TagDetail.as_view(),
+        name="tag"
+    ),
     # eg: /pikau/topics/
     path(
         "topics/",
         views.TopicList.as_view(),
         name="topic_list"
+    ),
+    # eg: /pikau/topics/topic-1/
+    path(
+        "topics/<slug:slug>/",
+        views.TopicDetail.as_view(),
+        name="topic"
     ),
 ]

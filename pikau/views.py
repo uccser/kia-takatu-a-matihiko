@@ -43,6 +43,13 @@ class LevelList(generic.ListView):
     ordering = "name"
 
 
+class LevelDetail(generic.DetailView):
+    """View for a level."""
+
+    context_object_name = "level"
+    model = Level
+
+
 class PikauCourseList(generic.ListView):
     """View for the pīkau course list page."""
 
@@ -52,7 +59,7 @@ class PikauCourseList(generic.ListView):
 
 
 class PikauCourseDetail(generic.DetailView):
-    """View for the pīkau course detail page."""
+    """View for a pīkau course."""
 
     context_object_name = "pikau_course"
     model = PikauCourse
@@ -74,9 +81,23 @@ class TagList(generic.ListView):
     ordering = "name"
 
 
+class TagDetail(generic.DetailView):
+    """View for a tag."""
+
+    context_object_name = "tag"
+    model = Tag
+
+
 class TopicList(generic.ListView):
     """View for the topic list page."""
 
     context_object_name = "topics"
     model = Topic
     ordering = "name"
+
+
+class TopicDetail(generic.DetailView):
+    """View for a topic."""
+
+    context_object_name = "topic"
+    model = Topic

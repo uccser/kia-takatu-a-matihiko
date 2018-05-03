@@ -17,8 +17,12 @@
     <tbody>
       {% for topic in topics %}
         <tr>
-          <td><code>{{ topic.slug }}</code></td>
-          <td>{{ topic.name }}</td>
+          <td>
+            <code>{{ topic.slug }}</code>
+          </td>
+          <td>
+            {% include "pikau/snippets/topic_badge.html" %}
+          </td>
         </tr>
       {% endfor %}
     </tbody>

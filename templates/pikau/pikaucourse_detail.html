@@ -10,8 +10,18 @@
 {% block content %}
   <p><strong>Slug:</strong> <code>{{ pikau_course.slug }}</code></p>
   <p><strong>Language:</strong> {{ pikau_course.language }}</p>
-  <p><strong>Topic:</strong> {{ pikau_course.topic.name }}</p>
-  <p><strong>Level:</strong> {{ pikau_course.level.name }}</p>
+  <p>
+    <strong>Topic:</strong>
+    {% with topic=pikau_course.topic %}
+      {% include "pikau/snippets/topic_badge.html" %}
+    {% endwith %}
+  </p>
+  <p>
+    <strong>Level:</strong>
+    {% with level=pikau_course.level %}
+      {% include "pikau/snippets/level_badge.html" %}
+    {% endwith %}
+  </p>
 
   <p><strong>Trailer Video:</strong> <a href="{{ pikau_course.trailer_video }}">View</a></p>
 
@@ -21,7 +31,7 @@
   <p><strong>Tags:</strong></p>
   <ul>
     {% for tag in pikau_course.tags.all %}
-      <li>{{ tag.name }}</li>
+      <li>{% include "pikau/snippets/tag_badge.html" %}</li>
     {% endfor %}
   </ul>
 

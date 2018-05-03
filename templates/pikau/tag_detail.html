@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block page_heading %}
+  Tag: {% include "pikau/snippets/tag_badge.html" %}
+{% endblock page_heading %}
+
+{% block content %}
+  <p><strong>Slug:</strong> <code>{{ tag.slug }}</code></p>
+
+  <p><strong>Pikau Courses:</strong></p>
+  <ul>
+    {% for pikau_course in tag.pikau_courses.all %}
+      <li><a href="{% url 'pikau:pikau_course' pikau_course.slug %}">{{ pikau_course.name }}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock content %}

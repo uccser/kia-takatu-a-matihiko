@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block page_heading %}
+  Level: {% include "pikau/snippets/level_badge.html" %}
+{% endblock page_heading %}
+
+{% block content %}
+  <p><strong>Slug:</strong> <code>{{ level.slug }}</code></p>
+
+  <p><strong>Pikau Courses:</strong> {{ level.pikau_courses.count }}</p>
+  <ul>
+    {% for pikau_course in level.pikau_courses.all %}
+      <li><a href="{% url 'pikau:pikau_course' pikau_course.slug %}">{{ pikau_course.name }}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock content %}

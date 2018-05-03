@@ -17,8 +17,12 @@
     <tbody>
       {% for level in levels %}
         <tr>
-          <td><code>{{ level.slug }}</code></td>
-          <td>{{ level.name }}</td>
+          <td>
+            <code>{{ level.slug }}</code>
+          </td>
+          <td>
+            {% include "pikau/snippets/level_badge.html" %}
+          </td>
         </tr>
       {% endfor %}
     </tbody>

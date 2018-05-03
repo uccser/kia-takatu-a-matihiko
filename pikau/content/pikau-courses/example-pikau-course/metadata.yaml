@@ -1,11 +1,11 @@
 name: Example Pīkau course
 overview: overview.md
 language: English
-topic: example-topic-3
-level: example-level-2
+topic: ct
+level: 8-10
 tags:
-  - example-tag-1
-  - example-tag-2
+  - binary-numbers
+  - algorithms
 trailer-video: https://www.youtube.com/watch?v=v5yeq5u2RMI
 cover-photo: images/example.png
 study-plan: study-plan.md

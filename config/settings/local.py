@@ -28,7 +28,7 @@ SECRET_KEY = "localsecretkey"
 # ----------------------------------------------------------------------------
 MIDDLEWARE += ["debug_toolbar.middleware.DebugToolbarMiddleware", ]  # noqa: F405
 INSTALLED_APPS += ["debug_toolbar", ]  # noqa: F405
-INTERNAL_IPS = ["127.0.0.1"]
+INTERNAL_IPS = ["127.0.0.1", "0.0.0.0", "localhost"]
 DEBUG_TOOLBAR_CONFIG = {
     "DISABLE_PANELS": [
         "debug_toolbar.panels.redirects.RedirectsPanel",
