@@ -2,6 +2,10 @@
 
 from django.db import models
 
+LANGUAGE_CHOICES = (
+    ("en", "English"),
+    ("mi", "Māori"),
+)
 
 class GlossaryTerm(models.Model):
     """Model for glossary term."""
@@ -108,7 +112,7 @@ class PikauCourse(models.Model):
     #  Auto-incrementing 'id' field is automatically set by Django
     slug = models.SlugField(unique=True)
     name = models.CharField(max_length=200, unique=True)
-    language = models.CharField(max_length=20)
+    language = models.CharField(max_length=20, choices=LANGUAGE_CHOICES)
     topic = models.ForeignKey(
         Topic,
         on_delete=models.CASCADE,

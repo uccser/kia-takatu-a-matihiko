@@ -9,7 +9,7 @@
 
 {% block content %}
   <p><strong>Slug:</strong> <code>{{ pikau_course.slug }}</code></p>
-  <p><strong>Language:</strong> {{ pikau_course.language }}</p>
+  <p><strong>Language:</strong> {{ pikau_course.get_language_display }}</p>
   <p>
     <strong>Topic:</strong>
     {% with topic=pikau_course.topic %}

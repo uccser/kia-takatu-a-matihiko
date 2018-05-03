@@ -17,11 +17,14 @@ Including another URLconf
 from django.urls import path
 from django.conf import settings
 from django.conf.urls import include, url
+from django.contrib import admin
 from config.views import IndexView
 
+admin.site.site_header = "Kia Takatū ā-Matihiko by UCCSER"
 urlpatterns = [
     path("", IndexView.as_view(), name="index"),
     path("pikau/", include("pikau.urls")),
+    path("admin/", admin.site.urls),
 ]
 
 if settings.DEBUG:
