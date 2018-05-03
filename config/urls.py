@@ -17,9 +17,10 @@ Including another URLconf
 from django.urls import path
 from django.conf import settings
 from django.conf.urls import include, url
-
+from config.views import IndexView
 
 urlpatterns = [
+    path("", IndexView.as_view(), name="index"),
     path("pikau/", include("pikau.urls")),
 ]
 

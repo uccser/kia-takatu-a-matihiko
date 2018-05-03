@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 
+{% load static %}
 {% load render_html_field %}
 
 {% block page_heading %}
@@ -11,8 +12,11 @@
   <p><strong>Language:</strong> {{ pikau_course.language }}</p>
   <p><strong>Topic:</strong> {{ pikau_course.topic.name }}</p>
   <p><strong>Level:</strong> {{ pikau_course.level.name }}</p>
+
   <p><strong>Trailer Video:</strong> <a href="{{ pikau_course.trailer_video }}">View</a></p>
-  <p><strong>Cover Photo:</strong> <code>{{ pikau_course.cover_photo }}</code></p>
+
+  <p><strong>Cover Photo:</strong></p>
+  <img src="{% static pikau_course.cover_photo %}">
 
   <p><strong>Tags:</strong></p>
   <ul>

@@ -20,7 +20,7 @@ from . import views
 app_name = "pikau"
 
 urlpatterns = [
-    # eg: /pikau//
+    # eg: /pikau/
     path(
         "",
         views.IndexView.as_view(),
