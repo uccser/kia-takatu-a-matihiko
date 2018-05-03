@@ -6,6 +6,12 @@ from pikau.models import (
 )
 
 
+class IndexView(generic.TemplateView):
+    """View for the pikau homepage that renders from a template."""
+
+    template_name = "pikau/index.html"
+
+
 class GlossaryList(generic.ListView):
     """View for the pikau application homepage."""
 

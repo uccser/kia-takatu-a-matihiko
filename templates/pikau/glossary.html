@@ -1,8 +1,16 @@
-{% load render_html_field %}
+{% extends "base.html" %}
 
-<h1>Glossary</h1>
+{% block page_heading %}
+  Glossary
+{% endblock page_heading %}
 
-{% for glossary_term in glossary_terms %}
-  <h2>{{ glossary_term.term }}</h2>
-  <p>{{ glossary_term.description }}</p>
-{% endfor %}
+{% block content %}
+  <p>This page lists all the glossary terms available within the Pīkau unit.</p>
+  {% for glossary_term in glossary_terms %}
+    <h2>{{ glossary_term.term }}</h2>
+    <p>
+      {{ glossary_term.description }}<br>
+      Link to using slug: <code>{{ glossary_term.slug }}</code>
+    </p>
+  {% endfor %}
+{% endblock content %}

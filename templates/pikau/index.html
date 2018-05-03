@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block page_heading %}
+  Pīkau Content
+{% endblock page_heading %}
+
+{% block content %}
+  <p>
+    This page details the content pipeline for used for developing Pīkau content for the <a href="http://www.kiatakatu.ac.nz/">Kia Takatū ā-Matihi</a>.
+  </p>
+
+  <h2>Available Pages</h2>
+  <ul class="list-unstyled">
+    <li><a href="{% url 'pikau:glossary' %}">Glossary</a></li>
+  </ul>
+{% endblock content %}
