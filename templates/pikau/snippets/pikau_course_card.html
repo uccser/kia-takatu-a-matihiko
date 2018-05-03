@@ -1,0 +1,14 @@
+<div class="card">
+  <div class="card-body">
+    <a href="{% url 'pikau:pikau_course' pikau_course.slug %}">
+      <h5 class="card-title">{{ pikau_course.name }}</h5>
+    </a>
+    <h6 class="card-subtitle mb-2 text-muted">{{ pikau_course.get_language_display }}</h6>
+    {% with topic=pikau_course.topic %}
+      {% include "pikau/snippets/topic_badge.html" %}
+    {% endwith %}
+    {% with level=pikau_course.level %}
+      {% include "pikau/snippets/level_badge.html" %}
+    {% endwith %}
+  </div>
+</div>
