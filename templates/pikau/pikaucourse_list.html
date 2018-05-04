@@ -7,7 +7,9 @@
 {% block content %}
   <p>This page lists all the Pīkau courses available within Pīkau, ordered by name.</p>
 
-  {% for pikau_course in pikau_courses %}
-    {% include "pikau/snippets/pikau_course_card.html" %}
-  {% endfor %}
+  <div class="row">
+    {% for pikau_course in pikau_courses %}
+      {% include "pikau/snippets/pikau_course_card.html" %}
+    {% endfor %}
+  </div>
 {% endblock content %}
