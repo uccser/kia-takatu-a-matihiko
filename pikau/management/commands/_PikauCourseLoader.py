@@ -9,6 +9,7 @@ from pikau.models import (
     Level,
     Tag,
     GlossaryTerm,
+    ProgressOutcome,
 )
 
 CONFIG_FILE = "pikau-courses.yaml"
@@ -67,6 +68,9 @@ class PikauCourseLoader(BaseLoader):
 
             for pikau_course_tag_slug in pikau_course_metadata.get("tags", list()):
                 pikau_course.tags.add(Tag.objects.get(slug=pikau_course_tag_slug))
+
+            for pikau_course_progress_outcome_slug in pikau_course_metadata.get("progress-outcomes", list()):
+                pikau_course.progress_outcomes.add(ProgressOutcome.objects.get(slug=pikau_course_progress_outcome_slug))
 
             for pikau_course_glossary_term_slug in pikau_course_metadata.get("glossary", list()):
                 pikau_course.glossary_terms.add(GlossaryTerm.objects.get(slug=pikau_course_glossary_term_slug))

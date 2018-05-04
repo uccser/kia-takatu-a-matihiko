@@ -29,10 +29,17 @@
     {% endwith %}
   </p>
 
+  <p><strong>Progress Outcomes:</strong></p>
+  <ul>
+    {% for progress_outcome in pikau_course.progress_outcomes.all %}
+      <li>{{ progress_outcome.name }}</li>
+    {% endfor %}
+  </ul>
+
   <p><strong>Trailer Video:</strong> <a href="{{ pikau_course.trailer_video }}">View</a></p>
 
   <p><strong>Cover Photo:</strong></p>
-  <img src="{% static pikau_course.cover_photo %}">
+  <img src="{% static pikau_course.cover_photo %}" class="mb-3">
 
   <p><strong>Tags:</strong></p>
   <ul>
