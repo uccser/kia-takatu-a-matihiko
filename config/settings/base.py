@@ -3,7 +3,7 @@
 
 import os
 
-ROOT_DIR = os.path.abspath(os.path.join(__file__, "../../../"))
+BASE_DIR = os.path.abspath(os.path.join(__file__, "../../../"))
 
 # APP CONFIGURATION
 # ----------------------------------------------------------------------------
@@ -92,7 +92,7 @@ TEMPLATES = [
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         # See: https://docs.djangoproject.com/en/dev/ref/settings/#template-dirs
         "DIRS": [
-            str(os.path.join(ROOT_DIR, "templates")),
+            str(os.path.join(BASE_DIR, "templates")),
         ],
         "OPTIONS": {
             # See: https://docs.djangoproject.com/en/dev/ref/settings/#template-debug
@@ -123,10 +123,10 @@ TEMPLATES = [
 
 # STATIC FILE CONFIGURATION
 # ------------------------------------------------------------------------------
-STATIC_ROOT = os.path.join(ROOT_DIR, "staticfiles")
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATIC_URL = "/staticfiles/"
 STATICFILES_DIRS = [
-    os.path.join(ROOT_DIR, "static"),
+    os.path.join(BASE_DIR, "static"),
 ]
 STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
@@ -176,5 +176,5 @@ PASSWORD_HASHERS = [
 
 # OTHER SETTINGS
 # ------------------------------------------------------------------------------
-PIKAU_CONTENT_BASE_PATH = os.path.join(ROOT_DIR, "pikau/content")
-CUSTOM_VERTO_TEMPLATES = os.path.join(ROOT_DIR, "utils/custom_converter_templates/")
+PIKAU_CONTENT_BASE_PATH = os.path.join(BASE_DIR, "pikau/content")
+CUSTOM_VERTO_TEMPLATES = os.path.join(BASE_DIR, "utils/custom_converter_templates/")
