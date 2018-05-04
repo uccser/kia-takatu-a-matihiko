@@ -32,7 +32,7 @@
   <p><strong>Progress Outcomes:</strong></p>
   <ul>
     {% for progress_outcome in pikau_course.progress_outcomes.all %}
-      <li>{{ progress_outcome.name }}</li>
+      <li>{% include "pikau/snippets/progress_outcome_full_badge.html" %}</li>
     {% endfor %}
   </ul>
 

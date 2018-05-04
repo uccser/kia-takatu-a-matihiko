@@ -7,8 +7,8 @@ tags:
   - binary-numbers
   - algorithms
 progress-outcomes:
-  - progress-outcome-1
-  - progress-outcome-2
+  - po1
+  - po2
 trailer-video: https://www.youtube.com/watch?v=v5yeq5u2RMI
 cover-photo: images/example.png
 study-plan: study-plan.md

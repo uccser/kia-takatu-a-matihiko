@@ -17,6 +17,7 @@ class ProgressOutcomeLoader(BaseLoader):
             progress_outcome = ProgressOutcome(
                 slug=progress_outcome_slug,
                 name=progress_outcome_data["name"],
+                abbreviation=progress_outcome_data["abbreviation"],
                 description=progress_outcome_data["description"],
                 exemplars=progress_outcome_data["exemplars"],
             )

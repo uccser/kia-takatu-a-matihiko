@@ -15,6 +15,9 @@
         {% with level=pikau_course.level %}
           {% include "pikau/snippets/level_badge.html" %}
         {% endwith %}
+        {% for progress_outcome in pikau_course.progress_outcomes.all %}
+          {% include "pikau/snippets/progress_outcome_badge.html" %}
+        {% endfor %}
     </div>
     {% include "pikau/snippets/pikau_course_progress_bar.html" %}
   </div>
