@@ -1,2 +1,2 @@
-release: python manage.py migrate --no-input --settings=config.settings.production
+release: ./release.sh
 web: gunicorn config.wsgi
