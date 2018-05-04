@@ -69,9 +69,31 @@ class ProgressOutcomeList(generic.ListView):
     """View for the progress outcome list page."""
 
     context_object_name = "progress_outcomes"
-    model = ProgressOutcome
-    ordering = "name"
 
+    def get_queryset(self):
+        """Get queryset of all progress outcomes.
+
+        Returns:
+            Queryset of ProgressOutcome objects ordered by name.
+        """
+        return ProgressOutcome.objects.order_by("name")
+
+    def get_context_data(self, **kwargs):
+        """Provide the context data for the view.
+
+        Returns:
+            Dictionary of context data.
+        """
+        context = super(ProgressOutcomeList, self).get_context_data(**kwargs)
+        topics = Topic.objects.order_by("name")
+        context["topics"] = topics
+        for progress_outcome in self.object_list:
+            topic_counts = dict()
+            for topic in topics:
+                topic_counts[topic.slug] = progress_outcome.pikau_courses.filter(topic=topic).count()
+            progress_outcome.topic_counts = topic_counts
+            print(topic_counts)
+        return context
 
 class TagList(generic.ListView):
     """View for the tag list page."""

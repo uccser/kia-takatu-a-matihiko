@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load get_item %}
+
 {% block page_heading %}
   Progress Outcomes
 {% endblock page_heading %}
@@ -10,19 +12,25 @@
   <table class="table table-hover table-responsive">
     <thead>
       <tr>
-        <th scope="col">Slug</th>
-        <th scope="col">Details</th>
+        <th></th>
+        {% for topic in topics %}
+          <th scope="col">
+            <h4>{% include "pikau/snippets/topic_badge.html" %}</h4>
+          </th>
+        {% endfor %}
       </tr>
     </thead>
     <tbody>
       {% for progress_outcome in progress_outcomes %}
         <tr>
-          <td class="no-wrap"><code>{{ progress_outcome.slug }}</code></td>
           <td>
             <p class="h4">{{ progress_outcome.name }}</p>
-            <p>{{ progress_outcome.description }}</p>
-            <p><a href="{{ progress_outcome.exemplars }}">TKI Exemplars</a></p>
           </td>
+          {% for topic in topics %}
+            <td scope="col" class="text-center">
+              {{ progress_outcome.topic_counts|get_item:topic.slug }}
+            </td>
+          {% endfor %}
         </tr>
       {% endfor %}
     </tbody>

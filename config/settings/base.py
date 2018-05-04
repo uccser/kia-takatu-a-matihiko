@@ -115,6 +115,7 @@ TEMPLATES = [
             ],
             "libraries": {
                 "render_html_field": "config.templatetags.render_html_field",
+                "get_item": "config.templatetags.get_item",
             },
         },
     },
