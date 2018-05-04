@@ -8,16 +8,6 @@ Django settings for local development environment.
 
 from .base import *  # noqa: F403
 
-# DATABASE
-# ----------------------------------------------------------------------------
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
 # DEBUG
 # ----------------------------------------------------------------------------
 DEBUG = True  # noqa: F405
