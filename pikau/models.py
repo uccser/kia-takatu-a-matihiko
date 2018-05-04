@@ -7,6 +7,16 @@ LANGUAGE_CHOICES = (
     ("mi", "Māori"),
 )
 
+STATUS_CHOICES = (
+    ("1", "Stage 1: Conceptualising"),
+    ("2", "Stage 2: Developing"),
+    ("3", "Stage 3: Reviewing - Academic"),
+    ("4", "Stage 4: Reviewing - Language"),
+    ("5", "Stage 5: Reviewing - Technical"),
+    ("6", "Stage 6: Completed"),
+    ("7", "Stage 7: Completed - Published to iQualify"),
+)
+
 class GlossaryTerm(models.Model):
     """Model for glossary term."""
 
@@ -139,6 +149,16 @@ class PikauCourse(models.Model):
     assessment_items = models.TextField()
     # TODO: Add resources
     # TODO: Add content
+
+    # Development attributes
+    development_folder = models.URLField(blank=True)
+    status = models.CharField(
+        max_length=60,
+        choices=STATUS_CHOICES,
+        default=1,
+    )
+    status_updated = models.DateTimeField(null=True)
+    __previous_status = None
 
     def __str__(self):
         """Text representation of PikauCourse object.

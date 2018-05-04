@@ -12,18 +12,27 @@ class PikauCourseAdmin(admin.ModelAdmin):
             {"fields": [
                 "name",
                 "slug",
-                "language",
             ]}
         ),
         (
-            "Development Information",
+            "Metadata",
             {"fields": [
+                "language",
                 "topic",
                 "level",
                 "tags",
             ]}
         ),
+        (
+            "Development Information",
+            {"fields": [
+                "development_folder",
+                "status",
+                "status_updated",
+            ]}
+        ),
     ]
     filter_horizontal = ("tags", )
+    readonly_fields = ("status_updated", )
 
 admin.site.register(PikauCourse, PikauCourseAdmin)
