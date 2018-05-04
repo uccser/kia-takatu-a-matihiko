@@ -11,6 +11,8 @@ from pikau.models import (
     Topic,
 )
 
+NUMBER_OF_FLAME_STAGES = 7
+
 
 class IndexView(generic.TemplateView):
     """View for the pikau homepage that renders from a template."""
@@ -87,12 +89,39 @@ class ProgressOutcomeList(generic.ListView):
         context = super(ProgressOutcomeList, self).get_context_data(**kwargs)
         topics = Topic.objects.order_by("name")
         context["topics"] = topics
+        max_count = NUMBER_OF_FLAME_STAGES
         for progress_outcome in self.object_list:
             topic_counts = dict()
             for topic in topics:
-                topic_counts[topic.slug] = progress_outcome.pikau_courses.filter(topic=topic).count()
+                count = progress_outcome.pikau_courses.filter(topic=topic).count()
+                topic_counts[topic.slug] = dict()
+                topic_counts[topic.slug]["count"] = count
+                if count > max_count:
+                    max_count = count
             progress_outcome.topic_counts = topic_counts
-            print(topic_counts)
+        # Create ranges of heatmap
+        stages = list()
+        range_width = max_count / NUMBER_OF_FLAME_STAGES
+        for num in range(0, NUMBER_OF_FLAME_STAGES):
+            stages.append(round(range_width * num, 1))
+        stages.append(max_count)
+        # Match counts with ranges
+        for progress_outcome in self.object_list:
+            for topic in topics:
+                count = progress_outcome.topic_counts[topic.slug]["count"]
+                if count == 0:
+                    stage = 0
+                elif count == max_count:
+                    stage = NUMBER_OF_FLAME_STAGES
+                else:
+                    found = False
+                    i = 0
+                    while found == False:
+                        stage = i
+                        if count < stages[i + 1]:
+                            found = True
+                        i += 1
+                progress_outcome.topic_counts[topic.slug]["stage"] = stage
         return context
 
 class TagList(generic.ListView):

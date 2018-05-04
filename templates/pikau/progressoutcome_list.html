@@ -27,9 +27,11 @@
             <p class="h4">{{ progress_outcome.name }}</p>
           </td>
           {% for topic in topics %}
-            <td scope="col" class="text-center">
-              {{ progress_outcome.topic_counts|get_item:topic.slug }}
-            </td>
+            {% with cell_data=progress_outcome.topic_counts|get_item:topic.slug %}
+              <td scope="col" class="text-center fire-stage-{{ cell_data|get_item:'stage' }}">
+                <span class="h4">{{ cell_data|get_item:"count" }}</span>
+              </td>
+            {% endwith %}
           {% endfor %}
         </tr>
       {% endfor %}

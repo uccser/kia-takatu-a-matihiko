@@ -45,6 +45,9 @@ body {
   right: 0;
   text-align: center;
 }
+.fire-stage-0 {
+  background-color: transparent;
+}
 .fire-stage-1 {
   background-color: #ffd642;
 }
