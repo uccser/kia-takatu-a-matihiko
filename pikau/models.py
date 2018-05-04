@@ -145,6 +145,10 @@ class PikauCourse(models.Model):
         Tag,
         related_name="pikau_courses",
     )
+    progress_outcomes = models.ManyToManyField(
+        ProgressOutcome,
+        related_name="pikau_courses",
+    )
     glossary_terms = models.ManyToManyField(
         GlossaryTerm,
         related_name="pikau_courses",

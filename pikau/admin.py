@@ -20,6 +20,7 @@ class PikauCourseAdmin(admin.ModelAdmin):
                 "language",
                 "topic",
                 "level",
+                "progress_outcomes",
                 "tags",
             ]}
         ),
@@ -32,7 +33,7 @@ class PikauCourseAdmin(admin.ModelAdmin):
             ]}
         ),
     ]
-    filter_horizontal = ("tags", )
+    filter_horizontal = ("tags", "progress_outcomes")
     readonly_fields = ("status_updated", )
 
 admin.site.register(PikauCourse, PikauCourseAdmin)
