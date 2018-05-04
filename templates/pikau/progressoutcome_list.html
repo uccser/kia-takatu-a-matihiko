@@ -24,7 +24,7 @@
       {% for progress_outcome in progress_outcomes %}
         <tr>
           <td>
-            <p class="h4">{{ progress_outcome.name }}</p>
+            <p class="h4">{% include "pikau/snippets/progress_outcome_badge.html" %}</p>
           </td>
           {% for topic in topics %}
             {% with cell_data=progress_outcome.topic_counts|get_item:topic.slug %}

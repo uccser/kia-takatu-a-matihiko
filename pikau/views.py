@@ -124,6 +124,14 @@ class ProgressOutcomeList(generic.ListView):
                 progress_outcome.topic_counts[topic.slug]["stage"] = stage
         return context
 
+
+class ProgressOutcomeDetail(generic.DetailView):
+    """View for a progress outcome."""
+
+    context_object_name = "progress_outcome"
+    model = ProgressOutcome
+
+
 class TagList(generic.ListView):
     """View for the tag list page."""
 

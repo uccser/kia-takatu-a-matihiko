@@ -68,6 +68,12 @@ urlpatterns = [
         views.ProgressOutcomeList.as_view(),
         name="progress_outcome_list"
     ),
+    # eg: /pikau/progress-outcomes/progress-outcome-1/
+    path(
+        "progress-outcomes/<slug:slug>/",
+        views.ProgressOutcomeDetail.as_view(),
+        name="progress_outcome"
+    ),
     # eg: /pikau/tags/
     path(
         "tags/",
