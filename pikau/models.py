@@ -7,14 +7,22 @@ LANGUAGE_CHOICES = (
     ("mi", "Māori"),
 )
 
+STAGE_1 = (1, "Stage 1: Conceptualising")
+STAGE_2 = (2, "Stage 2: Developing")
+STAGE_3 = (3, "Stage 3: Reviewing - Academic")
+STAGE_4 = (4, "Stage 4: Reviewing - Language")
+STAGE_5 = (5, "Stage 5: Reviewing - Technical")
+STAGE_6 = (6, "Stage 6: Completed")
+STAGE_7 = (7, "Stage 7: Completed - Published to iQualify")
+
 STATUS_CHOICES = (
-    ("1", "Stage 1: Conceptualising"),
-    ("2", "Stage 2: Developing"),
-    ("3", "Stage 3: Reviewing - Academic"),
-    ("4", "Stage 4: Reviewing - Language"),
-    ("5", "Stage 5: Reviewing - Technical"),
-    ("6", "Stage 6: Completed"),
-    ("7", "Stage 7: Completed - Published to iQualify"),
+    STAGE_1,
+    STAGE_2,
+    STAGE_3,
+    STAGE_4,
+    STAGE_5,
+    STAGE_6,
+    STAGE_7,
 )
 
 class GlossaryTerm(models.Model):
@@ -152,8 +160,7 @@ class PikauCourse(models.Model):
 
     # Development attributes
     development_folder = models.URLField(blank=True)
-    status = models.CharField(
-        max_length=60,
+    status = models.IntegerField(
         choices=STATUS_CHOICES,
         default=1,
     )

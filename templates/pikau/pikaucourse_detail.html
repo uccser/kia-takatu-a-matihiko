@@ -9,6 +9,12 @@
 
 {% block content %}
   <p><strong>Slug:</strong> <code>{{ pikau_course.slug }}</code></p>
+
+  <h2>Development Information</h2>
+  {% include "pikau/snippets/pikau_course_progress_bar.html" %}
+  <p><strong>Status updated: </strong>{{ pikau_course.status_updated }}</p>
+
+  <h2>Metadata</h2>
   <p><strong>Language:</strong> {{ pikau_course.get_language_display }}</p>
   <p>
     <strong>Topic:</strong>

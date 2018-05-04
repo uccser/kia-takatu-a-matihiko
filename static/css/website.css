@@ -30,3 +30,39 @@ body {
   background-color: transparent;
   border: 2px solid #ffc107;
 }
+.progress {
+  position: relative;
+}
+.progress-lg {
+  height: 1.5rem;
+}
+.progress-overlay {
+  position: absolute;
+  font-weight: bold;
+  font-size: 0.8rem;
+  bottom: 2px;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+.fire-stage-1 {
+  background-color: #ffd642;
+}
+.fire-stage-2 {
+  background-color: #ffc23c;
+}
+.fire-stage-3 {
+  background-color: #ffae19;
+}
+.fire-stage-4 {
+  background-color: #ff9b19;
+}
+.fire-stage-5 {
+  background-color: #ff793d;
+}
+.fire-stage-6 {
+  background-color: #ff633d;
+}
+.fire-stage-7 {
+  background-color: #ff4024;
+}

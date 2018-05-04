@@ -10,10 +10,8 @@ def pikau_course_post_init(sender, instance, **kwargs):
 
 @receiver(pre_save, sender=PikauCourse)
 def pikau_course_pre_save(sender, instance, raw, using, update_fields, **kwargs):
-    print(instance.status_updated)
     if instance.status != instance.__previous_status:
         instance.status_updated = timezone.now()
-    print(instance.status_updated)
 
 @receiver(post_save, sender=PikauCourse)
 def pikau_course_post_save(sender, instance, created, raw, using, update_fields, **kwargs):
