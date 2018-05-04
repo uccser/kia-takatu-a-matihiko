@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 
+{% load i18n %}
 {% load static %}
 
 {% block page_heading %}
@@ -8,7 +9,7 @@
 
 {% block content %}
   <p>
-    This page details the content pipeline for used for developing Pīkau content for the <a href="http://www.kiatakatu.ac.nz/">Kia Takatū ā-Matihi</a>.
+    {% trans "This page details the content pipeline for used for developing Pīkau content for the <a href='http://www.kiatakatu.ac.nz/'>Kia Takatū ā-Matihi</a>." %}
   </p>
 
   <a class="btn btn-lg btn-primary" href="{% url 'pikau:pikau_course_list' %}" role="button">View Pīkau Courses</a>

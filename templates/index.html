@@ -9,7 +9,8 @@
 {% block body_container %}
   <div class="jumbotron">
     <div class="container">
-      <h1 class="display-3">Kia Takatū ā-Matihiko <span class="text-muted">by</span> UCCSER</h1>
+      <img src="{% static 'images/logo-blue-text.png' %}" style="width:20rem;">
+      <h1 class="display-3">Content Pipeline Assistant</h1>
       <p class="lead">
         This tool has been developed to assist authors to efficiently create and develop content for <a href="http://www.kiatakatu.ac.nz/">Kia Takatū ā-Matihi</a>, the National Digital Readiness programme.
       </p>
@@ -25,11 +26,19 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-6">
         <h2>Pīkau</h2>
         <p>
           <a class="btn btn-primary" href="{% url 'pikau:index' %}" role="button">
             View Pīkau content &raquo;
+          </a>
+        </p>
+      </div>
+      <div class="col-md-6">
+        <h2>Digital Leaders Development</h2>
+        <p>
+          <a class="btn btn-secondary disabled" href="#">
+            Coming soon &raquo;
           </a>
         </p>
       </div>
