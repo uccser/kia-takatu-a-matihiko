@@ -12,4 +12,5 @@ import django_heroku
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Activate Django-Heroku.
+DEBUG = True
 django_heroku.settings(locals())
