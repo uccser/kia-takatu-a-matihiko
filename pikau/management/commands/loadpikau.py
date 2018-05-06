@@ -19,7 +19,6 @@ class Command(management.base.BaseCommand):
         """Automatically called when the loadpikau command is given."""
 
         base_path = settings.PIKAU_CONTENT_BASE_PATH
-        management.call_command("flush", interactive=False)
         GlossaryTermLoader(base_path).load()
         GoalLoader(base_path).load()
         LevelLoader(base_path).load()

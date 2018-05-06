@@ -1,5 +1,5 @@
-<div class="col-12 col-md-6">
-  <div class="card mb-3 text-center">
+<div class="col-12 col-md-6 mb-3">
+  <div class="card text-center">
     <h5 class="card-header">
       <a href="{% url 'pikau:pikau_course' pikau_course.slug %}">
         {{ pikau_course.name }}
@@ -10,13 +10,19 @@
         {{ pikau_course.get_language_display }}
       </h6>
         {% with topic=pikau_course.topic %}
-          {% include "pikau/snippets/topic_badge.html" %}
+          {% if topic %}
+            {% include "pikau/snippets/topic_badge.html" %}
+          {% endif %}
         {% endwith %}
         {% with level=pikau_course.level %}
-          {% include "pikau/snippets/level_badge.html" %}
+          {% if level %}
+            {% include "pikau/snippets/level_badge.html" %}
+          {% endif %}
         {% endwith %}
         {% for progress_outcome in pikau_course.progress_outcomes.all %}
-          {% include "pikau/snippets/progress_outcome_badge.html" %}
+          {% if progress_outcome %}
+            {% include "pikau/snippets/progress_outcome_badge.html" %}
+          {% endif %}
         {% endfor %}
     </div>
     {% include "pikau/snippets/pikau_course_progress_bar.html" %}

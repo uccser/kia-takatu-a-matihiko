@@ -1,9 +1,14 @@
 # -*- coding: utf-8 -*-
 """Django settings for kia-takatu-a-matihiko project."""
 
+import environ
 import os
 
-BASE_DIR = os.path.abspath(os.path.join(__file__, "../../../"))
+BASE_DIR_PATH = environ.Path(__file__) - 3
+BASE_DIR = str(BASE_DIR_PATH)
+
+# Load operating system environment variables and then prepare to use them
+env = environ.Env()
 
 # APP CONFIGURATION
 # ----------------------------------------------------------------------------
@@ -189,39 +194,6 @@ PASSWORD_HASHERS = [
     "django.contrib.auth.hashers.BCryptSHA256PasswordHasher",
     "django.contrib.auth.hashers.BCryptPasswordHasher",
 ]
-
-LOGGING = {
-    "version": 1,
-    "disable_existing_loggers": False,
-    "formatters": {
-        "verbose": {
-            "format": ("%(asctime)s [%(process)d] [%(levelname)s] " +
-                       "pathname=%(pathname)s lineno=%(lineno)s " +
-                       "funcname=%(funcName)s %(message)s"),
-            "datefmt": "%Y-%m-%d %H:%M:%S"
-        },
-        "simple": {
-            "format": "%(levelname)s %(message)s"
-        }
-    },
-    "handlers": {
-        "null": {
-            "level": "DEBUG",
-            "class": "logging.NullHandler",
-        },
-        "console": {
-            "level": "DEBUG",
-            "class": "logging.StreamHandler",
-            "formatter": "verbose"
-        }
-    },
-    "loggers": {
-        "testlogger": {
-            "handlers": ["console"],
-            "level": "INFO",
-        }
-    }
-}
 
 # AUTH
 # ------------------------------------------------------------------------------
