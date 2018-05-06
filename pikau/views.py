@@ -10,6 +10,7 @@ from pikau.models import (
     ProgressOutcome,
     Tag,
     Topic,
+    STATUS_CHOICES,
 )
 
 NUMBER_OF_FLAME_STAGES = 7
@@ -19,6 +20,22 @@ class IndexView(LoginRequiredMixin, generic.TemplateView):
     """View for the pikau homepage that renders from a template."""
 
     template_name = "pikau/index.html"
+
+
+class DocumentationView(LoginRequiredMixin, generic.TemplateView):
+    """View for the pikau documentation that renders from a template."""
+
+    template_name = "pikau/documentation.html"
+
+    def get_context_data(self, **kwargs):
+        """Provide the context data for the view.
+
+        Returns:
+            Dictionary of context data.
+        """
+        context = super(DocumentationView, self).get_context_data(**kwargs)
+        context["status_stages"] = STATUS_CHOICES
+        return context
 
 
 class GlossaryList(LoginRequiredMixin,generic.ListView):

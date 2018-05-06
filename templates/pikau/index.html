@@ -9,18 +9,22 @@
 
 {% block content %}
   <p>
-    {% trans "This page details the content pipeline for used for developing Pīkau content for the <a href='http://www.kiatakatu.ac.nz/'>Kia Takatū ā-Matihi</a>." %}
+    {% trans "This page details the content pipeline for used for developing Pīkau content for <a href='http://www.kiatakatu.ac.nz/'>Kia Takatū ā-Matihiko</a>." %}
+    {% trans "We recommend reading the Pīkau Giu page details the content pipeline for used for developing Pīkau content for <a href='http://www.kiatakatu.ac.nz/'>Kia Takatū ā-Matihiko</a>." %}
   </p>
 
-  <a class="btn btn-lg btn-primary" href="{% url 'pikau:pikau_course_list' %}" role="button">View Pīkau Courses</a>
-
-  <h2 class="mt-3">View metadata</h2>
   <p>
-    <a class="btn btn-outline-primary btn-sm" href="{% url 'pikau:glossary' %}">Glossary</a>
-    <a class="btn btn-outline-primary btn-sm" href="{% url 'pikau:goal_list' %}">Goals</a>
-    <a class="btn btn-outline-primary btn-sm" href="{% url 'pikau:level_list' %}">Levels</a>
-    <a class="btn btn-outline-primary btn-sm" href="{% url 'pikau:progress_outcome_list' %}">Progress Outcomes</a>
-    <a class="btn btn-outline-primary btn-sm" href="{% url 'pikau:tag_list' %}">Tags</a>
-    <a class="btn btn-outline-primary btn-sm" href="{% url 'pikau:topic_list' %}">Topics</a>
+    <a class="btn btn-lg btn-outline-primary" href="{% url 'pikau:pikau_course_list' %}" role="button">{% trans "Pīkau Guide" %}</a>
+    <a class="btn btn-lg btn-primary" href="{% url 'pikau:pikau_course_list' %}" role="button">{% trans "View all Pīkau" %}</a>
+  </p>
+
+  <h3 class="mt-3">View metadata</h3>
+  <p>
+    <a class="btn btn-outline-primary btn-sm" href="{% url 'pikau:glossary' %}">{% trans "Glossary" %}</a>
+    <a class="btn btn-outline-primary btn-sm" href="{% url 'pikau:goal_list' %}">{% trans "Goals" %}</a>
+    <a class="btn btn-outline-primary btn-sm" href="{% url 'pikau:level_list' %}">{% trans "Levels" %}</a>
+    <a class="btn btn-outline-primary btn-sm" href="{% url 'pikau:progress_outcome_list' %}">{% trans "Progress Outcomes" %}</a>
+    <a class="btn btn-outline-primary btn-sm" href="{% url 'pikau:tag_list' %}">{% trans "Tags" %}</a>
+    <a class="btn btn-outline-primary btn-sm" href="{% url 'pikau:topic_list' %}">{% trans "Topics" %}</a>
   </p>
 {% endblock content %}

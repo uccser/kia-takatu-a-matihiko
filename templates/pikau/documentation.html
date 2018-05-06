@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load static %}
+
+{% block page_heading %}
+  Pīkau Documentation
+{% endblock page_heading %}
+
+{% block content %}
+  <h2>Introduction</h2>
+  <p>
+    This page aims to explain how pīkau are managed and stored in this tool, and how to use this area of the website aid you in your pīkau development.
+  </p>
+
+  <table class="table table-sm table-borderless table-responsive">
+    <tbody>
+      {% for stage_num, stage_name in status_stages %}
+        <tr>
+          <td class="fire-stage-{{ stage_num }}">
+            <strong>{{ stage_name }}</strong>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock content %}

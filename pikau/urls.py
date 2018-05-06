@@ -26,6 +26,12 @@ urlpatterns = [
         views.IndexView.as_view(),
         name="index"
     ),
+    # eg: /pikau/docs/
+    path(
+        "docs",
+        views.DocumentationView.as_view(),
+        name="docs"
+    ),
     # eg: /pikau/glossary/
     path(
         "glossary/",
