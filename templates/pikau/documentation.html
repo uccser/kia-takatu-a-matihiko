@@ -8,10 +8,17 @@
 {% endblock page_heading %}
 
 {% block content %}
+
+  <div class="alert alert-warning" role="alert">
+    This page is under construction!
+  </div>
+
   <h2>Introduction</h2>
   <p>
     This page aims to explain how pīkau are managed and stored in this tool, and how to use this area of the website aid you in your pīkau development.
   </p>
+
+  <h2>Stages of development</h2> 
 
   <table class="table table-sm table-borderless table-responsive">
     <tbody>
@@ -25,4 +32,55 @@
     </tbody>
   </table>
 
+  <h2>Creating a Pīkau</h2>
+
+  <p>When creating a pīkau, the first step is to plan out the high level positioning of the pīkau.</p>
+
+  <h3>Metadata</h3>
+
+  <p>The following data can be optionally tied to each pīkau, however the more data that is attached to each pīkau allows this tool to display the connectionss and coverage effectively.</p>
+
+  <table class="table table-responsive">
+    <thead>
+      <tr>
+        <th scope="col">Data</th>
+        <th scope="col">Choices</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+            <strong>Topic</strong><br>
+            Select <em>one</em>
+          </td>
+          <td>
+            {% for topic in topics %}
+              {% include "pikau/snippets/topic_badge.html" %}<br>
+            {% endfor %}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <strong>Level</strong><br>
+            Select <em>one</em>
+          </td>
+          <td>
+            {% for level in levels %}
+              {% include "pikau/snippets/level_badge.html" %}<br>
+            {% endfor %}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <strong>Progress Outcomes</strong><br>
+            Select <em>one or more</em>
+          </td>
+          <td>
+            {% for progress_outcome in progress_outcomes %}
+              {% include "pikau/snippets/progress_outcome_full_badge.html" %}<br>
+            {% endfor %}
+          </td>
+        </tr>
+    </tbody>
+  </table>
 {% endblock content %}

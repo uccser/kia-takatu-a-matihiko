@@ -35,6 +35,9 @@ class DocumentationView(LoginRequiredMixin, generic.TemplateView):
         """
         context = super(DocumentationView, self).get_context_data(**kwargs)
         context["status_stages"] = STATUS_CHOICES
+        context["topics"] = Topic.objects.order_by("name")
+        context["levels"] = Level.objects.order_by("name")
+        context["progress_outcomes"] = ProgressOutcome.objects.order_by("name")
         return context
 
 
