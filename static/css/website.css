@@ -26,6 +26,9 @@ body {
 .no-wrap {
   white-space: nowrap;
 }
+.card {
+  height: 100%;
+}
 footer {
   background-color: #f5f5f5;
 }
