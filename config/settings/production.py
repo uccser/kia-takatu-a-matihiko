@@ -1,11 +1,8 @@
 # -*- coding: utf-8 -*-
-"""
-Django settings for production environment.
-
-- Load secret values from environment variables.
-"""
+"""Django settings for production environment."""
 
 from .base import *  # noqa: F403
+import os
 import django_heroku
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()

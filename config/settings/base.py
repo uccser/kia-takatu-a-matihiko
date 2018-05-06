@@ -1,9 +1,14 @@
 # -*- coding: utf-8 -*-
 """Django settings for kia-takatu-a-matihiko project."""
 
+import environ
 import os
 
-BASE_DIR = os.path.abspath(os.path.join(__file__, "../../../"))
+BASE_DIR_PATH = environ.Path(__file__) - 3
+BASE_DIR = str(BASE_DIR_PATH)
+
+# Load operating system environment variables and then prepare to use them
+env = environ.Env()
 
 # APP CONFIGURATION
 # ----------------------------------------------------------------------------
