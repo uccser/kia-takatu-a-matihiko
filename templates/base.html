@@ -11,16 +11,18 @@
         Kia Takatū ā-Matihiko: Content Pipeline Assistant
       {% endblock custom_title %}
     </title>
+    <link rel="icon" href="{% static 'images/flame-stage-5-favicon.png' %}" sizes="32x32" type="image/png">
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/website.css' %}">
   </head>
   <body>
-    <nav class="navbar navbar-light bg-light fixed-top navbar-expand-md py-1">
+    <nav class="navbar navbar-dark bg-brand-purple fixed-top navbar-expand-md py-1">
       <div class="container">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <a class="navbar-brand mb-0 h1" href="{% url 'index' %}">
+          <img src="{% static 'images/flame-stage-5.png' %}" height="30" class="d-inline-block align-top" alt="">
           Content Pipeline Assistant
         </a>
         <a href="https://github.com/uccser/kia-takatu-a-matihiko/releases" class="badge badge-danger">
@@ -32,10 +34,10 @@
               <span class="navbar-text mx-3">
                 Kia ora {{ request.user.first_name }}
               </span>
-              <a class="nav-link btn btn-outline-secondary mx-1" href="{% url 'account_logout' %}">{% trans "Logout" %}</a>
+              <a class="btn btn-outline-light mx-1" href="{% url 'account_logout' %}">{% trans "Logout" %}</a>
             {% else %}
-                <a id="sign-up-item" class="nav-link btn btn-outline-secondary mx-1" href="{% url 'account_signup' %}">{% trans "Register" %}</a>
-                <a id="log-in-item" class="nav-link btn btn-outline-secondary mx-1" href="{% url 'account_login' %}">{% trans "Login" %}</a>
+                <a id="sign-up-item" class="btn btn-outline-light mx-1" href="{% url 'account_signup' %}">{% trans "Register" %}</a>
+                <a id="log-in-item" class="btn btn-outline-light mx-1" href="{% url 'account_login' %}">{% trans "Login" %}</a>
             {% endif %}
           </div>
         </div>
@@ -60,11 +62,41 @@
       </div>
     {% endblock body_container %}
 
-    <footer class="footer">
+    <footer class="mt-5 pt-5 pb-3">
       <div class="container">
-        <span class="text-muted">
-          Developed by University of Canterbury Computer Science Education Research Group - 2018
-        </span>
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-8">
+            <p class="mb-2">
+              {% trans "Developed by " %}
+            </p>
+            <a href="http://www.cosc.canterbury.ac.nz/research/RG/CSE/">
+              <img src="{% static 'images/uc-computer-science-education-logo.png' %}" alt="University of Canterbury Computer Science Education Research Group" id="uc-logo">
+            </a>
+          </div>
+
+          <div class="col-6 col-md-4 text-right">
+            <p class="mb-1 font-weight-bold">{% trans "Useful Links" %}</p>
+            <ul class="list-unstyled list-unstyled-i18n">
+              <li>
+                <a href="{% url 'pikau:index' %}">
+                  {% trans "Pīkau" %}
+                </a>
+              </li>
+              <li>
+                <a href="mailto:jack.morgan@kiatakatu.ac.nz">
+                  {% trans "Contact" %}
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <p class="text-center mb-0">
+          <small>
+            {% blocktrans trimmed %}
+            This website is open source on <a href="https://github.com/uccser/kia-takatu-a-matihiko">GitHub</a>.
+            {% endblocktrans %}
+          </small>
+        </p>
       </div>
     </footer>
 
