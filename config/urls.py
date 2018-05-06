@@ -18,11 +18,12 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls import include, url
 from django.contrib import admin
-from config.views import IndexView
+from config import views
 
 admin.site.site_header = "Kia Takatū ā-Matihiko by UCCSER"
 urlpatterns = [
-    path("", IndexView.as_view(), name="index"),
+    path("", views.IndexView.as_view(), name="index"),
+    path("faq/", views.FAQView.as_view(), name="faq"),
     path("pikau/", include("pikau.urls")),
     path("accounts/", include("allauth.urls")),
     path("admin/", admin.site.urls),

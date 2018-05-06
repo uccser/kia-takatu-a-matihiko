@@ -44,7 +44,7 @@
       </div>
     </nav>
     {% block body_container %}
-      <div id="content-container" class="container">
+      <div id="content-container" class="container pt-3">
         <div class="row">
           <div class="col-12">
             <h1>
@@ -80,6 +80,11 @@
               <li>
                 <a href="{% url 'pikau:index' %}">
                   {% trans "Pīkau" %}
+                </a>
+              </li>
+              <li>
+                <a href="{% url 'faq' %}">
+                  {% trans "FAQ" %}
                 </a>
               </li>
               <li>
