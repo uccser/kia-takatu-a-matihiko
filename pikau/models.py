@@ -135,24 +135,31 @@ class PikauCourse(models.Model):
     topic = models.ForeignKey(
         Topic,
         on_delete=models.CASCADE,
-        related_name="pikau_courses"
+        related_name="pikau_courses",
+        blank=True,
+        null=True,
     )
     level = models.ForeignKey(
         Level,
         on_delete=models.CASCADE,
-        related_name="pikau_courses"
+        related_name="pikau_courses",
+        blank=True,
+        null=True,
     )
     tags = models.ManyToManyField(
         Tag,
         related_name="pikau_courses",
+        blank=True,
     )
     progress_outcomes = models.ManyToManyField(
         ProgressOutcome,
         related_name="pikau_courses",
+        blank=True,
     )
     glossary_terms = models.ManyToManyField(
         GlossaryTerm,
         related_name="pikau_courses",
+        blank=True,
     )
     trailer_video = models.URLField()
     cover_photo = models.CharField(max_length=100)

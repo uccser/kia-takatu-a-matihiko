@@ -19,33 +19,41 @@
   <h2>Metadata</h2>
   <p><strong>Language:</strong> {{ pikau_course.get_language_display }}</p>
   <p>
-    <strong>Topic:</strong>
     {% with topic=pikau_course.topic %}
-      {% include "pikau/snippets/topic_badge.html" %}
+      {% if topic %}
+        <strong>Topic:</strong>
+        {% include "pikau/snippets/topic_badge.html" %}
+      {% endif %}
     {% endwith %}
   </p>
   <p>
-    <strong>Level:</strong>
     {% with level=pikau_course.level %}
-      {% include "pikau/snippets/level_badge.html" %}
+      {% if level %}
+        <strong>Level:</strong>
+        {% include "pikau/snippets/level_badge.html" %}
+      {% endif %}
     {% endwith %}
   </p>
 
-  <p><strong>Progress Outcomes:</strong></p>
-  <ul>
-    {% for progress_outcome in pikau_course.progress_outcomes.all %}
-      <li>{% include "pikau/snippets/progress_outcome_full_badge.html" %}</li>
-    {% endfor %}
-  </ul>
+  {% if pikau_course.progress_outcomes.all %}
+    <p><strong>Progress Outcomes:</strong></p>
+    <ul>
+      {% for progress_outcome in pikau_course.progress_outcomes.all %}
+        <li>{% include "pikau/snippets/progress_outcome_full_badge.html" %}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
 
   <p><strong>Trailer Video:</strong> <a href="{{ pikau_course.trailer_video }}">View</a></p>
 
-  <p><strong>Tags:</strong></p>
-  <ul>
-    {% for tag in pikau_course.tags.all %}
-      <li>{% include "pikau/snippets/tag_badge.html" %}</li>
-    {% endfor %}
-  </ul>
+  {% if pikau_course.progress_outcomes.all %}
+    <p><strong>Tags:</strong></p>
+    <ul>
+      {% for tag in pikau_course.tags.all %}
+        <li>{% include "pikau/snippets/tag_badge.html" %}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
 
   <p><strong>Glossary Terms:</strong></p>
   <ul>
