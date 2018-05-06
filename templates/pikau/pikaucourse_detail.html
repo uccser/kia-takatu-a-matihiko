@@ -4,7 +4,7 @@
 {% load render_html_field %}
 
 {% block custom_page_heading %}
-  <div class="jumbotron bg-size-cover" style="background-image:url({% static pikau_course.cover_photo %});">
+  <div class="jumbotron bg-size-cover"{% if pikau_course.cover_photo %} style="background-image:url({% static pikau_course.cover_photo %});"{% endif %}>
     <h1 class="display-4">{{ pikau_course.name }}</h1>
   </div>
 {% endblock custom_page_heading %}
