@@ -24,6 +24,7 @@ admin.site.site_header = "Kia Takatū ā-Matihiko by UCCSER"
 urlpatterns = [
     path("", IndexView.as_view(), name="index"),
     path("pikau/", include("pikau.urls")),
+    path("accounts/", include("allauth.urls")),
     path("admin/", admin.site.urls),
 ]
 

@@ -13,11 +13,17 @@ DJANGO_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+    "django.contrib.sites",
     "whitenoise.runserver_nostatic",
     "django.contrib.staticfiles",
 ]
 
-THIRD_PARTY_APPS = []
+THIRD_PARTY_APPS = [
+    "crispy_forms",
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+]
 
 # Apps specific for this project go here.
 LOCAL_APPS = [
@@ -65,6 +71,7 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 TIME_FORMAT = "fA"
+SITE_ID = 1
 
 DATETIME_INPUT_FORMATS = [
     "%d/%m/%Y %H:%M:%S",
@@ -215,6 +222,23 @@ LOGGING = {
         }
     }
 }
+
+# AUTH
+# ------------------------------------------------------------------------------
+AUTHENTICATION_BACKENDS = (
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
+)
+LOGIN_REDIRECT_URL = "index"
+ACCOUNT_AUTHENTICATION_METHOD = "email"
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = "none"
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_FORMS = {
+    "signup": "config.allauth.CustomSignupForm"
+}
+ACCOUNT_ADAPTER = "config.allauth.CustomAccountAdapter"
+CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 # OTHER SETTINGS
 # ------------------------------------------------------------------------------

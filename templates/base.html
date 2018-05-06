@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 
 <!doctype html>
 <html lang="en">
@@ -27,7 +28,15 @@
         </a>
         <div class="collapse navbar-collapse" id="navbarNav">
           <div class="navbar-nav ml-auto">
-            <a class="nav-item nav-link" href="{% url 'pikau:index' %}">Pīkau</a>
+            {% if request.user.is_authenticated %}
+              <span class="navbar-text mx-3">
+                Kia ora {{ request.user.first_name }}
+              </span>
+              <a class="nav-link btn btn-outline-secondary mx-1" href="{% url 'account_logout' %}">{% trans "Logout" %}</a>
+            {% else %}
+                <a id="sign-up-item" class="nav-link btn btn-outline-secondary mx-1" href="{% url 'account_signup' %}">{% trans "Register" %}</a>
+                <a id="log-in-item" class="nav-link btn btn-outline-secondary mx-1" href="{% url 'account_login' %}">{% trans "Login" %}</a>
+            {% endif %}
           </div>
         </div>
       </div>
