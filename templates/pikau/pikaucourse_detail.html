@@ -3,9 +3,11 @@
 {% load static %}
 {% load render_html_field %}
 
-{% block page_heading %}
-  Pīkau Courses: {{ pikau_course.name }}
-{% endblock page_heading %}
+{% block custom_page_heading %}
+  <div class="jumbotron bg-size-cover" style="background-image:url({% static pikau_course.cover_photo %});">
+    <h1 class="display-4">{{ pikau_course.name }}</h1>
+  </div>
+{% endblock custom_page_heading %}
 
 {% block content %}
   <p><strong>Slug:</strong> <code>{{ pikau_course.slug }}</code></p>
@@ -37,9 +39,6 @@
   </ul>
 
   <p><strong>Trailer Video:</strong> <a href="{{ pikau_course.trailer_video }}">View</a></p>
-
-  <p><strong>Cover Photo:</strong></p>
-  <img src="{% static pikau_course.cover_photo %}" class="mb-3">
 
   <p><strong>Tags:</strong></p>
   <ul>

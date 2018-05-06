@@ -32,6 +32,9 @@ footer {
 #uc-logo {
   max-width: 15rem;
 }
+.bg-size-cover {
+  background-size: cover;
+}
 .list-style-flame {
   list-style: none;
   padding-left: 1rem;
