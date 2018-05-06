@@ -7,14 +7,18 @@
   Pīkau Content
 {% endblock page_heading %}
 
+{% url 'pikau:docs' as docs_url %}
+
 {% block content %}
   <p>
-    {% trans "This page details the content pipeline for used for developing Pīkau content for <a href='http://www.kiatakatu.ac.nz/'>Kia Takatū ā-Matihiko</a>." %}
-    {% trans "We recommend reading the Pīkau Giu page details the content pipeline for used for developing Pīkau content for <a href='http://www.kiatakatu.ac.nz/'>Kia Takatū ā-Matihiko</a>." %}
+    {% blocktrans trimmed %}
+      This page details the content pipeline for used for developing Pīkau content for <a href='http://www.kiatakatu.ac.nz/'>Kia Takatū ā-Matihiko</a>.
+      We recommend reading the <a href='{{ docs_url }}'>Pīkau documentation</a> to start.
+    {% endblocktrans %}
   </p>
 
   <p>
-    <a class="btn btn-lg btn-outline-primary" href="{% url 'pikau:pikau_course_list' %}" role="button">{% trans "Pīkau Guide" %}</a>
+    <a class="btn btn-lg btn-outline-primary" href="{% url 'pikau:docs' %}" role="button">{% trans "Pīkau Documentation" %}</a>
     <a class="btn btn-lg btn-primary" href="{% url 'pikau:pikau_course_list' %}" role="button">{% trans "View all Pīkau" %}</a>
   </p>
 
