@@ -1,12 +1,14 @@
 """Views for the pikau application."""
 
 from django.views import generic
+from django.shortcuts import get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin
 from pikau.models import (
     GlossaryTerm,
     Goal,
     Level,
     PikauCourse,
+    PikauUnit,
     ProgressOutcome,
     Tag,
     Topic,
@@ -21,7 +23,7 @@ class IndexView(LoginRequiredMixin, generic.TemplateView):
     template_name = "pikau/index.html"
 
 
-class GlossaryList(LoginRequiredMixin,generic.ListView):
+class GlossaryList(LoginRequiredMixin, generic.ListView):
     """View for the glossary list page."""
 
     template_name = "pikau/glossary.html"
@@ -30,7 +32,7 @@ class GlossaryList(LoginRequiredMixin,generic.ListView):
     ordering = "term"
 
 
-class GoalList(LoginRequiredMixin,generic.ListView):
+class GoalList(LoginRequiredMixin, generic.ListView):
     """View for the goal list page."""
 
     context_object_name = "goals"
@@ -38,7 +40,7 @@ class GoalList(LoginRequiredMixin,generic.ListView):
     ordering = "slug"
 
 
-class LevelList(LoginRequiredMixin,generic.ListView):
+class LevelList(LoginRequiredMixin, generic.ListView):
     """View for the level list page."""
 
     context_object_name = "levels"
@@ -46,14 +48,14 @@ class LevelList(LoginRequiredMixin,generic.ListView):
     ordering = "name"
 
 
-class LevelDetail(LoginRequiredMixin,generic.DetailView):
+class LevelDetail(LoginRequiredMixin, generic.DetailView):
     """View for a level."""
 
     context_object_name = "level"
     model = Level
 
 
-class PikauCourseList(LoginRequiredMixin,generic.ListView):
+class PikauCourseList(LoginRequiredMixin, generic.ListView):
     """View for the pīkau course list page."""
 
     context_object_name = "pikau_courses"
@@ -61,14 +63,42 @@ class PikauCourseList(LoginRequiredMixin,generic.ListView):
     ordering = "name"
 
 
-class PikauCourseDetail(LoginRequiredMixin,generic.DetailView):
+class PikauCourseDetail(LoginRequiredMixin, generic.DetailView):
     """View for a pīkau course."""
 
     context_object_name = "pikau_course"
     model = PikauCourse
 
 
-class ProgressOutcomeList(LoginRequiredMixin,generic.ListView):
+class PikauCourseContent(LoginRequiredMixin, generic.DetailView):
+    """View for a pīkau course's content."""
+
+    context_object_name = "pikau_course"
+    model = PikauCourse
+    template_name = "pikau/pikaucourse_content.html"
+
+
+class PikauUnitDetail(LoginRequiredMixin, generic.DetailView):
+    """View for a pīkau unit."""
+
+    context_object_name = "pikau_unit"
+    model = PikauUnit
+
+    def get_object(self, **kwargs):
+        """Retrieve object for the pīkau unit view.
+
+        Returns:
+            PikauUnit object, or raises 404 error if not found.
+        """
+        return get_object_or_404(
+            self.model.objects,
+            pikau_module__pikau_course__slug=self.kwargs.get("course_slug", None),
+            pikau_module__slug=self.kwargs.get("module_slug", None),
+            slug=self.kwargs.get("unit_slug", None)
+        )
+
+
+class ProgressOutcomeList(LoginRequiredMixin, generic.ListView):
     """View for the progress outcome list page."""
 
     context_object_name = "progress_outcomes"
@@ -126,14 +156,14 @@ class ProgressOutcomeList(LoginRequiredMixin,generic.ListView):
         return context
 
 
-class ProgressOutcomeDetail(LoginRequiredMixin,generic.DetailView):
+class ProgressOutcomeDetail(LoginRequiredMixin, generic.DetailView):
     """View for a progress outcome."""
 
     context_object_name = "progress_outcome"
     model = ProgressOutcome
 
 
-class TagList(LoginRequiredMixin,generic.ListView):
+class TagList(LoginRequiredMixin, generic.ListView):
     """View for the tag list page."""
 
     context_object_name = "tags"
@@ -141,14 +171,14 @@ class TagList(LoginRequiredMixin,generic.ListView):
     ordering = "name"
 
 
-class TagDetail(LoginRequiredMixin,generic.DetailView):
+class TagDetail(LoginRequiredMixin, generic.DetailView):
     """View for a tag."""
 
     context_object_name = "tag"
     model = Tag
 
 
-class TopicList(LoginRequiredMixin,generic.ListView):
+class TopicList(LoginRequiredMixin, generic.ListView):
     """View for the topic list page."""
 
     context_object_name = "topics"
@@ -156,7 +186,7 @@ class TopicList(LoginRequiredMixin,generic.ListView):
     ordering = "name"
 
 
-class TopicDetail(LoginRequiredMixin,generic.DetailView):
+class TopicDetail(LoginRequiredMixin, generic.DetailView):
     """View for a topic."""
 
     context_object_name = "topic"

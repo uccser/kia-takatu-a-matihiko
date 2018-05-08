@@ -5,6 +5,8 @@ from django.db import transaction
 from utils.BaseLoader import BaseLoader
 from pikau.models import (
     PikauCourse,
+    PikauModule,
+    PikauUnit,
     Topic,
     Level,
     Tag,
@@ -68,6 +70,41 @@ class PikauCourseLoader(BaseLoader):
                 slug=pikau_course_slug,
                 defaults=defaults,
             )
+
+            for module_data in pikau_course_metadata["content"]:
+                module_slug = module_data["slug"]
+                module_name = module_data["name"]
+                module_units = module_data["units"]
+
+                module_defaults = {
+                    "name": module_name,
+                }
+
+                pikau_module, created = PikauModule.objects.update_or_create(
+                    slug=module_slug,
+                    pikau_course=pikau_course,
+                    defaults=module_defaults,
+                )
+
+                for unit_slug in module_units:
+                    unit_content_path = "{}/{}.md".format(module_slug, unit_slug)
+                    unit_content = self.convert_md_file(
+                        unit_content_path,
+                        CONFIG_FILE,
+                        heading_required=True,
+                        remove_title=True,
+                    )
+
+                    unit_defaults = {
+                        "name": unit_content.title,
+                        "content": unit_content.html_string,
+                    }
+
+                    pikau_unit, created = PikauUnit.objects.update_or_create(
+                        slug=unit_slug,
+                        pikau_module=pikau_module,
+                        defaults=unit_defaults,
+                    )
 
             for pikau_course_tag_slug in pikau_course_metadata.get("tags", list()):
                 pikau_course.tags.add(Tag.objects.get(slug=pikau_course_tag_slug))

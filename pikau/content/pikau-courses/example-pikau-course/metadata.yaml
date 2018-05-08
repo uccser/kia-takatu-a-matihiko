@@ -1,6 +1,6 @@
 name: Example Pīkau course
 overview: overview.md
-language: English
+language: en
 topic: ct
 level: 8-10
 tags:
@@ -16,15 +16,17 @@ resources:
   - files/example.txt
 
 content:
-  - name: Topic 1
+  - slug: module-1
+    name: Module 1
     units:
-    - topic-1/unit-1.md
-    - topic-1/unit-2.md
-    - topic-1/unit-3.md
-  - name: Topic 2
+    - unit-1
+    - unit-2
+    - unit-3
+  - slug: module-2
+    name: Module 2
     units:
-    - topic-2/unit-1.md
-    - topic-2/unit-2.md
+    - unit-1
+    - unit-2
 
 glossary:
   - example-term-1

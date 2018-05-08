@@ -1,12 +1,12 @@
 <div class='boxed-text{% if indented %} boxed-text-indented{% endif %}{% if type %} boxed-text-{{ type }}{% endif %}'>
 {% if type in ("case-study", "tip", "reading") %}
   <div>
-    <img class="icon" src="{{ "{% static '" }}images/iqualify/{{ type }}.png{{ "' %}" }}">
+    <img class="icon" src="{{ "{% static '" }}images/icons/icons8/{{ type }}.png{{ "' %}" }}">
   </div>
 {% endif %}
 {% if type == "quote" %}
   <div>
-    <img class="quote quote-start" src="{{ "{% static '" }}images/iqualify/quote-start.png{{ "' %}" }}">
+    <img class="quote quote-start" src="{{ "{% static '" }}images/icons/icons8/quote-start.png{{ "' %}" }}">
   </div>
 {% endif %}
 <div class="boxed-text-contents">
@@ -14,7 +14,7 @@
 </div>
 {% if type == "quote" %}
 <div>
-  <img class="quote quote-end" src="{{ "{% static '" }}images/iqualify/quote-end.png{{ "' %}" }}">
+  <img class="quote quote-end" src="{{ "{% static '" }}images/icons/icons8/quote-end.png{{ "' %}" }}">
 </div>
 {% endif %}
 </div>

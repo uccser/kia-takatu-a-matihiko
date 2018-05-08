@@ -168,7 +168,6 @@ class PikauCourse(models.Model):
     assessment_description = models.TextField()
     assessment_items = models.TextField()
     # TODO: Add resources
-    # TODO: Add content
 
     # Development attributes
     development_folder = models.URLField(blank=True)
@@ -186,3 +185,50 @@ class PikauCourse(models.Model):
             String describing PikauCourse.
         """
         return self.name
+
+
+class PikauModule(models.Model):
+    """Model for Pikau Module."""
+
+    slug = models.SlugField()
+    pikau_course = models.ForeignKey(
+        PikauCourse,
+        on_delete=models.CASCADE,
+        related_name="pikau_modules"
+    )
+    name = models.CharField(max_length=200)
+
+    def __str__(self):
+        """Text representation of PikauModule object.
+
+        Returns:
+            String describing PikauModule.
+        """
+        return "{}: {}".format(self.pikau_course.name, self.name)
+
+    class Meta:
+        unique_together = ("slug", "pikau_course")
+
+
+class PikauUnit(models.Model):
+    """Model for Pikau Unit."""
+
+    slug = models.SlugField()
+    pikau_module = models.ForeignKey(
+        PikauModule,
+        on_delete=models.CASCADE,
+        related_name="pikau_units"
+    )
+    name = models.CharField(max_length=200)
+    content = models.TextField()
+
+    def __str__(self):
+        """Text representation of PikauUnit object.
+
+        Returns:
+            String describing PikauUnit.
+        """
+        return "{}: {}".format(self.pikau_module.name, self.name)
+
+    class Meta:
+        unique_together = ("slug", "pikau_module")

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% load render_html_field %}
+
+{% block page_heading %}
+  {{ pikau_unit.name }}
+{% endblock page_heading %}
+
+{% block content %}
+  {% render_html_field pikau_unit.content %}
+{% endblock content %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/iqualify.css' %}">
+{% endblock css %}

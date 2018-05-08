@@ -6,6 +6,17 @@
 {% block custom_page_heading %}
   <div class="jumbotron bg-size-cover"{% if pikau_course.cover_photo %} style="background-image:url({% static pikau_course.cover_photo %});"{% endif %}>
     <h1 class="display-4">{{ pikau_course.name }}</h1>
+    {% if pikau_course.status < 6 and pikau_course.development_folder %}
+      <a class="btn btn-lg btn-primary mt-3" href="{{ pikau_course.development_folder }}">
+        <img src="{% static 'images/icons/icons8/google-drive.png' %}" class="icon">
+        View on Google Drive
+      </a>
+    {% endif %}
+    {% if pikau_course.status >= 6 %}
+      <a class="btn btn-lg btn-primary mt-3" href="{% url 'pikau:pikau_content' pikau_course.slug  %}">
+        View content
+      </a>
+    {% endif %}
   </div>
 {% endblock custom_page_heading %}
 
@@ -46,7 +57,7 @@
 
   <p><strong>Trailer Video:</strong> <a href="{{ pikau_course.trailer_video }}">View</a></p>
 
-  {% if pikau_course.progress_outcomes.all %}
+  {% if pikau_course.tags.all %}
     <p><strong>Tags:</strong></p>
     <ul>
       {% for tag in pikau_course.tags.all %}
@@ -62,12 +73,6 @@
     {% endfor %}
   </ul>
 
-  <h2>Overview</h2>
-  {% render_html_field pikau_course.overview %}
-
-  <h2>Content</h2>
-  <p><em>TODO</em></p>
-
   <h2>Resources</h2>
   <p><em>TODO</em></p>
 
@@ -80,7 +85,3 @@
   <h2>Assessment Items</h2>
   {% render_html_field pikau_course.assessment_items %}
 {% endblock content %}
-
-{% block css %}
-  <link rel="stylesheet" href="{% static 'css/iqualify.css' %}">
-{% endblock css %}
