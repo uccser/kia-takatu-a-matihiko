@@ -3,6 +3,7 @@
 from django.views import generic
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.exceptions import ObjectDoesNotExist
 from pikau.models import (
     GlossaryTerm,
     Goal,
@@ -92,10 +93,33 @@ class PikauUnitDetail(LoginRequiredMixin, generic.DetailView):
         """
         return get_object_or_404(
             self.model.objects,
-            pikau_module__pikau_course__slug=self.kwargs.get("course_slug", None),
-            pikau_module__slug=self.kwargs.get("module_slug", None),
+            pikau_course__slug=self.kwargs.get("course_slug", None),
             slug=self.kwargs.get("unit_slug", None)
         )
+
+
+    def get_context_data(self, **kwargs):
+        """Provide the context data for the pīkau unit view.
+
+        Returns:
+            Dictionary of context data.
+        """
+        context = super(PikauUnitDetail, self).get_context_data(**kwargs)
+        try:
+            context["previous_unit"] = PikauUnit.objects.get(
+                pikau_course=self.object.pikau_course,
+                number=self.object.number - 1
+            )
+        except ObjectDoesNotExist:
+            context["previous_unit"] = None
+        try:
+            context["next_unit"] = PikauUnit.objects.get(
+                pikau_course=self.object.pikau_course,
+                number=self.object.number + 1
+            )
+        except ObjectDoesNotExist:
+            context["next_unit"] = None
+        return context
 
 
 class ProgressOutcomeList(LoginRequiredMixin, generic.ListView):

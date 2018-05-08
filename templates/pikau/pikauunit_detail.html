@@ -4,11 +4,29 @@
 {% load render_html_field %}
 
 {% block page_heading %}
+  {% if pikau_unit.module_name %}
+    <span class="text-muted">{{ pikau_unit.module_name }}:</span>
+  {% endif %}
   {{ pikau_unit.name }}
 {% endblock page_heading %}
 
 {% block content %}
   {% render_html_field pikau_unit.content %}
+
+  <div id="page-navigation-container">
+    {% if previous_unit %}
+      <a href="{% url 'pikau:pikau_unit' pikau_unit.pikau_course.slug previous_unit.slug %}" class="btn float-left page-navigation">
+        <img src="{% static 'images/icons/icons8/left.png' %}" class="page-navigation-icon mr-3">
+        {{ previous_unit.name }}
+      </a>
+    {% endif %}
+    {% if next_unit %}
+      <a href="{% url 'pikau:pikau_unit' pikau_unit.pikau_course.slug next_unit.slug %}" class="btn float-right page-navigation">
+        {{ next_unit.name }}
+        <img src="{% static 'images/icons/icons8/right.png' %}" class="page-navigation-icon ml-3">
+      </a>
+    {% endif %}
+  </div>
 {% endblock content %}
 
 {% block css %}

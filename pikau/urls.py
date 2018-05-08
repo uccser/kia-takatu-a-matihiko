@@ -70,7 +70,7 @@ urlpatterns = [
     ),
     # eg: /pikau/pikau-courses/pikau-1/content/unit-1/
     path(
-        "pikau-courses/<slug:course_slug>/content/<slug:module_slug>/<slug:unit_slug>/",
+        "pikau-courses/<slug:course_slug>/content/<slug:unit_slug>/",
         views.PikauUnitDetail.as_view(),
         name="pikau_unit"
     ),

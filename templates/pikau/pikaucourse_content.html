@@ -14,18 +14,19 @@
   {% render_html_field pikau_course.overview %}
 
   <h2>Contents</h2>
-  {% for module in pikau_course.pikau_modules.all %}
-    <h3>{{ module.name }}</h3>
-    <ul>
-      {% for unit in module.pikau_units.all %}
-        <li>
-          <a href="{% url 'pikau:pikau_unit' pikau_course.slug module.slug unit.slug %}">
-            {{ unit.name}}
-          </a>
-        </li>
-      {% endfor %}
-    </ul>
-  {% endfor %}
+  <ul>
+    {% for unit in pikau_course.content.all %}
+      <li>
+        <a href="{% url 'pikau:pikau_unit' pikau_course.slug unit.slug %}">
+          {% if unit.module_name %}
+            {{ unit.module_name }} - {{ unit.name }}
+          {% else %}
+            {{ unit.name }}
+          {% endif %}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
 {% endblock content %}
 
 {% block css %}

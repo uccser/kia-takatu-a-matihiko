@@ -1,4 +1,5 @@
 name: Example Pīkau course
+status: 6
 overview: overview.md
 language: en
 topic: ct
@@ -16,17 +17,23 @@ resources:
   - files/example.txt
 
 content:
-  - slug: module-1
-    name: Module 1
-    units:
-    - unit-1
-    - unit-2
-    - unit-3
-  - slug: module-2
-    name: Module 2
-    units:
-    - unit-1
-    - unit-2
+  - slug: introduction
+    file: introduction.md
+  - slug: module-1-unit-1
+    file: module-1/unit-1.md
+    module: Module 1
+  - slug: module-1-unit-2
+    file: module-1/unit-2.md
+    module: Module 1
+  - slug: module-1-unit-3
+    file: module-1/unit-3.md
+    module: Module 1
+  - slug: module-2-unit-1
+    file: module-2/unit-1.md
+    module: Module 2
+  - slug: module-2-unit-2
+    file: module-2/unit-2.md
+    module: Module 2
 
 glossary:
   - example-term-1

@@ -187,39 +187,18 @@ class PikauCourse(models.Model):
         return self.name
 
 
-class PikauModule(models.Model):
-    """Model for Pikau Module."""
-
-    slug = models.SlugField()
-    pikau_course = models.ForeignKey(
-        PikauCourse,
-        on_delete=models.CASCADE,
-        related_name="pikau_modules"
-    )
-    name = models.CharField(max_length=200)
-
-    def __str__(self):
-        """Text representation of PikauModule object.
-
-        Returns:
-            String describing PikauModule.
-        """
-        return "{}: {}".format(self.pikau_course.name, self.name)
-
-    class Meta:
-        unique_together = ("slug", "pikau_course")
-
-
 class PikauUnit(models.Model):
     """Model for Pikau Unit."""
 
     slug = models.SlugField()
-    pikau_module = models.ForeignKey(
-        PikauModule,
+    number = models.PositiveSmallIntegerField()
+    pikau_course = models.ForeignKey(
+        PikauCourse,
         on_delete=models.CASCADE,
-        related_name="pikau_units"
+        related_name="content"
     )
     name = models.CharField(max_length=200)
+    module_name = models.CharField(max_length=200, null=True)
     content = models.TextField()
 
     def __str__(self):
@@ -228,7 +207,18 @@ class PikauUnit(models.Model):
         Returns:
             String describing PikauUnit.
         """
-        return "{}: {}".format(self.pikau_module.name, self.name)
+        if self.module_name:
+            return "{}: {} - {}".format(
+                self.pikau_course.name,
+                self.module_name,
+                self.name,
+            )
+        else:
+            return "{}: {}".format(self.pikau_course.name, self.name)
 
     class Meta:
-        unique_together = ("slug", "pikau_module")
+
+        ordering = ["number",]
+        unique_together = (
+            ("slug", "pikau_course"),
+        )
