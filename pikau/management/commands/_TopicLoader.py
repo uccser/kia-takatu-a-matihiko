@@ -14,12 +14,13 @@ class TopicLoader(BaseLoader):
         topics = self.load_yaml_file("topics.yaml")
 
         for topic_slug, topic_name in topics.items():
-            topic = Topic(
+            defaults = {
+                "name": topic_name,
+            }
+            topic, created = Topic.objects.update_or_create(
                 slug=topic_slug,
-                name=topic_name,
+                defaults=defaults,
             )
-            topic.save()
-
-            self.log("Added topic: {}".format(topic.__str__()))
+            self.log_object_creation(created, topic)
 
         self.log("All topics loaded!\n")

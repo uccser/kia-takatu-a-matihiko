@@ -51,20 +51,23 @@ class PikauCourseLoader(BaseLoader):
                 remove_title=False,
             ).html_string
 
-            pikau_course = PikauCourse(
+            defaults = {
+                "name": pikau_course_metadata["name"],
+                "language": pikau_course_metadata["language"],
+                "topic": Topic.objects.get(slug=pikau_course_metadata["topic"]),
+                "level": Level.objects.get(slug=pikau_course_metadata["level"]),
+                "trailer_video": pikau_course_metadata["trailer-video"],
+                "cover_photo": pikau_course_metadata["cover-photo"],
+                "overview": pikau_course_overview,
+                "study_plan": pikau_course_study_plan,
+                "assessment_description": pikau_course_assessment_description,
+                "assessment_items": pikau_course_assessment_items,
+            }
+
+            pikau_course, created = PikauCourse.objects.update_or_create(
                 slug=pikau_course_slug,
-                name=pikau_course_metadata["name"],
-                language=pikau_course_metadata["language"],
-                topic=Topic.objects.get(slug=pikau_course_metadata["topic"]),
-                level=Level.objects.get(slug=pikau_course_metadata["level"]),
-                trailer_video=pikau_course_metadata["trailer-video"],
-                cover_photo=pikau_course_metadata["cover-photo"],
-                overview=pikau_course_overview,
-                study_plan=pikau_course_study_plan,
-                assessment_description=pikau_course_assessment_description,
-                assessment_items=pikau_course_assessment_items,
+                defaults=defaults,
             )
-            pikau_course.save()
 
             for pikau_course_tag_slug in pikau_course_metadata.get("tags", list()):
                 pikau_course.tags.add(Tag.objects.get(slug=pikau_course_tag_slug))
@@ -75,6 +78,6 @@ class PikauCourseLoader(BaseLoader):
             for pikau_course_glossary_term_slug in pikau_course_metadata.get("glossary", list()):
                 pikau_course.glossary_terms.add(GlossaryTerm.objects.get(slug=pikau_course_glossary_term_slug))
 
-            self.log("Added pikau course: {}".format(pikau_course.__str__()))
+            self.log_object_creation(created, pikau_course)
 
         self.log("All pikau courses loaded!\n")
