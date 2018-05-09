@@ -3,12 +3,16 @@
 {% load static %}
 {% load render_html_field %}
 
-{% block page_heading %}
-  {% if pikau_unit.module_name %}
-    <span class="text-muted">{{ pikau_unit.module_name }}:</span>
-  {% endif %}
-  {{ pikau_unit.name }}
-{% endblock page_heading %}
+{% block custom_page_heading %}
+  <div class="jumbotron bg-size-cover text-white"{% if pikau_unit.pikau_course.cover_photo %} style="background-image:url({% static pikau_unit.pikau_course.cover_photo %});"{% endif %}>
+    {% if pikau_unit.module_name %}
+      <div>{{ pikau_unit.module_name }}</div>
+    {% endif %}
+    <h1>
+      {{ pikau_unit.name }}
+    </h1>
+  </div>
+{% endblock custom_page_heading %}
 
 {% block content %}
   {% render_html_field pikau_unit.content %}
