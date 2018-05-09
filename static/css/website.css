@@ -95,3 +95,7 @@ footer > .container {
 .icon {
   width: 2.5rem;
 }
+.table tr:first-child td,
+.table tr:first-child th {
+  border-top: none;
+}
