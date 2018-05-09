@@ -72,26 +72,23 @@ class PikauCourseLoader(BaseLoader):
                 defaults=defaults,
             )
 
+            # Delete all existing units for course
+            # since the will be loaded from raw data.
+            PikauUnit.objects.filter(pikau_course=pikau_course).delete()
             for (number, unit_data) in enumerate(pikau_course_metadata["content"]):
-                unit_slug = unit_data["slug"]
                 unit_content = self.convert_md_file(
                     unit_data["file"],
                     CONFIG_FILE,
                     heading_required=True,
                     remove_title=True,
                 )
-
-                unit_defaults = {
-                    "name": unit_content.title,
-                    "content": unit_content.html_string,
-                    "module_name": unit_data.get("module"),
-                    "number": number,
-                }
-
-                pikau_unit, created = PikauUnit.objects.update_or_create(
-                    slug=unit_slug,
+                pikau_unit = pikau_course.content.create(
+                    slug=unit_data["slug"],
                     pikau_course=pikau_course,
-                    defaults=unit_defaults,
+                    name=unit_content.title,
+                    content=unit_content.html_string,
+                    module_name=unit_data.get("module"),
+                    number=number,
                 )
 
             for pikau_course_tag_slug in pikau_course_metadata.get("tags", list()):

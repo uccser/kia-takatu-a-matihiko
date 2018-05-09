@@ -1,6 +1,6 @@
-# Unit 2
+# Activity 2
 
-This is the text of unit 2.
+This is the text explaining the first activity 2.
 
 {boxed-text type="pull-out"}
 

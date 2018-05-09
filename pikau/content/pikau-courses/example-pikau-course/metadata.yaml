@@ -18,21 +18,16 @@ resources:
 content:
   - slug: introduction
     file: introduction.md
-  - slug: module-1-unit-1
-    file: module-1/unit-1.md
-    module: Module 1
-  - slug: module-1-unit-2
-    file: module-1/unit-2.md
-    module: Module 1
-  - slug: module-1-unit-3
-    file: module-1/unit-3.md
-    module: Module 1
-  - slug: module-2-unit-1
-    file: module-2/unit-1.md
-    module: Module 2
-  - slug: module-2-unit-2
-    file: module-2/unit-2.md
-    module: Module 2
+  - slug: try-it-out-activity-1
+    file: try-it-out/activity-1.md
+    module: Try it out
+  - slug: try-it-out-activity-2
+    file: try-it-out/activity-2.md
+    module: Try it out
+  - slug: concepts
+    file: concepts.md
+  - slug: reflection
+    file: reflection.md
 
 glossary:
   - example-term-1
