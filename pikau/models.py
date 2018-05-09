@@ -1,6 +1,9 @@
 """Models for the pikau application."""
 
+from datetime import date
 from django.db import models
+from django.contrib.auth.models import User
+from django.template import defaultfilters
 
 LANGUAGE_CHOICES = (
     ("en", "English"),
@@ -40,6 +43,26 @@ class GlossaryTerm(models.Model):
             String describing GlossaryTerm.
         """
         return self.term
+
+
+class Milestone(models.Model):
+    """Model for milestone."""
+
+    name = models.CharField(max_length=100, unique=True)
+    date = models.DateField()
+
+    class Meta:
+        """Set consistent ordering of milestones."""
+
+        ordering = ["date", "name"]
+
+    def __str__(self):
+        """Text representation of Milestone object.
+
+        Returns:
+            String describing Milestone.
+        """
+        return "{} - {}".format(self.name, defaultfilters.date(self.date))
 
 
 class Goal(models.Model):
@@ -177,6 +200,30 @@ class PikauCourse(models.Model):
     )
     status_updated = models.DateTimeField(null=True)
     __previous_status = None
+    manager = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name="pikau_courses",
+        blank=True,
+        null=True,
+    )
+    milestone = models.ForeignKey(
+        Milestone,
+        on_delete=models.CASCADE,
+        related_name="pikau_courses",
+        blank=True,
+        null=True,
+    )
+
+    @property
+    def is_upcoming_milestone(self):
+        """Return true if milestone is in future."""
+        return self.milestone.date > date.today()
+
+    @property
+    def is_overdue_milestone(self):
+        """Return true if not completed and past milestone."""
+        return status < STAGE_6[0] and self.milestone.date < date.today()
 
     def __str__(self):
         """Text representation of PikauCourse object.

@@ -1,6 +1,7 @@
 """Views for the pikau application."""
 
 from django.views import generic
+from django.db.models import F
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import ObjectDoesNotExist
@@ -60,8 +61,17 @@ class PikauCourseList(LoginRequiredMixin, generic.ListView):
     """View for the pīkau course list page."""
 
     context_object_name = "pikau_courses"
-    model = PikauCourse
-    ordering = "name"
+
+    def get_queryset(self):
+        """Get queryset of all pīkau courses.
+
+        Returns:
+            Queryset of ordered PikauCourse objects.
+        """
+        return PikauCourse.objects.order_by(
+            F("milestone").asc(nulls_last=True),
+            "name"
+        )
 
 
 class PikauCourseDetail(LoginRequiredMixin, generic.DetailView):

@@ -32,6 +32,30 @@
 
   <div class="border my-3 p-3 text-center">
     <h2>Development Information</h2>
+
+    <div class="row">
+      <div class="col-12 col-md-6 mb-3">
+        {% if pikau_course.milestone %}
+           <p class="mb-0">
+            <strong>Milestone</strong><br>
+            {{ pikau_course.milestone }}
+            {% if pikau_course.is_upcoming_milestone %}
+              <br>
+              Due in {{ pikau_course.milestone.date|timeuntil }}
+            {% endif %}
+        {% endif %}
+      </div>
+      <div class="col-12 col-md-6 mb-3">
+        {% if pikau_course.manager %}
+           <p class="mb-0">
+            <strong>Manager</strong><br>
+            <a href="mailto:{{ pikau_course.manager.email }}">
+              {{ pikau_course.manager.get_full_name }}
+            </a>
+        {% endif %}
+      </div>
+    </div>
+
     {% include "pikau/snippets/pikau_course_progress_bar.html" %}
     <small>
       Status last changed on {{ pikau_course.status_updated|date:"jS F, Y" }}

@@ -102,3 +102,6 @@ footer > .container {
 .table tr:first-child th {
   border-top: none;
 }
+.separator {
+  border-top: 2px solid #dee2e6;
+}

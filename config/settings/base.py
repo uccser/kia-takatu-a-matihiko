@@ -74,10 +74,11 @@ DEBUG = False
 TIME_ZONE = "NZ"
 LANGUAGE_CODE = "en-NZ"
 USE_I18N = True
-USE_L10N = True
+USE_L10N = False
 USE_TZ = True
 TIME_FORMAT = "fA"
 SITE_ID = 1
+DATE_FORMAT = "jS F, Y"
 
 DATETIME_INPUT_FORMATS = [
     "%d/%m/%Y %H:%M:%S",
