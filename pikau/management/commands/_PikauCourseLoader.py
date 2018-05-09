@@ -23,9 +23,10 @@ class PikauCourseLoader(BaseLoader):
     def load(self):
         """Load the pikau courses into the database."""
         pikau_courses = self.load_yaml_file(CONFIG_FILE)
+        self.original_base_path = self.base_path
 
         for pikau_course_slug in pikau_courses.get("courses", list()):
-            self.base_path = os.path.join(self.base_path, "pikau-courses", pikau_course_slug)
+            self.base_path = os.path.join(self.original_base_path, "pikau-courses", pikau_course_slug)
             pikau_course_metadata = self.load_yaml_file("metadata.yaml")
             pikau_course_overview = self.convert_md_file(
                 pikau_course_metadata["overview"],
@@ -59,7 +60,7 @@ class PikauCourseLoader(BaseLoader):
                 "topic": Topic.objects.get(slug=pikau_course_metadata["topic"]),
                 "level": Level.objects.get(slug=pikau_course_metadata["level"]),
                 "trailer_video": pikau_course_metadata["trailer-video"],
-                "cover_photo": pikau_course_metadata["cover-photo"],
+                "cover_photo": pikau_course_metadata.get("cover-photo", "images/pikau-course-cover.png"),
                 "overview": pikau_course_overview,
                 "study_plan": pikau_course_study_plan,
                 "assessment_description": pikau_course_assessment_description,
