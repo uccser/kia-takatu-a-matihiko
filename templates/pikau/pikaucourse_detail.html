@@ -2,6 +2,14 @@
 
 {% load static %}
 {% load render_html_field %}
+{% load django_bootstrap_breadcrumbs %}
+
+{% block breadcrumbs %}
+  {% breadcrumb "Home" "/" %}
+  {% breadcrumb "Pīkau" "pikau:index" %}
+  {% breadcrumb "Courses" "pikau:pikau_course_list" %}
+  {% breadcrumb pikau_course.name "" %}
+{% endblock breadcrumbs %}
 
 {% block custom_page_heading %}
   <div class="jumbotron bg-size-cover text-center"{% if pikau_course.cover_photo %} style="background-image:url({% static pikau_course.cover_photo %});"{% endif %}>

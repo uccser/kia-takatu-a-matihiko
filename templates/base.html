@@ -1,5 +1,6 @@
 {% load static %}
 {% load i18n %}
+{% load django_bootstrap_breadcrumbs %}
 
 <!doctype html>
 <html lang="en">
@@ -45,10 +46,15 @@
         </div>
       </div>
     </nav>
+
+    {% block breadcrumbs %}
+    {% endblock breadcrumbs %}
+
     {% block body_container %}
       <div id="content-container" class="container pt-3">
         <div class="row">
           <div class="col-12">
+            {% render_breadcrumbs %}
             {% block custom_page_heading %}
               <h1>
                 {% block page_heading %}

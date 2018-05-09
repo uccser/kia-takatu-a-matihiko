@@ -2,6 +2,16 @@
 
 {% load static %}
 {% load render_html_field %}
+{% load django_bootstrap_breadcrumbs %}
+
+{% block breadcrumbs %}
+  {% breadcrumb "Home" "/" %}
+  {% breadcrumb "Pīkau" "pikau:index" %}
+  {% breadcrumb "Courses" "pikau:pikau_course_list" %}
+  {% breadcrumb pikau_unit.pikau_course.name "pikau:pikau_course_detail" pikau_unit.pikau_course.slug %}
+  {% breadcrumb "Content" "pikau:pikau_content" pikau_unit.pikau_course.slug %}
+  {% breadcrumb pikau_unit.name "" %}
+{% endblock breadcrumbs %}
 
 {% block custom_page_heading %}
   <div class="jumbotron bg-size-cover text-white"{% if pikau_unit.pikau_course.cover_photo %} style="background-image:url({% static pikau_unit.pikau_course.cover_photo %});"{% endif %}>

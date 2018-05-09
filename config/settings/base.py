@@ -24,6 +24,7 @@ DJANGO_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
+    "django_bootstrap_breadcrumbs",
     "crispy_forms",
     "allauth",
     "allauth.account",
@@ -216,3 +217,4 @@ CRISPY_TEMPLATE_PACK = "bootstrap4"
 # ------------------------------------------------------------------------------
 PIKAU_CONTENT_BASE_PATH = os.path.join(BASE_DIR, "pikau/content")
 CUSTOM_VERTO_TEMPLATES = os.path.join(BASE_DIR, "utils/custom_converter_templates/")
+BREADCRUMBS_TEMPLATE = "django_bootstrap_breadcrumbs/bootstrap4.html"

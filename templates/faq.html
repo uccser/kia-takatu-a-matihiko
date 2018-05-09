@@ -2,10 +2,16 @@
 
 {% load i18n %}
 {% load static %}
+{% load django_bootstrap_breadcrumbs %}
 
 {% block page_heading %}
   {% trans "Frequently Asked Questions" %}
 {% endblock page_heading %}
+
+{% block breadcrumbs %}
+  {% breadcrumb "Home" "/" %}
+  {% breadcrumb "Frequently Asked Questions" "" %}
+{% endblock breadcrumbs %}
 
 {% block content %}
   <h4>Why was this website built?</h4>

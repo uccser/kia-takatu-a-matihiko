@@ -1,6 +1,13 @@
 {% extends "base.html" %}
 
 {% load get_item %}
+{% load django_bootstrap_breadcrumbs %}
+
+{% block breadcrumbs %}
+  {% breadcrumb "Home" "/" %}
+  {% breadcrumb "Pīkau" "pikau:index" %}
+  {% breadcrumb "Progress Outcomes" "" %}
+{% endblock breadcrumbs %}
 
 {% block page_heading %}
   Progress Outcomes

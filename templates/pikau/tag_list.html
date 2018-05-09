@@ -1,5 +1,13 @@
 {% extends "base.html" %}
 
+{% load django_bootstrap_breadcrumbs %}
+
+{% block breadcrumbs %}
+  {% breadcrumb "Home" "/" %}
+  {% breadcrumb "Pīkau" "pikau:index" %}
+  {% breadcrumb "Tags" "" %}
+{% endblock breadcrumbs %}
+
 {% block page_heading %}
   Tags
 {% endblock page_heading %}
