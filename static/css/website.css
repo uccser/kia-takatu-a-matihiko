@@ -1,8 +1,6 @@
 body {
   padding-top: 48px;
-}
-#content-container {
-  min-height: calc(100vh - 280px);
+  background-color: #f9f9f9;
 }
 .bg-brand-purple {
   background-color: #1b1a3b !important;
@@ -29,8 +27,9 @@ body {
 .card {
   height: 100%;
 }
-footer {
-  background-color: #f5f5f5;
+footer > .container {
+  border-top: 2px solid #212148;
+  padding-top: 2rem;
 }
 #uc-logo {
   max-width: 15rem;
@@ -92,4 +91,7 @@ footer {
 }
 .fire-stage-7 {
   background-color: #ff4024;
+}
+.icon {
+  width: 2.5rem;
 }

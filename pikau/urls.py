@@ -62,6 +62,18 @@ urlpatterns = [
         views.PikauCourseDetail.as_view(),
         name="pikau_course"
     ),
+    # eg: /pikau/pikau-courses/pikau-1/content/
+    path(
+        "pikau-courses/<slug:slug>/content/",
+        views.PikauCourseContent.as_view(),
+        name="pikau_content"
+    ),
+    # eg: /pikau/pikau-courses/pikau-1/content/unit-1/
+    path(
+        "pikau-courses/<slug:course_slug>/content/<slug:unit_slug>/",
+        views.PikauUnitDetail.as_view(),
+        name="pikau_unit"
+    ),
     # eg: /pikau/progress-outcomes/
     path(
         "progress-outcomes/",

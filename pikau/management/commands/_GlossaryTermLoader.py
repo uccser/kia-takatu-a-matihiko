@@ -16,13 +16,14 @@ class GlossaryTermLoader(BaseLoader):
         for term_slug, term_data in glossary_data.items():
             term_name = term_data["term"]
             term_description = term_data["description"]
-            glossary_term = GlossaryTerm(
+            defaults = {
+                "term": term_name,
+                "description": term_description,
+            }
+            glossary_term, created = GlossaryTerm.objects.update_or_create(
                 slug=term_slug,
-                term=term_name,
-                description=term_description,
+                defaults=defaults,
             )
-            glossary_term.save()
-
-            self.log("Added glossary term: {}".format(glossary_term.__str__()))
+            self.log_object_creation(created, glossary_term)
 
         self.log("All glossary terms loaded!\n")

@@ -14,12 +14,13 @@ class LevelLoader(BaseLoader):
         levels = self.load_yaml_file("levels.yaml")
 
         for level_slug, level_name in levels.items():
-            level = Level(
+            defaults = {
+                "name": level_name,
+            }
+            level, created = Level.objects.update_or_create(
                 slug=level_slug,
-                name=level_name,
+                defaults=defaults,
             )
-            level.save()
-
-            self.log("Added level: {}".format(level.__str__()))
+            self.log_object_creation(created, level)
 
         self.log("All levels loaded!\n")

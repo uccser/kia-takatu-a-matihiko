@@ -1,0 +1,115 @@
+/* Content menu */
+.btn-pikau-unit {
+  text-align: left;
+  background-color: #fff;
+  color: #555;
+  border: 1px solid #ddd;
+}
+.btn-pikau-module {
+  text-align: left;
+  border: 1px solid #bec2ce;
+  background-color: #fff;
+  color: #4a4a55;
+  font-size: 1.3rem;
+  cursor: default;
+}
+.btn-pikau-module:hover {
+  background-color: #fff !important;
+  border: 1px solid #bec2ce;
+}
+.btn-pikau-unit,
+.btn-pikau-module {
+  margin-top: 0 !important;
+}
+div.btn-spacer {
+  margin-top: 1rem;
+}
+/* Boxed text */
+.boxed-text-contents {
+  flex: 1;
+}
+.boxed-text-contents > :last-child {
+  margin-bottom: 0;
+}
+.boxed-text-pull-out {
+  background-color: #e7e9ec;
+  border-left: 8px solid #d8d8d8;
+  padding: 15px 20px 13px;
+  margin: 0 0 20px;
+}
+.boxed-text-example {
+  border-left: 8px solid #d8d8d8;
+  padding: 15px 20px 13px;
+  margin: 0 0 20px;
+}
+.boxed-text-reading {
+  border-top: 4px solid #f0f0f0;
+  border-bottom: 4px solid #f0f0f0;
+  padding: 20px;
+  background: #fff;
+  margin-bottom: 1em;
+  min-height: 75px;
+}
+.boxed-text-tip {
+  border: 4px solid #dddee3;
+  border-width: 4px 0;
+  padding: 10px 20px;
+  min-width: 400px;
+  font-size: 16px;
+  margin-bottom: 1em;
+  min-height: 80px;
+}
+.boxed-text-case-study {
+  border-top: 4px solid #bdc2d0;
+  border-bottom: 4px solid #bdc2d0;
+  padding: 20px;
+  margin-bottom: 40px;
+  background: #e3e2e2;
+  min-height: 75px;
+}
+
+.boxed-text img.icon {
+  width: 40px;
+  height: auto;
+  margin-right: 20px;
+}
+.boxed-text-reading,
+.boxed-text-tip,
+.boxed-text-quote,
+.boxed-text-case-study {
+  display: flex;
+  justify-content: flex-start;
+}
+.boxed-text-quote {
+  padding: 0;
+  margin: 50px 0;
+  color: #5b5b5b;
+}
+.boxed-text img.quote {
+  width: 20px;
+  height: auto;
+}
+.boxed-text img.quote-start {
+  margin-right: 15px;
+}
+/* Page navigation */
+#page-navigation-container {
+  border-top: 4px solid rgba(160,165,181,.3);
+  background: #fff;
+  padding: 1rem 1rem;
+  height: 4rem;
+}
+.page-navigation {
+  padding: 0 !important;
+  color: #b3b7c4 !important;
+}
+.page-navigation > img.page-navigation-icon {
+  background-color: #b3b7c4 !important;
+  width: 1.5rem;
+}
+.page-navigation:hover {
+  color: #00ccb0 !important;
+}
+.page-navigation:hover > img.page-navigation-icon {
+  background-color: #00ccb0 !important;
+}

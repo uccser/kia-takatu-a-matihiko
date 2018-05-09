@@ -14,12 +14,13 @@ class TagLoader(BaseLoader):
         tags = self.load_yaml_file("tags.yaml")
 
         for tag_slug, tag_name in tags.items():
-            tag = Tag(
+            defaults = {
+                "name": tag_name,
+            }
+            tag, created = Tag.objects.update_or_create(
                 slug=tag_slug,
-                name=tag_name,
+                defaults=defaults,
             )
-            tag.save()
-
-            self.log("Added tag: {}".format(tag.__str__()))
+            self.log_object_creation(created, tag)
 
         self.log("All tags loaded!\n")
