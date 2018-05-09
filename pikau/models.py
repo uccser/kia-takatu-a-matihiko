@@ -161,12 +161,12 @@ class PikauCourse(models.Model):
         related_name="pikau_courses",
         blank=True,
     )
-    trailer_video = models.URLField()
+    trailer_video = models.URLField(blank=True)
     cover_photo = models.CharField(max_length=100, default="images/pikau-course-cover.png")
-    overview = models.TextField()
-    study_plan = models.TextField()
-    assessment_description = models.TextField()
-    assessment_items = models.TextField()
+    overview = models.TextField(blank=True)
+    study_plan = models.TextField(blank=True)
+    assessment_description = models.TextField(blank=True)
+    assessment_items = models.TextField(blank=True)
     # TODO: Add resources
 
     # Development attributes
