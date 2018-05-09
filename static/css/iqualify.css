@@ -1,3 +1,30 @@
+/* Content menu */
+.btn-pikau-unit {
+  text-align: left;
+  background-color: #fff;
+  color: #555;
+  border: 1px solid #ddd;
+}
+.btn-pikau-module {
+  text-align: left;
+  border: 1px solid #bec2ce;
+  background-color: #fff;
+  color: #4a4a55;
+  font-size: 1.3rem;
+  cursor: default;
+}
+.btn-pikau-module:hover {
+  background-color: #fff !important;
+  border: 1px solid #bec2ce;
+}
+.btn-pikau-unit,
+.btn-pikau-module {
+  margin-top: 0 !important;
+}
+div.btn-spacer {
+  margin-top: 1rem;
+}
+/* Boxed text */
 .boxed-text-contents {
   flex: 1;
 }
@@ -65,6 +92,7 @@
 .boxed-text img.quote-start {
   margin-right: 15px;
 }
+/* Page navigation */
 #page-navigation-container {
   border-top: 4px solid rgba(160,165,181,.3);
   background: #fff;

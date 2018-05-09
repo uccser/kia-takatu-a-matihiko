@@ -14,19 +14,21 @@
   {% render_html_field pikau_course.overview %}
 
   <h2>Contents</h2>
-  <ul>
-    {% for unit in pikau_course.content.all %}
-      <li>
-        <a href="{% url 'pikau:pikau_unit' pikau_course.slug unit.slug %}">
-          {% if unit.module_name %}
-            {{ unit.module_name }} - {{ unit.name }}
-          {% else %}
-            {{ unit.name }}
-          {% endif %}
-        </a>
-      </li>
-    {% endfor %}
-  </ul>
+  {% for unit in pikau_course.content.all %}
+    {% if unit.module_name %}
+      {% ifchanged unit.module_name %}
+        <div class="btn-spacer"></div>
+        <div class="btn btn-light btn-block btn-pikau-module">
+          {{ unit.module_name }}
+        </div>
+      {% endifchanged %}
+    {% elif not forloop.first %}
+      <div class="btn-spacer"></div>
+    {% endif %}
+    <a href="{% url 'pikau:pikau_unit' pikau_course.slug unit.slug %}" class="btn btn-light btn-block btn-pikau-unit">
+      <span class="mr-5 text-muted">&#8413;</span> {{ unit.name }}
+    </a>
+  {% endfor %}
 {% endblock content %}
 
 {% block css %}
