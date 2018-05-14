@@ -184,6 +184,11 @@ class PikauCourse(models.Model):
         related_name="pikau_courses",
         blank=True,
     )
+    prerequisites = models.ManyToManyField(
+        "self",
+        related_name="prerequisites",
+        blank=True,
+    )
     trailer_video = models.URLField(blank=True)
     cover_photo = models.CharField(max_length=100, default="images/pikau-course-cover.png")
     overview = models.TextField(blank=True)

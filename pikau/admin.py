@@ -13,7 +13,7 @@ from pikau.models import (
 
 class PikauCourseAdmin(admin.ModelAdmin):
     list_display = ("name", "language", "topic", "level")
-    filter_horizontal = ("tags", "progress_outcomes")
+    filter_horizontal = ("tags", "progress_outcomes", "prerequisites")
 
 admin.site.register(PikauCourse, PikauCourseAdmin)
 admin.site.register(Level)
