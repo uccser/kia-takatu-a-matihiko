@@ -4,6 +4,7 @@ from datetime import date
 from django.db import models
 from django.contrib.auth.models import User
 from django.template import defaultfilters
+from django.urls import reverse
 
 LANGUAGE_CHOICES = (
     ("en", "English"),
@@ -230,6 +231,9 @@ class PikauCourse(models.Model):
     def is_overdue_milestone(self):
         """Return true if not completed and past milestone."""
         return status < STAGE_6[0] and self.milestone.date < date.today()
+
+    def get_absolute_url(self):
+        return reverse("pikau:pikau_course", args=[self.slug])
 
     def __str__(self):
         """Text representation of PikauCourse object.
