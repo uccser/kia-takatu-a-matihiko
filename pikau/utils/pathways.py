@@ -4,12 +4,12 @@ from pikau.models import PikauCourse
 GRAPH_TEMPLATE = (
     "digraph {{"
     "graph [bgcolor=transparent,fontname=inherit];"
-    "node [shape=box,fontname=inherit];"
+    "node [shape=box,fillcolor=white,style=filled,fontname=inherit];"
     "{nodes}"
     "{edges}"
     "}}"
 )
-NODE_TEMPLATE = "{id} [label=\"{name}\"];"
+NODE_TEMPLATE = "{id} [label=\"{name}\", href=\"{url}\"];"
 EDGE_TEMPLATE = "{start_id} -> {end_id};"
 
 def create_pathways_notation():
@@ -22,6 +22,7 @@ def create_pathways_notation():
         node = NODE_TEMPLATE.format(
             id=pikau.id,
             name=pikau.__str__(),
+            url=pikau.get_absolute_url(),
         )
         nodes.append(node)
     # Create edges

@@ -105,3 +105,6 @@ footer > .container {
 .separator {
   border-top: 2px solid #dee2e6;
 }
+#pathways-diagram a {
+  cursor: pointer;
+}
