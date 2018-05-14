@@ -1,4 +1,3 @@
-import pygraphviz as pgv
 from pikau.models import PikauCourse, READINESS_LEVELS
 
 GRAPH_TEMPLATE = (
