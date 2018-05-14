@@ -14,6 +14,7 @@ from pikau.models import (
     ProgressOutcome,
     Tag,
     Topic,
+    READINESS_LEVELS,
 )
 from pikau.utils import pathways
 
@@ -66,6 +67,7 @@ class PathwaysView(LoginRequiredMixin, generic.TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["notation"] = pathways.create_pathways_notation()
+        context["readiness_levels"] = READINESS_LEVELS
         return context
 
 

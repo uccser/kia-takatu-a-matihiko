@@ -14,6 +14,15 @@
 {% endblock page_heading %}
 
 {% block content %}
+  <h5>Legend</h5>
+  <div class="d-inline-flex flex-column mb-3">
+    {% for num,level in readiness_levels.items %}
+      <div class="px-2" style="background-color:{{ level.color }};">
+        <small>Level {{num}} - {{ level.name }}</small>
+      </div>
+    {% endfor %}
+  </div>
+
   <div id="pathways-diagram"></div>
 {% endblock content %}
 
