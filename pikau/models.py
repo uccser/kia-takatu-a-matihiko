@@ -30,15 +30,15 @@ STATUS_CHOICES = (
 )
 
 READINESS_LEVELS = {
-    1: { "name": "Hika - Ignite", "color": "#ffd742"},
-    2: { "name": "Māpura - Spark", "color": "#ffae19"},
-    3: { "name": "Hahana - Glow", "color": "#fe9b19"},
-    4: { "name": "Muramura - Burn", "color": "#ff623d"},
-    5: { "name": "Whitawhita - Blaze", "color": "#ee2522"},
+    1: { "name": "Level 1 - Hika - Ignite", "color": "#ffd742"},
+    2: { "name": "Level 2 - Māpura - Spark", "color": "#ffae19"},
+    3: { "name": "Level 3 - Hahana - Glow", "color": "#fe9b19"},
+    4: { "name": "Level 4 - Muramura - Burn", "color": "#ff623d"},
+    5: { "name": "Level 5 - Whitawhita - Blaze", "color": "#ee2522"},
 }
 READINESS_CHOICES = []
 for level_num,level_data in READINESS_LEVELS.items():
-    READINESS_CHOICES.append((level_num, "Level {} - {}".format(level_num, level_data["name"])))
+    READINESS_CHOICES.append((level_num, level_data["name"]))
 READINESS_CHOICES = tuple(READINESS_CHOICES)
 
 

@@ -122,6 +122,14 @@
         <table class="table mb-0 table-sequential">
           <tbody>
             <tr>
+              <th scope="row">Readiness Level</th>
+              <td>
+                <a href="{% url 'pikau:readiness_level' pikau_course.readiness_level %}">
+                  {{ pikau_course.get_readiness_level_display }}
+                </a>
+              </td>
+            </tr>
+            <tr>
               <th scope="row">Glossary Terms</th>
               <td>
                 <ul class="mb-0">

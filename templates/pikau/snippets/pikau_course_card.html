@@ -12,11 +12,11 @@
         {{ pikau_course.name }}
       </a>
     </h5>
-    <div class="card-body">
-      <h6 class="card-subtitle text-muted">
+    <div class="card-body p-2">
+      <h6 class="text-muted mb-0">
         {{ pikau_course.get_language_display }}
       </h6>
-      <div class="mb-2 text-muted">
+      <div class="text-muted">
         {{ pikau_course.get_readiness_level_display }}
       </div>
         {% with topic=pikau_course.topic %}
