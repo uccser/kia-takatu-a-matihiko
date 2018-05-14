@@ -38,7 +38,7 @@ READINESS_LEVELS = {
 }
 READINESS_CHOICES = []
 for level_num,level_data in READINESS_LEVELS.items():
-    READINESS_CHOICES.append((level_num, "{}) {}".format(level_num, level_data["name"])))
+    READINESS_CHOICES.append((level_num, "Level {} - {}".format(level_num, level_data["name"])))
 READINESS_CHOICES = tuple(READINESS_CHOICES)
 
 

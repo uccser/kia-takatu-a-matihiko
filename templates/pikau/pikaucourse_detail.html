@@ -13,6 +13,11 @@
 
 {% block custom_page_heading %}
   <div class="jumbotron bg-size-cover text-center"{% if pikau_course.cover_photo %} style="background-image:url({% static pikau_course.cover_photo %});"{% endif %}>
+    {% with pikau_course.readiness_level|stringformat:"s" as readiness_level %}
+      {% with "images/flame-stage-"|add:readiness_level|add:".png" as flame_image %}
+        <img src="{% static flame_image %}" class="icon"><br>
+      {% endwith %}
+    {% endwith %}
     <h1 class="text-white">{{ pikau_course.name }}</h1>
     {% if pikau_course.status < 6 and pikau_course.development_folder %}
       <a class="btn btn-lg btn-light mt-3" href="{{ pikau_course.development_folder }}" target="_blank">
@@ -66,7 +71,7 @@
     <h2 class="text-center">Metadata</h2>
 
     <div class="row">
-      <div class="col-12 col-md-6">
+      <div class="col-12 col-lg-6">
         <table class="table mb-0">
           <tbody>
             <tr>
@@ -93,13 +98,6 @@
                 {% endif %}
               </td>
             </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="col-12 col-md-6">
-        <table class="table mb-0">
-          <tbody>
             <tr>
               <th scope="row">Progress Outcomes</th>
               <td>
@@ -116,6 +114,13 @@
                 {% endfor %}
               </td>
             </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="col-12 col-lg-6">
+        <table class="table mb-0 table-sequential">
+          <tbody>
             <tr>
               <th scope="row">Glossary Terms</th>
               <td>
@@ -124,6 +129,32 @@
                   <li>
                     <a href="{% url 'pikau:glossary' %}#{{ glossary_term.slug }}">
                       {{ glossary_term.term }}
+                    </a>
+                  </li>
+                {% endfor %}
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Prerequisite Pīkau Courses</th>
+              <td>
+                <ul class="mb-0">
+                {% for course in pikau_course.prerequisites.all %}
+                  <li>
+                    <a href="{{ course.get_absolute_url }}">
+                      {{ course.name }}
+                    </a>
+                  </li>
+                {% endfor %}
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Postrequisite Pīkau Courses</th>
+              <td>
+                <ul class="mb-0">
+                {% for course in pikau_course.postrequisites.all %}
+                  <li>
+                    <a href="{{ course.get_absolute_url }}">
+                      {{ course.name }}
                     </a>
                   </li>
                 {% endfor %}

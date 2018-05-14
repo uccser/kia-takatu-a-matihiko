@@ -1,14 +1,24 @@
+{% load static %}
+
 <div class="col-12 col-md-6 mb-3">
   <div class="card text-center">
     <h5 class="card-header">
+      {% with pikau_course.readiness_level|stringformat:"s" as readiness_level %}
+        {% with "images/flame-stage-"|add:readiness_level|add:".png" as flame_image %}
+          <img src="{% static flame_image %}" class="icon-small"><br>
+        {% endwith %}
+      {% endwith %}
       <a href="{% url 'pikau:pikau_course' pikau_course.slug %}">
         {{ pikau_course.name }}
       </a>
     </h5>
     <div class="card-body">
-      <h6 class="card-subtitle mb-2 text-muted">
+      <h6 class="card-subtitle text-muted">
         {{ pikau_course.get_language_display }}
       </h6>
+      <div class="mb-2 text-muted">
+        {{ pikau_course.get_readiness_level_display }}
+      </div>
         {% with topic=pikau_course.topic %}
           {% if topic %}
             {% include "pikau/snippets/topic_badge.html" %}

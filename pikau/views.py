@@ -82,6 +82,7 @@ class PikauCourseList(LoginRequiredMixin, generic.ListView):
         """
         return PikauCourse.objects.order_by(
             F("milestone").asc(nulls_last=True),
+            "readiness_level",
             "name"
         )
 

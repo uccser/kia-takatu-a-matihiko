@@ -98,9 +98,20 @@ footer > .container {
 .icon {
   width: 2.5rem;
 }
-.table tr:first-child td,
-.table tr:first-child th {
-  border-top: none;
+.icon-small {
+  width: 1rem;
+}
+@media (max-width: 991px) {
+  .table:not(.table-sequential) tr:first-child td,
+  .table:not(.table-sequential) tr:first-child th {
+    border-top: none;
+  }
+}
+@media (min-width: 991px) {
+  .table tr:first-child td,
+  .table tr:first-child th {
+    border-top: none;
+  }
 }
 .separator {
   border-top: 2px solid #dee2e6;
