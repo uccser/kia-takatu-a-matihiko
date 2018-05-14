@@ -29,6 +29,19 @@ STATUS_CHOICES = (
     STAGE_7,
 )
 
+READINESS_LEVELS = {
+    1: { "name": "Hika - Ignite", "color": "#ffd742"},
+    2: { "name": "Māpura - Spark", "color": "#ffae19"},
+    3: { "name": "Hahana - Glow", "color": "#fe9b19"},
+    4: { "name": "Muramura - Burn", "color": "#ff623d"},
+    5: { "name": "Whitawhita - Blaze", "color": "#ee2522"},
+}
+READINESS_CHOICES = []
+for level_num,level_data in READINESS_LEVELS.items():
+    READINESS_CHOICES.append((level_num, "{}) {}".format(level_num, level_data["name"])))
+READINESS_CHOICES = tuple(READINESS_CHOICES)
+
+
 class GlossaryTerm(models.Model):
     """Model for glossary term."""
 
@@ -156,6 +169,10 @@ class PikauCourse(models.Model):
     slug = models.SlugField(unique=True)
     name = models.CharField(max_length=200, unique=True)
     language = models.CharField(max_length=20, choices=LANGUAGE_CHOICES)
+    readiness_level = models.IntegerField(
+        choices=READINESS_CHOICES,
+        default=1,
+    )
     topic = models.ForeignKey(
         Topic,
         on_delete=models.CASCADE,
