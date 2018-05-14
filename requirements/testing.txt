@@ -2,8 +2,11 @@
 -r base.txt
 
 # Check Python style
-flake8==3.4.1
-pydocstyle==2.0.0
+flake8==3.5.0
+pydocstyle==2.1.1
 
 # Coverage Tools
-coverage==4.4.1
+coverage==4.5.1
+
+# Skip migration files for local testing
+django-test-without-migrations==0.6

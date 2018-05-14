@@ -1,10 +1,11 @@
 """Views for the pikau application."""
 
 from django.views import generic
-from django.db.models import F
+from django.db.models import F, Count
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import ObjectDoesNotExist
+from django.http import Http404
 from pikau.models import (
     GlossaryTerm,
     Goal,
@@ -14,7 +15,9 @@ from pikau.models import (
     ProgressOutcome,
     Tag,
     Topic,
+    READINESS_LEVELS,
 )
+from pikau.utils import pathways
 
 NUMBER_OF_FLAME_STAGES = 7
 
@@ -57,6 +60,18 @@ class LevelDetail(LoginRequiredMixin, generic.DetailView):
     model = Level
 
 
+class PathwaysView(LoginRequiredMixin, generic.TemplateView):
+    """View for the pikau pathway that renders from a template."""
+
+    template_name = "pikau/pathways.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["notation"] = pathways.create_pathways_notation()
+        context["readiness_levels"] = READINESS_LEVELS
+        return context
+
+
 class PikauCourseList(LoginRequiredMixin, generic.ListView):
     """View for the pīkau course list page."""
 
@@ -70,6 +85,7 @@ class PikauCourseList(LoginRequiredMixin, generic.ListView):
         """
         return PikauCourse.objects.order_by(
             F("milestone").asc(nulls_last=True),
+            "readiness_level",
             "name"
         )
 
@@ -195,6 +211,37 @@ class ProgressOutcomeDetail(LoginRequiredMixin, generic.DetailView):
 
     context_object_name = "progress_outcome"
     model = ProgressOutcome
+
+
+class ReadinessLevelList(LoginRequiredMixin, generic.TemplateView):
+    """View for the readiness level list page."""
+
+    template_name = "pikau/readiness_level_list.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        readiness_levels = READINESS_LEVELS.copy()
+        for level_num, level_data in readiness_levels.items():
+            level_data["count"] = PikauCourse.objects.filter(readiness_level=level_num).count()
+        context["readiness_levels"] = readiness_levels
+        return context
+
+
+class ReadinessLevelDetail(LoginRequiredMixin, generic.TemplateView):
+    """View for a readiness level."""
+
+    template_name = "pikau/readiness_level_detail.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        level_number = self.kwargs.get("level_number", 0)
+        try:
+            readiness_level = READINESS_LEVELS[level_number]
+        except KeyError:
+            raise Http404("Readiness level does not exist")
+        readiness_level["pikau_courses"] = PikauCourse.objects.filter(readiness_level=level_number)
+        context["readiness_level"] = readiness_level
+        return context
 
 
 class TagList(LoginRequiredMixin, generic.ListView):

@@ -4,6 +4,7 @@ from datetime import date
 from django.db import models
 from django.contrib.auth.models import User
 from django.template import defaultfilters
+from django.urls import reverse
 
 LANGUAGE_CHOICES = (
     ("en", "English"),
@@ -27,6 +28,19 @@ STATUS_CHOICES = (
     STAGE_6,
     STAGE_7,
 )
+
+READINESS_LEVELS = {
+    1: { "name": "Level 1 - Hika - Ignite", "color": "#ffd742"},
+    2: { "name": "Level 2 - Māpura - Spark", "color": "#ffae19"},
+    3: { "name": "Level 3 - Hahana - Glow", "color": "#fe9b19"},
+    4: { "name": "Level 4 - Muramura - Burn", "color": "#ff623d"},
+    5: { "name": "Level 5 - Whitawhita - Blaze", "color": "#ee2522"},
+}
+READINESS_CHOICES = []
+for level_num,level_data in READINESS_LEVELS.items():
+    READINESS_CHOICES.append((level_num, level_data["name"]))
+READINESS_CHOICES = tuple(READINESS_CHOICES)
+
 
 class GlossaryTerm(models.Model):
     """Model for glossary term."""
@@ -155,6 +169,10 @@ class PikauCourse(models.Model):
     slug = models.SlugField(unique=True)
     name = models.CharField(max_length=200, unique=True)
     language = models.CharField(max_length=20, choices=LANGUAGE_CHOICES)
+    readiness_level = models.IntegerField(
+        choices=READINESS_CHOICES,
+        default=1,
+    )
     topic = models.ForeignKey(
         Topic,
         on_delete=models.CASCADE,
@@ -182,6 +200,12 @@ class PikauCourse(models.Model):
     glossary_terms = models.ManyToManyField(
         GlossaryTerm,
         related_name="pikau_courses",
+        blank=True,
+    )
+    prerequisites = models.ManyToManyField(
+        "self",
+        symmetrical=False,
+        related_name="postrequisites",
         blank=True,
     )
     trailer_video = models.URLField(blank=True)
@@ -224,6 +248,9 @@ class PikauCourse(models.Model):
     def is_overdue_milestone(self):
         """Return true if not completed and past milestone."""
         return status < STAGE_6[0] and self.milestone.date < date.today()
+
+    def get_absolute_url(self):
+        return reverse("pikau:pikau_course", args=[self.slug])
 
     def __str__(self):
         """Text representation of PikauCourse object.
