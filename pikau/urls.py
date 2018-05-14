@@ -32,6 +32,12 @@ urlpatterns = [
         views.GlossaryList.as_view(),
         name="glossary"
     ),
+    # eg: /pikau/pathways/
+    path(
+        "pathways/",
+        views.PathwaysView.as_view(),
+        name="pathways"
+    ),
     # eg: /pikau/goals/
     path(
         "goals/",

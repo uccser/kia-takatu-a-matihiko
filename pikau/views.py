@@ -15,6 +15,7 @@ from pikau.models import (
     Tag,
     Topic,
 )
+from pikau.utils import pathways
 
 NUMBER_OF_FLAME_STAGES = 7
 
@@ -55,6 +56,17 @@ class LevelDetail(LoginRequiredMixin, generic.DetailView):
 
     context_object_name = "level"
     model = Level
+
+
+class PathwaysView(LoginRequiredMixin, generic.TemplateView):
+    """View for the pikau pathway that renders from a template."""
+
+    template_name = "pikau/pathways.html"
+    #
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["notation"] = pathways.create_pathways_notation()
+        return context
 
 
 class PikauCourseList(LoginRequiredMixin, generic.ListView):

@@ -186,7 +186,8 @@ class PikauCourse(models.Model):
     )
     prerequisites = models.ManyToManyField(
         "self",
-        related_name="prerequisites",
+        symmetrical=False,
+        related_name="postrequisites",
         blank=True,
     )
     trailer_video = models.URLField(blank=True)
