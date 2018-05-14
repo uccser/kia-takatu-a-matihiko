@@ -1,5 +1,5 @@
 import pygraphviz as pgv
-from pikau.models import PikauCourse
+from pikau.models import PikauCourse, READINESS_LEVELS
 
 GRAPH_TEMPLATE = (
     "digraph {{"
@@ -9,7 +9,7 @@ GRAPH_TEMPLATE = (
     "{edges}"
     "}}"
 )
-NODE_TEMPLATE = "{id} [label=\"{name}\", href=\"{url}\"];"
+NODE_TEMPLATE = "{id} [label=\"{name}\", href=\"{url}\", color=\"{color}\", penwidth=4.0];"
 EDGE_TEMPLATE = "{start_id} -> {end_id};"
 
 def create_pathways_notation():
@@ -23,6 +23,7 @@ def create_pathways_notation():
             id=pikau.id,
             name=pikau.__str__(),
             url=pikau.get_absolute_url(),
+            color=READINESS_LEVELS[pikau.readiness_level]["color"]
         )
         nodes.append(node)
     # Create edges
