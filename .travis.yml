@@ -5,14 +5,17 @@ python:
   - "3.6"
 env:
   - DJANGO_SETTINGS_MODULE=config.settings.testing
-install: pip install -r requirements/testing.txt
-script:
+install:
+  - pip install -r requirements/testing.txt
   - python manage.py collectstatic --no-input --clear
   - python manage.py migrate
-  - python manage.py loadpikau
-  - coverage run manage.py test tests --settings=config.settings.testing -v=3
-  - flake8
-  - pydocstyle --count --explain
+jobs:
+  include:
+    - stage: test
+      script: coverage run manage.py test tests --settings=config.settings.testing -v=3
+    - script: python manage.py loadpikau
+    - script: flake8
+    - script: pydocstyle --count --explain
 after_success:
   - coverage xml -i
   - coverage report -m --skip-covered
