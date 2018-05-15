@@ -1,7 +1,6 @@
 """Admin configuration for the pikau application."""
 
 from django.contrib import admin
-
 from pikau.models import (
     Level,
     Milestone,
@@ -11,9 +10,11 @@ from pikau.models import (
     Topic,
 )
 
+
 class PikauCourseAdmin(admin.ModelAdmin):
     list_display = ("name", "language", "topic", "level")
     filter_horizontal = ("tags", "progress_outcomes", "prerequisites")
+
 
 admin.site.register(PikauCourse, PikauCourseAdmin)
 admin.site.register(Level)

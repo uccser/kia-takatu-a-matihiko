@@ -10,6 +10,7 @@ from pikau.management.commands._TagLoader import TagLoader
 from pikau.management.commands._TopicLoader import TopicLoader
 from pikau.management.commands._PikauCourseLoader import PikauCourseLoader
 
+
 class Command(management.base.BaseCommand):
     """Required command class for the custom Django loadpikau command."""
 

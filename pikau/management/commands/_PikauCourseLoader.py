@@ -82,7 +82,7 @@ class PikauCourseLoader(BaseLoader):
                     heading_required=True,
                     remove_title=True,
                 )
-                pikau_unit = pikau_course.content.create(
+                pikau_course.content.create(
                     slug=unit_data["slug"],
                     pikau_course=pikau_course,
                     name=unit_content.title,
@@ -95,7 +95,8 @@ class PikauCourseLoader(BaseLoader):
                 pikau_course.tags.add(Tag.objects.get(slug=pikau_course_tag_slug))
 
             for pikau_course_progress_outcome_slug in pikau_course_metadata.get("progress-outcomes", list()):
-                pikau_course.progress_outcomes.add(ProgressOutcome.objects.get(slug=pikau_course_progress_outcome_slug))
+                outcome = ProgressOutcome.objects.get(slug=pikau_course_progress_outcome_slug)
+                pikau_course.progress_outcomes.add(outcome)
 
             for pikau_course_glossary_term_slug in pikau_course_metadata.get("glossary", list()):
                 pikau_course.glossary_terms.add(GlossaryTerm.objects.get(slug=pikau_course_glossary_term_slug))

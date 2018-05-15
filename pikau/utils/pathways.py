@@ -11,6 +11,7 @@ GRAPH_TEMPLATE = (
 NODE_TEMPLATE = "{id} [label=\"{name}\", href=\"{url}\", color=\"{color}\", penwidth=4.0];"
 EDGE_TEMPLATE = "{start_id} -> {end_id};"
 
+
 def create_pathways_notation():
     """ TODO """
     all_pikau = PikauCourse.objects.all()
@@ -25,6 +26,7 @@ def create_pathways_notation():
             color=READINESS_LEVELS[pikau.readiness_level]["color"]
         )
         nodes.append(node)
+
     # Create edges
     edges = []
     for pikau in all_pikau:
@@ -35,8 +37,6 @@ def create_pathways_notation():
             )
             edges.append(edge)
 
-    print(nodes)
-    print(edges)
     # Create graph
     graph = GRAPH_TEMPLATE.format(
         nodes="".join(nodes),

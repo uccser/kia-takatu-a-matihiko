@@ -2,7 +2,6 @@
 """Django settings for production environment."""
 
 from .base import *  # noqa: F403
-import os
 import django_heroku
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
@@ -22,7 +21,10 @@ DEFAULT_FROM_EMAIL = env(  # noqa: F405
 # https://docs.djangoproject.com/en/dev/ref/settings/#server-email
 SERVER_EMAIL = env("DJANGO_SERVER_EMAIL", default=DEFAULT_FROM_EMAIL)  # noqa: F405
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-subject-prefix
-EMAIL_SUBJECT_PREFIX = env("DJANGO_EMAIL_SUBJECT_PREFIX", default="[Kia Takatū ā-Matihiko: Content Pipeline Assistant] ")  # noqa: F405
+EMAIL_SUBJECT_PREFIX = env(  # noqa: F405
+    "DJANGO_EMAIL_SUBJECT_PREFIX",
+    default="[Kia Takatū ā-Matihiko: Content Pipeline Assistant] "
+)
 
 # Anymail (Mailgun)
 # ------------------------------------------------------------------------------

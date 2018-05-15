@@ -1,7 +1,7 @@
 """Views for the pikau application."""
 
 from django.views import generic
-from django.db.models import F, Count
+from django.db.models import F
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import ObjectDoesNotExist
@@ -123,7 +123,6 @@ class PikauUnitDetail(LoginRequiredMixin, generic.DetailView):
             slug=self.kwargs.get("unit_slug", None)
         )
 
-
     def get_context_data(self, **kwargs):
         """Provide the context data for the pīkau unit view.
 
@@ -197,7 +196,7 @@ class ProgressOutcomeList(LoginRequiredMixin, generic.ListView):
                 else:
                     found = False
                     i = 0
-                    while found == False:
+                    while found is False:
                         stage = i
                         if count < stages[i + 1]:
                             found = True
