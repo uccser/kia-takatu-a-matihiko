@@ -30,14 +30,14 @@ STATUS_CHOICES = (
 )
 
 READINESS_LEVELS = {
-    1: { "name": "Level 1 - Hika - Ignite", "color": "#ffd742"},
-    2: { "name": "Level 2 - Māpura - Spark", "color": "#ffae19"},
-    3: { "name": "Level 3 - Hahana - Glow", "color": "#fe9b19"},
-    4: { "name": "Level 4 - Muramura - Burn", "color": "#ff623d"},
-    5: { "name": "Level 5 - Whitawhita - Blaze", "color": "#ee2522"},
+    1: {"name": "Level 1 - Hika - Ignite", "color": "#ffd742"},
+    2: {"name": "Level 2 - Māpura - Spark", "color": "#ffae19"},
+    3: {"name": "Level 3 - Hahana - Glow", "color": "#fe9b19"},
+    4: {"name": "Level 4 - Muramura - Burn", "color": "#ff623d"},
+    5: {"name": "Level 5 - Whitawhita - Blaze", "color": "#ee2522"},
 }
 READINESS_CHOICES = []
-for level_num,level_data in READINESS_LEVELS.items():
+for level_num, level_data in READINESS_LEVELS.items():
     READINESS_CHOICES.append((level_num, level_data["name"]))
 READINESS_CHOICES = tuple(READINESS_CHOICES)
 
@@ -247,9 +247,14 @@ class PikauCourse(models.Model):
     @property
     def is_overdue_milestone(self):
         """Return true if not completed and past milestone."""
-        return status < STAGE_6[0] and self.milestone.date < date.today()
+        return self.status < STAGE_6[0] and self.milestone.date < date.today()
 
     def get_absolute_url(self):
+        """Return the canonical URL for a pikau course.
+
+        Returns:
+            URL as string.
+        """
         return reverse("pikau:pikau_course", args=[self.slug])
 
     def __str__(self):
@@ -291,8 +296,9 @@ class PikauUnit(models.Model):
             return "{}: {}".format(self.pikau_course.name, self.name)
 
     class Meta:
+        """Set metadata of pikau units."""
 
-        ordering = ["number",]
+        ordering = ["number", ]
         unique_together = (
             ("slug", "pikau_course"),
         )

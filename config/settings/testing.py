@@ -4,11 +4,6 @@
 from .base import *  # noqa: F403
 
 
-# DATABASE CONFIGURATION
-# ----------------------------------------------------------------------------
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
-DATABASES["default"]["ATOMIC_REQUESTS"] = True
-
 # DEBUG
 # ----------------------------------------------------------------------------
 # Turn debug off so tests run faster
