@@ -12,6 +12,8 @@ from pikau.models import (
 
 
 class PikauCourseAdmin(admin.ModelAdmin):
+    """Admin configuration of Pikau Course pages."""
+
     list_display = ("name", "language", "topic", "level")
     filter_horizontal = ("tags", "progress_outcomes", "prerequisites")
 

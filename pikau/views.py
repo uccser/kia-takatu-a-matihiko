@@ -66,6 +66,11 @@ class PathwaysView(LoginRequiredMixin, generic.TemplateView):
     template_name = "pikau/pathways.html"
 
     def get_context_data(self, **kwargs):
+        """Provide the context data for the pathways view.
+
+        Returns:
+            Dictionary of context data.
+        """
         context = super().get_context_data(**kwargs)
         context["notation"] = pathways.create_pathways_notation()
         context["readiness_levels"] = READINESS_LEVELS
@@ -124,7 +129,7 @@ class PikauUnitDetail(LoginRequiredMixin, generic.DetailView):
         )
 
     def get_context_data(self, **kwargs):
-        """Provide the context data for the pīkau unit view.
+        """Provide the context data for the pikau unit view.
 
         Returns:
             Dictionary of context data.
@@ -218,6 +223,11 @@ class ReadinessLevelList(LoginRequiredMixin, generic.TemplateView):
     template_name = "pikau/readiness_level_list.html"
 
     def get_context_data(self, **kwargs):
+        """Provide the context data for the readiness level list view.
+
+        Returns:
+            Dictionary of context data.
+        """
         context = super().get_context_data(**kwargs)
         readiness_levels = READINESS_LEVELS.copy()
         for level_num, level_data in readiness_levels.items():
@@ -232,6 +242,11 @@ class ReadinessLevelDetail(LoginRequiredMixin, generic.TemplateView):
     template_name = "pikau/readiness_level_detail.html"
 
     def get_context_data(self, **kwargs):
+        """Provide the context data for the readiness level view.
+
+        Returns:
+            Dictionary of context data.
+        """
         context = super().get_context_data(**kwargs)
         level_number = self.kwargs.get("level_number", 0)
         try:

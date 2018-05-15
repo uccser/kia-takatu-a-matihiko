@@ -250,6 +250,11 @@ class PikauCourse(models.Model):
         return self.status < STAGE_6[0] and self.milestone.date < date.today()
 
     def get_absolute_url(self):
+        """Return the canonical URL for a pikau course.
+
+        Returns:
+            URL as string.
+        """
         return reverse("pikau:pikau_course", args=[self.slug])
 
     def __str__(self):
@@ -291,6 +296,7 @@ class PikauUnit(models.Model):
             return "{}: {}".format(self.pikau_course.name, self.name)
 
     class Meta:
+        """Set metadata of pikau units."""
 
         ordering = ["number", ]
         unique_together = (

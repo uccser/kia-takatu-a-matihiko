@@ -1,3 +1,5 @@
+"""Module for creating pikau course pathways."""
+
 from pikau.models import PikauCourse, READINESS_LEVELS
 
 GRAPH_TEMPLATE = (
@@ -13,7 +15,11 @@ EDGE_TEMPLATE = "{start_id} -> {end_id};"
 
 
 def create_pathways_notation():
-    """ TODO """
+    """Create Graphviz graph notation.
+
+    Returns:
+        String of graph notation.
+    """
     all_pikau = PikauCourse.objects.all()
 
     # Create nodes
