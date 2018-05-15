@@ -12,7 +12,7 @@ install:
 jobs:
   include:
     - stage: test
-      script: coverage run manage.py test tests --settings=config.settings.testing -v=3
+      script: coverage run --rcfile=.coveragerc manage.py test tests --settings=config.settings.testing -v=3
     - script: python manage.py loadpikau
     - script: flake8
     - script: pydocstyle --count --explain
