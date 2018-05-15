@@ -1,0 +1,25 @@
+dist: trusty
+sudo: required
+language: python
+python:
+  - "3.6"
+env:
+  - DJANGO_SETTINGS_MODULE=config.settings.testing
+install: pip install -r requirements/testing.txt
+script:
+  - python manage.py collectstatic --no-input --clear
+  - python manage.py migrate
+  - python manage.py loadpikau
+  - coverage run manage.py test tests --settings=config.settings.testing -v=3
+  - flake8
+  - pydocstyle --count --explain
+after_success:
+  - coverage xml -i
+  - coverage report -m --skip-covered
+  - bash <(curl -s https://codecov.io/bash)
+notifications:
+  email: false
+  slack:
+    rooms: deptfunstuff:abJKvzApk5SKtcEyAgtswXAv
+    on_success: change
+    on_failure: change
