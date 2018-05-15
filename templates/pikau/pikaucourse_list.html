@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% load django_bootstrap_breadcrumbs %}
+
+{% block breadcrumbs %}
+  {% breadcrumb "Home" "/" %}
+  {% breadcrumb "Pīkau" "pikau:index" %}
+  {% breadcrumb "Courses" "" %}
+{% endblock breadcrumbs %}
+
+{% block page_heading %}
+  Pīkau Courses
+{% endblock page_heading %}
+
+{% block content %}
+  <p>This page lists all the Pīkau courses available, ordered by milestone and name.</p>
+
+  <div class="row">
+    {% for pikau_course in pikau_courses %}
+      {% ifchanged pikau_course.milestone %}
+        <div class="col-12"><div class="separator my-3"></div></div>
+        <div class="col-12 mb-3">
+          {% if pikau_course.milestone.date %}
+            <h2 class="h3 d-inline">
+              {{ pikau_course.milestone.name }}
+            </h2>
+            <span class="float-right text-right text-muted">
+              <strong>
+                {{ pikau_course.milestone.date }}
+              </strong>
+              {% if pikau_course.is_upcoming_milestone %}
+                <br>
+                <small>Due in {{ pikau_course.milestone.date|timeuntil }}</small>
+              {% endif %}
+            </span>
+          {% else %}
+            <h2 class="h3 d-inline">
+              No milestone
+            </h2>
+          {% endif %}
+        </div>
+      {% endifchanged %}
+      {% include "pikau/snippets/pikau_course_card.html" %}
+    {% endfor %}
+  </div>
+{% endblock content %}

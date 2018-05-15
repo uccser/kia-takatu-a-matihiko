@@ -1,0 +1,21 @@
+# Base dependencies go here
+
+# Django
+django==2.0.4
+whitenoise==3.3.1
+django-heroku==0.3.1
+django-environ==0.4.4
+django-bootstrap-breadcrumbs==0.9.1
+
+# Content Loading
+verto==0.7.4
+python-markdown-math==0.3
+PyYAML==3.12
+
+# Password storage
+argon2-cffi==18.1.0
+
+# Users
+django-allauth==0.35.0
+django-crispy-forms==1.7.2
+django-anymail==2.0

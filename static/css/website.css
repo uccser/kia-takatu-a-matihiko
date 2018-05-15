@@ -1,0 +1,121 @@
+body {
+  padding-top: 48px;
+  background-color: #f9f9f9;
+}
+.bg-brand-purple {
+  background-color: #1b1a3b !important;
+}
+.bg-brand-light-purple {
+  background-color: #212148 !important;
+}
+.btn-primary {
+  background-color: #212148 !important;
+  border-color: #212148 !important;
+}
+.btn-primary:hover {
+  background-color: #1b1a3b !important;
+}
+.btn-outline-primary {
+  color: #212148 !important;
+  border-color: #212148 !important;
+}
+.btn-outline-primary:hover {
+  color: #fff !important;
+  background-color: #212148 !important;
+  border-color: #212148 !important;
+}
+.no-wrap {
+  white-space: nowrap;
+}
+.card {
+  height: 100%;
+}
+footer > .container {
+  border-top: 2px solid #212148;
+  padding-top: 2rem;
+}
+#uc-logo {
+  max-width: 15rem;
+}
+.bg-size-cover {
+  background-size: cover;
+}
+.list-style-flame {
+  list-style: none;
+  padding-left: 1rem;
+}
+.list-style-flame li:before {
+  content: "";
+  display: inline-block;
+  background: url("../images/flame-stage-5.png") no-repeat left top;
+  height: 1.2rem;
+  width: 1rem;
+  background-size: contain;
+}
+.badge-outline-warning {
+  background-color: transparent;
+  border: 2px solid #ffc107;
+}
+.progress {
+  position: relative;
+}
+.progress-lg {
+  height: 1.5rem;
+}
+.progress-overlay {
+  position: absolute;
+  font-weight: bold;
+  font-size: 0.8rem;
+  bottom: 2px;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+.fire-stage-0 {
+  background-color: transparent;
+}
+.fire-stage-1 {
+  background-color: #ffd642;
+}
+.fire-stage-2 {
+  background-color: #ffc23c;
+}
+.fire-stage-3 {
+  background-color: #ffae19;
+}
+.fire-stage-4 {
+  background-color: #ff9b19;
+}
+.fire-stage-5 {
+  background-color: #ff793d;
+}
+.fire-stage-6 {
+  background-color: #ff633d;
+}
+.fire-stage-7 {
+  background-color: #ff4024;
+}
+.icon {
+  width: 2.5rem;
+}
+.icon-small {
+  width: 1rem;
+}
+@media (max-width: 991px) {
+  .table:not(.table-sequential) tr:first-child td,
+  .table:not(.table-sequential) tr:first-child th {
+    border-top: none;
+  }
+}
+@media (min-width: 991px) {
+  .table tr:first-child td,
+  .table tr:first-child th {
+    border-top: none;
+  }
+}
+.separator {
+  border-top: 2px solid #dee2e6;
+}
+#pathways-diagram a {
+  cursor: pointer;
+}

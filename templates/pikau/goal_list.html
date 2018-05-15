@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% load django_bootstrap_breadcrumbs %}
+
+{% block breadcrumbs %}
+  {% breadcrumb "Home" "/" %}
+  {% breadcrumb "Pīkau" "pikau:index" %}
+  {% breadcrumb "Goals" "" %}
+{% endblock breadcrumbs %}
+
+{% block page_heading %}
+  Goals
+{% endblock page_heading %}
+
+{% block content %}
+  <p>This page lists all the goals available within Pīkau.</p>
+
+  <table class="table table-hover table-responsive">
+    <thead>
+      <tr>
+        <th scope="col">Slug</th>
+        <th scope="col">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for goal in goals %}
+        <tr>
+          <td><code>{{ goal.slug }}</code></td>
+          <td>{{ goal.description }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock content %}

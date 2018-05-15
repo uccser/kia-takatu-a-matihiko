@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% load django_bootstrap_breadcrumbs %}
+
+{% block breadcrumbs %}
+  {% breadcrumb "Home" "/" %}
+  {% breadcrumb "Pīkau" "pikau:index" %}
+  {% breadcrumb "Tags" "" %}
+{% endblock breadcrumbs %}
+
+{% block page_heading %}
+  Tags
+{% endblock page_heading %}
+
+{% block content %}
+  <p>This page lists all the tags available within Pīkau, ordered by name.</p>
+
+  <table class="table table-hover table-responsive">
+    <thead>
+      <tr>
+        <th scope="col">Slug</th>
+        <th scope="col">Name</th>
+        <th scope="col">Usage Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for tag in tags %}
+        <tr>
+          <td>
+            <code>{{ tag.slug }}</code>
+          </td>
+          <td>
+            {% include "pikau/snippets/tag_badge.html" %}
+          </td>
+          <td class="text-right">
+            {{ tag.pikau_courses.count }}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock content %}

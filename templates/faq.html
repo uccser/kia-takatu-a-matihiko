@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load static %}
+{% load django_bootstrap_breadcrumbs %}
+
+{% block page_heading %}
+  {% trans "Frequently Asked Questions" %}
+{% endblock page_heading %}
+
+{% block breadcrumbs %}
+  {% breadcrumb "Home" "/" %}
+  {% breadcrumb "Frequently Asked Questions" "" %}
+{% endblock breadcrumbs %}
+
+{% block content %}
+  <p class="mb-4">
+    If your question is not answered below, please send an email to <a href="mailto:jack.morgan@kiatakatu.ac.nz">jack.morgan@kiatakatu.ac.nz</a> with your question so I can add to this page.
+  </p>
+
+  <h4>Why was this website built?</h4>
+  <p>
+    This website was built as a supporting tool for authors of the Kia Takatū ā-Matihiko content.
+    It incorporates features and practices that we have found useful over our many years of developing content, especially on projects with large amounts of content produced on short time frames.
+  </p>
+
+  <h4>Is the content open source? </h4>
+  <p>
+    Yes, for completed content.
+    When content is completed and ready for release, the raw content is stored within the <a href="https://github.com/uccser/kia-takatu-a-matihiko">open source repository for this website on GitHub</a>. The Pīkau content is stored within <code>pikau/content/</code>.
+  </p>
+
+  <h4>The website requires a login?</h4>
+  <p>
+    At the moment we are restricting access to specific pages to project authors, though raw data for completed content can still be accessed (see question above).
+    Access to pages may be changed once the project is completed.
+  </p>
+
+  <h4>It would be great if you could add a feature to the website that...</h4>
+  <p>
+    Please let me know any ideas or feature requests you have at <a href="mailto:jack.morgan@kiatakatu.ac.nz">jack.morgan@kiatakatu.ac.nz</a>.
+    This website is built to assist you, so I would love to improve it in any way possible.
+  </p>
+
+  <h4>I have found a bug on the website!</h4>
+  <p>
+    Please send an email to <a href="mailto:jack.morgan@kiatakatu.ac.nz">jack.morgan@kiatakatu.ac.nz</a> explaining the bug you found.
+    If it's an interface issue then please attach a screenshot.
+  </p>
+{% endblock content %}

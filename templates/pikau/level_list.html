@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% load django_bootstrap_breadcrumbs %}
+
+{% block breadcrumbs %}
+  {% breadcrumb "Home" "/" %}
+  {% breadcrumb "Pīkau" "pikau:index" %}
+  {% breadcrumb "Levels" "" %}
+{% endblock breadcrumbs %}
+
+{% block page_heading %}
+  Levels
+{% endblock page_heading %}
+
+{% block content %}
+  <p>This page lists all the levels available within Pīkau, ordered by name.</p>
+
+  <table class="table table-hover table-responsive">
+    <thead>
+      <tr>
+        <th scope="col">Slug</th>
+        <th scope="col">Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for level in levels %}
+        <tr>
+          <td>
+            <code>{{ level.slug }}</code>
+          </td>
+          <td>
+            {% include "pikau/snippets/level_badge.html" %}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock content %}

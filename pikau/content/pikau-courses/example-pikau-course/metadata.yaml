@@ -1,0 +1,38 @@
+name: Example Pīkau course
+status: 6
+overview: overview.md
+language: en
+topic: ct
+level: 8-10
+tags:
+  - binary-numbers
+  - algorithms
+progress-outcomes:
+  - po1
+  - po2
+trailer-video: https://www.youtube.com/watch?v=v5yeq5u2RMI
+study-plan: study-plan.md
+resources:
+  - files/example.txt
+
+content:
+  - slug: introduction
+    file: introduction.md
+  - slug: try-it-out-activity-1
+    file: try-it-out/activity-1.md
+    module: Try it out
+  - slug: try-it-out-activity-2
+    file: try-it-out/activity-2.md
+    module: Try it out
+  - slug: concepts
+    file: concepts.md
+  - slug: reflection
+    file: reflection.md
+
+glossary:
+  - example-term-1
+  - example-term-2
+  - example-term-3
+
+assessment-description: assessment-description.md
+assessment-items: assessment-items.md

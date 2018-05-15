@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% load django_bootstrap_breadcrumbs %}
+
+{% block breadcrumbs %}
+  {% breadcrumb "Home" "/" %}
+  {% breadcrumb "Pīkau" "pikau:index" %}
+  {% breadcrumb "Topics" "pikau:topic_list" %}
+  {% breadcrumb topic.name "" %}
+{% endblock breadcrumbs %}
+
+{% block page_heading %}
+  Topic: {% include "pikau/snippets/topic_badge.html" %}
+{% endblock page_heading %}
+
+{% block content %}
+  <p><strong>Slug:</strong> <code>{{ topic.slug }}</code></p>
+
+  <p><strong>Pikau Courses:</strong></p>
+  <div class="row">
+    {% for pikau_course in topic.pikau_courses.all %}
+      {% include "pikau/snippets/pikau_course_card.html" %}
+    {% endfor %}
+  </div>
+{% endblock content %}

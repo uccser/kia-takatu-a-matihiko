@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% load django_bootstrap_breadcrumbs %}
+
+{% block breadcrumbs %}
+  {% breadcrumb "Home" "/" %}
+  {% breadcrumb "Pīkau" "pikau:index" %}
+  {% breadcrumb "Pathways" "" %}
+{% endblock breadcrumbs %}
+
+{% block page_heading %}
+  Pathways
+{% endblock page_heading %}
+
+{% block content %}
+  <h5>Legend</h5>
+  <div class="d-inline-flex flex-column mb-3">
+    {% for num,level in readiness_levels.items %}
+      <div class="px-2" style="background-color:{{ level.color }};">
+        <small>Level {{num}} - {{ level.name }}</small>
+      </div>
+    {% endfor %}
+  </div>
+
+  <div id="pathways-diagram"></div>
+{% endblock content %}
+
+{% block scripts %}
+  <script src="{% static 'js/viz.js' %}"></script>
+  <script>
+    $(document).ready(function() {
+      var viz = new Viz({workerURL: "{% static 'js/lite.render.js' %}"});
+      viz.renderSVGElement(
+        '{{ notation|safe }}', {engine: "dot"}
+      ).then(function(svg) {
+        $('#pathways-diagram').append(svg);
+      });
+    });
+  </script>
+{% endblock scripts %}

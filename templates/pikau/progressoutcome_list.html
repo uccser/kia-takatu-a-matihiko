@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% load get_item %}
+{% load django_bootstrap_breadcrumbs %}
+
+{% block breadcrumbs %}
+  {% breadcrumb "Home" "/" %}
+  {% breadcrumb "Pīkau" "pikau:index" %}
+  {% breadcrumb "Progress Outcomes" "" %}
+{% endblock breadcrumbs %}
+
+{% block page_heading %}
+  Progress Outcomes
+{% endblock page_heading %}
+
+{% block content %}
+  <p>This page lists all the progress outcomes available within Pīkau, ordered by name.</p>
+
+  <table class="table table-responsive">
+    <thead>
+      <tr>
+        <th></th>
+        {% for topic in topics %}
+          <th scope="col">
+            <h4>{% include "pikau/snippets/topic_badge.html" %}</h4>
+          </th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for progress_outcome in progress_outcomes %}
+        <tr>
+          <td>
+            <p class="h4">{% include "pikau/snippets/progress_outcome_badge.html" %}</p>
+          </td>
+          {% for topic in topics %}
+            {% with cell_data=progress_outcome.topic_counts|get_item:topic.slug %}
+              <td scope="col" class="text-center fire-stage-{{ cell_data|get_item:'stage' }}">
+                <span class="h4">{{ cell_data|get_item:"count" }}</span>
+              </td>
+            {% endwith %}
+          {% endfor %}
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock content %}
