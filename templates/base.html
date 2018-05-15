@@ -28,10 +28,15 @@
           <img src="{% static 'images/flame-stage-5.png' %}" height="30" class="d-inline-block align-top" alt="">
           Content Pipeline Assistant
         </a>
-        <a href="https://github.com/uccser/kia-takatu-a-matihiko/releases" class="badge badge-danger">
+        <a href="https://github.com/uccser/kia-takatu-a-matihiko/releases" class="badge badge-danger mr-3">
           alpha
         </a>
         <div class="collapse navbar-collapse" id="navbarNav">
+          <div class="navbar-nav mr-auto">
+            <a class="nav-item nav-link" href="{% url 'pikau:index' %}">
+              {% trans "Pīkau" %}
+            </a>
+          </div>
           <div class="navbar-nav ml-auto">
             {% if request.user.is_authenticated %}
               <span class="navbar-text mx-3">
