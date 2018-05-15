@@ -29,7 +29,7 @@
           Content Pipeline Assistant
         </a>
         <a href="https://github.com/uccser/kia-takatu-a-matihiko/releases" class="badge badge-danger mr-3">
-          alpha
+          alpha {{ VERSION_NUMBER }}
         </a>
         <div class="collapse navbar-collapse" id="navbarNav">
           <div class="navbar-nav mr-auto">
@@ -110,12 +110,19 @@
             </ul>
           </div>
         </div>
-        <p class="text-center mb-0">
+        <p class="text-center text-muted">
           <small>
             {% blocktrans trimmed %}
             This website is open source on <a href="https://github.com/uccser/kia-takatu-a-matihiko">GitHub</a>.
             Icons provided generously by <a href="https://icons8.com/">icons8</a>.
             {% endblocktrans %}
+          </small>
+        </p>
+        <p class="text-center mb-0">
+          <small>
+            <a href="https://github.com/uccser/kia-takatu-a-matihiko/releases">
+              {{ VERSION_NUMBER }}
+            </a>
           </small>
         </p>
       </div>
