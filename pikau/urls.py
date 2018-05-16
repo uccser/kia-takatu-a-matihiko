@@ -28,7 +28,7 @@ urlpatterns = [
     ),
     # eg: /pikau/docs/
     path(
-        "docs",
+        "docs/",
         views.DocumentationView.as_view(),
         name="docs"
     ),
