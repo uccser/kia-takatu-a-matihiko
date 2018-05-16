@@ -15,6 +15,7 @@ from pikau.models import (
     ProgressOutcome,
     Tag,
     Topic,
+    STATUS_CHOICES,
     READINESS_LEVELS,
 )
 from pikau.utils import pathways
@@ -26,6 +27,26 @@ class IndexView(LoginRequiredMixin, generic.TemplateView):
     """View for the pikau homepage that renders from a template."""
 
     template_name = "pikau/index.html"
+
+
+class DocumentationView(LoginRequiredMixin, generic.TemplateView):
+    """View for the pikau documentation that renders from a template."""
+
+    template_name = "pikau/documentation.html"
+
+    def get_context_data(self, **kwargs):
+        """Provide the context data for the view.
+
+        Returns:
+            Dictionary of context data.
+        """
+        context = super(DocumentationView, self).get_context_data(**kwargs)
+        context["status_stages"] = STATUS_CHOICES
+        context["topics"] = Topic.objects.order_by("name")
+        context["levels"] = Level.objects.order_by("name")
+        context["progress_outcomes"] = ProgressOutcome.objects.order_by("name")
+        context["tags"] = Tag.objects.order_by("name")
+        return context
 
 
 class GlossaryList(LoginRequiredMixin, generic.ListView):
