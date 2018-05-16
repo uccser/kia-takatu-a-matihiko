@@ -14,7 +14,15 @@
 {% endblock page_heading %}
 
 {% block content %}
-  <p><strong>Slug:</strong> <code>{{ tag.slug }}</code></p>
+  {% if tag.description %}
+    <p>
+      <strong>Description:</strong> {{ tag.description }}
+    </p>
+  {% endif %}
+
+  <p>
+    <strong>Slug:</strong> <code>{{ tag.slug }}</code>
+  </p>
 
   <p><strong>Pikau Courses:</strong></p>
   <div class="row">
