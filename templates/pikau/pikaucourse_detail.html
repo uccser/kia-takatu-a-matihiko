@@ -13,11 +13,13 @@
 
 {% block custom_page_heading %}
   <div class="jumbotron bg-size-cover text-center"{% if pikau_course.cover_photo %} style="background-image:url({% static pikau_course.cover_photo %});"{% endif %}>
-    {% with pikau_course.readiness_level|stringformat:"s" as readiness_level %}
-      {% with "images/flame-stage-"|add:readiness_level|add:".png" as flame_image %}
-        <img src="{% static flame_image %}" class="icon"><br>
+    {% if pikau_course.readiness_level %}
+      {% with pikau_course.readiness_level|stringformat:"s" as readiness_level %}
+        {% with "images/flame-stage-"|add:readiness_level|add:".png" as flame_image %}
+          <img src="{% static flame_image %}" class="icon"><br>
+        {% endwith %}
       {% endwith %}
-    {% endwith %}
+    {% endif %}
     <h1 class="text-white">{{ pikau_course.name }}</h1>
     {% if pikau_course.status < 6 and pikau_course.development_folder %}
       <a class="btn btn-lg btn-light mt-3" href="{{ pikau_course.development_folder }}" target="_blank">
@@ -124,9 +126,13 @@
             <tr>
               <th scope="row">Readiness Level</th>
               <td>
-                <a href="{% url 'pikau:readiness_level' pikau_course.readiness_level %}">
-                  {{ pikau_course.get_readiness_level_display }}
-                </a>
+                {% if pikau_course.readiness_level %}
+                  <a href="{% url 'pikau:readiness_level' pikau_course.readiness_level %}">
+                    {{ pikau_course.get_readiness_level_display }}
+                  </a>
+                {% else %}
+                  None
+                {% endif %}
               </td>
             </tr>
             <tr>

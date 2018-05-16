@@ -62,6 +62,7 @@ class PikauCourseLoader(BaseLoader):
                 "trailer_video": pikau_course_metadata["trailer-video"],
                 "cover_photo": pikau_course_metadata.get("cover-photo", "images/pikau-course-cover.png"),
                 "overview": pikau_course_overview,
+                "readiness_level": pikau_course_metadata.get("readiness-level"),
                 "study_plan": pikau_course_study_plan,
                 "assessment_description": pikau_course_assessment_description,
                 "assessment_items": pikau_course_assessment_items,
