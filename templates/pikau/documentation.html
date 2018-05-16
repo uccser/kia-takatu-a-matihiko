@@ -81,6 +81,17 @@
             {% endfor %}
           </td>
         </tr>
+        <tr>
+          <td>
+            <strong>Tags</strong><br>
+            Select <em>one or more</em>
+          </td>
+          <td>
+            {% for tag in tags %}
+              {% include "pikau/snippets/tag_badge.html" %}<br>
+            {% endfor %}
+          </td>
+        </tr>
     </tbody>
   </table>
 
@@ -110,7 +121,7 @@
     The following advanced formatting styles are available on iQualify, and the table below lists how to use these on Google Drive.
   </p>
 
-  <div class="alert alert-info" role="alert">
+  <div class="alert alert-warning" role="alert">
     <small><strong>Note:</strong> This page aims to display how content will be viewed on iQualify, however this consistency is not guaranteed. Different icons are used for licensing reasons.</small>
   </div>
 
@@ -124,7 +135,7 @@
     <tbody>
         <tr>
           <td>
-            <div class="boxed-text boxed-text-pull-out">
+            <div class="boxed-text my-0 boxed-text-pull-out">
               <div class="boxed-text-contents">
                 Pull out box
               </div>
@@ -138,7 +149,7 @@
         </tr>
         <tr>
           <td>
-            <div class="boxed-text boxed-text-example">
+            <div class="boxed-text my-0 boxed-text-example">
               <div class="boxed-text-contents">
                 Example box
               </div>
@@ -152,7 +163,7 @@
         </tr>
         <tr>
           <td>
-            <div class="boxed-text boxed-text-reading">
+            <div class="boxed-text my-0 boxed-text-reading">
               <div>
                 <img class="icon" src="{% static 'images/icons/icons8/reading.png' %}">
               </div>
@@ -169,7 +180,7 @@
         </tr>
         <tr>
           <td>
-            <div class="boxed-text boxed-text-tip">
+            <div class="boxed-text my-0 boxed-text-tip">
               <div>
                 <img class="icon" src="{% static 'images/icons/icons8/tip.png' %}">
               </div>
@@ -186,7 +197,7 @@
         </tr>
         <tr>
           <td>
-            <div class="boxed-text boxed-text-case-study">
+            <div class="boxed-text my-0 boxed-text-case-study">
               <div>
                 <img class="icon" src="{% static 'images/icons/icons8/case-study.png' %}">
               </div>
@@ -203,7 +214,7 @@
         </tr>
         <tr>
           <td>
-            <div class="boxed-text boxed-text-quote">
+            <div class="boxed-text my-0 boxed-text-quote">
               <div>
                 <img class="quote quote-start" src="{% static 'images/icons/icons8/quote-start.png' %}">
               </div>
@@ -223,6 +234,17 @@
         </tr>
     </tbody>
   </table>
+
+  <div class="alert alert-info" role="alert">
+    <h4 class="alert-heading">How to add single cell table to Google Drive</h4>
+    <ol>
+      <li>Click the menu <span class="text-dark bg-white px-1">Insert</span>.
+      <li>Click the item <span class="text-dark bg-white px-1">Table</span>.
+      <li>Click the top left square to add a 1 x 1 table.
+    </ol>
+    <img src="{% static 'images/google-drive-add-single-table-cell.png' %}" class="border">
+  </div>
+
 
 {% endblock content %}
 
