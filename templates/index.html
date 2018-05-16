@@ -25,22 +25,58 @@
   </div>
 
   <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <h2>Pīkau</h2>
-        <p>
-          <a class="btn btn-primary" href="{% url 'pikau:index' %}" role="button">
-            View Pīkau content &raquo;
-          </a>
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-10 col-lg-8">
+        <p>The existing pipeline of collaboratively writing content on Google Drive to publishing on iQualify is not altered, but is supported by this website which shows the progress, links, and coverage of content.</p>
+        <div class="d-flex justify-content-center align-items-center">
+          <div class="m-2">
+            <img class="img-fluid flex-fill" src="{% static 'images/google-drive-logo.png' %}">
+          </div>
+          <div class="m-2 text-center">
+            <img class="img-fluid flex-fill" src="{% static 'images/icons/icons8/right-arrow.png' %}" style="max-width:50%;">
+          </div>
+          <div class="m-2">
+            <img class="img-fluid flex-fill" src="{% static 'images/iqualify-logo.png' %}">
+          </div>
+        </div>
+        <p class="text-center border-left border-bottom border-right mb-4">
+          This pipeline is supported by the <strong>Content Pipeline Assistant</strong>
         </p>
-      </div>
-      <div class="col-md-6">
-        <h2>Digital Leaders Development</h2>
-        <p>
-          <a class="btn btn-secondary disabled" href="#">
-            Coming soon &raquo;
-          </a>
-        </p>
+
+        <p>Available sections on this website:</p>
+
+        <div class="media mt-4 mb-5">
+          <img class="align-self-center mr-3" src="{% static 'images/icons/icons8/classroom.png' %}">
+          <div class="media-body">
+            <h4 class="mt-0">Pīkau</h4>
+            <p>These are bite sized courses preparing teachers to be ready for the new content within the Technology curriculum.</p>
+            <a class="btn btn-primary" href="{% url 'pikau:index' %}" role="button">
+              View Pīkau content
+            </a>
+          </div>
+        </div>
+
+        <div class="media my-5">
+          <img class="align-self-center mr-3" src="{% static 'images/icons/icons8/groups.png' %}">
+          <div class="media-body">
+            <h4 class="mt-0">Digital Leaders</h4>
+            <p>Content to equip leaders throughout New Zealand to lead other educators on their Digital Technologies readiness journey.</p>
+            <a class="btn btn-secondary disabled" href="#">
+              Coming soon
+            </a>
+          </div>
+        </div>
+
+        <div class="media my-5">
+          <img class="align-self-center mr-3" src="{% static 'images/icons/icons8/faq.png' %}">
+          <div class="media-body">
+            <h4 class="mt-0">Frequently Asked Questions</h4>
+            <p>Have a question about the website? Have a look for the answer within the FAQ.</p>
+            <a class="btn btn-primary" href="{% url 'faq' %}" role="button">
+              View FAQ
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </div>

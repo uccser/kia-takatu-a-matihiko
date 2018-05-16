@@ -10,6 +10,7 @@ from pikau.management.commands._TagLoader import TagLoader
 from pikau.management.commands._TopicLoader import TopicLoader
 from pikau.management.commands._PikauCourseLoader import PikauCourseLoader
 
+
 class Command(management.base.BaseCommand):
     """Required command class for the custom Django loadpikau command."""
 
@@ -17,7 +18,6 @@ class Command(management.base.BaseCommand):
 
     def handle(self, *args, **options):
         """Automatically called when the loadpikau command is given."""
-
         base_path = settings.PIKAU_CONTENT_BASE_PATH
         GlossaryTermLoader(base_path).load()
         GoalLoader(base_path).load()

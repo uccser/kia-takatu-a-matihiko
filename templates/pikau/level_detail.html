@@ -1,5 +1,14 @@
 {% extends "base.html" %}
 
+{% load django_bootstrap_breadcrumbs %}
+
+{% block breadcrumbs %}
+  {% breadcrumb "Home" "/" %}
+  {% breadcrumb "Pīkau" "pikau:index" %}
+  {% breadcrumb "Levels" "pikau:level_list" %}
+  {% breadcrumb level.name "" %}
+{% endblock breadcrumbs %}
+
 {% block page_heading %}
   Level: {% include "pikau/snippets/level_badge.html" %}
 {% endblock page_heading %}

@@ -105,6 +105,19 @@ class BaseLoader():
         text = "{indent}{text}\n".format(indent=indent, text=message)
         sys.stdout.write(text)
 
+    def log_object_creation(self, created, obj, indent_amount=0):
+        """Output the log message to the load log.
+
+        Args:
+            message: Text to display (str).
+            indent_amount: Amount of indentation required (int).
+        """
+        if created:
+            log_prefix = "Added"
+        else:
+            log_prefix = "Updated"
+        self.log("{} {}: {}".format(log_prefix, obj._meta.verbose_name, obj.__str__()))
+
     def load_yaml_file(self, yaml_file_path):
         """Load and read given YAML file.
 

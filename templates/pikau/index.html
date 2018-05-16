@@ -2,6 +2,12 @@
 
 {% load i18n %}
 {% load static %}
+{% load django_bootstrap_breadcrumbs %}
+
+{% block breadcrumbs %}
+  {% breadcrumb "Home" "/" %}
+  {% breadcrumb "Pīkau" "" %}
+{% endblock breadcrumbs %}
 
 {% block page_heading %}
   Pīkau Content
@@ -22,13 +28,15 @@
     <a class="btn btn-lg btn-primary" href="{% url 'pikau:pikau_course_list' %}" role="button">{% trans "View all Pīkau" %}</a>
   </p>
 
-  <h3 class="mt-3">View metadata</h3>
-  <p>
-    <a class="btn btn-outline-primary btn-sm" href="{% url 'pikau:glossary' %}">{% trans "Glossary" %}</a>
-    <a class="btn btn-outline-primary btn-sm" href="{% url 'pikau:goal_list' %}">{% trans "Goals" %}</a>
-    <a class="btn btn-outline-primary btn-sm" href="{% url 'pikau:level_list' %}">{% trans "Levels" %}</a>
-    <a class="btn btn-outline-primary btn-sm" href="{% url 'pikau:progress_outcome_list' %}">{% trans "Progress Outcomes" %}</a>
-    <a class="btn btn-outline-primary btn-sm" href="{% url 'pikau:tag_list' %}">{% trans "Tags" %}</a>
-    <a class="btn btn-outline-primary btn-sm" href="{% url 'pikau:topic_list' %}">{% trans "Topics" %}</a>
-  </p>
+  <h2 class="mt-3">View metadata</h2>
+  <div class="d-inline-flex flex-column">
+    <a class="btn btn-outline-primary mb-1 text-left" href="{% url 'pikau:glossary' %}">Glossary</a>
+    <a class="btn btn-outline-primary mb-1 text-left" href="{% url 'pikau:goal_list' %}">Goals</a>
+    <a class="btn btn-outline-primary mb-1 text-left" href="{% url 'pikau:level_list' %}">Levels</a>
+    <a class="btn btn-outline-primary mb-1 text-left" href="{% url 'pikau:pathways' %}">Pathways</a>
+    <a class="btn btn-outline-primary mb-1 text-left" href="{% url 'pikau:progress_outcome_list' %}">Progress Outcomes</a>
+    <a class="btn btn-outline-primary mb-1 text-left" href="{% url 'pikau:readiness_level_list' %}">Readiness Levels</a>
+    <a class="btn btn-outline-primary mb-1 text-left" href="{% url 'pikau:tag_list' %}">Tags</a>
+    <a class="btn btn-outline-primary mb-1 text-left" href="{% url 'pikau:topic_list' %}">Topics</a>
+  </div>
 {% endblock content %}

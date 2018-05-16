@@ -1,5 +1,6 @@
 {% load static %}
 {% load i18n %}
+{% load django_bootstrap_breadcrumbs %}
 
 <!doctype html>
 <html lang="en">
@@ -14,6 +15,8 @@
     <link rel="icon" href="{% static 'images/flame-stage-5-favicon.png' %}" sizes="32x32" type="image/png">
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/website.css' %}">
+    {% block css %}
+    {% endblock css %}
   </head>
   <body>
     <nav class="navbar navbar-dark bg-brand-purple fixed-top navbar-expand-md py-1">
@@ -25,10 +28,15 @@
           <img src="{% static 'images/flame-stage-5.png' %}" height="30" class="d-inline-block align-top" alt="">
           Content Pipeline Assistant
         </a>
-        <a href="https://github.com/uccser/kia-takatu-a-matihiko/releases" class="badge badge-danger">
-          alpha
+        <a href="https://github.com/uccser/kia-takatu-a-matihiko/releases" class="badge badge-danger mr-3">
+          alpha {{ VERSION_NUMBER }}
         </a>
         <div class="collapse navbar-collapse" id="navbarNav">
+          <div class="navbar-nav mr-auto">
+            <a class="nav-item nav-link" href="{% url 'pikau:index' %}">
+              {% trans "Pīkau" %}
+            </a>
+          </div>
           <div class="navbar-nav ml-auto">
             {% if request.user.is_authenticated %}
               <span class="navbar-text mx-3">
@@ -43,10 +51,15 @@
         </div>
       </div>
     </nav>
+
+    {% block breadcrumbs %}
+    {% endblock breadcrumbs %}
+
     {% block body_container %}
       <div id="content-container" class="container pt-3">
         <div class="row">
           <div class="col-12">
+            {% render_breadcrumbs %}
             {% block custom_page_heading %}
               <h1>
                 {% block page_heading %}
@@ -97,11 +110,19 @@
             </ul>
           </div>
         </div>
-        <p class="text-center mb-0">
+        <p class="text-center text-muted">
           <small>
             {% blocktrans trimmed %}
             This website is open source on <a href="https://github.com/uccser/kia-takatu-a-matihiko">GitHub</a>.
+            Icons provided generously by <a href="https://icons8.com/">icons8</a>.
             {% endblocktrans %}
+          </small>
+        </p>
+        <p class="text-center mb-0">
+          <small>
+            <a href="https://github.com/uccser/kia-takatu-a-matihiko/releases">
+              {{ VERSION_NUMBER }}
+            </a>
           </small>
         </p>
       </div>

@@ -38,6 +38,12 @@ urlpatterns = [
         views.GlossaryList.as_view(),
         name="glossary"
     ),
+    # eg: /pikau/pathways/
+    path(
+        "pathways/",
+        views.PathwaysView.as_view(),
+        name="pathways"
+    ),
     # eg: /pikau/goals/
     path(
         "goals/",
@@ -68,6 +74,18 @@ urlpatterns = [
         views.PikauCourseDetail.as_view(),
         name="pikau_course"
     ),
+    # eg: /pikau/pikau-courses/pikau-1/content/
+    path(
+        "pikau-courses/<slug:slug>/content/",
+        views.PikauCourseContent.as_view(),
+        name="pikau_content"
+    ),
+    # eg: /pikau/pikau-courses/pikau-1/content/unit-1/
+    path(
+        "pikau-courses/<slug:course_slug>/content/<slug:unit_slug>/",
+        views.PikauUnitDetail.as_view(),
+        name="pikau_unit"
+    ),
     # eg: /pikau/progress-outcomes/
     path(
         "progress-outcomes/",
@@ -79,6 +97,18 @@ urlpatterns = [
         "progress-outcomes/<slug:slug>/",
         views.ProgressOutcomeDetail.as_view(),
         name="progress_outcome"
+    ),
+    # eg: /pikau/readiness-levels/
+    path(
+        "readiness-levels/",
+        views.ReadinessLevelList.as_view(),
+        name="readiness_level_list"
+    ),
+    # eg: /pikau/readiness-levels/1/
+    path(
+        "readiness-levels/<int:level_number>/",
+        views.ReadinessLevelDetail.as_view(),
+        name="readiness_level"
     ),
     # eg: /pikau/tags/
     path(

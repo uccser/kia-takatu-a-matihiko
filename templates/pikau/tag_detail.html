@@ -1,11 +1,28 @@
 {% extends "base.html" %}
 
+{% load django_bootstrap_breadcrumbs %}
+
+{% block breadcrumbs %}
+  {% breadcrumb "Home" "/" %}
+  {% breadcrumb "Pīkau" "pikau:index" %}
+  {% breadcrumb "Tags" "pikau:tag_list" %}
+  {% breadcrumb tag.name "" %}
+{% endblock breadcrumbs %}
+
 {% block page_heading %}
   Tag: {% include "pikau/snippets/tag_badge.html" %}
 {% endblock page_heading %}
 
 {% block content %}
-  <p><strong>Slug:</strong> <code>{{ tag.slug }}</code></p>
+  {% if tag.description %}
+    <p>
+      <strong>Description:</strong> {{ tag.description }}
+    </p>
+  {% endif %}
+
+  <p>
+    <strong>Slug:</strong> <code>{{ tag.slug }}</code>
+  </p>
 
   <p><strong>Pikau Courses:</strong></p>
   <div class="row">

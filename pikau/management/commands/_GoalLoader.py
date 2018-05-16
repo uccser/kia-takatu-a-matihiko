@@ -14,12 +14,13 @@ class GoalLoader(BaseLoader):
         goals = self.load_yaml_file("goals.yaml")
 
         for goal_slug, goal_description in goals.items():
-            goal = Goal(
+            defaults = {
+                "description": goal_description,
+            }
+            goal, created = Goal.objects.update_or_create(
                 slug=goal_slug,
-                description=goal_description,
+                defaults=defaults,
             )
-            goal.save()
-
-            self.log("Added goal: {}".format(goal.__str__()))
+            self.log_object_creation(created, goal)
 
         self.log("All goals loaded!\n")

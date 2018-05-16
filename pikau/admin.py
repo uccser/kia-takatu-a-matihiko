@@ -1,39 +1,26 @@
 """Admin configuration for the pikau application."""
 
 from django.contrib import admin
+from pikau.models import (
+    Level,
+    Milestone,
+    PikauCourse,
+    ProgressOutcome,
+    Tag,
+    Topic,
+)
 
-from .models import PikauCourse
 
 class PikauCourseAdmin(admin.ModelAdmin):
+    """Admin configuration of Pikau Course pages."""
+
     list_display = ("name", "language", "topic", "level")
-    fieldsets = [
-        (
-            None,
-            {"fields": [
-                "name",
-                "slug",
-            ]}
-        ),
-        (
-            "Metadata",
-            {"fields": [
-                "language",
-                "topic",
-                "level",
-                "progress_outcomes",
-                "tags",
-            ]}
-        ),
-        (
-            "Development Information",
-            {"fields": [
-                "development_folder",
-                "status",
-                "status_updated",
-            ]}
-        ),
-    ]
-    filter_horizontal = ("tags", "progress_outcomes")
-    readonly_fields = ("status_updated", )
+    filter_horizontal = ("tags", "progress_outcomes", "prerequisites")
+
 
 admin.site.register(PikauCourse, PikauCourseAdmin)
+admin.site.register(Level)
+admin.site.register(Milestone)
+admin.site.register(ProgressOutcome)
+admin.site.register(Tag)
+admin.site.register(Topic)

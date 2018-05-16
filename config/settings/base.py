@@ -24,6 +24,7 @@ DJANGO_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
+    "django_bootstrap_breadcrumbs",
     "crispy_forms",
     "allauth",
     "allauth.account",
@@ -73,10 +74,11 @@ DEBUG = False
 TIME_ZONE = "NZ"
 LANGUAGE_CODE = "en-NZ"
 USE_I18N = True
-USE_L10N = True
+USE_L10N = False
 USE_TZ = True
 TIME_FORMAT = "fA"
 SITE_ID = 1
+DATE_FORMAT = "jS F, Y"
 
 DATETIME_INPUT_FORMATS = [
     "%d/%m/%Y %H:%M:%S",
@@ -134,6 +136,7 @@ TEMPLATES = [
                 "django.template.context_processors.static",
                 "django.template.context_processors.tz",
                 "django.contrib.messages.context_processors.messages",
+                "config.context_processors.version_number.version_number",
             ],
             "libraries": {
                 "render_html_field": "config.templatetags.render_html_field",
@@ -204,7 +207,7 @@ AUTHENTICATION_BACKENDS = (
 LOGIN_REDIRECT_URL = "index"
 ACCOUNT_AUTHENTICATION_METHOD = "email"
 ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_EMAIL_VERIFICATION = "none"
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_FORMS = {
     "signup": "config.allauth.CustomSignupForm"
@@ -216,3 +219,4 @@ CRISPY_TEMPLATE_PACK = "bootstrap4"
 # ------------------------------------------------------------------------------
 PIKAU_CONTENT_BASE_PATH = os.path.join(BASE_DIR, "pikau/content")
 CUSTOM_VERTO_TEMPLATES = os.path.join(BASE_DIR, "utils/custom_converter_templates/")
+BREADCRUMBS_TEMPLATE = "django_bootstrap_breadcrumbs/bootstrap4.html"

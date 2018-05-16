@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% load django_bootstrap_breadcrumbs %}
+
+{% block breadcrumbs %}
+  {% breadcrumb "Home" "/" %}
+  {% breadcrumb "Pīkau" "pikau:index" %}
+  {% breadcrumb "Readiness Levels" "" %}
+{% endblock breadcrumbs %}
+
+{% block page_heading %}
+  Readiness Levels
+{% endblock page_heading %}
+
+{% block content %}
+  <p>This page lists all the readiness levels available within Pīkau.</p>
+
+  <table class="table table-hover table-responsive">
+    <thead>
+      <tr>
+        <th scope="col" colspan="2">Readiness Level</th>
+        <th scope="col" class="text-center">Number of Pikau</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for num,level in readiness_levels.items %}
+        <tr>
+          <td>
+            {% with num|stringformat:"s" as readiness_level %}
+              {% with "images/flame-stage-"|add:readiness_level|add:".png" as flame_image %}
+                <img src="{% static flame_image %}" class="icon"><br>
+              {% endwith %}
+            {% endwith %}
+          </td>
+          <td class="align-middle">
+            <h5>
+              <a href="{% url 'pikau:readiness_level' num %}">
+                {{ level.name }}
+              </a>
+            </h5>
+          </td>
+          <td class="align-middle text-center">
+            {{ level.count }}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock content %}

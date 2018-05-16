@@ -1,5 +1,14 @@
 {% extends "base.html" %}
 
+{% load django_bootstrap_breadcrumbs %}
+
+{% block breadcrumbs %}
+  {% breadcrumb "Home" "/" %}
+  {% breadcrumb "Pīkau" "pikau:index" %}
+  {% breadcrumb "Topics" "pikau:topic_list" %}
+  {% breadcrumb topic.name "" %}
+{% endblock breadcrumbs %}
+
 {% block page_heading %}
   Topic: {% include "pikau/snippets/topic_badge.html" %}
 {% endblock page_heading %}

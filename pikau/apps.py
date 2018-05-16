@@ -7,6 +7,3 @@ class PikauConfig(AppConfig):
     """Configuration object for the pikau application."""
 
     name = "pikau"
-
-    def ready(self):
-        import pikau.signals

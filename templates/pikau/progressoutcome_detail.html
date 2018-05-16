@@ -1,7 +1,17 @@
 {% extends "base.html" %}
 
+{% load django_bootstrap_breadcrumbs %}
+
+{% block breadcrumbs %}
+  {% breadcrumb "Home" "/" %}
+  {% breadcrumb "Pīkau" "pikau:index" %}
+  {% breadcrumb "Progress Outcomes" "pikau:progress_outcome_list" %}
+  {% breadcrumb progress_outcome.name "" %}
+{% endblock breadcrumbs %}
+
 {% block page_heading %}
-  {{ progress_outcome.name }}: {% include "pikau/snippets/progress_outcome_badge.html" %}
+  {% include "pikau/snippets/progress_outcome_full_badge.html" %}
+  {% include "pikau/snippets/progress_outcome_badge.html" %}
 {% endblock page_heading %}
 
 {% block content %}

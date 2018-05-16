@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% load render_html_field %}
+{% load django_bootstrap_breadcrumbs %}
+
+{% block breadcrumbs %}
+  {% breadcrumb "Home" "/" %}
+  {% breadcrumb "Pīkau" "pikau:index" %}
+  {% breadcrumb "Courses" "pikau:pikau_course_list" %}
+  {% breadcrumb pikau_course.name "pikau:pikau_course" pikau_course.slug %}
+  {% breadcrumb "Content" "" %}
+{% endblock breadcrumbs %}
+
+{% block custom_page_heading %}
+  <div class="jumbotron bg-size-cover"{% if pikau_course.cover_photo %} style="background-image:url({% static pikau_course.cover_photo %});"{% endif %}>
+    <h1 class="text-white text-center">{{ pikau_course.name }}</h1>
+  </div>
+{% endblock custom_page_heading %}
+
+{% block content %}
+  <div class="alert alert-info" role="alert">
+    <small><strong>Note:</strong> These pages aim to display how content will be viewed on iQualify, however this consistency is not guaranteed. Different icons are used for licensing reasons.</small>
+  </div>
+
+  <h2>Overview</h2>
+  {% render_html_field pikau_course.overview %}
+
+  <h2>Contents</h2>
+  {% for unit in pikau_course.content.all %}
+    {% if unit.module_name %}
+      {% ifchanged unit.module_name %}
+        <div class="btn-spacer"></div>
+        <div class="btn btn-light btn-block btn-pikau-module">
+          {{ unit.module_name }}
+        </div>
+      {% endifchanged %}
+    {% elif not forloop.first %}
+      <div class="btn-spacer"></div>
+    {% endif %}
+    <a href="{% url 'pikau:pikau_unit' pikau_course.slug unit.slug %}" class="btn btn-light btn-block btn-pikau-unit">
+      <span class="mr-5 text-muted">&#8413;</span> {{ unit.name }}
+    </a>
+  {% endfor %}
+{% endblock content %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/iqualify.css' %}">
+{% endblock css %}

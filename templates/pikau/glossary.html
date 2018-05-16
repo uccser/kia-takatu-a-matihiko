@@ -1,5 +1,13 @@
 {% extends "base.html" %}
 
+{% load django_bootstrap_breadcrumbs %}
+
+{% block breadcrumbs %}
+  {% breadcrumb "Home" "/" %}
+  {% breadcrumb "Pīkau" "pikau:index" %}
+  {% breadcrumb "Glossary" "" %}
+{% endblock breadcrumbs %}
+
 {% block page_heading %}
   Glossary
 {% endblock page_heading %}
@@ -18,7 +26,7 @@
     <tbody>
       {% for glossary_term in glossary_terms %}
         <tr>
-          <td>{{ glossary_term.term }}</td>
+          <td id="{{ glossary_term.slug }}">{{ glossary_term.term }}</td>
           <td><code>{{ glossary_term.slug }}</code></td>
           <td>{{ glossary_term.description }}</td>
         </tr>

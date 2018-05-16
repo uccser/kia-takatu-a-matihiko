@@ -2,81 +2,206 @@
 
 {% load static %}
 {% load render_html_field %}
+{% load django_bootstrap_breadcrumbs %}
+
+{% block breadcrumbs %}
+  {% breadcrumb "Home" "/" %}
+  {% breadcrumb "Pīkau" "pikau:index" %}
+  {% breadcrumb "Courses" "pikau:pikau_course_list" %}
+  {% breadcrumb pikau_course.name "" %}
+{% endblock breadcrumbs %}
 
 {% block custom_page_heading %}
-  <div class="jumbotron bg-size-cover"{% if pikau_course.cover_photo %} style="background-image:url({% static pikau_course.cover_photo %});"{% endif %}>
-    <h1 class="display-4">{{ pikau_course.name }}</h1>
+  <div class="jumbotron bg-size-cover text-center"{% if pikau_course.cover_photo %} style="background-image:url({% static pikau_course.cover_photo %});"{% endif %}>
+    {% if pikau_course.readiness_level %}
+      {% with pikau_course.readiness_level|stringformat:"s" as readiness_level %}
+        {% with "images/flame-stage-"|add:readiness_level|add:".png" as flame_image %}
+          <img src="{% static flame_image %}" class="icon"><br>
+        {% endwith %}
+      {% endwith %}
+    {% endif %}
+    <h1 class="text-white">{{ pikau_course.name }}</h1>
+    {% if pikau_course.status < 6 and pikau_course.development_folder %}
+      <a class="btn btn-lg btn-light mt-3" href="{{ pikau_course.development_folder }}" target="_blank">
+        <img src="{% static 'images/icons/icons8/google-drive.png' %}" class="icon">
+        View on Google Drive
+      </a>
+    {% endif %}
+    {% if pikau_course.status >= 6 %}
+      <a class="btn btn-lg btn-light mt-3" href="{% url 'pikau:pikau_content' pikau_course.slug  %}">
+        View content
+      </a>
+    {% endif %}
   </div>
 {% endblock custom_page_heading %}
 
 {% block content %}
-  <p><strong>Slug:</strong> <code>{{ pikau_course.slug }}</code></p>
 
-  <h2>Development Information</h2>
-  {% include "pikau/snippets/pikau_course_progress_bar.html" %}
-  <p><strong>Status updated: </strong>{{ pikau_course.status_updated }}</p>
+  <div class="border my-3 p-3 text-center">
+    <h2>Development Information</h2>
 
-  <h2>Metadata</h2>
-  <p><strong>Language:</strong> {{ pikau_course.get_language_display }}</p>
-  <p>
-    {% with topic=pikau_course.topic %}
-      {% if topic %}
-        <strong>Topic:</strong>
-        {% include "pikau/snippets/topic_badge.html" %}
-      {% endif %}
-    {% endwith %}
-  </p>
-  <p>
-    {% with level=pikau_course.level %}
-      {% if level %}
-        <strong>Level:</strong>
-        {% include "pikau/snippets/level_badge.html" %}
-      {% endif %}
-    {% endwith %}
-  </p>
+    <div class="row">
+      <div class="col-12 col-md-6 mb-3">
+        {% if pikau_course.milestone %}
+           <p class="mb-0">
+            <strong>Milestone</strong><br>
+            {{ pikau_course.milestone }}
+            {% if pikau_course.is_upcoming_milestone %}
+              <br>
+              Due in {{ pikau_course.milestone.date|timeuntil }}
+            {% endif %}
+        {% endif %}
+      </div>
+      <div class="col-12 col-md-6 mb-3">
+        {% if pikau_course.manager %}
+           <p class="mb-0">
+            <strong>Manager</strong><br>
+            <a href="mailto:{{ pikau_course.manager.email }}">
+              {{ pikau_course.manager.get_full_name }}
+            </a>
+        {% endif %}
+      </div>
+    </div>
 
-  {% if pikau_course.progress_outcomes.all %}
-    <p><strong>Progress Outcomes:</strong></p>
-    <ul>
-      {% for progress_outcome in pikau_course.progress_outcomes.all %}
-        <li>{% include "pikau/snippets/progress_outcome_full_badge.html" %}</li>
-      {% endfor %}
-    </ul>
+    {% include "pikau/snippets/pikau_course_progress_bar.html" %}
+    <small>
+      Status last changed on {{ pikau_course.status_updated|date:"jS F, Y" }}
+    </small>
+  </div>
+
+  <div class="border my-3 p-3">
+    <h2 class="text-center">Metadata</h2>
+
+    <div class="row">
+      <div class="col-12 col-lg-6">
+        <table class="table mb-0">
+          <tbody>
+            <tr>
+              <th scope="row">Language</th>
+              <td>{{ pikau_course.get_language_display }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Topic</th>
+              <td>
+                {% if pikau_course.topic %}
+                  {% with topic=pikau_course.topic %}
+                    {% include "pikau/snippets/topic_badge.html" %}
+                  {% endwith %}
+                {% endif %}
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Level</th>
+              <td>
+                {% if pikau_course.level %}
+                  {% with level=pikau_course.level %}
+                    {% include "pikau/snippets/level_badge.html" %}
+                  {% endwith %}
+                {% endif %}
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Progress Outcomes</th>
+              <td>
+                {% for progress_outcome in pikau_course.progress_outcomes.all %}
+                  {% include "pikau/snippets/progress_outcome_full_badge.html" %}
+                {% endfor %}
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Tags</th>
+              <td>
+                {% for tag in pikau_course.tags.all %}
+                  {% include "pikau/snippets/tag_badge.html" %}
+                {% endfor %}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="col-12 col-lg-6">
+        <table class="table mb-0 table-sequential">
+          <tbody>
+            <tr>
+              <th scope="row">Readiness Level</th>
+              <td>
+                {% if pikau_course.readiness_level %}
+                  <a href="{% url 'pikau:readiness_level' pikau_course.readiness_level %}">
+                    {{ pikau_course.get_readiness_level_display }}
+                  </a>
+                {% else %}
+                  None
+                {% endif %}
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Glossary Terms</th>
+              <td>
+                <ul class="mb-0">
+                {% for glossary_term in pikau_course.glossary_terms.all %}
+                  <li>
+                    <a href="{% url 'pikau:glossary' %}#{{ glossary_term.slug }}">
+                      {{ glossary_term.term }}
+                    </a>
+                  </li>
+                {% endfor %}
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Prerequisite Pīkau Courses</th>
+              <td>
+                <ul class="mb-0">
+                {% for course in pikau_course.prerequisites.all %}
+                  <li>
+                    <a href="{{ course.get_absolute_url }}">
+                      {{ course.name }}
+                    </a>
+                  </li>
+                {% endfor %}
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Postrequisite Pīkau Courses</th>
+              <td>
+                <ul class="mb-0">
+                {% for course in pikau_course.postrequisites.all %}
+                  <li>
+                    <a href="{{ course.get_absolute_url }}">
+                      {{ course.name }}
+                    </a>
+                  </li>
+                {% endfor %}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  {% if pikau_course.trailer_video %}
+    <h2>Trailer Video</h2>
+    <p><a href="{{ pikau_course.trailer_video }}">View</a></p>
   {% endif %}
 
-  <p><strong>Trailer Video:</strong> <a href="{{ pikau_course.trailer_video }}">View</a></p>
-
-  {% if pikau_course.progress_outcomes.all %}
-    <p><strong>Tags:</strong></p>
-    <ul>
-      {% for tag in pikau_course.tags.all %}
-        <li>{% include "pikau/snippets/tag_badge.html" %}</li>
-      {% endfor %}
-    </ul>
+  {% if pikau_course.resources %}
+    <h2>Resources</h2>
+    <p><em>TODO RENDERING</em></p>
   {% endif %}
 
-  <p><strong>Glossary Terms:</strong></p>
-  <ul>
-    {% for glossary_term in pikau_course.glossary_terms.all %}
-      <li>{{ glossary_term.term }}</li>
-    {% endfor %}
-  </ul>
+  {% if pikau_course.study_plan %}
+    <h2>Study Plan</h2>
+    {% render_html_field pikau_course.study_plan %}
+  {% endif %}
 
-  <h2>Overview</h2>
-  {% render_html_field pikau_course.overview %}
+  {% if pikau_course.assessment_description %}
+    <h2>Assessment Description</h2>
+    {% render_html_field pikau_course.assessment_description %}
+  {% endif %}
 
-  <h2>Content</h2>
-  <p><em>TODO</em></p>
-
-  <h2>Resources</h2>
-  <p><em>TODO</em></p>
-
-  <h2>Study Plan</h2>
-  {% render_html_field pikau_course.study_plan %}
-
-  <h2>Assessment Description</h2>
-  {% render_html_field pikau_course.assessment_description %}
-
-  <h2>Assessment Items</h2>
-  {% render_html_field pikau_course.assessment_items %}
+  {% if pikau_course.assessment_items %}
+    <h2>Assessment Items</h2>
+    {% render_html_field pikau_course.assessment_items %}
+  {% endif %}
 {% endblock content %}
