@@ -13,9 +13,10 @@ class TagLoader(BaseLoader):
         """Load the tags into the database."""
         tags = self.load_yaml_file("tags.yaml")
 
-        for tag_slug, tag_name in tags.items():
+        for tag_slug, tag_data in tags.items():
             defaults = {
-                "name": tag_name,
+                "name": tag_data["name"],
+                "description": tag_data.get("description", ""),
             }
             tag, created = Tag.objects.update_or_create(
                 slug=tag_slug,
