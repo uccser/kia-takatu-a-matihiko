@@ -173,6 +173,7 @@ class PikauCourse(models.Model):
     readiness_level = models.IntegerField(
         choices=READINESS_CHOICES,
         default=1,
+        null=True,
     )
     topic = models.ForeignKey(
         Topic,
