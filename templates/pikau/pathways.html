@@ -18,7 +18,7 @@
   <div class="d-inline-flex flex-column mb-3">
     {% for num,level in readiness_levels.items %}
       <div class="px-2" style="background-color:{{ level.color }};">
-        <small>Level {{num}} - {{ level.name }}</small>
+        <small>{{ level.name }}</small>
       </div>
     {% endfor %}
   </div>

@@ -2,37 +2,96 @@
 
 {% load i18n %}
 {% load static %}
+{% load django_bootstrap_breadcrumbs %}
+
+{% block breadcrumbs %}
+  {% breadcrumb "Home" "/" %}
+  {% breadcrumb "Pīkau" "pikau:index" %}
+  {% breadcrumb "Documentation" "" %}
+{% endblock breadcrumbs %}
 
 {% block page_heading %}
   Pīkau Documentation
 {% endblock page_heading %}
 
 {% block content %}
-
-  <div class="alert alert-warning" role="alert">
-    This page is under construction!
-  </div>
-
-  <h2>Introduction</h2>
   <p>
     This page aims to explain how pīkau are managed and stored in this tool, and how to use this area of the website aid you in your pīkau development.
+    You can jump to any of the sections using the links below.
   </p>
 
-  <h2>Stages of development</h2>
+  <p><strong>Table of Contents</strong></p>
 
-  <table class="table table-sm table-borderless table-responsive">
-    <tbody>
-      {% for stage_num, stage_name in status_stages %}
-        <tr>
-          <td class="fire-stage-{{ stage_num }}">
-            <strong>{{ stage_name }}</strong>
-          </td>
-        </tr>
+  <ul>
+    <li>
+      <a href="#understanding-pipeline">Understanding the Pīkau creation pipeline</a>
+    </li>
+    <li>
+      <a href="#conceptualising">Conceptualising a Pīkau</a> (before creating the file)
+    </li>
+    <li>
+      <a href="#creating">Creating a Pīkau on Google Drive</a>
+    </li>
+    <li>
+      <a href="#writing">Writing Pīkau content on Google Drive</a>
+    </li>
+  </ul>
+
+  <p>If you have any suggestions for this page, please <a href="{% url 'contact' %}">contact me</a>.</p>
+
+  <hr id="understanding-pipeline" class="permalink">
+
+  <h2>Understanding the Pīkau creation pipeline</h2>
+
+  <img class="d-none d-md-block float-right mb-3 ml-3" src="{% static 'images/google-drive-logo.png' %}">
+
+  <p>
+    Pīkau need to be created quickly and collaboratively, and therefore we are using Google Drive to create Pīkau.
+    Pīkau moves through the following status stages while being created on Google Drive.
+    During this time the Pīkau can also be listed on this website, which provides an easy link for authors to the Pīkau Google Drive file.
+  </p>
+
+  <div class="col-12 col-md-6">
+    <div class="d-flex flex-column mb-3">
+      {% for stage_num, stage_name in status_stages|slice:":5" %}
+        <div class="fire-stage-{{ stage_num }} p-2">
+          {{ stage_name }}
+        </div>
       {% endfor %}
-    </tbody>
-  </table>
+    </div>
+  </div>
 
-  <h2>Creating a Pīkau</h2>
+  <img class="d-none d-md-block float-right mb-3 ml-3" src="{% static 'images/iqualify-logo.png' %}">
+
+  <p>
+    Once a Pīkau is completed, the Google Drive file is locked and the Pīkau is added to iQualify.
+    The Pīkau is then marked as the completed status.
+  </p>
+
+  <div class="col-12 col-md-6">
+    <div class="fire-stage-{{ status_stages.5.0 }} p-2 mb-3">
+      {{ status_stages.5.1 }}
+    </div>
+  </div>
+
+  <p>
+    When a Pīkau is completed, the source files are then copied into this website's repository.
+    This is to allow authors to easily view the content rendered as it would on iQualify on this website, and also makes the content source files publically available (as written in our contract agreement).
+  </p>
+
+  <p>
+    Once a Pīkau is then published to the public, the status is updated to the following:
+  </p>
+
+  <div class="col-12 col-md-6">
+    <div class="fire-stage-{{ status_stages.6.0 }} p-2 mb-3">
+      {{ status_stages.6.1 }}
+    </div>
+  </div>
+
+  <hr id="conceptualising" class="permalink">
+
+  <h2>Conceptualising a Pīkau</h2>
 
   <p>When creating a pīkau, the first step is to plan out the high level positioning of the pīkau.</p>
 
@@ -40,62 +99,74 @@
 
   <p>The following data can be optionally tied to each pīkau, however the more data that is attached to each pīkau allows this tool to display the connectionss and coverage effectively.</p>
 
-  <table class="table table-responsive">
-    <thead>
-      <tr>
-        <th scope="col">Data</th>
-        <th scope="col">Choices</th>
-      </tr>
-    </thead>
-    <tbody>
-        <tr>
-          <td>
-            <strong>Topic</strong><br>
-            Select <em>one</em>
-          </td>
-          <td>
-            {% for topic in topics %}
-              {% include "pikau/snippets/topic_badge.html" %}<br>
-            {% endfor %}
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <strong>Level</strong><br>
-            Select <em>one</em>
-          </td>
-          <td>
-            {% for level in levels %}
-              {% include "pikau/snippets/level_badge.html" %}<br>
-            {% endfor %}
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <strong>Progress Outcomes</strong><br>
-            Select <em>one or more</em>
-          </td>
-          <td>
-            {% for progress_outcome in progress_outcomes %}
-              {% include "pikau/snippets/progress_outcome_full_badge.html" %}<br>
-            {% endfor %}
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <strong>Tags</strong><br>
-            Select <em>one or more</em>
-          </td>
-          <td>
-            {% for tag in tags %}
-              {% include "pikau/snippets/tag_badge.html" %}<br>
-            {% endfor %}
-          </td>
-        </tr>
-    </tbody>
-  </table>
+  <!-- TODO: List important metadata first, in particular SRT tags -->
 
-  <h3>Writing Pīkau content</h3>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Data</th>
+          <th scope="col">Choices</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td>
+              <strong>Topic</strong><br>
+              Select <em>one</em>
+            </td>
+            <td>
+              {% for topic in topics %}
+                {% include "pikau/snippets/topic_badge.html" %}<br>
+              {% endfor %}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Level</strong><br>
+              Select <em>one</em>
+            </td>
+            <td>
+              {% for level in levels %}
+                {% include "pikau/snippets/level_badge.html" %}<br>
+              {% endfor %}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Progress Outcomes</strong><br>
+              Select <em>one or more</em>
+            </td>
+            <td>
+              {% for progress_outcome in progress_outcomes %}
+                {% include "pikau/snippets/progress_outcome_full_badge.html" %}<br>
+              {% endfor %}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Tags</strong><br>
+              Select <em>one or more</em>
+            </td>
+            <td>
+              {% for tag in tags %}
+                {% include "pikau/snippets/tag_badge.html" %}<br>
+              {% endfor %}
+            </td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr id="creating" class="permalink">
+
+  <h2>Creating a Pīkau on Google Drive</h2>
+
+  <!-- TODO: Link to Google Drive Template -->
+
+  <hr id="writing" class="permalink">
+
+  <h2>Writing a Pīkau on Google Drive</h2>
 
   <p>
     When writing content for a pīkau, be should to take advantage of the formatting options available on iQualify.
@@ -125,115 +196,117 @@
     <small><strong>Note:</strong> This page aims to display how content will be viewed on iQualify, however this consistency is not guaranteed. Different icons are used for licensing reasons.</small>
   </div>
 
-  <table class="table table-responsive">
-    <thead>
-      <tr>
-        <th scope="col">How it appears on iQualify</th>
-        <th scope="col">How to write it on Google Drive</th>
-      </tr>
-    </thead>
-    <tbody>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
         <tr>
-          <td>
-            <div class="boxed-text my-0 boxed-text-pull-out">
-              <div class="boxed-text-contents">
-                Pull out box
-              </div>
-            </div>
-          </td>
-          <td>
-            <div class="gd-box gd-box-orange">
-              Table of one cell with orange background
-            </div>
-          </td>
+          <th scope="col">How it appears on iQualify</th>
+          <th scope="col">How to write it on Google Drive</th>
         </tr>
-        <tr>
-          <td>
-            <div class="boxed-text my-0 boxed-text-example">
-              <div class="boxed-text-contents">
-                Example box
+      </thead>
+      <tbody>
+          <tr>
+            <td>
+              <div class="boxed-text my-0 boxed-text-pull-out">
+                <div class="boxed-text-contents">
+                  Pull out box
+                </div>
               </div>
-            </div>
-          </td>
-          <td>
-            <div class="gd-box gd-box-yellow">
-              Table of one cell with yellow background
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div class="boxed-text my-0 boxed-text-reading">
-              <div>
-                <img class="icon" src="{% static 'images/icons/icons8/reading.png' %}">
+            </td>
+            <td>
+              <div class="gd-box gd-box-orange">
+                Table of one cell with orange background
               </div>
-              <div class="boxed-text-contents">
-                Reading box
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="boxed-text my-0 boxed-text-example">
+                <div class="boxed-text-contents">
+                  Example box
+                </div>
               </div>
-            </div>
-          </td>
-          <td>
-            <div class="gd-box gd-box-teal">
-              Table of one cell with teal background
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div class="boxed-text my-0 boxed-text-tip">
-              <div>
-                <img class="icon" src="{% static 'images/icons/icons8/tip.png' %}">
+            </td>
+            <td>
+              <div class="gd-box gd-box-yellow">
+                Table of one cell with yellow background
               </div>
-              <div class="boxed-text-contents">
-                Tip box
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="boxed-text my-0 boxed-text-reading">
+                <div>
+                  <img class="icon" src="{% static 'images/icons/icons8/reading.png' %}">
+                </div>
+                <div class="boxed-text-contents">
+                  Reading box
+                </div>
               </div>
-            </div>
-          </td>
-          <td>
-            <div class="gd-box gd-box-green">
-              Table of one cell with green background
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div class="boxed-text my-0 boxed-text-case-study">
-              <div>
-                <img class="icon" src="{% static 'images/icons/icons8/case-study.png' %}">
+            </td>
+            <td>
+              <div class="gd-box gd-box-teal">
+                Table of one cell with teal background
               </div>
-              <div class="boxed-text-contents">
-                Case study box
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="boxed-text my-0 boxed-text-tip">
+                <div>
+                  <img class="icon" src="{% static 'images/icons/icons8/tip.png' %}">
+                </div>
+                <div class="boxed-text-contents">
+                  Tip box
+                </div>
               </div>
-            </div>
-          </td>
-          <td>
-            <div class="gd-box gd-box-purple">
-              Table of one cell with purple background
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div class="boxed-text my-0 boxed-text-quote">
-              <div>
-                <img class="quote quote-start" src="{% static 'images/icons/icons8/quote-start.png' %}">
+            </td>
+            <td>
+              <div class="gd-box gd-box-green">
+                Table of one cell with green background
               </div>
-              <div class="boxed-text-contents">
-                Quote
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="boxed-text my-0 boxed-text-case-study">
+                <div>
+                  <img class="icon" src="{% static 'images/icons/icons8/case-study.png' %}">
+                </div>
+                <div class="boxed-text-contents">
+                  Case study box
+                </div>
               </div>
-              <div>
-                <img class="quote quote-end" src="{% static 'images/icons/icons8/quote-end.png' %}">
+            </td>
+            <td>
+              <div class="gd-box gd-box-purple">
+                Table of one cell with purple background
               </div>
-            </div>
-          </td>
-          <td class="align-middle">
-            <div class="gd-box gd-box-blue">
-              Table of one cell with blue background
-            </div>
-          </td>
-        </tr>
-    </tbody>
-  </table>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="boxed-text my-0 boxed-text-quote">
+                <div>
+                  <img class="quote quote-start" src="{% static 'images/icons/icons8/quote-start.png' %}">
+                </div>
+                <div class="boxed-text-contents">
+                  Quote
+                </div>
+                <div>
+                  <img class="quote quote-end" src="{% static 'images/icons/icons8/quote-end.png' %}">
+                </div>
+              </div>
+            </td>
+            <td class="align-middle">
+              <div class="gd-box gd-box-blue">
+                Table of one cell with blue background
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+</div>
 
   <div class="alert alert-info" role="alert">
     <h4 class="alert-heading">How to add single cell table to Google Drive</h4>
@@ -245,7 +318,7 @@
     <img src="{% static 'images/google-drive-add-single-table-cell.png' %}" class="border">
   </div>
 
-
+  <p>If you are unsure if you can use a combination of formatting, please <a href="{% url 'contact' %}">contact me</a> and I can check for you.</p>
 {% endblock content %}
 
 {% block css %}
