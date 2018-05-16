@@ -20,7 +20,7 @@ def create_pathways_notation():
     Returns:
         String of graph notation.
     """
-    all_pikau = PikauCourse.objects.all()
+    all_pikau = PikauCourse.objects.exclude(readiness_level__isnull=True)
 
     # Create nodes
     nodes = []
