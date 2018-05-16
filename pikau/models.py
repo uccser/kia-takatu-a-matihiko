@@ -174,6 +174,7 @@ class PikauCourse(models.Model):
         choices=READINESS_CHOICES,
         default=1,
         null=True,
+        blank=True,
     )
     topic = models.ForeignKey(
         Topic,
