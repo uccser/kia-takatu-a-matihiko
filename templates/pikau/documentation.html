@@ -18,7 +18,7 @@
     This page aims to explain how pīkau are managed and stored in this tool, and how to use this area of the website aid you in your pīkau development.
   </p>
 
-  <h2>Stages of development</h2> 
+  <h2>Stages of development</h2>
 
   <table class="table table-sm table-borderless table-responsive">
     <tbody>
@@ -83,4 +83,149 @@
         </tr>
     </tbody>
   </table>
+
+  <h3>Writing Pīkau content</h3>
+
+  <p>
+    When writing content for a pīkau, be should to take advantage of the formatting options available on iQualify.
+    Using a variety of formats and media will ensure that the lesson is engaging, while taking full advantage of iQualify.
+  </p>
+
+  <p>
+    The following basic formatting tools can be used when writing on Google Drive, and will be rendered in iQualify:
+  </p>
+
+  <ul>
+    <li>Bold</li>
+    <li>Italics</li>
+    <li>Unordered lists</li>
+    <li>Ordered lists (either with numbers of letters)</li>
+    <li>Headings (only levels 2 and 3)</li>
+    <li>Tables</li>
+    <li>Images</li>
+    <li>Links (to external pages or within pīkau)</li>
+  </ul>
+
+  <p>
+    The following advanced formatting styles are available on iQualify, and the table below lists how to use these on Google Drive.
+  </p>
+
+  <div class="alert alert-info" role="alert">
+    <small><strong>Note:</strong> This page aims to display how content will be viewed on iQualify, however this consistency is not guaranteed. Different icons are used for licensing reasons.</small>
+  </div>
+
+  <table class="table table-responsive">
+    <thead>
+      <tr>
+        <th scope="col">How it appears on iQualify</th>
+        <th scope="col">How to write it on Google Drive</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+            <div class="boxed-text boxed-text-pull-out">
+              <div class="boxed-text-contents">
+                Pull out box
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="gd-box gd-box-orange">
+              Table of one cell with orange background
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="boxed-text boxed-text-example">
+              <div class="boxed-text-contents">
+                Example box
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="gd-box gd-box-yellow">
+              Table of one cell with yellow background
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="boxed-text boxed-text-reading">
+              <div>
+                <img class="icon" src="{% static 'images/icons/icons8/reading.png' %}">
+              </div>
+              <div class="boxed-text-contents">
+                Reading box
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="gd-box gd-box-teal">
+              Table of one cell with teal background
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="boxed-text boxed-text-tip">
+              <div>
+                <img class="icon" src="{% static 'images/icons/icons8/tip.png' %}">
+              </div>
+              <div class="boxed-text-contents">
+                Tip box
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="gd-box gd-box-green">
+              Table of one cell with green background
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="boxed-text boxed-text-case-study">
+              <div>
+                <img class="icon" src="{% static 'images/icons/icons8/case-study.png' %}">
+              </div>
+              <div class="boxed-text-contents">
+                Case study box
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="gd-box gd-box-purple">
+              Table of one cell with purple background
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="boxed-text boxed-text-quote">
+              <div>
+                <img class="quote quote-start" src="{% static 'images/icons/icons8/quote-start.png' %}">
+              </div>
+              <div class="boxed-text-contents">
+                Quote
+              </div>
+              <div>
+                <img class="quote quote-end" src="{% static 'images/icons/icons8/quote-end.png' %}">
+              </div>
+            </div>
+          </td>
+          <td class="align-middle">
+            <div class="gd-box gd-box-blue">
+              Table of one cell with blue background
+            </div>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
 {% endblock content %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/iqualify.css' %}">
+{% endblock css %}

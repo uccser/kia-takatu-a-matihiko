@@ -113,3 +113,28 @@ div.btn-spacer {
 .page-navigation:hover > img.page-navigation-icon {
   background-color: #00ccb0 !important;
 }
+/* Equivalent Google Drive styles */
+.gd-box {
+  border: 1px solid black;
+  padding: 0.5rem;
+  color: black;
+  font-family: "Arial", sans-serif;
+}
+.gd-box-orange {
+  background-color: #ff9900;
+}
+.gd-box-yellow {
+  background-color: #ffff00;
+}
+.gd-box-green {
+  background-color: #00ff00;
+}
+.gd-box-teal {
+  background-color: #00ffff;
+}
+.gd-box-blue {
+  background-color: #4a86e8;
+}
+.gd-box-purple {
+  background-color: #ff00ff;
+}
