@@ -20,17 +20,17 @@
     You can jump to any of the sections using the links below.
   </p>
 
-  <p><strong>Table of Contents</strong></p>
+  <h5><strong>Table of Contents</strong></h5>
 
   <ul>
     <li>
       <a href="#understanding-pipeline">Understanding the Pīkau creation pipeline</a>
     </li>
     <li>
-      <a href="#conceptualising">Conceptualising a Pīkau</a> (before creating the file)
+      <a href="#creating">Creating a Pīkau on Google Drive</a>
     </li>
     <li>
-      <a href="#creating">Creating a Pīkau on Google Drive</a>
+      <a href="#planning">Planning a Pīkau</a> <span class="text-muted">(can be done before creating the Pīkau on Google Drive)</span>
     </li>
     <li>
       <a href="#writing">Writing Pīkau content on Google Drive</a>
@@ -89,87 +89,213 @@
     </div>
   </div>
 
-  <hr id="conceptualising" class="permalink">
+  <hr id="creating" class="permalink">
 
-  <h2>Conceptualising a Pīkau</h2>
+  <h2>Creating a Pīkau on Google Drive</h2>
 
-  <p>When creating a pīkau, the first step is to plan out the high level positioning of the pīkau.</p>
+  <p>
+    When creating a Pīkau, follow the following steps:
+  </p>
 
-  <h3>Metadata</h3>
+  <ol>
+    <li>
+      Create a folder for the Pīkau within the Google Drive folder (<a href="https://drive.google.com/open?id=14sgLaA0kWybXm_v1UOqd8InOYVzHNBS6">link to English Medium folder</a>).
+    </li>
+    <li>
+      Create a copy of the <a href="https://drive.google.com/open?id=1VQ7lTYuKuL14IeT61w6WdNU0lwAJ3qdMWmWbij4fpmU">Pīkau tempate document</a> in your newly created Pīkau folder.
+    </li>
+    <li>
+      Follow the steps at the top of the template document, with the guidance of the section below on 'Planning a Pīkau'.
+      Once you have filled in the first 2 pages of the template (positioning and planning information), you can create a Pīkau on this website and link it to the Google document.
+      This allows you to track the progress of the Pīkau development easily, and see the connections to other Pīkau.
+    </li>
+  </ol>
 
-  <p>The following data can be optionally tied to each pīkau, however the more data that is attached to each pīkau allows this tool to display the connectionss and coverage effectively.</p>
+  <hr id="planning" class="permalink">
 
-  <!-- TODO: List important metadata first, in particular SRT tags -->
+  <h2>Planning a Pīkau</h2>
+
+  <p>
+    When planning a pīkau, the first step is to plan out the high level positioning of the pīkau.
+    Ask yourself the following questions to help ensure the Pīkau is positioned correctly:
+  </p>
+
+  <ul>
+    <li>
+      <strong>Level of readiness this Pīkau contributes to?</strong>
+      <ul>
+        <li>
+          Use the <a href="{% url 'pikau:readiness_level_list' %}">Readiness Levels</a> page to see existing level coverage.
+        </li>
+      </ul>
+    </li>
+    <li>
+      <strong>What outcome/path from the Self Review Tool (SRT) does this Pīkau relate to?</strong>
+      <ul>
+        <li>
+          The following outcomes are stored within this website relating to the Self Review Tool:<br>
+          {% for tag in srt_tags %}
+            {% include "pikau/snippets/tag_badge.html" %} - {{ tag.description }}<br>
+          {% endfor %}
+        </li>
+      </ul>
+    </li>
+    <li>
+      <strong>How does this Pīkau move the learner closer to readiness?</strong>
+      <ul>
+        <li>
+          Which readiness level is the Pīkau primarily aimed at?:<br>
+          <div class="d-inline-flex flex-column">
+            {% for num,level in readiness_levels.items %}
+              <div class="my-1">
+                {% with num|stringformat:"s" as readiness_level %}
+                  {% with "images/flame-stage-"|add:readiness_level|add:".png" as flame_image %}
+                    <img src="{% static flame_image %}" class="icon-small">
+                  {% endwith %}
+                {% endwith %}
+                <a href="{% url 'pikau:readiness_level' num %}">
+                  {{ level.name }}
+                </a>
+              </div>
+            {% endfor %}
+          </div>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <strong>Links to other Pīkau?</strong>
+      <ul>
+        <li>
+          Use the <a href="{% url 'pikau:pathways' %}">Pathways diagram</a> page to see Pīkau connections.
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+  <h3 class="h5">Adding course metadata</h3>
+
+  <p>
+    After establishing positioning, more details can be planned for the Pīkau on page 2 of the template document.
+    The following metadata can be optionally tied to each pīkau, however the more data that is attached to each pīkau allows this tool to display the connectionss and coverage effectively.
+  </p>
+
+  <p>
+    The following table lists areas requested on the template document, and the related exiting data within this website (you may need to create new metadata values).
+  </p>
+
+  <div class="alert alert-info" role="alert">
+    Remember complete lists of all metadata are available from the <a href="{% url 'pikau:index' %}">Pīkau homepage</a>.
+  </div>
+
 
   <div class="table-responsive">
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">Data</th>
-          <th scope="col">Choices</th>
+          <th scope="col">Template Field</th>
+          <th scope="col">Available Options</th>
         </tr>
       </thead>
       <tbody>
-          <tr>
-            <td>
-              <strong>Topic</strong><br>
-              Select <em>one</em>
-            </td>
-            <td>
-              {% for topic in topics %}
-                {% include "pikau/snippets/topic_badge.html" %}<br>
+        <tr>
+          <td>
+            <strong>Target Audience</strong><br>
+            Select <em>one</em>
+          </td>
+          <td>
+            {% for level in levels %}
+              {% include "pikau/snippets/level_badge.html" %}<br>
+            {% endfor %}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <strong>Pre-requisites</strong><br>
+            Select <em>zero or more</em>
+          </td>
+          <td>
+            View <a href="{% url 'pikau:pikau_course_list' %}">list of all Pīkau</a> and also the <a href="{% url 'pikau:pathways' %}">Pathways diagram</a>, and list all Pīkau that are a prerequisite to this Pīkau.
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <strong>Learning Outcomes</strong><br>
+            (called 'Goals' within iQualify)<br>
+            Select <em>zero or more</em>
+          </td>
+          <td>
+            {% if goals %}
+              {% for goal in goals %}
+                {{ goal.description }}<br>
               {% endfor %}
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <strong>Level</strong><br>
-              Select <em>one</em>
-            </td>
-            <td>
-              {% for level in levels %}
-                {% include "pikau/snippets/level_badge.html" %}<br>
-              {% endfor %}
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <strong>Progress Outcomes</strong><br>
-              Select <em>one or more</em>
-            </td>
-            <td>
-              {% for progress_outcome in progress_outcomes %}
-                {% include "pikau/snippets/progress_outcome_full_badge.html" %}<br>
-              {% endfor %}
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <strong>Tags</strong><br>
-              Select <em>one or more</em>
-            </td>
-            <td>
-              {% for tag in tags %}
-                {% include "pikau/snippets/tag_badge.html" %}<br>
-              {% endfor %}
-            </td>
-          </tr>
+            {% else %}
+              No learning outcomes/goals listed yet.
+            {% endif %}
+          </td>
+        </tr>
       </tbody>
     </table>
   </div>
 
-  <hr id="creating" class="permalink">
+  <p>
+    The following fields are currently not explicitly required on the template document, but we <strong>highly recommend</strong> also selecting these fields for your Pīkau and noting them in your template document.
+  </p>
 
-  <h2>Creating a Pīkau on Google Drive</h2>
+  <div class="table-responsive">
+    <table class="table border-bottom">
+      <thead>
+        <tr>
+          <th scope="col">Field</th>
+          <th scope="col">Available Options</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <strong>Topic</strong><br>
+            Select <em>one</em>
+          </td>
+          <td>
+            {% for topic in topics %}
+              {% include "pikau/snippets/topic_badge.html" %}<br>
+            {% endfor %}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <strong>Progress Outcomes</strong><br>
+            Select <em>one or more</em>
+          </td>
+          <td>
+            {% for progress_outcome in progress_outcomes %}
+              {% include "pikau/snippets/progress_outcome_full_badge.html" %}<br>
+            {% endfor %}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <strong>Tags</strong><br>
+            Select <em>one or more</em>
+          </td>
+          <td>
+            <a href="{% url 'pikau:tag_list' %}">View all available tags</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-  <!-- TODO: Link to Google Drive Template -->
+  <p>
+    Once you have filled in the first 2 pages of the template (positioning and planning information), you can create a Pīkau on this website and link it to the Google document.
+    This allows you to track the progress of the Pīkau development easily, and see the connections to other Pīkau.
+  </p>
 
   <hr id="writing" class="permalink">
 
-  <h2>Writing a Pīkau on Google Drive</h2>
+  <h2>Writing Pīkau content on Google Drive</h2>
 
   <p>
-    When writing content for a pīkau, be should to take advantage of the formatting options available on iQualify.
+    When writing content for a pīkau, be sure to take advantage of the formatting options available on iQualify.
     Using a variety of formats and media will ensure that the lesson is engaging, while taking full advantage of iQualify.
   </p>
 
