@@ -3,7 +3,7 @@
 ## 0.2.0 (Pre-release)
 
 - Readiness level is now optional. (fixes #24)
-- Add tags to connect Pīkau to Self Review Tool (SRT). (fixes #21)
+- Add tags to connect pīkau to Self Review Tool (SRT). (fixes #21)
 - Explain website and pipeline with documentation. (fixes #14)
 - Add link to Google Doc template. (fixes #13)
 - Add contact page (further plans to add email form to page).
