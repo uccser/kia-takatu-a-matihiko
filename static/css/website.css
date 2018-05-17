@@ -119,3 +119,6 @@ footer > .container {
 #pathways-diagram a {
   cursor: pointer;
 }
+.permalink {
+  margin: 4rem 0;
+}

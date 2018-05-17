@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load django_bootstrap_breadcrumbs %}
+
+{% block page_heading %}
+  {% trans "Contact" %}
+{% endblock page_heading %}
+
+{% block breadcrumbs %}
+  {% breadcrumb "Home" "/" %}
+  {% breadcrumb "Contact" "" %}
+{% endblock breadcrumbs %}
+
+{% block content %}
+  <p class="mb-4">
+    Send me an email to <a href="mailto:jack.morgan@kiatakatu.ac.nz">jack.morgan@kiatakatu.ac.nz</a> and I'll reply as soon as I can.
+  </p>
+{% endblock content %}

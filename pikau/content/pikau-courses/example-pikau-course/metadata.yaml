@@ -3,7 +3,7 @@ status: 6
 overview: overview.md
 language: en
 topic: ct
-level: 8-10
+level: primary
 tags:
   - binary-numbers
   - algorithms

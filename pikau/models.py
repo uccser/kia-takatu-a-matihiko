@@ -101,6 +101,7 @@ class Tag(models.Model):
     #  Auto-incrementing 'id' field is automatically set by Django
     slug = models.SlugField(unique=True)
     name = models.CharField(max_length=100, unique=True)
+    description = models.CharField(max_length=300, blank=True)
 
     def __str__(self):
         """Text representation of Tag object.
@@ -172,6 +173,8 @@ class PikauCourse(models.Model):
     readiness_level = models.IntegerField(
         choices=READINESS_CHOICES,
         default=1,
+        null=True,
+        blank=True,
     )
     topic = models.ForeignKey(
         Topic,

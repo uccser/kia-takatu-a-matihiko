@@ -18,22 +18,22 @@
   <table class="table table-hover table-responsive">
     <thead>
       <tr>
-        <th scope="col">Slug</th>
         <th scope="col">Name</th>
         <th scope="col">Usage Count</th>
+        <th scope="col">Slug</th>
       </tr>
     </thead>
     <tbody>
       {% for tag in tags %}
         <tr>
           <td>
-            <code>{{ tag.slug }}</code>
-          </td>
-          <td>
             {% include "pikau/snippets/tag_badge.html" %}
           </td>
           <td class="text-right">
             {{ tag.pikau_courses.count }}
+          </td>
+          <td>
+            <code>{{ tag.slug }}</code>
           </td>
         </tr>
       {% endfor %}

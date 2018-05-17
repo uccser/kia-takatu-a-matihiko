@@ -1,2 +1,31 @@
-binary-numbers: Binary Numbers
-algorithms: Algorithms
+# Computer Science Concepts
+binary-numbers:
+  name: Binary Numbers
+algorithms:
+  name: Algorithms
+
+# Self Review Tool
+srt-element-1:
+  name: "Kaitiakitanga"
+  description: "My context, environment, responsibility and contribution to others."
+srt-element-2:
+  name: "Te Pākikitanga"
+  description: "My confidence and curiosity to take risks and develop a growth mindset."
+srt-element-3:
+  name: "Te Auahatanga"
+  description: "My understanding of the rationale for change in terms of benefits."
+srt-element-4:
+  name: "Te mātau ki te wāhanga ako Hangarau"
+  description: "My knowledge and understanding of the technology learning area."
+srt-element-5:
+  name: "Taku mōhio"
+  description: "My knowledge and skills to be able to teach the new content."
+srt-element-6:
+  name: "Te whakamahere kia whaitake"
+  description: "My capability to design and deliver authentic learning opportunities."
+srt-element-7:
+  name: "Te Pūtaketanga"
+  description: "Infrastructure & tools: ability to use."
+srt-element-8:
+  name: "Te Whanaunatanga"
+  description: "Resources: PLD, community, relationships, support."
