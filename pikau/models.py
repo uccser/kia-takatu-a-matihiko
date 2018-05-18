@@ -70,6 +70,11 @@ class Milestone(models.Model):
 
         ordering = ["date", "name"]
 
+    @property
+    def is_upcoming(self):
+        """Return true if milestone is in future."""
+        return self.date > date.today()
+
     def __str__(self):
         """Text representation of Milestone object.
 
@@ -241,11 +246,6 @@ class PikauCourse(models.Model):
         blank=True,
         null=True,
     )
-
-    @property
-    def is_upcoming_milestone(self):
-        """Return true if milestone is in future."""
-        return self.milestone.date > date.today()
 
     @property
     def is_overdue_milestone(self):

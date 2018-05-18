@@ -46,7 +46,7 @@
            <p class="mb-0">
             <strong>Milestone</strong><br>
             {{ pikau_course.milestone }}
-            {% if pikau_course.is_upcoming_milestone %}
+            {% if pikau_course.milestone.is_upcoming %}
               <br>
               Due in {{ pikau_course.milestone.date|timeuntil }}
             {% endif %}

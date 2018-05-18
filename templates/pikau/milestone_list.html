@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% load get_item %}
+{% load django_bootstrap_breadcrumbs %}
+
+{% block breadcrumbs %}
+  {% breadcrumb "Home" "/" %}
+  {% breadcrumb "Pīkau" "pikau:index" %}
+  {% breadcrumb "Milestones" "" %}
+{% endblock breadcrumbs %}
+
+{% block page_heading %}
+  Milestones
+{% endblock page_heading %}
+
+{% block content %}
+  <p>This page lists all the milestones, ordered by date.</p>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th></th>
+        {% for stage_num, stage_name, stage_subtitle in status_stages %}
+          <th scope="col" class="fire-stage-{{ stage_num }} text-center align-top">
+            {{ stage_name }}<br>
+            <p class="mb-0"><small> {{ stage_subtitle|linebreaksbr }}</small></p>
+          </th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for milestone in milestones %}
+        <tr>
+          <td>
+            <h2 class="h5">
+              <a href="{% url 'pikau:milestone' milestone.pk %}">
+                {{ milestone.name }}<br>
+                <span class="text-muted">
+                  <small>{{ milestone.date }}</small>
+                </span>
+              </a>
+            </h2>
+          </td>
+          {% for stage_num, stage_name, stage_subtitle in status_stages %}
+            <td class="fire-stage-{{ stage_num }} text-center align-middle">
+              {{ milestone.status|get_item:stage_num }}
+            </td>
+          {% endfor %}
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock content %}

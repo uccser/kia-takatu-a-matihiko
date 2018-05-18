@@ -1,5 +1,6 @@
 """Views for the pikau application."""
 
+from re import sub
 from django.views import generic
 from django.db.models import F
 from django.shortcuts import get_object_or_404
@@ -10,6 +11,7 @@ from pikau.models import (
     GlossaryTerm,
     Goal,
     Level,
+    Milestone,
     PikauCourse,
     PikauUnit,
     ProgressOutcome,
@@ -80,6 +82,44 @@ class LevelDetail(LoginRequiredMixin, generic.DetailView):
 
     context_object_name = "level"
     model = Level
+
+
+class MilestoneList(LoginRequiredMixin, generic.ListView):
+    """View for the level list page."""
+
+    context_object_name = "milestones"
+
+    def get_queryset(self, **kwargs):
+        return Milestone.objects.order_by("date")
+
+    def get_context_data(self, **kwargs):
+        """Provide the context data for the view.
+
+        Returns:
+            Dictionary of context data.
+        """
+        context = super(MilestoneList, self).get_context_data(**kwargs)
+        line_broken_status_stages = []
+        for status_num, status_name in STATUS_CHOICES:
+            line_broken_status_stages.append(
+                (status_num, *sub(" - ", "\n", status_name.strip()).split(": "))
+            )
+        context["status_stages"] = line_broken_status_stages
+        for milestone in self.object_list:
+            milestone.status = {}
+            for status_num, status_name in STATUS_CHOICES:
+                milestone.status[status_num] = PikauCourse.objects.filter(
+                    status=status_num,
+                    milestone=milestone
+                ).count()
+        return context
+
+
+class MilestoneDetail(LoginRequiredMixin, generic.DetailView):
+    """View for a level."""
+
+    context_object_name = "milestone"
+    model = Milestone
 
 
 class PathwaysView(LoginRequiredMixin, generic.TemplateView):
