@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.0 (Pre-release)
+
+- Add milestone list and detail pages, with table showing milestone statuses. (fixes #9)
+- Add basic searching for FAQ page. (fixes #26)
+- Improve formatting of pīkau documentation.
+- Fix typo in pīkau docs. (fixes #29)
+- Change 'Pīkau' to 'pīkau'. (fixes #30)
+
 ## 0.2.0 (Pre-release)
 
 - Readiness level is now optional. (fixes #24)
