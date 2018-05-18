@@ -5,5 +5,5 @@
 # Python-PostgreSQL Database Adapter
 psycopg2==2.7.4
 
-gunicorn==19.7.1
+gunicorn==19.8.1
 # WSGI Handler
