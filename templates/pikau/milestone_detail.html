@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% load django_bootstrap_breadcrumbs %}
+
+{% block breadcrumbs %}
+  {% breadcrumb "Home" "/" %}
+  {% breadcrumb "Pīkau" "pikau:index" %}
+  {% breadcrumb "Milestones" "pikau:milestone_list" %}
+  {% breadcrumb milestone.name "" %}
+{% endblock breadcrumbs %}
+
+{% block page_heading %}
+  Milestone: {{ milestone.name }}
+{% endblock page_heading %}
+
+{% block content %}
+  <h3>
+    <strong>
+      {{ milestone.date }}
+    </strong>
+    <span class="text-muted">
+      {% if milestone.is_upcoming %}
+        <small>Due in {{ milestone.date|timeuntil }}</small>
+      {% else %}
+        <small>Due {{ milestone.date|timesince }} ago</small>
+      {% endif %}
+    </span>
+  </h3>
+
+  <p><strong>Pikau Courses:</strong> {{ milestone.pikau_courses.count }}</p>
+  <div class="row">
+    {% for pikau_course in milestone.pikau_courses.all %}
+      {% include "pikau/snippets/pikau_course_card.html" %}
+    {% endfor %}
+  </div>
+{% endblock content %}
