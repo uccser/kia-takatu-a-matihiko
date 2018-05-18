@@ -1,0 +1,53 @@
+{% extends "admin/base_site.html" %}
+
+{% load static %}
+
+{% block content %}
+  <form action="" method="post">
+  {% csrf_token %}
+
+  <p>
+    Which status do you wish to update the selected pīkau course to?
+  </p>
+
+  <div class="d-flex flex-column mb-3">
+    {% for stage_num, stage_name in status_stages %}
+      <div class="fire-stage fire-stage-{{ stage_num }}">
+        <input type="radio" id="status-choice-{{ stage_num }}" name="new_status" value="{{ stage_num }}">
+        <label for="status-choice-{{ stage_num }}">{{ stage_name }}</label>
+      </div>
+    {% endfor %}
+  </div>
+
+    <input type="submit" name="apply" value="Update status"/>
+  </form>
+{% endblock %}
+
+{% block extrastyle %}
+  <style>
+    .fire-stage {
+      padding: 0.5rem;
+    }
+    .fire-stage-1 {
+      background-color: #ffd642;
+    }
+    .fire-stage-2 {
+      background-color: #ffc23c;
+    }
+    .fire-stage-3 {
+      background-color: #ffae19;
+    }
+    .fire-stage-4 {
+      background-color: #ff9b19;
+    }
+    .fire-stage-5 {
+      background-color: #ff793d;
+    }
+    .fire-stage-6 {
+      background-color: #ff633d;
+    }
+    .fire-stage-7 {
+      background-color: #ff4024;
+    }
+  </style>
+{% endblock %}
