@@ -90,6 +90,11 @@ class MilestoneList(LoginRequiredMixin, generic.ListView):
     context_object_name = "milestones"
 
     def get_queryset(self, **kwargs):
+        """Get queryset of all milestones.
+
+        Returns:
+            Queryset of ordered Milestone objects.
+        """
         return Milestone.objects.order_by("date")
 
     def get_context_data(self, **kwargs):
