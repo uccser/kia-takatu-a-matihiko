@@ -26,6 +26,7 @@ urlpatterns = [
     path("faq/", views.FAQView.as_view(), name="faq"),
     path("contact/", views.ContactView.as_view(), name="contact"),
     path("pikau/", include("pikau.urls")),
+    path("files/", include("files.urls")),
     path("accounts/", include("allauth.urls")),
     path("admin/", admin.site.urls),
 ]
