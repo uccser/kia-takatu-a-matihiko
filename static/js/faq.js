@@ -28,6 +28,11 @@ $(document).ready(function() {
   });
   // // Call display function on load
   display_results('');
+
+  $('#clear-search').click(function() {
+    $('#faq-search').val('');
+    display_results('');
+  });
 });
 
 function load_faq() {
