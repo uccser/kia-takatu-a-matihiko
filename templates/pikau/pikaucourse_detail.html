@@ -46,7 +46,7 @@
            <p class="mb-0">
             <strong>Milestone</strong><br>
             {{ pikau_course.milestone }}
-            {% if pikau_course.is_upcoming_milestone %}
+            {% if pikau_course.milestone.is_upcoming %}
               <br>
               Due in {{ pikau_course.milestone.date|timeuntil }}
             {% endif %}
@@ -149,7 +149,7 @@
               </td>
             </tr>
             <tr>
-              <th scope="row">Prerequisite Pīkau Courses</th>
+              <th scope="row">Prerequisite pīkau Courses</th>
               <td>
                 <ul class="mb-0">
                 {% for course in pikau_course.prerequisites.all %}
@@ -162,7 +162,7 @@
               </td>
             </tr>
             <tr>
-              <th scope="row">Postrequisite Pīkau Courses</th>
+              <th scope="row">Postrequisite pīkau Courses</th>
               <td>
                 <ul class="mb-0">
                 {% for course in pikau_course.postrequisites.all %}

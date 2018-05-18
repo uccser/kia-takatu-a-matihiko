@@ -14,7 +14,7 @@ from pikau.management.commands._PikauCourseLoader import PikauCourseLoader
 class Command(management.base.BaseCommand):
     """Required command class for the custom Django loadpikau command."""
 
-    help = "Loads Pīkau into the website"
+    help = "Loads pīkau into the website"
 
     def handle(self, *args, **options):
         """Automatically called when the loadpikau command is given."""

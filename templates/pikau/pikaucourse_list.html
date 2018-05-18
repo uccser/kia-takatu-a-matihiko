@@ -13,7 +13,7 @@
 {% endblock page_heading %}
 
 {% block content %}
-  <p>This page lists all the Pīkau courses available, ordered by milestone and name.</p>
+  <p>This page lists all the pīkau courses available, ordered by milestone and name.</p>
 
   <div class="row">
     {% for pikau_course in pikau_courses %}
@@ -28,7 +28,7 @@
               <strong>
                 {{ pikau_course.milestone.date }}
               </strong>
-              {% if pikau_course.is_upcoming_milestone %}
+              {% if pikau_course.milestone.is_upcoming %}
                 <br>
                 <small>Due in {{ pikau_course.milestone.date|timeuntil }}</small>
               {% endif %}

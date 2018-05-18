@@ -17,14 +17,14 @@
   {% url 'pikau:docs' as docs_url %}
   <p>
     {% blocktrans trimmed %}
-      This page details the content pipeline for used for developing Pīkau content for <a href='http://www.kiatakatu.ac.nz/'>Kia Takatū ā-Matihiko</a>.
-      We recommend reading the <a href='{{ docs_url }}'>Pīkau documentation</a> to start.
+      This page details the content pipeline for used for developing pīkau content for <a href='http://www.kiatakatu.ac.nz/'>Kia Takatū ā-Matihiko</a>.
+      We recommend reading the <a href='{{ docs_url }}'>pīkau documentation</a> to start.
     {% endblocktrans %}
   </p>
 
   <div class="d-inline-flex flex-column">
     <a class="btn btn-lg btn-primary mb-1 text-left" href="{% url 'pikau:docs' %}" role="button">{% trans "Pīkau documentation" %}</a>
-    <a class="btn btn-lg btn-primary mb-1 text-left" href="{% url 'pikau:pikau_course_list' %}" role="button">{% trans "View all Pīkau" %}</a>
+    <a class="btn btn-lg btn-primary mb-1 text-left" href="{% url 'pikau:pikau_course_list' %}" role="button">{% trans "View all pīkau" %}</a>
   </div>
 
   <h2 class="mt-3">View metadata</h2>
@@ -32,6 +32,7 @@
     <a class="btn btn-outline-primary mb-1 text-left" href="{% url 'pikau:glossary' %}">Glossary</a>
     <a class="btn btn-outline-primary mb-1 text-left" href="{% url 'pikau:goal_list' %}">Goals</a>
     <a class="btn btn-outline-primary mb-1 text-left" href="{% url 'pikau:level_list' %}">Levels</a>
+    <a class="btn btn-outline-primary mb-1 text-left" href="{% url 'pikau:milestone_list' %}">Milestones</a>
     <a class="btn btn-outline-primary mb-1 text-left" href="{% url 'pikau:pathways' %}">Pathways</a>
     <a class="btn btn-outline-primary mb-1 text-left" href="{% url 'pikau:progress_outcome_list' %}">Progress Outcomes</a>
     <a class="btn btn-outline-primary mb-1 text-left" href="{% url 'pikau:readiness_level_list' %}">Readiness Levels</a>

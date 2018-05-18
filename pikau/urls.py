@@ -38,12 +38,6 @@ urlpatterns = [
         views.GlossaryList.as_view(),
         name="glossary"
     ),
-    # eg: /pikau/pathways/
-    path(
-        "pathways/",
-        views.PathwaysView.as_view(),
-        name="pathways"
-    ),
     # eg: /pikau/goals/
     path(
         "goals/",
@@ -61,6 +55,24 @@ urlpatterns = [
         "levels/<slug:slug>/",
         views.LevelDetail.as_view(),
         name="level"
+    ),
+    # eg: /pikau/milestones/
+    path(
+        "milestones/",
+        views.MilestoneList.as_view(),
+        name="milestone_list"
+    ),
+    # eg: /pikau/milestones/1/
+    path(
+        "milestones/<int:pk>/",
+        views.MilestoneDetail.as_view(),
+        name="milestone"
+    ),
+    # eg: /pikau/pathways/
+    path(
+        "pathways/",
+        views.PathwaysView.as_view(),
+        name="pathways"
     ),
     # eg: /pikau/pikau-courses/
     path(

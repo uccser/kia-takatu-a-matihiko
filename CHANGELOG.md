@@ -1,9 +1,17 @@
 # Changelog
 
+## 0.3.0 (Pre-release)
+
+- Add milestone list and detail pages, with table showing milestone statuses. (fixes #9)
+- Add basic searching for FAQ page. (fixes #26)
+- Improve formatting of pīkau documentation.
+- Fix typo in pīkau docs. (fixes #29)
+- Change 'Pīkau' to 'pīkau'. (fixes #30)
+
 ## 0.2.0 (Pre-release)
 
 - Readiness level is now optional. (fixes #24)
-- Add tags to connect Pīkau to Self Review Tool (SRT). (fixes #21)
+- Add tags to connect pīkau to Self Review Tool (SRT). (fixes #21)
 - Explain website and pipeline with documentation. (fixes #14)
 - Add link to Google Doc template. (fixes #13)
 - Add contact page (further plans to add email form to page).

@@ -24,16 +24,16 @@
 
   <ul>
     <li>
-      <a href="#understanding-pipeline">Understanding the Pīkau creation pipeline</a>
+      <a href="#understanding-pipeline">Understanding the pīkau creation pipeline</a>
     </li>
     <li>
-      <a href="#creating">Creating a Pīkau on Google Drive</a>
+      <a href="#creating">Creating a pīkau on Google Drive</a>
     </li>
     <li>
-      <a href="#planning">Planning a Pīkau</a> <span class="text-muted">(can be done before creating the Pīkau on Google Drive)</span>
+      <a href="#planning">Planning a pīkau</a> <span class="text-muted">(can be done before creating the pīkau on Google Drive)</span>
     </li>
     <li>
-      <a href="#writing">Writing Pīkau content on Google Drive</a>
+      <a href="#writing">Writing pīkau content on Google Drive</a>
     </li>
   </ul>
 
@@ -41,14 +41,14 @@
 
   <hr id="understanding-pipeline" class="permalink">
 
-  <h2>Understanding the Pīkau creation pipeline</h2>
+  <h2>Understanding the pīkau creation pipeline</h2>
 
   <img class="d-none d-md-block float-right mb-3 ml-3" src="{% static 'images/google-drive-logo.png' %}">
 
   <p>
-    Pīkau need to be created quickly and collaboratively, and therefore we are using Google Drive to create Pīkau.
-    Pīkau moves through the following status stages while being created on Google Drive.
-    During this time the Pīkau can also be listed on this website, which provides an easy link for authors to the Pīkau Google Drive file.
+    Pīkau need to be created quickly and collaboratively, and therefore we are using Google Drive to create pīkau.
+    Pīkau move through the following status stages while being created on Google Drive.
+    During this time the pīkau can also be listed on this website, which provides an easy link for authors to the pīkau Google Drive file.
   </p>
 
   <div class="col-12 col-md-6">
@@ -64,8 +64,8 @@
   <img class="d-none d-md-block float-right mb-3 ml-3" src="{% static 'images/iqualify-logo.png' %}">
 
   <p>
-    Once a Pīkau is completed, the Google Drive file is locked and the Pīkau is added to iQualify.
-    The Pīkau is then marked as the completed status.
+    Once a pīkau is completed, the Google Drive file is locked and the pīkau is added to iQualify.
+    The pīkau is then marked as the completed status.
   </p>
 
   <div class="col-12 col-md-6">
@@ -75,12 +75,12 @@
   </div>
 
   <p>
-    When a Pīkau is completed, the source files are then copied into this website's repository.
+    When a pīkau is completed, the source files are then copied into this website's repository.
     This is to allow authors to easily view the content rendered as it would on iQualify on this website, and also makes the content source files publically available (as written in our contract agreement).
   </p>
 
   <p>
-    Once a Pīkau is then published to the public, the status is updated to the following:
+    Once a pīkau is then published to the public, the status is updated to the following:
   </p>
 
   <div class="col-12 col-md-6">
@@ -91,91 +91,101 @@
 
   <hr id="creating" class="permalink">
 
-  <h2>Creating a Pīkau on Google Drive</h2>
+  <h2>Creating a pīkau on Google Drive</h2>
 
   <p>
-    When creating a Pīkau, follow the following steps:
+    When creating a pīkau, follow the following steps:
   </p>
 
   <ol>
     <li>
-      Create a folder for the Pīkau within the Google Drive folder (<a href="https://drive.google.com/open?id=14sgLaA0kWybXm_v1UOqd8InOYVzHNBS6">link to English Medium folder</a>).
+      Create a folder for the pīkau within the Google Drive folder (<a href="https://drive.google.com/open?id=14sgLaA0kWybXm_v1UOqd8InOYVzHNBS6">link to English Medium folder</a>).
     </li>
     <li>
-      Create a copy of the <a href="https://drive.google.com/open?id=1VQ7lTYuKuL14IeT61w6WdNU0lwAJ3qdMWmWbij4fpmU">Pīkau tempate document</a> in your newly created Pīkau folder.
+      Create a copy of the <a href="https://drive.google.com/open?id=1VQ7lTYuKuL14IeT61w6WdNU0lwAJ3qdMWmWbij4fpmU">pīkau tempate document</a> in your newly created pīkau folder.
     </li>
     <li>
-      Follow the steps at the top of the template document, with the guidance of the section below on 'Planning a Pīkau'.
-      Once you have filled in the first 2 pages of the template (positioning and planning information), you can create a Pīkau on this website and link it to the Google document.
-      This allows you to track the progress of the Pīkau development easily, and see the connections to other Pīkau.
+      Follow the steps at the top of the template document, with the guidance of the section below on 'Planning a pīkau'.
+      Once you have filled in the first 2 pages of the template (positioning and planning information), you can create a pīkau on this website and link it to the Google document.
+      This allows you to track the progress of the pīkau development easily, and see the connections to other pīkau.
     </li>
   </ol>
 
   <hr id="planning" class="permalink">
 
-  <h2>Planning a Pīkau</h2>
+  <h2>Planning a pīkau</h2>
 
   <p>
     When planning a pīkau, the first step is to plan out the high level positioning of the pīkau.
-    Ask yourself the following questions to help ensure the Pīkau is positioned correctly:
+    The following questions are asked on  page 1 of the template, and the table below lists possible values or areas of this website that can assist you in answering each question.
   </p>
 
-  <ul>
-    <li>
-      <strong>Level of readiness this Pīkau contributes to?</strong>
-      <ul>
-        <li>
-          Use the <a href="{% url 'pikau:readiness_level_list' %}">Readiness Levels</a> page to see existing level coverage.
-        </li>
-      </ul>
-    </li>
-    <li>
-      <strong>What outcome/path from the Self Review Tool (SRT) does this Pīkau relate to?</strong>
-      <ul>
-        <li>
-          The following outcomes are stored within this website relating to the Self Review Tool:<br>
-          {% for tag in srt_tags %}
-            {% include "pikau/snippets/tag_badge.html" %} - {{ tag.description }}<br>
-          {% endfor %}
-        </li>
-      </ul>
-    </li>
-    <li>
-      <strong>How does this Pīkau move the learner closer to readiness?</strong>
-      <ul>
-        <li>
-          Which readiness level is the Pīkau primarily aimed at?:<br>
-          <div class="d-inline-flex flex-column">
-            {% for num,level in readiness_levels.items %}
-              <div class="my-1">
-                {% with num|stringformat:"s" as readiness_level %}
-                  {% with "images/flame-stage-"|add:readiness_level|add:".png" as flame_image %}
-                    <img src="{% static flame_image %}" class="icon-small">
-                  {% endwith %}
-                {% endwith %}
-                <a href="{% url 'pikau:readiness_level' num %}">
-                  {{ level.name }}
-                </a>
-              </div>
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">Question in template</th>
+          <th scope="col">Content Pipeline Assistant</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <strong>Level of readiness this pīkau contributes to?</strong>
+          </td>
+          <td>
+            Use the <a href="{% url 'pikau:readiness_level_list' %}">Readiness Levels</a> page to see existing level coverage.
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <strong>What outcome/path from the Self Review Tool (SRT) does this pīkau relate to?</strong>
+          </td>
+          <td>
+            The following outcomes are stored within this website relating to the Self Review Tool:<br>
+            {% for tag in srt_tags %}
+              {% include "pikau/snippets/tag_badge.html" %} - <small>{{ tag.description }}</small><br>
             {% endfor %}
-          </div>
-        </li>
-      </ul>
-    </li>
-    <li>
-      <strong>Links to other Pīkau?</strong>
-      <ul>
-        <li>
-          Use the <a href="{% url 'pikau:pathways' %}">Pathways diagram</a> page to see Pīkau connections.
-        </li>
-      </ul>
-    </li>
-  </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <strong>How does this pīkau move the learner closer to readiness?</strong>
+          </td>
+          <td>
+            Which readiness level is the pīkau primarily aimed at?:<br>
+            <div class="d-inline-flex flex-column">
+              {% for num,level in readiness_levels.items %}
+                <div class="my-1">
+                  {% with num|stringformat:"s" as readiness_level %}
+                    {% with "images/flame-stage-"|add:readiness_level|add:".png" as flame_image %}
+                      <img src="{% static flame_image %}" class="icon-small">
+                    {% endwith %}
+                  {% endwith %}
+                  <a href="{% url 'pikau:readiness_level' num %}">
+                    {{ level.name }}
+                  </a>
+                </div>
+              {% endfor %}
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <strong>Links to other pīkau?</strong>
+          </td>
+          <td>
+            Use the <a href="{% url 'pikau:pathways' %}">Pathways diagram</a> page to see pīkau connections.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
   <h3 class="h5">Adding course metadata</h3>
 
   <p>
-    After establishing positioning, more details can be planned for the Pīkau on page 2 of the template document.
+    After establishing positioning, more details can be planned for the pīkau on page 2 of the template document.
     The following metadata can be optionally tied to each pīkau, however the more data that is attached to each pīkau allows this tool to display the connectionss and coverage effectively.
   </p>
 
@@ -184,13 +194,13 @@
   </p>
 
   <div class="alert alert-info" role="alert">
-    Remember complete lists of all metadata are available from the <a href="{% url 'pikau:index' %}">Pīkau homepage</a>.
+    Remember complete lists of all metadata are available from the <a href="{% url 'pikau:index' %}">pīkau homepage</a>.
   </div>
 
 
   <div class="table-responsive">
-    <table class="table">
-      <thead>
+    <table class="table table-bordered">
+      <thead class="thead-light">
         <tr>
           <th scope="col">Template Field</th>
           <th scope="col">Available Options</th>
@@ -214,7 +224,7 @@
             Select <em>zero or more</em>
           </td>
           <td>
-            View <a href="{% url 'pikau:pikau_course_list' %}">list of all Pīkau</a> and also the <a href="{% url 'pikau:pathways' %}">Pathways diagram</a>, and list all Pīkau that are a prerequisite to this Pīkau.
+            View <a href="{% url 'pikau:pikau_course_list' %}">list of all pīkau</a> and also the <a href="{% url 'pikau:pathways' %}">Pathways diagram</a>, and list all pīkau that are a prerequisite to this pīkau.
           </td>
         </tr>
         <tr>
@@ -238,12 +248,12 @@
   </div>
 
   <p>
-    The following fields are currently not explicitly required on the template document, but we <strong>highly recommend</strong> also selecting these fields for your Pīkau and noting them in your template document.
+    The following fields are currently not explicitly required on the template document, but we <strong>highly recommend</strong> also selecting these fields for your pīkau and noting them in your template document.
   </p>
 
   <div class="table-responsive">
-    <table class="table border-bottom">
-      <thead>
+    <table class="table table-bordered">
+      <thead class="thead-light">
         <tr>
           <th scope="col">Field</th>
           <th scope="col">Available Options</th>
@@ -286,13 +296,13 @@
   </div>
 
   <p>
-    Once you have filled in the first 2 pages of the template (positioning and planning information), you can create a Pīkau on this website and link it to the Google document.
-    This allows you to track the progress of the Pīkau development easily, and see the connections to other Pīkau.
+    Once you have filled in the first 2 pages of the template (positioning and planning information), you can create a pīkau on this website and link it to the Google document.
+    This allows you to track the progress of the pīkau development easily, and see the connections to other pīkau.
   </p>
 
   <hr id="writing" class="permalink">
 
-  <h2>Writing Pīkau content on Google Drive</h2>
+  <h2>Writing pīkau content on Google Drive</h2>
 
   <p>
     When writing content for a pīkau, be sure to take advantage of the formatting options available on iQualify.
@@ -324,7 +334,7 @@
 
   <div class="table-responsive">
     <table class="table">
-      <thead>
+      <thead class="thead-light">
         <tr>
           <th scope="col">How it appears on iQualify</th>
           <th scope="col">How to write it on Google Drive</th>
