@@ -9,5 +9,6 @@ class FileFilter(django_filters.FilterSet):
 
     class Meta:
         """Meta attributes for FileFilter class."""
+
         model = File
         fields = ["licence"]

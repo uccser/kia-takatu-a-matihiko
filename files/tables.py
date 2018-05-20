@@ -11,5 +11,6 @@ class FileTable(tables.Table):
 
     class Meta:
         """Meta attributes for FileTable class."""
+
         model = File
         fields = ("filename", "licence")
