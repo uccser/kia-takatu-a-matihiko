@@ -221,6 +221,7 @@ CRISPY_TEMPLATE_PACK = "bootstrap4"
 # OTHER SETTINGS
 # ------------------------------------------------------------------------------
 PIKAU_CONTENT_BASE_PATH = os.path.join(BASE_DIR, "pikau/content")
+FILES_CONTENT_BASE_PATH = os.path.join(BASE_DIR, "files/content")
 CUSTOM_VERTO_TEMPLATES = os.path.join(BASE_DIR, "utils/custom_converter_templates/")
 BREADCRUMBS_TEMPLATE = "django_bootstrap_breadcrumbs/bootstrap4.html"
 DJANGO_TABLES2_TEMPLATE = "tables/table.html"
