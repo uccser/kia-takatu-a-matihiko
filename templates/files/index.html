@@ -23,8 +23,9 @@
   </p>
 
   {% if filter %}
-    <form action="" method="get" class="form form-inline">
+    <form action="" method="get" class="form form-inline mb-3">
       {{ filter.form|crispy }}
+      <button type="submit" class="btn btn-primary">Filter</button>
     </form>
   {% endif %}
 
