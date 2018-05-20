@@ -45,3 +45,11 @@ class File(models.Model):
             String describing file.
         """
         return self.filename
+
+    def __repr__(self):
+        """Text representation of File object for developers.
+
+        Returns:
+            String describing file.
+        """
+        return "File: {}".format(self.slug)

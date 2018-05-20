@@ -14,3 +14,4 @@ class FileTable(tables.Table):
 
         model = File
         fields = ("filename", "licence")
+        order_by = "filename"
