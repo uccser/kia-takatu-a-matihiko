@@ -4,6 +4,7 @@
 {% load static %}
 {% load render_table from django_tables2 %}
 {% load django_bootstrap_breadcrumbs %}
+{% load crispy_forms_tags %}
 
 {% block breadcrumbs %}
   {% breadcrumb "Home" "/" %}
@@ -20,6 +21,12 @@
       This page lists files used within <a href='http://www.kiatakatu.ac.nz/'>Kia Takatū ā-Matihiko</a>.
     {% endblocktrans %}
   </p>
+
+  {% if filter %}
+    <form action="" method="get" class="form form-inline">
+      {{ filter.form|crispy }}
+    </form>
+  {% endif %}
 
   {% render_table table %}
 {% endblock content %}

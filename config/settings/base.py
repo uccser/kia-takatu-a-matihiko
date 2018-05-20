@@ -30,6 +30,7 @@ THIRD_PARTY_APPS = [
     "allauth.account",
     "allauth.socialaccount",
     "django_tables2",
+    "django_filters",
 ]
 
 # Apps specific for this project go here.
