@@ -2,6 +2,7 @@
 
 {% load i18n %}
 {% load static %}
+{% load render_table from django_tables2 %}
 {% load django_bootstrap_breadcrumbs %}
 
 {% block breadcrumbs %}
@@ -20,38 +21,5 @@
     {% endblocktrans %}
   </p>
 
-  <div class="table-responsive">
-    <table id="files-table" class="table table-bordered">
-      <thead class="thead-light">
-        <tr>
-          <th scope="col">Filename</th>
-          <th scope="col">Slug</th>
-          <th scope="col">Licence</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for file in files %}
-          <tr>
-            <td>
-              <a href="{{ file.location }}">
-                {{ file.filename }}
-              </a>
-            </td>
-            <td>
-              <small>
-                <code>
-                  {{ file.slug }}
-                </code>
-              </small>
-            </td>
-            <td>
-              <a href="{{ file.licence.url }}">
-                {{ file.licence.name }}
-              </a>
-            </td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div>
+  {% render_table table %}
 {% endblock content %}

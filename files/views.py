@@ -1,15 +1,16 @@
 """Views for the files application."""
 
-from django.views import generic
+from django_tables2 import SingleTableView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from files.tables import FileTable
 from files.models import (
     File,
 )
 
 
-class FileList(LoginRequiredMixin, generic.ListView):
+class FileList(LoginRequiredMixin, SingleTableView):
     """View for the file list page."""
 
     template_name = "files/index.html"
-    context_object_name = "files"
     model = File
+    table_class = FileTable
