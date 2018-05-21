@@ -6,6 +6,10 @@ whitenoise==3.3.1
 django-heroku==0.3.1
 django-environ==0.4.4
 django-bootstrap-breadcrumbs==0.9.1
+# File 'templates/tables/table.hmtl' is based off their 'bootstrap4'
+# template so should be updated when original is updated in package.
+django-tables2==2.0.0a2
+django-filter==1.1.0
 
 # Content Loading
 verto==0.7.4
