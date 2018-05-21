@@ -29,11 +29,14 @@ THIRD_PARTY_APPS = [
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
+    "django_tables2",
+    "django_filters",
 ]
 
 # Apps specific for this project go here.
 LOCAL_APPS = [
     "pikau.apps.PikauConfig",
+    "files.apps.FilesConfig",
 ]
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -218,5 +221,7 @@ CRISPY_TEMPLATE_PACK = "bootstrap4"
 # OTHER SETTINGS
 # ------------------------------------------------------------------------------
 PIKAU_CONTENT_BASE_PATH = os.path.join(BASE_DIR, "pikau/content")
+FILES_CONTENT_BASE_PATH = os.path.join(BASE_DIR, "files/content")
 CUSTOM_VERTO_TEMPLATES = os.path.join(BASE_DIR, "utils/custom_converter_templates/")
 BREADCRUMBS_TEMPLATE = "django_bootstrap_breadcrumbs/bootstrap4.html"
+DJANGO_TABLES2_TEMPLATE = "tables/table.html"
