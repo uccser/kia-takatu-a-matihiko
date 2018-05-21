@@ -6,6 +6,7 @@ from django.db.models import F
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import ObjectDoesNotExist
+from django.urls import reverse_lazy
 from django.http import Http404
 from pikau.models import (
     GlossaryTerm,
@@ -21,6 +22,7 @@ from pikau.models import (
     READINESS_LEVELS,
 )
 from pikau.utils import pathways
+from pikau.forms import TopicForm
 
 NUMBER_OF_FLAME_STAGES = 7
 
@@ -353,3 +355,17 @@ class TopicDetail(LoginRequiredMixin, generic.DetailView):
 
     context_object_name = "topic"
     model = Topic
+
+
+class TopicCreate(LoginRequiredMixin, generic.edit.CreateView):
+    """View for creating a topic."""
+
+    form_class = TopicForm
+    template_name = "pikau/topic_form.html"
+
+
+class TopicDelete(LoginRequiredMixin, generic.edit.DeleteView):
+    """View for delete a topic."""
+
+    model = Topic
+    success_url = reverse_lazy("pikau:topic_list")

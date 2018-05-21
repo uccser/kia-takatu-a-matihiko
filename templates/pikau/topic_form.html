@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% load django_bootstrap_breadcrumbs %}
+
+{% block breadcrumbs %}
+  {% breadcrumb "Home" "/" %}
+  {% breadcrumb "Pīkau" "pikau:index" %}
+  {% breadcrumb "Topics" "pikau:topic_list" %}
+  {% breadcrumb "Create Topic" "" %}
+{% endblock breadcrumbs %}
+
+{% block page_heading %}
+  Create Topic
+{% endblock page_heading %}
+
+{% block content %}
+<form method="post">{% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit" value="Save" />
+</form>
+{% endblock content %}

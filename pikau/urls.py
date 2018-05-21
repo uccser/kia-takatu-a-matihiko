@@ -140,10 +140,22 @@ urlpatterns = [
         views.TopicList.as_view(),
         name="topic_list"
     ),
+    # eg: /pikau/topics/create/
+    path(
+        "topics/create/",
+        views.TopicCreate.as_view(),
+        name="topic_create"
+    ),
     # eg: /pikau/topics/topic-1/
     path(
         "topics/<slug:slug>/",
         views.TopicDetail.as_view(),
         name="topic"
+    ),
+    # eg: /pikau/topics/topic-1/delete/
+    path(
+        "topics/<slug:slug>/delete/",
+        views.TopicDelete.as_view(),
+        name="topic_delete"
     ),
 ]

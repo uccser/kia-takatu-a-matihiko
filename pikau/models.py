@@ -124,6 +124,14 @@ class Topic(models.Model):
     slug = models.SlugField(unique=True)
     name = models.CharField(max_length=100, unique=True)
 
+    def get_absolute_url(self):
+        """Return the canonical URL for a topic.
+
+        Returns:
+            URL as string.
+        """
+        return reverse("pikau:topic", args=[self.slug])
+
     def __str__(self):
         """Text representation of Topic object.
 
