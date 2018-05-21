@@ -3,6 +3,10 @@
 from django.db import models
 
 
+def default_licence():
+    return Licence.objects.get(name="Unknown").pk
+
+
 class Licence(models.Model):
     """Model for licence."""
 
@@ -34,8 +38,7 @@ class File(models.Model):
         Licence,
         on_delete=models.CASCADE,
         related_name="files",
-        blank=True,
-        null=True,
+        default=default_licence,
     )
 
     def __str__(self):
