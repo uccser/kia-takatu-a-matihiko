@@ -1,21 +1,22 @@
 {% extends "base.html" %}
 
 {% load django_bootstrap_breadcrumbs %}
+{% load crispy_forms_tags %}
 
 {% block breadcrumbs %}
   {% breadcrumb "Home" "/" %}
   {% breadcrumb "Pīkau" "pikau:index" %}
-  {% breadcrumb "Topics" "pikau:topic_list" %}
-  {% breadcrumb "Create Topic" "" %}
+  {% breadcrumb "Glossary" "pikau:glossary_list" %}
+  {% breadcrumb "Create glossary definition" "" %}
 {% endblock breadcrumbs %}
 
 {% block page_heading %}
-  Create Topic
+  Create new glossary definition
 {% endblock page_heading %}
 
 {% block content %}
 <form method="post">{% csrf_token %}
-  {{ form.as_p }}
-  <input type="submit" value="Save" />
+  {{ form|crispy }}
+  <input type="submit" class="btn btn-primary" value="Save" />
 </form>
 {% endblock content %}

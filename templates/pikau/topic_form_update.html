@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% load django_bootstrap_breadcrumbs %}
+{% load crispy_forms_tags %}
+
+{% block breadcrumbs %}
+  {% breadcrumb "Home" "/" %}
+  {% breadcrumb "Pīkau" "pikau:index" %}
+  {% breadcrumb "Topics" "pikau:topic_list" %}
+  {% breadcrumb "Update Topic" "" %}
+{% endblock breadcrumbs %}
+
+{% block page_heading %}
+  Update topic
+{% endblock page_heading %}
+
+{% block content %}
+<form method="post">{% csrf_token %}
+  {{ form|crispy }}
+  <input type="submit" class="btn btn-primary" value="Save" />
+</form>
+{% endblock content %}

@@ -1,10 +1,18 @@
 """Views for the pikau application."""
 
 from re import sub
-from django.views import generic
+from django.views.generic import (
+    TemplateView,
+    ListView,
+    DetailView,
+    CreateView,
+    UpdateView,
+    DeleteView,
+)
 from django.db.models import F
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.messages.views import SuccessMessageMixin
 from django.core.exceptions import ObjectDoesNotExist
 from django.urls import reverse_lazy
 from django.http import Http404
@@ -22,18 +30,22 @@ from pikau.models import (
     READINESS_LEVELS,
 )
 from pikau.utils import pathways
-from pikau.forms import TopicForm
+from pikau.mixins import (
+    SuccessMessageDeleteMixin,
+    GlossaryActionMixin,
+    TopicActionMixin,
+)
 
 NUMBER_OF_FLAME_STAGES = 7
 
 
-class IndexView(LoginRequiredMixin, generic.TemplateView):
+class IndexView(LoginRequiredMixin, TemplateView):
     """View for the pikau homepage that renders from a template."""
 
     template_name = "pikau/index.html"
 
 
-class DocumentationView(LoginRequiredMixin, generic.TemplateView):
+class DocumentationView(LoginRequiredMixin, TemplateView):
     """View for the pikau documentation that renders from a template."""
 
     template_name = "pikau/documentation.html"
@@ -54,7 +66,7 @@ class DocumentationView(LoginRequiredMixin, generic.TemplateView):
         return context
 
 
-class GlossaryList(LoginRequiredMixin, generic.ListView):
+class GlossaryListView(LoginRequiredMixin, ListView):
     """View for the glossary list page."""
 
     template_name = "pikau/glossary.html"
@@ -63,7 +75,34 @@ class GlossaryList(LoginRequiredMixin, generic.ListView):
     ordering = "term"
 
 
-class GoalList(LoginRequiredMixin, generic.ListView):
+class GlossaryCreateView(LoginRequiredMixin, SuccessMessageMixin, GlossaryActionMixin, CreateView):
+    """View for creating a glossary definition."""
+
+    model = GlossaryTerm
+    template_name = "pikau/glossary_form_create.html"
+    success_message = "Glossary definition created!"
+    success_url = reverse_lazy("pikau:glossary_list")
+
+
+class GlossaryUpdateView(LoginRequiredMixin, SuccessMessageMixin, GlossaryActionMixin, UpdateView):
+    """View for updating a glossary definition."""
+
+    model = GlossaryTerm
+    template_name = "pikau/glossary_form_update.html"
+    success_message = "Glossary definition updated!"
+    success_url = reverse_lazy("pikau:glossary_list")
+
+
+class GlossaryDeleteView(LoginRequiredMixin, SuccessMessageDeleteMixin, GlossaryActionMixin, DeleteView):
+    """View for deleting a glossary definition."""
+
+    model = GlossaryTerm
+    template_name = "pikau/glossary_form_delete.html"
+    success_message = "Glossary definition deleted!"
+    success_url = reverse_lazy("pikau:glossary_list")
+
+
+class GoalListView(LoginRequiredMixin, ListView):
     """View for the goal list page."""
 
     context_object_name = "goals"
@@ -71,7 +110,7 @@ class GoalList(LoginRequiredMixin, generic.ListView):
     ordering = "slug"
 
 
-class LevelList(LoginRequiredMixin, generic.ListView):
+class LevelListView(LoginRequiredMixin, ListView):
     """View for the level list page."""
 
     context_object_name = "levels"
@@ -79,14 +118,14 @@ class LevelList(LoginRequiredMixin, generic.ListView):
     ordering = "name"
 
 
-class LevelDetail(LoginRequiredMixin, generic.DetailView):
+class LevelDetailView(LoginRequiredMixin, DetailView):
     """View for a level."""
 
     context_object_name = "level"
     model = Level
 
 
-class MilestoneList(LoginRequiredMixin, generic.ListView):
+class MilestoneListView(LoginRequiredMixin, ListView):
     """View for the level list page."""
 
     context_object_name = "milestones"
@@ -122,14 +161,14 @@ class MilestoneList(LoginRequiredMixin, generic.ListView):
         return context
 
 
-class MilestoneDetail(LoginRequiredMixin, generic.DetailView):
+class MilestoneDetailView(LoginRequiredMixin, DetailView):
     """View for a level."""
 
     context_object_name = "milestone"
     model = Milestone
 
 
-class PathwaysView(LoginRequiredMixin, generic.TemplateView):
+class PathwaysView(LoginRequiredMixin, TemplateView):
     """View for the pikau pathway that renders from a template."""
 
     template_name = "pikau/pathways.html"
@@ -146,7 +185,7 @@ class PathwaysView(LoginRequiredMixin, generic.TemplateView):
         return context
 
 
-class PikauCourseList(LoginRequiredMixin, generic.ListView):
+class PikauCourseListView(LoginRequiredMixin, ListView):
     """View for the pīkau course list page."""
 
     context_object_name = "pikau_courses"
@@ -164,14 +203,14 @@ class PikauCourseList(LoginRequiredMixin, generic.ListView):
         )
 
 
-class PikauCourseDetail(LoginRequiredMixin, generic.DetailView):
+class PikauCourseDetailView(LoginRequiredMixin, DetailView):
     """View for a pīkau course."""
 
     context_object_name = "pikau_course"
     model = PikauCourse
 
 
-class PikauCourseContent(LoginRequiredMixin, generic.DetailView):
+class PikauCourseContentView(LoginRequiredMixin, DetailView):
     """View for a pīkau course's content."""
 
     context_object_name = "pikau_course"
@@ -179,7 +218,7 @@ class PikauCourseContent(LoginRequiredMixin, generic.DetailView):
     template_name = "pikau/pikaucourse_content.html"
 
 
-class PikauUnitDetail(LoginRequiredMixin, generic.DetailView):
+class PikauUnitDetailView(LoginRequiredMixin, DetailView):
     """View for a pīkau unit."""
 
     context_object_name = "pikau_unit"
@@ -221,7 +260,7 @@ class PikauUnitDetail(LoginRequiredMixin, generic.DetailView):
         return context
 
 
-class ProgressOutcomeList(LoginRequiredMixin, generic.ListView):
+class ProgressOutcomeListView(LoginRequiredMixin, ListView):
     """View for the progress outcome list page."""
 
     context_object_name = "progress_outcomes"
@@ -279,14 +318,14 @@ class ProgressOutcomeList(LoginRequiredMixin, generic.ListView):
         return context
 
 
-class ProgressOutcomeDetail(LoginRequiredMixin, generic.DetailView):
+class ProgressOutcomeDetailView(LoginRequiredMixin, DetailView):
     """View for a progress outcome."""
 
     context_object_name = "progress_outcome"
     model = ProgressOutcome
 
 
-class ReadinessLevelList(LoginRequiredMixin, generic.TemplateView):
+class ReadinessLevelListView(LoginRequiredMixin, TemplateView):
     """View for the readiness level list page."""
 
     template_name = "pikau/readiness_level_list.html"
@@ -305,7 +344,7 @@ class ReadinessLevelList(LoginRequiredMixin, generic.TemplateView):
         return context
 
 
-class ReadinessLevelDetail(LoginRequiredMixin, generic.TemplateView):
+class ReadinessLevelDetailView(LoginRequiredMixin, TemplateView):
     """View for a readiness level."""
 
     template_name = "pikau/readiness_level_detail.html"
@@ -327,7 +366,7 @@ class ReadinessLevelDetail(LoginRequiredMixin, generic.TemplateView):
         return context
 
 
-class TagList(LoginRequiredMixin, generic.ListView):
+class TagListView(LoginRequiredMixin, ListView):
     """View for the tag list page."""
 
     context_object_name = "tags"
@@ -335,14 +374,14 @@ class TagList(LoginRequiredMixin, generic.ListView):
     ordering = "name"
 
 
-class TagDetail(LoginRequiredMixin, generic.DetailView):
+class TagDetailView(LoginRequiredMixin, DetailView):
     """View for a tag."""
 
     context_object_name = "tag"
     model = Tag
 
 
-class TopicList(LoginRequiredMixin, generic.ListView):
+class TopicListView(LoginRequiredMixin, ListView):
     """View for the topic list page."""
 
     context_object_name = "topics"
@@ -350,22 +389,33 @@ class TopicList(LoginRequiredMixin, generic.ListView):
     ordering = "name"
 
 
-class TopicDetail(LoginRequiredMixin, generic.DetailView):
+class TopicDetailView(LoginRequiredMixin, DetailView):
     """View for a topic."""
 
     context_object_name = "topic"
     model = Topic
 
 
-class TopicCreate(LoginRequiredMixin, generic.edit.CreateView):
+class TopicCreateView(LoginRequiredMixin, SuccessMessageMixin, TopicActionMixin, CreateView):
     """View for creating a topic."""
 
-    form_class = TopicForm
-    template_name = "pikau/topic_form.html"
+    model = Topic
+    template_name = "pikau/topic_form_create.html"
+    success_message = "Topic created!"
 
 
-class TopicDelete(LoginRequiredMixin, generic.edit.DeleteView):
-    """View for delete a topic."""
+class TopicUpdateView(LoginRequiredMixin, SuccessMessageMixin, TopicActionMixin, UpdateView):
+    """View for updating a topic."""
 
     model = Topic
+    template_name = "pikau/topic_form_update.html"
+    success_message = "Topic updated!"
+
+
+class TopicDeleteView(LoginRequiredMixin, SuccessMessageDeleteMixin, TopicActionMixin, DeleteView):
+    """View for deleting a topic."""
+
+    model = Topic
+    template_name = "pikau/topic_form_delete.html"
+    success_message = "Topic deleted!"
     success_url = reverse_lazy("pikau:topic_list")

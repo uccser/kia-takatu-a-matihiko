@@ -63,6 +63,18 @@
         <div class="row">
           <div class="col-12">
             {% render_breadcrumbs %}
+
+            {% if messages %}
+              {% for message in messages %}
+                <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %} alert-dismissible fade show">
+                  {{ message }}
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+              {% endfor %}
+            {% endif %}
+
             {% block custom_page_heading %}
               <h1>
                 {% block page_heading %}
