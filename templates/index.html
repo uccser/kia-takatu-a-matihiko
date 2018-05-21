@@ -54,7 +54,18 @@
             <h4 class="mt-0">Pīkau</h4>
             <p>These are bite sized courses preparing teachers to be ready for the new content within the Technology curriculum.</p>
             <a class="btn btn-primary" href="{% url 'pikau:index' %}" role="button">
-              View pīkau content
+              View pīkau
+            </a>
+          </div>
+        </div>
+
+        <div class="media mt-4 mb-5">
+          <img class="align-self-center mr-3" src="{% static 'images/icons/icons8/check-file.png' %}">
+          <div class="media-body">
+            <h4 class="mt-0">Files</h4>
+            <p>Lists files used within this project with their licences.</p>
+            <a class="btn btn-primary" href="{% url 'files:index' %}" role="button">
+              View files
             </a>
           </div>
         </div>
