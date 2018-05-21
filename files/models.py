@@ -1,10 +1,20 @@
 """Models for the files application."""
 
 from django.db import models
+from django.core.exceptions import ObjectDoesNotExist
 
 
 def default_licence():
-    return Licence.objects.get(name="Unknown").pk
+    """Return default licence object.
+
+    Returns:
+        Licence 'Unknown' if available, otherwise None.
+    """
+    try:
+        default = Licence.objects.get(name="Unknown").pk
+    except ObjectDoesNotExist:
+        default = None
+    return default
 
 
 class Licence(models.Model):
