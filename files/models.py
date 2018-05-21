@@ -49,6 +49,7 @@ class File(models.Model):
         on_delete=models.CASCADE,
         related_name="files",
         default=default_licence,
+        null=True,
     )
 
     def __str__(self):
