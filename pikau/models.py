@@ -194,14 +194,14 @@ class PikauCourse(models.Model):
     )
     topic = models.ForeignKey(
         Topic,
-        on_delete=models.CASCADE,
+        on_delete=models.PROTECT,
         related_name="pikau_courses",
         blank=True,
         null=True,
     )
     level = models.ForeignKey(
         Level,
-        on_delete=models.CASCADE,
+        on_delete=models.PROTECT,
         related_name="pikau_courses",
         blank=True,
         null=True,
@@ -245,14 +245,14 @@ class PikauCourse(models.Model):
     __previous_status = None
     manager = models.ForeignKey(
         User,
-        on_delete=models.CASCADE,
+        on_delete=models.SET_NULL,
         related_name="pikau_courses",
         blank=True,
         null=True,
     )
     milestone = models.ForeignKey(
         Milestone,
-        on_delete=models.CASCADE,
+        on_delete=models.PROTECT,
         related_name="pikau_courses",
         blank=True,
         null=True,
@@ -287,7 +287,7 @@ class PikauUnit(models.Model):
     number = models.PositiveSmallIntegerField()
     pikau_course = models.ForeignKey(
         PikauCourse,
-        on_delete=models.CASCADE,
+        on_delete=models.PROTECT,
         related_name="content"
     )
     name = models.CharField(max_length=200)
