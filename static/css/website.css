@@ -125,3 +125,6 @@ footer > .container {
 .asteriskField {
   color: #dc3545;
 }
+.slug-input {
+  font-family: monospace;
+}

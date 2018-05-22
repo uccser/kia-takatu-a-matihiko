@@ -18,7 +18,7 @@ class GlossaryForm(ModelForm):
         self.helper.layout = Layout(
             Field("term", css_class="slug-source"),
             "description",
-            "slug",
+            Field("slug", css_class="slug-input"),
             Submit("submit", "Submit"),
         )
 

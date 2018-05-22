@@ -20,7 +20,7 @@ class FileForm(ModelForm):
             "description",
             "location",
             "licence",
-            "slug",
+            Field("slug", css_class="slug-input"),
             Submit("submit", "Submit"),
         )
 
