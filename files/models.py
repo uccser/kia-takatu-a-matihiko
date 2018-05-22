@@ -28,6 +28,14 @@ class Licence(models.Model):
 
         ordering = ("name", )
 
+    def get_absolute_url(self):
+        """Return the URL for a licence.
+
+        Returns:
+            URL as string.
+        """
+        return self.url
+
     def __str__(self):
         """Text representation of Licence object.
 
