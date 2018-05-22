@@ -77,7 +77,6 @@ class GlossaryListView(LoginRequiredMixin, SingleTableView):
 class GlossaryDetailView(LoginRequiredMixin, DetailView):
     """View for a glossary term."""
 
-    context_object_name = "glossary_term"
     model = GlossaryTerm
 
 
