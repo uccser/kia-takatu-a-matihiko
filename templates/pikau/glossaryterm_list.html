@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% load render_table from django_tables2 %}
+{% load django_bootstrap_breadcrumbs %}
+
+{% block breadcrumbs %}
+  {% breadcrumb "Home" "/" %}
+  {% breadcrumb "Pīkau" "pikau:index" %}
+  {% breadcrumb "Glossary" "" %}
+{% endblock breadcrumbs %}
+
+{% block page_heading %}
+  Glossary
+  <div class="float-right">
+    {% with text='Add glossary term' %}
+      {% url 'pikau:glossaryterm_create' as add_url %}
+      {% include "snippets/add_button.html" %}
+    {% endwith %}
+  </div>
+{% endblock page_heading %}
+
+{% block content %}
+  <p>This page lists all the glossary terms available within Pīkau.</p>
+
+  {% render_table table %}
+{% endblock content %}

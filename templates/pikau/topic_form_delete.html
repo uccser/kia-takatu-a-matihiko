@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% load django_bootstrap_breadcrumbs %}
+
+{% block breadcrumbs %}
+  {% breadcrumb "Home" "/" %}
+  {% breadcrumb "Pīkau" "pikau:index" %}
+  {% breadcrumb "Topics" "pikau:topic_list" %}
+  {% breadcrumb "Delete Topic" "" %}
+{% endblock breadcrumbs %}
+
+{% block page_heading %}
+  Delete Topic
+{% endblock page_heading %}
+
+{% block content %}
+<form method="post">{% csrf_token %}
+  <p>Are you sure you want to delete "{{ object }}"?</p>
+  <input type="submit" value="Confirm" />
+</form>
+{% endblock content %}

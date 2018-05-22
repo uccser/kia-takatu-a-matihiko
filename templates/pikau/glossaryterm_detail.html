@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% load django_bootstrap_breadcrumbs %}
+{% block breadcrumbs %}
+  {% breadcrumb "Home" "/" %}
+  {% breadcrumb "Pīkau" "pikau:index" %}
+  {% breadcrumb "Glossary" "pikau:glossaryterm_list" %}
+  {% breadcrumb glossaryterm.term "" %}
+{% endblock breadcrumbs %}
+
+{% block page_heading %}
+  {{ glossaryterm.term }}
+  <div class="float-right">
+    {% with text='Update glossary term' %}
+      {% url 'pikau:glossaryterm_update' glossaryterm.slug as update_url %}
+      {% include "snippets/update_button.html" %}
+    {% endwith %}
+  </div>
+{% endblock page_heading %}
+
+{% block content %}
+  <p>{{ glossaryterm.description }}</p>
+
+  <p><strong>Slug:</strong> <code>{{ glossaryterm.slug }}</code></p>
+
+  <p><strong>Pikau Courses:</strong> {{ glossaryterm.pikau_courses.count }}</p>
+  <div class="row">
+    {% for pikau_course in level.pikau_courses.all %}
+      {% include "pikau/snippets/pikau_course_card.html" %}
+    {% endfor %}
+  </div>
+{% endblock content %}

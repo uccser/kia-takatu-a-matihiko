@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% load django_bootstrap_breadcrumbs %}
+{% load crispy_forms_tags %}
+
+{% block breadcrumbs %}
+  {% breadcrumb "Home" "/" %}
+  {% breadcrumb "Pīkau" "pikau:index" %}
+  {% breadcrumb "Glossary" "pikau:glossaryterm_list" %}
+  {% breadcrumb "Update glossary definition" "" %}
+{% endblock breadcrumbs %}
+
+{% block page_heading %}
+  Update glossary definition
+{% endblock page_heading %}
+
+{% block content %}
+  {% crispy form %}
+{% endblock content %}
+
+{% block scripts %}
+ {% include 'snippets/slugify.html' %}
+{% endblock scripts %}
