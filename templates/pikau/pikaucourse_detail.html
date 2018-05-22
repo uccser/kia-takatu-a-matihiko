@@ -141,7 +141,7 @@
                 <ul class="mb-0">
                 {% for glossary_term in pikau_course.glossary_terms.all %}
                   <li>
-                    <a href="{% url 'pikau:glossary_list' %}#{{ glossary_term.slug }}">
+                    <a href="{% url 'pikau:glossaryterm_list' %}#{{ glossary_term.slug }}">
                       {{ glossary_term.term }}
                     </a>
                   </li>

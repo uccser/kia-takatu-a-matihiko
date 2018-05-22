@@ -36,25 +36,31 @@ urlpatterns = [
     path(
         "glossary/",
         views.GlossaryListView.as_view(),
-        name="glossary_list"
+        name="glossaryterm_list"
+    ),
+    # eg: /pikau/glossary/view/slug-1/
+    path(
+        "glossary/view/<slug:slug>",
+        views.GlossaryDetailView.as_view(),
+        name="glossaryterm_detail"
     ),
     # eg: /pikau/glossary/create/
     path(
         "glossary/create/",
         views.GlossaryCreateView.as_view(),
-        name="glossary_create"
+        name="glossaryterm_create"
     ),
     # eg: /pikau/glossary/update/term-1/
     path(
         "glossary/update/<slug:slug>/",
         views.GlossaryUpdateView.as_view(),
-        name="glossary_update"
+        name="glossaryterm_update"
     ),
     # eg: /pikau/glossary/delete/term-1/
     path(
         "glossary/delete/<slug:slug>/",
         views.GlossaryDeleteView.as_view(),
-        name="glossary_delete"
+        name="glossaryterm_delete"
     ),
     # eg: /pikau/goals/
     path(

@@ -46,7 +46,10 @@ class GlossaryTerm(models.Model):
     """Model for glossary term."""
 
     #  Auto-incrementing 'id' field is automatically set by Django
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(
+        unique=True,
+        help_text="A unique readable identifier",
+    )
     term = models.CharField(max_length=200, unique=True)
     description = models.TextField()
 

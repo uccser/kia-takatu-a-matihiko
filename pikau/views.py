@@ -16,6 +16,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.core.exceptions import ObjectDoesNotExist
 from django.urls import reverse_lazy
 from django.http import Http404
+from django_tables2 import SingleTableView
 from pikau.models import (
     GlossaryTerm,
     Goal,
@@ -30,12 +31,12 @@ from pikau.models import (
     READINESS_LEVELS,
 )
 from pikau.utils import pathways
+from pikau import tables
 from pikau.mixins import (
     SuccessMessageDeleteMixin,
     GlossaryActionMixin,
     TopicActionMixin,
 )
-
 NUMBER_OF_FLAME_STAGES = 7
 
 
@@ -66,40 +67,45 @@ class DocumentationView(LoginRequiredMixin, TemplateView):
         return context
 
 
-class GlossaryListView(LoginRequiredMixin, ListView):
+class GlossaryListView(LoginRequiredMixin, SingleTableView):
     """View for the glossary list page."""
 
-    template_name = "pikau/glossary.html"
-    context_object_name = "glossary_terms"
     model = GlossaryTerm
-    ordering = "term"
+    table_class = tables.GlossaryTermTable
+
+
+class GlossaryDetailView(LoginRequiredMixin, DetailView):
+    """View for a glossary term."""
+
+    context_object_name = "glossary_term"
+    model = GlossaryTerm
 
 
 class GlossaryCreateView(LoginRequiredMixin, SuccessMessageMixin, GlossaryActionMixin, CreateView):
     """View for creating a glossary definition."""
 
     model = GlossaryTerm
-    template_name = "pikau/glossary_form_create.html"
+    template_name = "pikau/glossaryterm_form_create.html"
     success_message = "Glossary definition created!"
-    success_url = reverse_lazy("pikau:glossary_list")
+    success_url = reverse_lazy("pikau:glossaryterm_list")
 
 
 class GlossaryUpdateView(LoginRequiredMixin, SuccessMessageMixin, GlossaryActionMixin, UpdateView):
     """View for updating a glossary definition."""
 
     model = GlossaryTerm
-    template_name = "pikau/glossary_form_update.html"
+    template_name = "pikau/glossaryterm_form_update.html"
     success_message = "Glossary definition updated!"
-    success_url = reverse_lazy("pikau:glossary_list")
+    success_url = reverse_lazy("pikau:glossaryterm_list")
 
 
 class GlossaryDeleteView(LoginRequiredMixin, SuccessMessageDeleteMixin, GlossaryActionMixin, DeleteView):
     """View for deleting a glossary definition."""
 
     model = GlossaryTerm
-    template_name = "pikau/glossary_form_delete.html"
+    template_name = "pikau/glossaryterm_form_delete.html"
     success_message = "Glossary definition deleted!"
-    success_url = reverse_lazy("pikau:glossary_list")
+    success_url = reverse_lazy("pikau:glossaryterm_list")
 
 
 class GoalListView(LoginRequiredMixin, ListView):
