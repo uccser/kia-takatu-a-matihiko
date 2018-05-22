@@ -28,6 +28,16 @@ class FileList(LoginRequiredMixin, SingleTableMixin, FilterView):
     table_class = FileTable
     filterset_class = FileFilter
 
+    def get_context_data(self, **kwargs):
+        """Provide the context data for the view.
+
+        Returns:
+            Dictionary of context data.
+        """
+        context = super(FileList, self).get_context_data(**kwargs)
+        context["unknown_licences"] = File.objects.filter(licence__name="Unknown").count()
+        return context
+
 
 class FileDetailView(LoginRequiredMixin, DetailView):
     """View for a file."""
