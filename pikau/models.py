@@ -46,9 +46,20 @@ class GlossaryTerm(models.Model):
     """Model for glossary term."""
 
     #  Auto-incrementing 'id' field is automatically set by Django
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(
+        unique=True,
+        help_text="A unique readable identifier",
+    )
     term = models.CharField(max_length=200, unique=True)
     description = models.TextField()
+
+    def get_absolute_url(self):
+        """Return the canonical URL for a glossary term.
+
+        Returns:
+            URL as string.
+        """
+        return reverse("pikau:glossaryterm_detail", args=[self.slug])
 
     def __str__(self):
         """Text representation of GlossaryTerm object.
@@ -124,6 +135,14 @@ class Topic(models.Model):
     slug = models.SlugField(unique=True)
     name = models.CharField(max_length=100, unique=True)
 
+    def get_absolute_url(self):
+        """Return the canonical URL for a topic.
+
+        Returns:
+            URL as string.
+        """
+        return reverse("pikau:topic", args=[self.slug])
+
     def __str__(self):
         """Text representation of Topic object.
 
@@ -183,14 +202,14 @@ class PikauCourse(models.Model):
     )
     topic = models.ForeignKey(
         Topic,
-        on_delete=models.CASCADE,
+        on_delete=models.PROTECT,
         related_name="pikau_courses",
         blank=True,
         null=True,
     )
     level = models.ForeignKey(
         Level,
-        on_delete=models.CASCADE,
+        on_delete=models.PROTECT,
         related_name="pikau_courses",
         blank=True,
         null=True,
@@ -234,14 +253,14 @@ class PikauCourse(models.Model):
     __previous_status = None
     manager = models.ForeignKey(
         User,
-        on_delete=models.CASCADE,
+        on_delete=models.SET_NULL,
         related_name="pikau_courses",
         blank=True,
         null=True,
     )
     milestone = models.ForeignKey(
         Milestone,
-        on_delete=models.CASCADE,
+        on_delete=models.PROTECT,
         related_name="pikau_courses",
         blank=True,
         null=True,
@@ -276,7 +295,7 @@ class PikauUnit(models.Model):
     number = models.PositiveSmallIntegerField()
     pikau_course = models.ForeignKey(
         PikauCourse,
-        on_delete=models.CASCADE,
+        on_delete=models.PROTECT,
         related_name="content"
     )
     name = models.CharField(max_length=200)

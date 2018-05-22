@@ -36,6 +36,9 @@
             <a class="nav-item nav-link" href="{% url 'pikau:index' %}">
               {% trans "Pīkau" %}
             </a>
+            <a class="nav-item nav-link" href="{% url 'files:file_list' %}">
+              {% trans "Files" %}
+            </a>
           </div>
           <div class="navbar-nav ml-auto">
             {% if request.user.is_authenticated %}
@@ -60,6 +63,18 @@
         <div class="row">
           <div class="col-12">
             {% render_breadcrumbs %}
+
+            {% if messages %}
+              {% for message in messages %}
+                <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %} alert-dismissible fade show">
+                  {{ message }}
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+              {% endfor %}
+            {% endif %}
+
             {% block custom_page_heading %}
               <h1>
                 {% block page_heading %}
@@ -95,6 +110,10 @@
               <li>
                 <a href="{% url 'pikau:index' %}">
                   {% trans "Pīkau" %}
+                </a>
+              <li>
+                <a href="{% url 'files:file_list' %}">
+                  {% trans "Files" %}
                 </a>
               </li>
               <li>

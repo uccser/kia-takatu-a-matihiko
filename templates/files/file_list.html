@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load static %}
+{% load render_table from django_tables2 %}
+{% load django_bootstrap_breadcrumbs %}
+{% load crispy_forms_tags %}
+
+{% block breadcrumbs %}
+  {% breadcrumb "Home" "/" %}
+  {% breadcrumb "Files" "" %}
+{% endblock breadcrumbs %}
+
+{% block page_heading %}
+  Files
+  <div class="float-right">
+    {% with text='Add file' %}
+      {% url 'files:file_create' as add_url %}
+      {% include "snippets/add_button.html" %}
+    {% endwith %}
+  </div>
+{% endblock page_heading %}
+
+{% block content %}
+  <p>
+    {% blocktrans trimmed %}
+      This page lists files used within <a href='http://www.kiatakatu.ac.nz/'>Kia Takatū ā-Matihiko</a>.
+    {% endblocktrans %}
+  </p>
+
+  {% if unknown_licences %}
+    <div class="alert alert-danger" role="alert">
+      <h4 class="alert-heading">Warning!</h4>
+      <a href="{% url 'files:file_list' %}?licence=3" class="alert-link">{{ unknown_licences }} file{{ unknown_licences|pluralize }}</a> do{{ unknown_licences|pluralize:"es," }} not have a licence listed!
+    </div>
+  {% endif %}
+
+  {% if filter %}
+    <form action="" method="get" class="form form-inline mb-3">
+      {{ filter.form|crispy }}
+      <button type="submit" class="btn btn-primary ml-2">Filter</button>
+    </form>
+  {% endif %}
+
+  {% render_table table %}
+{% endblock content %}

@@ -146,9 +146,6 @@ class BaseLoader():
         if yaml_contents is None:
             raise EmptyYAMLFileError(yaml_file_path)
 
-        if isinstance(yaml_contents, dict) is False:
-            raise InvalidYAMLFileError(yaml_file_path)
-
         return yaml_contents
 
     def load_template_files(self):

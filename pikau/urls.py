@@ -35,37 +35,61 @@ urlpatterns = [
     # eg: /pikau/glossary/
     path(
         "glossary/",
-        views.GlossaryList.as_view(),
-        name="glossary"
+        views.GlossaryListView.as_view(),
+        name="glossaryterm_list"
+    ),
+    # eg: /pikau/glossary/view/slug-1/
+    path(
+        "glossary/view/<slug:slug>/",
+        views.GlossaryDetailView.as_view(),
+        name="glossaryterm_detail"
+    ),
+    # eg: /pikau/glossary/create/
+    path(
+        "glossary/create/",
+        views.GlossaryCreateView.as_view(),
+        name="glossaryterm_create"
+    ),
+    # eg: /pikau/glossary/update/term-1/
+    path(
+        "glossary/update/<slug:slug>/",
+        views.GlossaryUpdateView.as_view(),
+        name="glossaryterm_update"
+    ),
+    # eg: /pikau/glossary/delete/term-1/
+    path(
+        "glossary/delete/<slug:slug>/",
+        views.GlossaryDeleteView.as_view(),
+        name="glossaryterm_delete"
     ),
     # eg: /pikau/goals/
     path(
         "goals/",
-        views.GoalList.as_view(),
+        views.GoalListView.as_view(),
         name="goal_list"
     ),
     # eg: /pikau/levels/
     path(
         "levels/",
-        views.LevelList.as_view(),
+        views.LevelListView.as_view(),
         name="level_list"
     ),
     # eg: /pikau/levels/level-1/
     path(
         "levels/<slug:slug>/",
-        views.LevelDetail.as_view(),
+        views.LevelDetailView.as_view(),
         name="level"
     ),
     # eg: /pikau/milestones/
     path(
         "milestones/",
-        views.MilestoneList.as_view(),
+        views.MilestoneListView.as_view(),
         name="milestone_list"
     ),
     # eg: /pikau/milestones/1/
     path(
         "milestones/<int:pk>/",
-        views.MilestoneDetail.as_view(),
+        views.MilestoneDetailView.as_view(),
         name="milestone"
     ),
     # eg: /pikau/pathways/
@@ -77,73 +101,91 @@ urlpatterns = [
     # eg: /pikau/pikau-courses/
     path(
         "pikau-courses/",
-        views.PikauCourseList.as_view(),
+        views.PikauCourseListView.as_view(),
         name="pikau_course_list"
     ),
     # eg: /pikau/pikau-courses/pikau-1/
     path(
         "pikau-courses/<slug:slug>/",
-        views.PikauCourseDetail.as_view(),
+        views.PikauCourseDetailView.as_view(),
         name="pikau_course"
     ),
     # eg: /pikau/pikau-courses/pikau-1/content/
     path(
         "pikau-courses/<slug:slug>/content/",
-        views.PikauCourseContent.as_view(),
+        views.PikauCourseContentView.as_view(),
         name="pikau_content"
     ),
     # eg: /pikau/pikau-courses/pikau-1/content/unit-1/
     path(
         "pikau-courses/<slug:course_slug>/content/<slug:unit_slug>/",
-        views.PikauUnitDetail.as_view(),
+        views.PikauUnitDetailView.as_view(),
         name="pikau_unit"
     ),
     # eg: /pikau/progress-outcomes/
     path(
         "progress-outcomes/",
-        views.ProgressOutcomeList.as_view(),
+        views.ProgressOutcomeListView.as_view(),
         name="progress_outcome_list"
     ),
     # eg: /pikau/progress-outcomes/progress-outcome-1/
     path(
         "progress-outcomes/<slug:slug>/",
-        views.ProgressOutcomeDetail.as_view(),
+        views.ProgressOutcomeDetailView.as_view(),
         name="progress_outcome"
     ),
     # eg: /pikau/readiness-levels/
     path(
         "readiness-levels/",
-        views.ReadinessLevelList.as_view(),
+        views.ReadinessLevelListView.as_view(),
         name="readiness_level_list"
     ),
     # eg: /pikau/readiness-levels/1/
     path(
         "readiness-levels/<int:level_number>/",
-        views.ReadinessLevelDetail.as_view(),
+        views.ReadinessLevelDetailView.as_view(),
         name="readiness_level"
     ),
     # eg: /pikau/tags/
     path(
         "tags/",
-        views.TagList.as_view(),
+        views.TagListView.as_view(),
         name="tag_list"
     ),
     # eg: /pikau/tags/tag-1/
     path(
         "tags/<slug:slug>/",
-        views.TagDetail.as_view(),
+        views.TagDetailView.as_view(),
         name="tag"
     ),
     # eg: /pikau/topics/
     path(
         "topics/",
-        views.TopicList.as_view(),
+        views.TopicListView.as_view(),
         name="topic_list"
     ),
     # eg: /pikau/topics/topic-1/
     path(
-        "topics/<slug:slug>/",
-        views.TopicDetail.as_view(),
+        "topics/view/<slug:slug>/",
+        views.TopicDetailView.as_view(),
         name="topic"
+    ),
+    # eg: /pikau/topics/create/
+    path(
+        "topics/create/",
+        views.TopicCreateView.as_view(),
+        name="topic_create"
+    ),
+    # eg: /pikau/topics/update/topic-1/
+    path(
+        "topics/update/<slug:slug>/",
+        views.TopicUpdateView.as_view(),
+        name="topic_update"
+    ),
+    # eg: /pikau/topics/delete/topic-1/
+    path(
+        "topics/delete/<slug:slug>/",
+        views.TopicDeleteView.as_view(),
+        name="topic_delete"
     ),
 ]
