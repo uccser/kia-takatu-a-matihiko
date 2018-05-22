@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% load django_bootstrap_breadcrumbs %}
+
+{% block breadcrumbs %}
+  {% breadcrumb "Home" "/" %}
+  {% breadcrumb "Files" "files:file_list" %}
+  {% breadcrumb file.filename "" %}
+{% endblock breadcrumbs %}
+
+{% block page_heading %}
+  File: {{ file.filename }}
+  <div class="float-right">
+    {% with text='Update file' %}
+      {% url 'files:file_update' file.slug as update_url %}
+      {% include "snippets/update_button.html" %}
+    {% endwith %}
+  </div>
+{% endblock page_heading %}
+
+{% block content %}
+  <p><a href="{{ filename.location }}">{{ filename.location }}</a></p>
+
+  <p>{{ file.licence.name }}</p>
+
+  <p>{{ file.description }}</p>
+
+  <p><strong>Slug:</strong> <code>{{ file.slug }}</code></p>
+{% endblock content %}

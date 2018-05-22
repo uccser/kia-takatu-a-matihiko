@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% load django_bootstrap_breadcrumbs %}
+{% load crispy_forms_tags %}
+
+{% block breadcrumbs %}
+  {% breadcrumb "Home" "/" %}
+  {% breadcrumb "Files" "files:file_list" %}
+  {% breadcrumb "Update file" "" %}
+{% endblock breadcrumbs %}
+
+{% block page_heading %}
+  Update file
+{% endblock page_heading %}
+
+{% block content %}
+  {% crispy form %}
+{% endblock content %}
+
+{% block scripts %}
+ {% include 'snippets/slugify.html' %}
+{% endblock scripts %}

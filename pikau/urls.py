@@ -40,7 +40,7 @@ urlpatterns = [
     ),
     # eg: /pikau/glossary/view/slug-1/
     path(
-        "glossary/view/<slug:slug>",
+        "glossary/view/<slug:slug>/",
         views.GlossaryDetailView.as_view(),
         name="glossaryterm_detail"
     ),

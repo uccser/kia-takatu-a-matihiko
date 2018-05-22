@@ -53,6 +53,14 @@ class GlossaryTerm(models.Model):
     term = models.CharField(max_length=200, unique=True)
     description = models.TextField()
 
+    def get_absolute_url(self):
+        """Return the canonical URL for a glossary term.
+
+        Returns:
+            URL as string.
+        """
+        return reverse("pikau:glossaryterm_detail", args=[self.slug])
+
     def __str__(self):
         """Text representation of GlossaryTerm object.
 

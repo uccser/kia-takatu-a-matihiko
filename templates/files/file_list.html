@@ -13,6 +13,12 @@
 
 {% block page_heading %}
   Files
+  <div class="float-right">
+    {% with text='Add file' %}
+      {% url 'files:file_create' as add_url %}
+      {% include "snippets/add_button.html" %}
+    {% endwith %}
+  </div>
 {% endblock page_heading %}
 
 {% block content %}

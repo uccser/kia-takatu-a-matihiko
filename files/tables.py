@@ -9,6 +9,7 @@ from files.models import (
 class FileTable(tables.Table):
     """Table to display all files."""
 
+    filename = tables.LinkColumn()
     licence = tables.RelatedLinkColumn()
 
     class Meta:

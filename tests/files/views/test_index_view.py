@@ -12,13 +12,13 @@ class IndexViewTest(BaseTestWithDB):
         self.test_data = FileTestDataGenerator()
 
     def test_index_with_no_files(self):
-        url = reverse("files:index")
+        url = reverse("files:file_list")
         response = self.client.get(url)
         self.assertEqual(HTTPStatus.OK, response.status_code)
 
     def test_index_with_one_file(self):
         obj = self.test_data.create_file(1)
-        url = reverse("files:index")
+        url = reverse("files:file_list")
         response = self.client.get(url)
         self.assertEqual(HTTPStatus.OK, response.status_code)
         self.assertQuerysetEqual(
@@ -30,7 +30,7 @@ class IndexViewTest(BaseTestWithDB):
         obj_1 = self.test_data.create_file(1)
         obj_3 = self.test_data.create_file(3)
         obj_2 = self.test_data.create_file(2)
-        url = reverse("files:index")
+        url = reverse("files:file_list")
         response = self.client.get(url)
         self.assertEqual(HTTPStatus.OK, response.status_code)
         self.assertQuerysetEqual(

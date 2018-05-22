@@ -2,6 +2,7 @@
 
 from django.db import models
 from django.core.exceptions import ObjectDoesNotExist
+from django.urls import reverse
 
 
 def default_licence():
@@ -59,6 +60,14 @@ class File(models.Model):
         default=default_licence,
         null=True,
     )
+
+    def get_absolute_url(self):
+        """Return the URL for a file.
+
+        Returns:
+            URL as string.
+        """
+        return reverse("files:file_detail", args=[self.slug])
 
     def __str__(self):
         """Text representation of File object.

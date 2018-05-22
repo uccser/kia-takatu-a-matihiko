@@ -36,7 +36,7 @@
             <a class="nav-item nav-link" href="{% url 'pikau:index' %}">
               {% trans "Pīkau" %}
             </a>
-            <a class="nav-item nav-link" href="{% url 'files:index' %}">
+            <a class="nav-item nav-link" href="{% url 'files:file_list' %}">
               {% trans "Files" %}
             </a>
           </div>
@@ -112,7 +112,7 @@
                   {% trans "Pīkau" %}
                 </a>
               <li>
-                <a href="{% url 'files:index' %}">
+                <a href="{% url 'files:file_list' %}">
                   {% trans "Files" %}
                 </a>
               </li>

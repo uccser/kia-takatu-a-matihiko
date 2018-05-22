@@ -13,5 +13,6 @@ class SuccessMessageDeleteMixin(object):
 
 
 class TopicActionMixin(object):
+    """Topic mixin."""
 
     fields = ("name", "slug")
