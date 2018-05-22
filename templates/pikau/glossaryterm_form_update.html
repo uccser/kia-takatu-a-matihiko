@@ -15,8 +15,9 @@
 {% endblock page_heading %}
 
 {% block content %}
-<form method="post">{% csrf_token %}
-  {{ form|crispy }}
-  <input type="submit" class="btn btn-primary" value="Save" />
-</form>
+  {% crispy form %}
 {% endblock content %}
+
+{% block scripts %}
+ {% include 'snippets/slugify.html' %}
+{% endblock scripts %}

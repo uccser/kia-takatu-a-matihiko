@@ -34,9 +34,12 @@ from pikau.utils import pathways
 from pikau import tables
 from pikau.mixins import (
     SuccessMessageDeleteMixin,
-    GlossaryActionMixin,
     TopicActionMixin,
 )
+from pikau.forms import (
+    GlossaryForm,
+)
+
 NUMBER_OF_FLAME_STAGES = 7
 
 
@@ -80,25 +83,27 @@ class GlossaryDetailView(LoginRequiredMixin, DetailView):
     model = GlossaryTerm
 
 
-class GlossaryCreateView(LoginRequiredMixin, SuccessMessageMixin, GlossaryActionMixin, CreateView):
+class GlossaryCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     """View for creating a glossary definition."""
 
     model = GlossaryTerm
+    form_class = GlossaryForm
     template_name = "pikau/glossaryterm_form_create.html"
     success_message = "Glossary definition created!"
     success_url = reverse_lazy("pikau:glossaryterm_list")
 
 
-class GlossaryUpdateView(LoginRequiredMixin, SuccessMessageMixin, GlossaryActionMixin, UpdateView):
+class GlossaryUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     """View for updating a glossary definition."""
 
     model = GlossaryTerm
+    form_class = GlossaryForm
     template_name = "pikau/glossaryterm_form_update.html"
     success_message = "Glossary definition updated!"
     success_url = reverse_lazy("pikau:glossaryterm_list")
 
 
-class GlossaryDeleteView(LoginRequiredMixin, SuccessMessageDeleteMixin, GlossaryActionMixin, DeleteView):
+class GlossaryDeleteView(LoginRequiredMixin, SuccessMessageDeleteMixin, DeleteView):
     """View for deleting a glossary definition."""
 
     model = GlossaryTerm
@@ -149,7 +154,7 @@ class MilestoneListView(LoginRequiredMixin, ListView):
         Returns:
             Dictionary of context data.
         """
-        context = super(MilestoneList, self).get_context_data(**kwargs)
+        context = super(MilestoneListView, self).get_context_data(**kwargs)
         line_broken_status_stages = []
         for status_num, status_name in STATUS_CHOICES:
             line_broken_status_stages.append(
@@ -247,7 +252,7 @@ class PikauUnitDetailView(LoginRequiredMixin, DetailView):
         Returns:
             Dictionary of context data.
         """
-        context = super(PikauUnitDetail, self).get_context_data(**kwargs)
+        context = super(PikauUnitDetailView, self).get_context_data(**kwargs)
         try:
             context["previous_unit"] = PikauUnit.objects.get(
                 pikau_course=self.object.pikau_course,
@@ -284,7 +289,7 @@ class ProgressOutcomeListView(LoginRequiredMixin, ListView):
         Returns:
             Dictionary of context data.
         """
-        context = super(ProgressOutcomeList, self).get_context_data(**kwargs)
+        context = super(ProgressOutcomeListView, self).get_context_data(**kwargs)
         topics = Topic.objects.order_by("name")
         context["topics"] = topics
         max_count = NUMBER_OF_FLAME_STAGES

@@ -122,3 +122,6 @@ footer > .container {
 .permalink {
   margin: 4rem 0;
 }
+.asteriskField {
+  color: #dc3545;
+}

@@ -1,0 +1,10 @@
+{% load static %}
+
+<script src="{% static 'js/speakingurl.min.js' %}"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('.slug-source').on('input', function(event){
+      $('#id_slug').val(getSlug($(this).val()));
+    });
+  });
+</script>
