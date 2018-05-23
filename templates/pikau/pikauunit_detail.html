@@ -15,9 +15,11 @@
 
 {% block custom_page_heading %}
   <div class="jumbotron bg-size-cover text-white"{% if pikau_unit.pikau_course.cover_photo %} style="background-image:url({% static pikau_unit.pikau_course.cover_photo %});"{% endif %}>
-    {% if pikau_unit.module_name %}
-      <div>{{ pikau_unit.module_name }}</div>
-    {% endif %}
+    <div class="mb-3">
+      <span class="border-bottom pb-2">
+        {{ pikau_unit.pikau_course.name }}
+      </span>
+    </div>
     <h1>
       {{ pikau_unit.name }}
     </h1>
