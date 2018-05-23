@@ -65,6 +65,9 @@
       {% endfor %}
     </div>
     <div class="tab-pane fade" id="assessments" role="tabpanel" aria-labelledby="assessments-tab">
+      {% render_html_field pikau_course.assessment_description %}
+
+      {% render_html_field pikau_course.assessment_items %}
     </div>
   </div>
 {% endblock content %}

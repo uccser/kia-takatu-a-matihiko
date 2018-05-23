@@ -193,14 +193,4 @@
     <h2>Study Plan</h2>
     {% render_html_field pikau_course.study_plan %}
   {% endif %}
-
-  {% if pikau_course.assessment_description %}
-    <h2>Assessment Description</h2>
-    {% render_html_field pikau_course.assessment_description %}
-  {% endif %}
-
-  {% if pikau_course.assessment_items %}
-    <h2>Assessment Items</h2>
-    {% render_html_field pikau_course.assessment_items %}
-  {% endif %}
 {% endblock content %}
