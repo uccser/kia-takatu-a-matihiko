@@ -3,6 +3,7 @@
 ## 0.4.2 (Pre-release)
 
 - Display pīkau cover photos with center positioning.
+- Alter pīkau content unit header to display course name instead of module name.
 - Update "Getting the most out of your time" pīkau:
   - Name changed to "Getting the most out of pīkau".
   - Minor grammar changes.
