@@ -132,3 +132,7 @@ footer > .container {
 .form-inline label {
   margin-right: 0.5rem;
 }
+.no-underline,
+.no-underline:hover {
+  text-decoration: none !important;
+}

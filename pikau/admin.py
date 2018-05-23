@@ -2,9 +2,12 @@
 
 from django.contrib import admin
 from pikau.models import (
+    GlossaryTerm,
+    Goal,
     Level,
     Milestone,
     PikauCourse,
+    PikauUnit,
     ProgressOutcome,
     Tag,
     Topic,
@@ -18,9 +21,12 @@ class PikauCourseAdmin(admin.ModelAdmin):
     filter_horizontal = ("tags", "progress_outcomes", "prerequisites")
 
 
-admin.site.register(PikauCourse, PikauCourseAdmin)
+admin.site.register(GlossaryTerm)
+admin.site.register(Goal)
 admin.site.register(Level)
 admin.site.register(Milestone)
 admin.site.register(ProgressOutcome)
+admin.site.register(PikauCourse, PikauCourseAdmin)
+admin.site.register(PikauUnit)
 admin.site.register(Tag)
 admin.site.register(Topic)
