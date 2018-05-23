@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.4.1 (Pre-release)
+
+- Display pīkau content with iQualify style navigation.
+- Add "Getting the most out of your time" pikau.
+
 ## 0.4.0 (Pre-release)
 
 - Add files application for tracking files and their licences. (fixes #34)
