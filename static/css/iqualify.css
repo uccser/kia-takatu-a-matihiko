@@ -138,3 +138,25 @@ div.btn-spacer {
 .gd-box-purple {
   background-color: #ff00ff;
 }
+/* Tab navigation */
+#iqualify-tabs .tab-icon {
+  width: 25px;
+}
+#iqualify-tabs {
+  background-color: #a0a5b5;
+}
+#iqualify-tabs a {
+  color: black;
+}
+#iqualify-tabs .nav-link {
+  border: 0;
+  border-radius: 0;
+  border-top: 4px solid #a0a5b5;
+}
+#iqualify-tabs .nav-item:hover {
+  background-color: rgba(74, 74, 85, 0.3);
+}
+#iqualify-tabs .nav-link.active {
+  background-color: #f9f9f9;
+  border-color: #6b717f;
+}
