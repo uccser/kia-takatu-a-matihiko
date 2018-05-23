@@ -160,3 +160,20 @@ div.btn-spacer {
   background-color: #f9f9f9;
   border-color: #6b717f;
 }
+/* Content image styles */
+.img-wrap-center {
+  display: block;
+  text-align: center;
+}
+figure {
+  background: radial-gradient(#d2d2d2, #efefef);
+  border: 1px solid #bdc2d0;
+}
+figure figcaption {
+  text-align: left;
+  font-size: 16px !important;
+  padding: 20px 15px 50px 15px;
+  background-color: white;
+  border-top: 1px dotted #bdc2d0;
+  border-bottom: 4px solid #bdc2d0;
+}
