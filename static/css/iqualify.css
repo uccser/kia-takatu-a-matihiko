@@ -138,3 +138,42 @@ div.btn-spacer {
 .gd-box-purple {
   background-color: #ff00ff;
 }
+/* Tab navigation */
+#iqualify-tabs .tab-icon {
+  width: 25px;
+}
+#iqualify-tabs {
+  background-color: #a0a5b5;
+}
+#iqualify-tabs a {
+  color: black;
+}
+#iqualify-tabs .nav-link {
+  border: 0;
+  border-radius: 0;
+  border-top: 4px solid #a0a5b5;
+}
+#iqualify-tabs .nav-item:hover {
+  background-color: rgba(74, 74, 85, 0.3);
+}
+#iqualify-tabs .nav-link.active {
+  background-color: #f9f9f9;
+  border-color: #6b717f;
+}
+/* Content image styles */
+.img-wrap-center {
+  display: block;
+  text-align: center;
+}
+figure {
+  background: radial-gradient(#d2d2d2, #efefef);
+  border: 1px solid #bdc2d0;
+}
+figure figcaption {
+  text-align: left;
+  font-size: 16px !important;
+  padding: 20px 15px 50px 15px;
+  background-color: white;
+  border-top: 1px dotted #bdc2d0;
+  border-bottom: 4px solid #bdc2d0;
+}

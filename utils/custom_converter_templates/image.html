@@ -7,11 +7,11 @@
 {% else %}
   src="{{ full_file_path }}"
 {% endif %}
-class="figure-img"
+class="figure-img img-fluid"
 {% if alt %} alt="{{ alt }}"{% endif %}
 {% if hover_text %} title="{{ hover_text }}"{% endif %}>
 {% if caption %}
-<figcaption class="figure-caption text-center">
+<figcaption class="figure-caption">
 {% if caption_link %}
 <a href="{{ caption_link }}">
 {% endif %}
@@ -22,7 +22,7 @@ class="figure-img"
 </figcaption>
 {% endif %}
 {% if source_link %}
-<figcaption class="figure-caption text-center">
+<figcaption class="figure-caption">
 <a href="{{ source_link }}">Source</a>
 </figcaption>
 {% endif %}

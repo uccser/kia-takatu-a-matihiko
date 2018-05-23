@@ -21,15 +21,14 @@
       {% endwith %}
     {% endif %}
     <h1 class="text-white">{{ pikau_course.name }}</h1>
-    {% if pikau_course.status < 6 and pikau_course.development_folder %}
+    {% if pikau_course.content %}
+      <a class="btn btn-lg btn-light mt-3" href="{% url 'pikau:pikau_content' pikau_course.slug  %}">
+        View content
+      </a>
+    {% elif pikau_course.status < 6 and pikau_course.development_folder %}
       <a class="btn btn-lg btn-light mt-3" href="{{ pikau_course.development_folder }}" target="_blank">
         <img src="{% static 'images/icons/icons8/google-drive.png' %}" class="icon">
         View on Google Drive
-      </a>
-    {% endif %}
-    {% if pikau_course.status >= 6 %}
-      <a class="btn btn-lg btn-light mt-3" href="{% url 'pikau:pikau_content' pikau_course.slug  %}">
-        View content
       </a>
     {% endif %}
   </div>
@@ -193,15 +192,5 @@
   {% if pikau_course.study_plan %}
     <h2>Study Plan</h2>
     {% render_html_field pikau_course.study_plan %}
-  {% endif %}
-
-  {% if pikau_course.assessment_description %}
-    <h2>Assessment Description</h2>
-    {% render_html_field pikau_course.assessment_description %}
-  {% endif %}
-
-  {% if pikau_course.assessment_items %}
-    <h2>Assessment Items</h2>
-    {% render_html_field pikau_course.assessment_items %}
   {% endif %}
 {% endblock content %}
