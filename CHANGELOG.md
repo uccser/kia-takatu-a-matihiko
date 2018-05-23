@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.4.2 (Pre-release)
+
+- Display pīkau cover photos with center positioning.
+- Update "Getting the most out of your time" pīkau:
+  - Name changed to "Getting the most out of pīkau".
+  - Minor grammar changes.
+
 ## 0.4.1 (Pre-release)
 
 - Display pīkau content with iQualify style navigation.
