@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.3 (Pre-release)
+
+- Update pīkau course content rendering to match iQualify.
+- Ensure all pīkau models can be modified via admin interface.
+
+
 ## 0.4.2 (Pre-release)
 
 - Display pīkau cover photos with center positioning.
@@ -11,7 +17,7 @@
 ## 0.4.1 (Pre-release)
 
 - Display pīkau content with iQualify style navigation.
-- Add "Getting the most out of your time" pikau.
+- Add "Getting the most out of your time" pīkau.
 
 ## 0.4.0 (Pre-release)
 
