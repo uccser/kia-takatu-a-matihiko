@@ -75,6 +75,7 @@ class GlossaryListView(LoginRequiredMixin, SingleTableView):
 
     model = GlossaryTerm
     table_class = tables.GlossaryTermTable
+    table_pagination = False
 
 
 class GlossaryDetailView(LoginRequiredMixin, DetailView):
