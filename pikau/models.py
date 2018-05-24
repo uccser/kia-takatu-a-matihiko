@@ -51,7 +51,7 @@ class GlossaryTerm(models.Model):
         help_text="A unique readable identifier",
     )
     term = models.CharField(max_length=200, unique=True)
-    description = models.TextField()
+    definition = models.TextField()
 
     def get_absolute_url(self):
         """Return the canonical URL for a glossary term.

@@ -1,9 +1,436 @@
-example-term-1:
-  term: Example term 1
-  description: This is the definition for example term 1.
-example-term-2:
-  term: Example term 2
-  description: This is the definition for example term 2.
-example-term-3:
-  term: Example term 3
-  description: This is the definition for example term 3.
+aesthetics:
+  definition: Aesthetics is a branch of philosophy that explores the nature of art,
+    beauty, and taste, with the creation and appreciation of beauty.
+  term: Aesthetics
+alc:
+  definition: Apple Lossless Coding, a lossless compression method for audio.
+  term: ALC
+algorithm:
+  definition: A step by step process that describes how to solve a problem and/or
+    complete a task, which will always give a result.
+  term: Algorithm
+algorithm-analysis:
+  definition: Algorithm analysis working out the complexity of an algorithm.
+  term: Algorithm analysis
+algorithm-complexity:
+  definition: Algorithm complexity how long the algorithm takes to run (or how much
+    memory it uses). These are almost always specified in terms of the size of input.
+  term: Algorithm complexity
+alphabet:
+  definition: In formal languages, a list of characters that may occur in a language,
+    or more generally, a list of all possible inputs that might happen.
+  term: Alphabet
+ascii:
+  definition: ASCII the commonly used code for representing characters as 8-bit numbers
+    (although only 7 of the 8 bits are usually used).
+  term: ASCII
+attack:
+  definition: Gaining access to or decrypting a file that is using encryption, without
+    having the key. There are several types of attacks, some of which are also defined
+    in this list.
+  term: Attack
+binary-number-system:
+  definition: The base 2 number system, i.e. numbers only made up of the digits "0"
+    and "1". All numbers that can be represented in the decimal number system can
+    be uniquely represented in the binary number system.
+  term: Binary Number System
+binary-search:
+  definition: Searching a sorted list by looking at the middle item, and then searching
+    the appropriate half recursively (used for phone books, dictionaries and computer
+    algorithms).
+  term: Binary Search
+bit:
+  definition: Bit short for "binary digit" - a digit that is either 0 or 1.
+  term: Bit
+brooks-law:
+  definition: An observation that adding more people to a project that is running
+    late may actually slow it down more.
+  term: Brooks' law
+brute-force-attack:
+  definition: A type of attack that is carried out by trying every possible key.
+  term: Brute force attack
+bubble-sort:
+  definition: Bubble sort a sorting algorithm based on swapping adjacent items that
+    are out of order. It is not a good method, but serves as an example of a slow
+    method in contrast to others like quicksort.
+  term: Bubble sort
+byte:
+  definition: Byte a group of 8 bits, able to represent numbers from 0 to 255, can
+    store one ASCII character (also known as an octet).
+  term: Byte
+caesar-cipher:
+  definition: A very simple cipher that offsets each letter in the alphabet by a certain
+    amount, specified by the key. It is no longer used in practice due to being very
+    easy to attack.
+  term: Caesar Cipher
+chatterbot:
+  definition: An AI system that has text conversations with the user, typically based
+    on simple pattern matching.
+  term: Chatterbot
+check-digit:
+  definition: An extra digit that is added onto the end of a number such as an ISBN,
+    credit card number, or barcode number. This digit is calculated using a formula
+    based on the other digits in the number. Error detection works by using the check
+    equation to determine whether or not the check digit is as expected.
+  term: Check digit
+check-equation:
+  definition: An equation that is used to check whether or not the check digit for
+    a number is correct.
+  term: Check equation
+chomsky-hierarchy:
+  definition: A hierarchy of four classifications of formal languages, ranging from
+    simple regular expressions to very flexible (but computationally difficult) grammars.
+  term: Chomsky Hierarchy
+cipher:
+  definition: An algorithm used to encrypt a piece of plain text.
+  term: Cipher
+cipher-text:
+  definition: Text which has been encrypted.
+  term: Cipher text
+compiler:
+  definition: Compiler translates an entire program written in a high level language
+    to machine language in advance before running it.
+  term: Compiler
+complexity:
+  definition: How long it takes to solve a problem. A problem has an inherent complexity
+    (minimum time needed to solve it); any algorithm to solve the problem will have
+    a higher complexity (take at least that long).
+  term: Complexity
+compression:
+  definition: Compression making a file smaller by removing redundant information
+    (typically using standards like `zip`, `jpeg`, `mpeg`, `mp3`, etc).
+  term: Compression
+decimal-number-system:
+  definition: The standard base 10 number system that is used in everyday math, using
+    the digits "0", "1", "2", "3", "4", "5", "6", "7", "8", and "9".
+  term: Decimal Number System
+decrypt:
+  definition: '**Also Decryption, Decipher**  Getting the plain text for a piece of
+    cipher text by either using the key or an attack.'
+  term: Decrypt
+digital-signature:
+  definition: An encryption system that allows the receiver to verify that a document
+    was sent by the person who claims to have sent it.
+  term: Digital Signature
+encryption:
+  definition: Encryption changing the representation of data so it can't be read by an eavesdropper who doesn't have the encryption key.
+  term: Encryption
+encryption-key:
+  definition: Encryption key the password or secret code that will unlock an encrypted
+    file.
+  term: Encryption key
+error-correction:
+  definition: Correcting an error that has been detected in some data. This can be
+    demonstrated in the Parity trick, where a person is able to flip the changed bit
+    back over so it is correct again (after they have "detected" which bit was incorrect).
+    Not all error control schemes are able to correct errors; some are only able to
+    detect them.
+  term: Error correction
+error-detection:
+  definition: Detecting when an error has occurred in some data, such as a number
+    getting typed incorrectly or a bit getting flipped. Some simple examples of this
+    are parity bits or a check digit.
+  term: Error detection
+feature:
+  definition: A function available on a digital device or software, such as copy/paste,
+    autofocus, voice dialling or undo. Features are often used to sell a device, but
+    having features (functionality) should not be confused with people being able
+    to use the device effectively (usability).
+  term: Feature
+feedback:
+  definition: Responding to or acknowledging a user action. Users find the devices
+    hard to use if the feedback is slow, confusing, or non-existent.
+  term: Feedback
+finite-state-automaton:
+  definition: In formal languages, a simple 'machine' that has states, and transitions
+    from one state to another based on strings of input symbols.
+  term: Finite State Automaton
+finite-state-machine:
+  definition: Alternative name for a finite state automaton.
+  term: Finite State Machine
+frequency-analysis-attack:
+  definition: An attack on substitution ciphers that takes advantage of the fact that
+    some letters are generally more common than others in a piece of text (e.g. in
+    English, the letter "e" is usually the most common letter) by looking at which
+    letters appear the most in the cipher text and guessing that they must be the
+    substitutions for the most common letters.
+  term: Frequency Analysis Attack
+gif:
+  definition: A lossless image compression system typically used for small images
+    with few colours in them (in practice it can be lossy because it has only 256
+    colours, and if the original has more colours then some will be lost).
+  term: GIF
+gigabyte:
+  definition: "About 1000 megabytes (1,000,000 kilobytes and 1,000,000,000 bytes).\
+    \ This is 8,000 million individual bits (i.e. 0's and 1's). Like a kilobyte,\
+    \ there are other definitions, such as 1024x1024x1024 bytes, but usually this\
+    \ level of accuracy isn't important. Commonly referred to as a \"GB\"."
+  term: Gigabyte
+grammar:
+  definition: In formal languages, a set of rules for specifying a language, for example,
+    to specify syntax for programming languages.
+  term: Grammar
+graphics:
+  definition: Graphics in computer science, designing algorithms that can produce
+    images on a computer.
+  term: Graphics
+heuristic:
+  definition: "A heuristic is rule or guideline, usually devised from experience.\
+    \ The term is used in both HCI and algorithms. In HCI, heuristics are often used\
+    \ as a benchmark to evaluate interfaces - they aren't strict rules,\
+    \ but usually highlight issues with designs. A very common set is given at Nielsen Norman Group website at https://www.nngroup.com/articles/ten-usability-heuristics/.\
+    \ In algorithms, and heuristic is an approximate solution to a problem; it doesn'\
+    t guarantee to give the best possible answer (such as the shortest route on a\
+    \ map), but by using simple rules the calculation can be done quickly, and the\
+    \ solution is hopefully good enough for practical use."
+  term: Heuristic
+hexadecimal:
+  definition: The base 16 number system. Uses the digits "0", "1", "2", "3", "4",
+    "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", and "F". All numbers that can
+    be represented in decimal can be uniquely represented in hexadecimal (just like
+    binary). It is most often used as a shorthand notation for binary, by assigning
+    1 hexadecimal digit to each 4 bit pattern (the assigning is done in numeric order).
+  term: Hexadecimal
+hexadecimal-colour-codes:
+  definition: A representation for colours that tells the computer how much red, blue,
+    and green light to display in a pixel (to make the desired colour). Uses 1 byte
+    for each of these 3 primary colours, which is 3 bytes (24 bits) in total. These
+    24 bits are often written as 6 hexadecimal digits to make them easier for humans
+    to read, which is why they are called "Hexadecimal colour codes". They are commonly
+    encountered when specificying colours in HTML for web pages.
+  term: Hexadecimal colour codes
+high-level-language:
+  definition: "High level language a programming language that is designed for humans\
+    \ to read and write (e.g. Java, Python, C, C#, Basic, Scratch\u2026) as opposed\
+    \ to machine languages."
+  term: High level language
+human-computer-interaction:
+  definition: An area of computer science looking at how people interact with a digital
+    device, with an emphasis on the quality of the experience to complete tasks.
+  term: Human Computer interaction (HCI)
+insertion-sort:
+  definition: Start with an empty list, and insert each item in the correct place;
+    this is a relatively slow method, usually between selection sort and quick sort
+    in speed.
+  term: Insertion sort
+intelligent-systems:
+  definition: Intelligent systems an area of computer science that investigates ways
+    to simulate or approximate human intelligence on computers; often referred to
+    as artificial intelligence (AI).
+  term: Intelligent Systems
+interface:
+  definition: The part of a computer, software, or electronic device that a human
+    interacts with, whether this is by sight, hearing, or touch.
+  term: Interface
+interpolation:
+  definition: Working out values between some given values; for example, if a sequence
+    of 5 numbers starts with 3 and finishes with 11, we might interpolate the values
+    5, 7, 9 in between.
+  term: Interpolation
+interpreter:
+  definition: Interpreter runs a programming language by translating each line of
+    code as it is execute.
+  term: Interpreter
+isbn:
+  definition: Stands for International Standard Book Number. Every published book
+    has one of these numbers on the back of it. ISBN is significant to error control
+    coding because it uses a check digit for error detection.
+  term: ISBN
+jpeg:
+  definition: A lossy image compression system typically used for photographs.
+  term: JPEG
+key-algorithms:
+  definition: It is an item of data that is being searched for or sorted, and therefore
+    will be compared with other data.
+  term: Key (in algorithms)
+key-cryptography:
+  definition: The password or secret value that is used to encrypt and decrypt an
+    encrypted file (without having to use an "attack"). Some widely used methods have
+    different keys for encryption and decryption.
+  term: Key (in cryptography)
+kilobyte:
+  definition: "About 1000 bytes. This is 8,000 individual bits (i.e. 0's and\
+    \ 1's). We say \"about\" 1000 bytes because the term is ambiguous and it\
+    \ is often taken as 1024 bytes; however, rounding it to 1000 is close enough for\
+    \ most calculations. Commonly referred to as a \"KB\"."
+  term: Kilobyte
+known-plain-text-attack:
+  definition: Working out the key or method of encryption (cipher) based on having
+    access to both the original plain-text and its encrypted form.
+  term: Known plain-text Attack
+language:
+  definition: In formal languages, it's the set of all strings that the language accepts
+    i.e. that are correct.
+  term: Language
+lexical-analysis:
+  definition: When compiling a computer program, working out what the components of
+    the program are e.g. identifiers, keywords, integers.
+  term: Lexical analysis
+linear-complexity:
+  definition: Linear complexity grows in proportion to the size of the problem - if
+    the problem is twice as big, it will take roughly twice as long to solve.
+  term: Linear Complexity
+lossless:
+  definition: A compression method that does not cause any loss of data. This means
+    that the uncompressed file will be identical to the original file that was compressed
+    (which is important for text). In the case of images and sound, it means they
+    will be of the same quality before and after compression. For example, ZIP and
+    ALC use lossless compression.
+  term: Lossless
+lossy:
+  definition: A compression method that trades off quality for file size. Lossy compression
+    methods can make files smaller than lossless compression methods can, but the
+    quality of the resulting file will be lower. For example, MP3 and JPEG use lossy
+    compression.
+  term: Lossy
+machine-language:
+  definition: The native language for instructions for a computer, not very easy for
+    humans to read and write.
+  term: Machine language
+megabyte:
+  definition: "About 1000 kilobytes (1,000,000 bytes). This is 8 million individual\
+    \ bits (i.e. 0's and 1's). [Like a kilobyte, there are other definitions,\
+    \ such as 1024x1024 bytes, but usually this level of accuracy isn't important].\
+    \ Commonly referred to as a \"MB\"."
+  term: Megabyte
+mp3:
+  definition: A lossy audio compression system.
+  term: MP3
+nibble:
+  definition: 4 bits (half a byte), sometimes called a nybble.
+  term: Nibble
+octal:
+  definition: The base 8 number system. Like hexadecimal, it is significant to computer
+    scientists as it allows a shorthand notation for writing binary numbers. Octal
+    assigns a digit to each possible 3 bit pattern.
+  term: Octal
+parity:
+  definition: "Adding an extra bit to a set of bits to make it so that there is an\
+    \ even number of 1's. Storing the parity makes it possible to detect and\
+    \ correct errors later. This is known as an even parity bit; an odd parity bit\
+    \ is also possible where the extra bit ensures there is an odd number of 1'\
+    s."
+  term: Parity
+parse-tree:
+  definition: The structure derived by parsing some input.
+  term: Parse tree
+parsing:
+  definition: Reading some input (typically a computer program) and making sense of
+    it by breaking it into parts according to their function.
+  term: Parsing
+pattern-matching:
+  definition: In formal languages, finding text that matches a particular rule, typically
+    using a regular expression to give the rule.
+  term: Pattern matching
+pixel:
+  definition: This term is an abbreviation of *picture element*, the name given to
+    the tiny squares that make up a grid that is used to represent images on a computer.
+  term: Pixel
+plain-text:
+  definition: Text before it has been encrypted or after it has been decrypted (so
+    essentially text in plain language, without any encryption).
+  term: Plain Text
+png:
+  definition: A lossless image compression system typically used for small images
+    with few colours in them.
+  term: PNG
+quadratic-complexity:
+  definition: Quadratic complexity grows with the square of the size of the problem
+    - if the problem is twice as big, it will take roughly 4 times as long to solve.
+  term: Quadratic complexity
+quicksort:
+  definition: A process for achieving an outcome, normally for a general problem such
+    as searching, sorting, finding an optimal path through a map and so on.
+  term: Quicksort
+redundant-bits:
+  definition: Extra bits that are not part of the actual data but instead have been
+    added for error detection and possibly error correction.
+  term: Redundant Bits
+regular-expression:
+  definition: A formula used to describe a pattern in a text that is to be matched
+    or searched for. These are typically used for finding elements of a program (such
+    as variable names) and checking input in forms (such as checking that an email
+    address has the right format).
+  term: Regular expression
+search:
+  definition: Find a key in a large amount of data.
+  term: Search
+selection-sort:
+  definition: "Selection sort select the smallest item, then the second smallest,\
+    \ and so on. This is not a very fast algorithm, but it's not as bad as bubble\
+    \ sort, and provides a good contrast with quick sort."
+  term: Selection sort
+slope:
+  definition: This is a way of expressing the angle or gradient of a line. The slope
+    is simply how far up the line goes for every unit we move to the right. For example,
+    if we have a line with a slope of 2, then after moving 3 units to the right, it
+    will have gone up 6 units. A line with a slope of 0 is horizontal. Normally the
+    slope of a line is represented using the symbol \( m \).
+  term: Slope
+sort:
+  definition: Sort puts keys (numbers, names or other values) in order from smallest
+    to largest (outside computer science this is usually called ordering).
+  term: Sort
+string:
+  definition: A sequence of characters.
+  term: String
+substitution-cipher:
+  definition: A type of cipher that works simply by replacing each letter or combination
+    of letters in a plain text with a certain other letter or combination of letters
+    to make up the cipher text. The result of this is that each unique letter combination
+    of letters in the plain text (e.g. "t") is represented by the same unique letter
+    combination of letters in the cipher text (e.g. "y"). Caesar Cipher is a simple
+    example of a substitution cipher. Substitution ciphers are vulnerable to Frequency
+    Analysis Attacks, so are not used in practice.
+  term: Substitution Cipher
+syntactically-correct:
+  definition: "A string is syntactically correct if it matches the specifications\
+    \ for a formal language. For example, the string \"()(())\" is correct for a grammar\
+    \ that gives the rules for balanced parentheses. In a computer program, a syntax\
+    \ error is when a character occurs in the input which isn't allowed, and\
+    \ the program is therefore not syntactically correct."
+  term: Syntactically correct
+syntax:
+  definition: Syntax rules about what text can appear in a programming language, used
+    by a compiler or interpreter and therefore need to be followed by a programmer
+    to avoid syntax errors.
+  term: Syntax
+syntax-diagram:
+  definition: Also known as railway (or railroad) diagrams, these are a graphical
+    representation of a grammar using arrows (the "train tracks") to show the options
+    for each component of a language.
+  term: Syntax diagram
+task:
+  definition: "Something a user might do with a piece of software or electronic device\
+    \ to achieve a goal. In the case of a cellphone this might be \"send a text message\"\
+    \ or in the case of a microwave it might be \"heat up yesterday's leftovers\"\
+    . Interfaces are best evaluated when considering how they help a user to perform\
+    \ a task."
+  term: Task
+time-complexity:
+  definition: "Time complexity the usual meaning of the complexity of an algorithm;\
+    \ this makes it clear that we're talking about the time taken. Normally it'\
+    s expressed in terms of steps, not real time on a particular computer, as different\
+    \ computers are different speeds."
+  term: Time complexity
+tractable:
+  definition: A *tractable* problem is one that can be solved in a reasonable amount
+    of time; usually the distinction between tractable and intractable is drawn at
+    the boundary between problems that can be solved in an amount of time that is
+    polynomial; those that require exponential time are regarded as intractable.
+  term: Tractable
+transition:
+  definition: In a finite state machine, the links between the states.
+  term: Transition
+unicode:
+  definition: Unicode an extension of ASCII; it supports characters from multiple
+    languages, using 16 bits per character.
+  term: Unicode
+user:
+  definition: The human using the computer system or electronic device.
+  term: User
+visual-computing:
+  definition: Visual computing designing systems that can perceive, process, understand
+    and generate images. Images typically come from scanners and cameras, and may
+    be displayed on monitors, head mounted displays, or as movies.
+  term: Visual computing
