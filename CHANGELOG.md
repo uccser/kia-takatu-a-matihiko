@@ -1,10 +1,16 @@
 # Changelog
 
+## 0.4.4 (Pre-release)
+
+- Update glossary definitions from CS Field Guide material.
+- Remove 'Example Pikau' from being loaded (but keep source files as example).
+- Dependency updates:
+  - Update django-tables2 from 2.0.0a2 to 2.0.0a3.
+
 ## 0.4.3 (Pre-release)
 
 - Update pīkau course content rendering to match iQualify.
 - Ensure all pīkau models can be modified via admin interface.
-
 
 ## 0.4.2 (Pre-release)
 
