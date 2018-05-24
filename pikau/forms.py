@@ -17,7 +17,7 @@ class GlossaryForm(ModelForm):
         self.helper = FormHelper()
         self.helper.layout = Layout(
             Field("term", css_class="slug-source"),
-            "description",
+            "definition",
             Field("slug", css_class="slug-input"),
             Submit("submit", "Submit"),
         )
@@ -26,4 +26,4 @@ class GlossaryForm(ModelForm):
         """Meta attributes of GlossaryForm."""
 
         model = GlossaryTerm
-        fields = ("term", "description", "slug")
+        fields = ("term", "definition", "slug")
