@@ -12,7 +12,7 @@
 {% endblock breadcrumbs %}
 
 {% block custom_page_heading %}
-  <div class="jumbotron bg-size-cover text-center"{% if pikau_course.cover_photo %} style="background-image:url({% static pikau_course.cover_photo %});"{% endif %}>
+  <div class="jumbotron bg-size-cover text-center" id="pikau-jumbrotron">
     {% if pikau_course.readiness_level %}
       {% with pikau_course.readiness_level|stringformat:"s" as readiness_level %}
         {% with "images/flame-stage-"|add:readiness_level|add:".png" as flame_image %}
@@ -194,3 +194,7 @@
     {% render_html_field pikau_course.study_plan %}
   {% endif %}
 {% endblock content %}
+
+{% block css %}
+  {% include 'pikau/snippets/pikau_jumbotron_styles.html' %}
+{% endblock css %}

@@ -39,7 +39,7 @@ footer > .container {
 }
 .bg-size-cover {
   background-size: cover;
-  background-position: center;
+  background-position: left;
 }
 .list-style-flame {
   list-style: none;
