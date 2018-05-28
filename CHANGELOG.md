@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.4.5 (Pre-release)
+## 0.5.0 (Pre-release)
 
 - Show pīkau titles on pathway diagram when required. (fixes #49)
 - Add 'What is computational thinking?' and 'Computational thinking - The international perspective' pīkau. (fixes #50)
