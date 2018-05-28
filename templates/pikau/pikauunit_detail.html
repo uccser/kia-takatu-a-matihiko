@@ -14,7 +14,11 @@
 {% endblock breadcrumbs %}
 
 {% block custom_page_heading %}
-  <div class="jumbotron bg-size-cover text-white"{% if pikau_unit.pikau_course.cover_photo %} style="background-image:url({% static pikau_unit.pikau_course.cover_photo %});"{% endif %}>
+  <div class="alert alert-warning" role="alert">
+    <small><strong>Note:</strong> These pages aim to display how content will be viewed on iQualify, however this consistency is not guaranteed. Different icons are used for licensing reasons.</small>
+  </div>
+
+  <div class="jumbotron bg-size-cover text-white blur" id="pikau-jumbrotron">
     <div class="mb-3">
       <a class="border-bottom pb-2 text-white no-underline" href="{% url 'pikau:pikau_content' pikau_unit.pikau_course.slug  %}">
         {{ pikau_unit.pikau_course.name }}
@@ -27,7 +31,11 @@
 {% endblock custom_page_heading %}
 
 {% block content %}
-  {% render_html_field pikau_unit.content %}
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-10">
+      {% render_html_field pikau_unit.content %}
+    </div>
+  </div>
 
   <div id="page-navigation-container">
     {% if previous_unit %}
@@ -47,4 +55,7 @@
 
 {% block css %}
   <link rel="stylesheet" href="{% static 'css/iqualify.css' %}">
+  {% with pikau_course=pikau_unit.pikau_course %}
+    {% include 'pikau/snippets/pikau_jumbotron_styles.html' %}
+  {% endwith %}
 {% endblock css %}

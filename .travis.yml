@@ -14,6 +14,7 @@ jobs:
     - stage: test
       script: coverage run --rcfile=.coveragerc manage.py test tests --settings=config.settings.testing -v=3
     - script: python manage.py loadpikau
+    - script: python manage.py loadlicences
     - script: flake8
     - script: pydocstyle --count --explain
 after_success:

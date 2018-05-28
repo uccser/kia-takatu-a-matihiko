@@ -18,6 +18,8 @@ This license applies to the following contents of this project:
 - Text within HTML templates.
 - Markdown and YAML files within the `pikau/content`.
 
+Files in the `static/images/core-education` directory is licenced [Copyright (c) 2018 CORE Education](https://core-ed.org/).
+
 The rest of the project, which is the underlying source code used to manage
 and display this content, is licensed under the
 [MIT license](https://opensource.org/licenses/MIT) (`LICENSE` file).

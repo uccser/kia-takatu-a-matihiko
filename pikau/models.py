@@ -236,7 +236,7 @@ class PikauCourse(models.Model):
         blank=True,
     )
     trailer_video = models.URLField(blank=True)
-    cover_photo = models.CharField(max_length=100, default="images/pikau-course-cover.png")
+    cover_photo = models.CharField(max_length=100, default="images/core-education/pikau-course-cover.png")
     overview = models.TextField(blank=True)
     study_plan = models.TextField(blank=True)
     assessment_description = models.TextField(blank=True)

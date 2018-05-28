@@ -1,4 +1,4 @@
-name: "Intro 1: Getting the most out of pīkau"
+name: "Getting the most out of pīkau"
 status: 6
 overview: overview.md
 language: en
@@ -6,7 +6,7 @@ topic: housekeeping
 level: all
 tags:
   - introductory
-cover-photo: images/pikau/banner-mahuika-maui.png
+cover-photo: images/core-education/banner-mahuika-maui.png
 content:
   - slug: introduction-to-pikau
     file: introduction-to-pikau.md
