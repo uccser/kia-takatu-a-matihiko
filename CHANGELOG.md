@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.4.5 (Pre-release)
+
+- Show pīkau titles on pathway diagram when required. (fixes #49)
+- Add 'What is computational thinking?' and 'Computational thinking - The international perspective' pīkau. (fixes #50)
+- Update pikau content pages to be closer to iQualify style.
+- Fix release script calling invalid command. (fixes #48)
+- Update licence. (fixes #52)
+- Pīkau documentation updates:
+  - Update documentation regarding usage of images and videos. (fixes #53)
+  - State box formatting cannot be used within overview. (fixes #43)
+
 ## 0.4.4 (Pre-release)
 
 - Update glossary definitions from CS Field Guide material.
