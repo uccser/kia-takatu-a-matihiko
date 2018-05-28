@@ -1,0 +1,26 @@
+name: "What is computational thinking?"
+status: 5
+language: en
+topic: ct
+level: all
+tags:
+  - introductory
+cover-photo: images/pikau/what-is-ct.png
+trailer-video: https://www.youtube.com/embed/zSfzB-Z-mKM
+
+overview: overview.md
+content:
+  - slug: introduction
+    file: why-this-matters/introduction.md
+    module: Why this matters...
+  - slug: already-know-this
+    file: why-this-matters/already-know-this.md
+    module: Why this matters...
+  - slug: ct-in-nzc
+    file: defining-ct/ct-in-nzc.md
+    module: Defining computational thinking
+  - slug: wrapping-up
+    file: wrapping-up.md
+  - slug: references
+    file: references.md
+assessment-items: assessment-items.md
