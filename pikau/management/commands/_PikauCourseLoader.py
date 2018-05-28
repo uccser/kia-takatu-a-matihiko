@@ -68,7 +68,7 @@ class PikauCourseLoader(BaseLoader):
                 "topic": Topic.objects.get(slug=pikau_course_metadata["topic"]),
                 "level": Level.objects.get(slug=pikau_course_metadata["level"]),
                 "trailer_video": pikau_course_metadata.get("trailer-video", ""),
-                "cover_photo": pikau_course_metadata.get("cover-photo", "images/pikau-course-cover.png"),
+                "cover_photo": pikau_course_metadata.get("cover-photo", "images/core-education/pikau-course-cover.png"),
                 "overview": pikau_course_overview,
                 "readiness_level": pikau_course_metadata.get("readiness-level"),
                 "study_plan": pikau_course_study_plan,

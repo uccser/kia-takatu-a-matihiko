@@ -8,7 +8,7 @@ You will also know how much time you should put aside to complete the pīkau.
 Pīkau means ‘backpack’.
 By the end of this readiness program (kiatakatū-ā-matihiko) you’ll have a pīkau/backpack of resources to use for the new content in the Digital Technologies learning area.
 
-{image file-path="images/pikau/maui-face.png" alignment="center" caption="true"}
+{image file-path="images/pikau/core-education/maui-face.png" alignment="center" caption="true"}
 
 Māui
 
@@ -19,7 +19,7 @@ You might be like Māui: curious, a bit of a risk taker, adaptable, playful… Y
 Watch all the videos, then do the readings.
 You might even want to start with the assessment activities, although we wouldn’t recommend that!
 
-{image file-path="images/pikau/mahuika-face.png" alignment="center" caption="true"}
+{image file-path="images/pikau/core-education/mahuika-face.png" alignment="center" caption="true"}
 
 Mahuika
 

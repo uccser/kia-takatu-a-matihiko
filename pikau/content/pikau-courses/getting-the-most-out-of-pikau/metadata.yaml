@@ -6,7 +6,7 @@ topic: housekeeping
 level: all
 tags:
   - introductory
-cover-photo: images/pikau/banner-mahuika-maui.png
+cover-photo: images/pikau/core-education/banner-mahuika-maui.png
 content:
   - slug: introduction-to-pikau
     file: introduction-to-pikau.md

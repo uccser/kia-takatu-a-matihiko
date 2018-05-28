@@ -158,7 +158,7 @@
               {% for num,level in readiness_levels.items %}
                 <div class="my-1">
                   {% with num|stringformat:"s" as readiness_level %}
-                    {% with "images/flame-stage-"|add:readiness_level|add:".png" as flame_image %}
+                    {% with "images/core-education/flame-stage-"|add:readiness_level|add:".png" as flame_image %}
                       <img src="{% static flame_image %}" class="icon-small">
                     {% endwith %}
                   {% endwith %}
