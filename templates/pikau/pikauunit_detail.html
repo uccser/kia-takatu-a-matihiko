@@ -31,7 +31,11 @@
 {% endblock custom_page_heading %}
 
 {% block content %}
-  {% render_html_field pikau_unit.content %}
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-10">
+      {% render_html_field pikau_unit.content %}
+    </div>
+  </div>
 
   <div id="page-navigation-container">
     {% if previous_unit %}
