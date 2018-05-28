@@ -9,7 +9,7 @@ class DocumentationViewTest(BaseTestWithDB):
         super().__init__(*args, **kwargs)
         self.language = "en"
 
-    def test_index_view(self):
+    def test_documentation_view(self):
         response = self.client.get(reverse("pikau:docs"))
         self.assertEqual(HTTPStatus.OK, response.status_code)
         self.assertContains(response, "Pīkau Documentation")
