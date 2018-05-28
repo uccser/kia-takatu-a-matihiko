@@ -48,6 +48,7 @@ class GlossaryTerm(models.Model):
     #  Auto-incrementing 'id' field is automatically set by Django
     slug = models.SlugField(
         unique=True,
+        max_length=200,
         help_text="A unique readable identifier",
     )
     term = models.CharField(max_length=200, unique=True)
@@ -99,7 +100,7 @@ class Goal(models.Model):
     """Model for goal."""
 
     #  Auto-incrementing 'id' field is automatically set by Django
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(unique=True, max_length=200)
     description = models.CharField(max_length=500, unique=True)
 
     def __str__(self):
@@ -115,7 +116,7 @@ class Tag(models.Model):
     """Model for tag."""
 
     #  Auto-incrementing 'id' field is automatically set by Django
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(unique=True, max_length=200)
     name = models.CharField(max_length=100, unique=True)
     description = models.CharField(max_length=300, blank=True)
 
@@ -191,7 +192,7 @@ class PikauCourse(models.Model):
     """Model for Pikau Course."""
 
     #  Auto-incrementing 'id' field is automatically set by Django
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(unique=True, max_length=200)
     name = models.CharField(max_length=200, unique=True)
     language = models.CharField(max_length=20, choices=LANGUAGE_CHOICES)
     readiness_level = models.IntegerField(
@@ -291,7 +292,7 @@ class PikauCourse(models.Model):
 class PikauUnit(models.Model):
     """Model for Pikau Unit."""
 
-    slug = models.SlugField()
+    slug = models.SlugField(max_length=200)
     number = models.PositiveSmallIntegerField()
     pikau_course = models.ForeignKey(
         PikauCourse,

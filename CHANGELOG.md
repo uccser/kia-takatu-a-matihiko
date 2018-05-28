@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.1 (Pre-release)
+
+- Fix bug where slug max length was too short for titles.
+
 ## 0.5.0 (Pre-release)
 
 - Show pīkau titles on pathway diagram when required. (fixes #49)
