@@ -177,3 +177,23 @@ figure figcaption {
   border-top: 1px dotted #bdc2d0;
   border-bottom: 4px solid #bdc2d0;
 }
+/* Jumbotron */
+.iqualify-shadow {
+  text-shadow: 0 0 8px rgba(74,74,85,.6)
+}
+.jumbotron .btn-light {
+  background-color: #00ccb0;
+  color: #212126;
+  opacity: .95;
+  border: 0 !important;
+  transition: none !important;
+  padding: 15px 20px !important;
+}
+.jumbotron .btn-light:hover {
+  color: #fff;
+  background-color: #212126;
+  opacity: .95;
+}
+a.btn {
+  white-space: normal !important;
+}

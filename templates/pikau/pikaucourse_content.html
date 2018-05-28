@@ -19,6 +19,22 @@
 
   <div class="jumbotron bg-size-cover" id="pikau-jumbrotron">
     <h1 class="text-white text-center">{{ pikau_course.name }}</h1>
+    <div class="row align-items-center mt-4">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4 text-center">
+        {% if pikau_course.trailer_video %}
+          <a href="{{ pikau_course.trailer_video }}" id="watch-intro-button" class="iqualify-shadow btn btn-link no-underline">
+            <img src="" class="d-block m-auto tab-icon">
+            Watch intro
+          </a>
+        {% endif %}
+      </div>
+      <div class="col-sm-4 text-right">
+        <a href="{% url 'pikau:pikau_unit' pikau_course.slug pikau_course.content.all.0.slug %}" class="btn btn-light">
+          Start the course 🡢
+        </a>
+      </div>
+    </div>
   </div>
 {% endblock custom_page_heading %}
 
@@ -75,4 +91,24 @@
 {% block css %}
   <link rel="stylesheet" href="{% static 'css/iqualify.css' %}">
   {% include 'pikau/snippets/pikau_jumbotron_styles.html' %}
+  <style>
+    #watch-intro-button {
+      background: url("{% static 'images/icons/icons8/play-button-white.png' %}");
+      background-position: top;
+      background-repeat: no-repeat;
+      padding-top: 3em;
+      font-size: 18px;
+      font-weight: 500;
+      color: #f0f0f0;
+      transition: none;
+    }
+    #watch-intro-button:hover {
+      background: url("{% static 'images/icons/icons8/play-button-blue.png' %}");
+      background-position: top;
+      background-repeat: no-repeat;
+      padding-top: 3em;
+      color: #00ccb0;
+      transition: none;
+    }
+  </style>
 {% endblock css %}
