@@ -1,5 +1,6 @@
 name: "What is computational thinking?"
 status: 5
+readiness-level: 1
 language: en
 topic: ct
 level: all
