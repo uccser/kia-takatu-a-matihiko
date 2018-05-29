@@ -7,6 +7,8 @@ tags:
   - introductory
 cover-photo: images/pikau/what-is-ct.png
 trailer-video: https://www.youtube.com/embed/zSfzB-Z-mKM
+prerequisites:
+  - getting-the-most-out-of-pikau
 
 overview: overview.md
 content:

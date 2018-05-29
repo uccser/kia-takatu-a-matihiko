@@ -111,6 +111,9 @@ class PikauCourseLoader(BaseLoader):
             for pikau_course_glossary_term_slug in pikau_course_metadata.get("glossary", list()):
                 pikau_course.glossary_terms.add(GlossaryTerm.objects.get(slug=pikau_course_glossary_term_slug))
 
+            for pikau_course_prerequisite_slug in pikau_course_metadata.get("prerequisites", list()):
+                pikau_course.prerequisites.add(PikauCourse.objects.get(slug=pikau_course_prerequisite_slug))
+
             self.log_object_creation(created, pikau_course)
 
         self.log("All pikau courses loaded!\n")
