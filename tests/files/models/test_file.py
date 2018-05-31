@@ -16,6 +16,12 @@ class FileModelTest(BaseTestWithDB):
             obj.__str__(),
             "File 1"
         )
+    def test_file_repr(self):
+        obj = self.test_data.create_file(1)
+        self.assertEqual(
+            obj.__repr__(),
+            "File: {}".format(obj.slug)
+        )
 
     def test_file_model_one_file(self):
         file = self.test_data.create_file(1)
