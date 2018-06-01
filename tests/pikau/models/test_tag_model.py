@@ -2,8 +2,8 @@ from tests.BaseTestWithDB import BaseTestWithDB
 from tests.pikau.PikauTestDataGenerator import PikauTestDataGenerator
 
 from pikau.models import Tag
-
 from django.db import IntegrityError
+
 
 class TagModelTest(BaseTestWithDB):
 
@@ -23,7 +23,7 @@ class TagModelTest(BaseTestWithDB):
             Tag.objects.all(),
             [
                 "<Tag: tag-1-name>",
-                "<Tag: tag-2-name>"
+                "<Tag: tag-2-name>",
             ],
             ordered=False
         )

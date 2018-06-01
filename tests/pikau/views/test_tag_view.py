@@ -12,7 +12,6 @@ class TagViewTest(BaseTestWithDB):
 
     def test_pikau_tag_view_with_valid_slug(self):
         tag = self.test_data.create_tag(1)
-        tag.save()
 
         url = reverse("pikau:tag", kwargs={"slug": "tag-1"})
         response = self.client.get(url)
@@ -21,7 +20,6 @@ class TagViewTest(BaseTestWithDB):
 
     def test_pikau_tag_view_with_invalid_slug(self):
         tag = self.test_data.create_tag(1)
-        tag.save()
 
         url = reverse("pikau:tag", kwargs={"slug": "tag-5"})
         response = self.client.get(url)
@@ -35,7 +33,6 @@ class TagViewTest(BaseTestWithDB):
 
     def test_pikau_tag_list_view_with_one_tag(self):
         tag = self.test_data.create_tag(1)
-        tag.save()
 
         url = reverse("pikau:tag_list")
         response = self.client.get(url)
@@ -48,9 +45,7 @@ class TagViewTest(BaseTestWithDB):
 
     def test_pikau_tag_list_view_with_two_tags(self):
         tag_1 = self.test_data.create_tag(1)
-        tag_1.save()
         tag_2 = self.test_data.create_tag(2)
-        tag_2.save()
 
         url = reverse("pikau:tag_list")
         response = self.client.get(url)
@@ -66,11 +61,8 @@ class TagViewTest(BaseTestWithDB):
 
     def test_pikau_tag_list_view_order(self):
         tag_3 = self.test_data.create_tag(3)
-        tag_3.save()
         tag_2 = self.test_data.create_tag(2)
-        tag_2.save()
         tag_1 = self.test_data.create_tag(1)
-        tag_1.save()
 
         url = reverse("pikau:tag_list")
         response = self.client.get(url)
@@ -81,6 +73,6 @@ class TagViewTest(BaseTestWithDB):
             [
                 "<Tag: tag-1-name>",
                 "<Tag: tag-2-name>",
-                "<Tag: tag-3-name>"
+                "<Tag: tag-3-name>",
             ]
         )

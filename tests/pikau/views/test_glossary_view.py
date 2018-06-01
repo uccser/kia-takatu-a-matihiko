@@ -18,7 +18,6 @@ class GlossaryViewTest(BaseTestWithDB):
 
     def test_pikau_glossary_view_with_one_definition(self):
         term = self.test_data.create_glossary_term(1)
-        term.save()
 
         url = reverse("pikau:glossary")
         response = self.client.get(url)
@@ -31,9 +30,7 @@ class GlossaryViewTest(BaseTestWithDB):
 
     def test_pikau_glossary_view_with_two_definitions(self):
         term_1 = self.test_data.create_glossary_term(1)
-        term_1.save()
         term_2 = self.test_data.create_glossary_term(2)
-        term_2.save()
 
         url = reverse("pikau:glossary")
         response = self.client.get(url)
@@ -41,16 +38,16 @@ class GlossaryViewTest(BaseTestWithDB):
         self.assertEqual(len(response.context["glossary_terms"]), 2)
         self.assertQuerysetEqual(
             response.context["glossary_terms"],
-            ["<GlossaryTerm: Glossary Term 1>", "<GlossaryTerm: Glossary Term 2>"]
+            [
+                "<GlossaryTerm: Glossary Term 1>", 
+                "<GlossaryTerm: Glossary Term 2>",
+            ]
         )
 
     def test_pikau_glossary_view_order(self):
         term_3 = self.test_data.create_glossary_term(3)
-        term_3.save()
         term_2 = self.test_data.create_glossary_term(2)
-        term_2.save()
         term_1 = self.test_data.create_glossary_term(1)
-        term_1.save()
 
         url = reverse("pikau:glossary")
         response = self.client.get(url)
@@ -61,6 +58,6 @@ class GlossaryViewTest(BaseTestWithDB):
             [
                 "<GlossaryTerm: Glossary Term 1>",
                 "<GlossaryTerm: Glossary Term 2>",
-                "<GlossaryTerm: Glossary Term 3>"
+                "<GlossaryTerm: Glossary Term 3>",
             ]
         )

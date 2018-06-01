@@ -137,7 +137,7 @@ class ReadinessLevelViewTest(BaseTestWithDB):
             pikau_courses,
             [
                 "<PikauCourse: Pikau Course 1>",
-                "<PikauCourse: Pikau Course 2>"
+                "<PikauCourse: Pikau Course 2>",
             ],
             ordered=False
         )

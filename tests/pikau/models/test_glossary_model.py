@@ -2,8 +2,8 @@ from tests.BaseTestWithDB import BaseTestWithDB
 from tests.pikau.PikauTestDataGenerator import PikauTestDataGenerator
 
 from pikau.models import GlossaryTerm
-
 from django.db import IntegrityError
+
 
 class GlossaryModelTest(BaseTestWithDB):
 

@@ -12,7 +12,6 @@ class TopicViewTest(BaseTestWithDB):
 
     def test_pikau_topic_view_with_valid_slug(self):
         topic = self.test_data.create_topic(1)
-        topic.save()
 
         url = reverse("pikau:topic", kwargs={"slug": "topic-1"})
         response = self.client.get(url)
@@ -21,7 +20,6 @@ class TopicViewTest(BaseTestWithDB):
 
     def test_pikau_topic_view_with_invalid_slug(self):
         topic = self.test_data.create_topic(1)
-        topic.save()
 
         url = reverse("pikau:topic", kwargs={"slug": "topic-5"})
         response = self.client.get(url)
@@ -35,7 +33,6 @@ class TopicViewTest(BaseTestWithDB):
 
     def test_pikau_topic_list_view_with_one_topic(self):
         topic = self.test_data.create_topic(1)
-        topic.save()
 
         url = reverse("pikau:topic_list")
         response = self.client.get(url)
@@ -48,9 +45,7 @@ class TopicViewTest(BaseTestWithDB):
 
     def test_pikau_topic_list_view_with_two_topics(self):
         topic_1 = self.test_data.create_topic(1)
-        topic_1.save()
         topic_2 = self.test_data.create_topic(2)
-        topic_2.save()
 
         url = reverse("pikau:topic_list")
         response = self.client.get(url)
@@ -67,11 +62,8 @@ class TopicViewTest(BaseTestWithDB):
 
     def test_pikau_topic_list_view_order(self):
         topic_3 = self.test_data.create_topic(3)
-        topic_3.save()
         topic_2 = self.test_data.create_topic(2)
-        topic_2.save()
         topic_1 = self.test_data.create_topic(1)
-        topic_1.save()
 
         url = reverse("pikau:topic_list")
         response = self.client.get(url)
@@ -82,6 +74,6 @@ class TopicViewTest(BaseTestWithDB):
             [
                 "<Topic: topic-1-name>",
                 "<Topic: topic-2-name>",
-                "<Topic: topic-3-name>"
+                "<Topic: topic-3-name>",
             ]
         )

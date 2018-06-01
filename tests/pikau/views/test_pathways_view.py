@@ -3,6 +3,7 @@ from django.urls import reverse
 
 from pikau.models import READINESS_LEVELS
 
+
 class PathwaysViewTest(BaseTestWithDB):
 
     def __init__(self, *args, **kwargs):

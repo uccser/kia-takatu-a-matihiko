@@ -4,6 +4,7 @@ from tests.pikau.PikauTestDataGenerator import PikauTestDataGenerator
 import datetime as dt
 from datetime import datetime
 
+
 class PikauCourseModelTest(BaseTestWithDB):
 
     def __init__(self, *args, **kwargs):

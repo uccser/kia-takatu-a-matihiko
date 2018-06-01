@@ -12,7 +12,6 @@ class LevelViewTest(BaseTestWithDB):
 
     def test_pikau_level_view_with_valid_slug(self):
         level = self.test_data.create_level(1)
-        level.save()
 
         url = reverse("pikau:level", kwargs={"slug": "level-1"})
         response = self.client.get(url)
@@ -21,7 +20,6 @@ class LevelViewTest(BaseTestWithDB):
 
     def test_pikau_level_view_with_invalid_slug(self):
         level = self.test_data.create_level(1)
-        level.save()
 
         url = reverse("pikau:level", kwargs={"slug": "level-5"})
         response = self.client.get(url)
@@ -35,7 +33,6 @@ class LevelViewTest(BaseTestWithDB):
 
     def test_pikau_level_list_view_with_one_level(self):
         level = self.test_data.create_level(1)
-        level.save()
 
         url = reverse("pikau:level_list")
         response = self.client.get(url)
@@ -48,9 +45,7 @@ class LevelViewTest(BaseTestWithDB):
 
     def test_pikau_level_list_view_with_two_levels(self):
         level_1 = self.test_data.create_level(1)
-        level_1.save()
         level_2 = self.test_data.create_level(2)
-        level_2.save()
 
         url = reverse("pikau:level_list")
         response = self.client.get(url)
@@ -66,11 +61,8 @@ class LevelViewTest(BaseTestWithDB):
 
     def test_pikau_level_list_view_order(self):
         level_3 = self.test_data.create_level(3)
-        level_3.save()
         level_2 = self.test_data.create_level(2)
-        level_2.save()
         level_1 = self.test_data.create_level(1)
-        level_1.save()
 
         url = reverse("pikau:level_list")
         response = self.client.get(url)
@@ -81,6 +73,6 @@ class LevelViewTest(BaseTestWithDB):
             [
                 "<Level: level-1-name>",
                 "<Level: level-2-name>",
-                "<Level: level-3-name>"
+                "<Level: level-3-name>",
             ]
         )

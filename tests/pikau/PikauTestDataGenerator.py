@@ -184,7 +184,6 @@ class PikauTestDataGenerator:
             number=number,
             pikau_course=pikau_course,
             name="pikau-unit-{}-name".format(number),
-            # module_name="pikau-unit-{}-module-name".format(number),
             content="<p>Content for piaku unit {}.</p>".format(number),
         )
         if module_name:

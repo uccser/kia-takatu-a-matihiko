@@ -2,8 +2,8 @@ from tests.BaseTestWithDB import BaseTestWithDB
 from tests.pikau.PikauTestDataGenerator import PikauTestDataGenerator
 
 from pikau.models import Goal
-
 from django.db import IntegrityError
+
 
 class GoalModelTest(BaseTestWithDB):
 

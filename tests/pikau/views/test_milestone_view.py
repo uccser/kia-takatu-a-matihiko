@@ -6,6 +6,7 @@ from django.template import defaultfilters
 import datetime as dt
 from datetime import datetime
 
+
 class MilestoneViewTest(BaseTestWithDB):
 
     def __init__(self, *args, **kwargs):
@@ -45,7 +46,7 @@ class MilestoneViewTest(BaseTestWithDB):
             response.context["milestones"],
             [
                 "<Milestone: milestone-2 - {}>".format(defaultfilters.date(date_1)),
-                "<Milestone: milestone-1 - {}>".format(defaultfilters.date(date_2))
+                "<Milestone: milestone-1 - {}>".format(defaultfilters.date(date_2)),
             ],
         )
 

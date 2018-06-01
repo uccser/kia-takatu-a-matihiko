@@ -2,8 +2,8 @@ from tests.BaseTestWithDB import BaseTestWithDB
 from tests.pikau.PikauTestDataGenerator import PikauTestDataGenerator
 
 from pikau.models import PikauUnit
-
 from django.db import IntegrityError
+
 
 class PikauUnitModelTest(BaseTestWithDB):
 
@@ -25,7 +25,7 @@ class PikauUnitModelTest(BaseTestWithDB):
             PikauUnit.objects.all(),
             [
                 "<PikauUnit: Pikau Course 1: pikau-unit-1-module-name - pikau-unit-1-name>",
-                "<PikauUnit: Pikau Course 1: pikau-unit-2-module-name - pikau-unit-2-name>"
+                "<PikauUnit: Pikau Course 1: pikau-unit-2-module-name - pikau-unit-2-name>",
             ],
             ordered=False
         )
@@ -38,7 +38,7 @@ class PikauUnitModelTest(BaseTestWithDB):
             PikauUnit.objects.all(),
             [
                 "<PikauUnit: Pikau Course 1: pikau-unit-1-name>",
-                "<PikauUnit: Pikau Course 1: pikau-unit-2-name>"
+                "<PikauUnit: Pikau Course 1: pikau-unit-2-name>",
             ],
             ordered=False
         )
@@ -77,6 +77,6 @@ class PikauUnitModelTest(BaseTestWithDB):
             [
                 "<PikauUnit: Pikau Course 1: pikau-unit-1-name>",
                 "<PikauUnit: Pikau Course 1: pikau-unit-2-name>",
-                "<PikauUnit: Pikau Course 1: pikau-unit-3-name>"
+                "<PikauUnit: Pikau Course 1: pikau-unit-3-name>",
             ]
         )

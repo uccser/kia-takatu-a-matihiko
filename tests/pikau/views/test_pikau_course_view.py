@@ -18,7 +18,6 @@ class PikauCourseViewTest(BaseTestWithDB):
 
     def test_pikau_course_list_view_with_one_course(self):
         pikau_course = self.test_data.create_pikau_course(1)
-        pikau_course.save()
 
         url = reverse("pikau:pikau_course_list")
         response = self.client.get(url)
@@ -31,9 +30,7 @@ class PikauCourseViewTest(BaseTestWithDB):
 
     def test_pikau_course_list_view_with_two_courses(self):
         pikau_course_1 = self.test_data.create_pikau_course(1)
-        pikau_course_1.save()
         pikau_course_2 = self.test_data.create_pikau_course(2)
-        pikau_course_2.save()
 
         url = reverse("pikau:pikau_course_list")
         response = self.client.get(url)
@@ -49,7 +46,6 @@ class PikauCourseViewTest(BaseTestWithDB):
 
     def test_pikau_course_view_with_valid_slug(self):
         pikau_course_1 = self.test_data.create_pikau_course(1)
-        pikau_course_1.save()
 
         url = reverse("pikau:pikau_course", kwargs={"slug": "pikau-course-1"})
         response = self.client.get(url)
@@ -58,7 +54,6 @@ class PikauCourseViewTest(BaseTestWithDB):
 
     def test_pikau_course_view_with_invalid_slug(self):
         pikau_course_1 = self.test_data.create_pikau_course(1)
-        pikau_course_1.save()
 
         url = reverse("pikau:pikau_course", kwargs={"slug": "pikau-course-5"})
         response = self.client.get(url)
@@ -66,7 +61,6 @@ class PikauCourseViewTest(BaseTestWithDB):
 
     def test_pikau_course_content_view_with_valid_slug(self):
         pikau_course_1 = self.test_data.create_pikau_course(1)
-        pikau_course_1.save()
 
         url = reverse("pikau:pikau_content", kwargs={"slug": "pikau-course-1"})
         response = self.client.get(url)
@@ -75,7 +69,6 @@ class PikauCourseViewTest(BaseTestWithDB):
 
     def test_pikau_course_content_view_with_invalid_slug(self):
         pikau_course_1 = self.test_data.create_pikau_course(1)
-        pikau_course_1.save()
 
         url = reverse("pikau:pikau_content", kwargs={"slug": "pikau-course-5"})
         response = self.client.get(url)

@@ -9,6 +9,7 @@ from django.template import defaultfilters
 import datetime as dt
 from datetime import datetime
 
+
 class MilestoneModelTest(BaseTestWithDB):
 
     def __init__(self, *args, **kwargs):
@@ -30,7 +31,7 @@ class MilestoneModelTest(BaseTestWithDB):
             Milestone.objects.all(),
             [
                 "<Milestone: milestone-1 - {}>".format(defaultfilters.date(date_1)),
-                "<Milestone: milestone-2 - {}>".format(defaultfilters.date(date_2))
+                "<Milestone: milestone-2 - {}>".format(defaultfilters.date(date_2)),
             ],
             ordered=False
         )
@@ -70,6 +71,6 @@ class MilestoneModelTest(BaseTestWithDB):
             Milestone.objects.all(),
             [
                 "<Milestone: milestone-2 - {}>".format(defaultfilters.date(date_1)),
-                "<Milestone: milestone-1 - {}>".format(defaultfilters.date(date_2))
+                "<Milestone: milestone-1 - {}>".format(defaultfilters.date(date_2)),
             ],
         )
