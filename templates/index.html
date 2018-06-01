@@ -9,7 +9,7 @@
 {% block body_container %}
   <div class="jumbotron jumbotron-fluid bg-brand-light-purple text-white">
     <div class="container">
-      <img src="{% static 'images/logo-white-text.png' %}" style="width:20rem;">
+      <img src="{% static 'images/core-education/logo-white-text.png' %}" style="width:20rem;">
       <h1 class="display-3">Content Pipeline Assistant</h1>
       <p class="lead">
         This tool has been developed to assist authors to efficiently create and develop content for <a href="http://www.kiatakatu.ac.nz/" class="text-info">Kia Takatū ā-Matihiko</a>, the National Digital Readiness programme.
@@ -64,7 +64,7 @@
           <div class="media-body">
             <h4 class="mt-0">Files</h4>
             <p>Lists files used within this project with their licences.</p>
-            <a class="btn btn-primary" href="{% url 'files:index' %}" role="button">
+            <a class="btn btn-primary" href="{% url 'files:file_list' %}" role="button">
               View files
             </a>
           </div>

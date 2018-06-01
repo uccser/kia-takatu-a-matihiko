@@ -46,9 +46,21 @@ class GlossaryTerm(models.Model):
     """Model for glossary term."""
 
     #  Auto-incrementing 'id' field is automatically set by Django
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(
+        unique=True,
+        max_length=200,
+        help_text="A unique readable identifier",
+    )
     term = models.CharField(max_length=200, unique=True)
-    description = models.TextField()
+    definition = models.TextField()
+
+    def get_absolute_url(self):
+        """Return the canonical URL for a glossary term.
+
+        Returns:
+            URL as string.
+        """
+        return reverse("pikau:glossaryterm_detail", args=[self.slug])
 
     def __str__(self):
         """Text representation of GlossaryTerm object.
@@ -88,7 +100,7 @@ class Goal(models.Model):
     """Model for goal."""
 
     #  Auto-incrementing 'id' field is automatically set by Django
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(unique=True, max_length=200)
     description = models.CharField(max_length=500, unique=True)
 
     def __str__(self):
@@ -104,7 +116,7 @@ class Tag(models.Model):
     """Model for tag."""
 
     #  Auto-incrementing 'id' field is automatically set by Django
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(unique=True, max_length=200)
     name = models.CharField(max_length=100, unique=True)
     description = models.CharField(max_length=300, blank=True)
 
@@ -123,6 +135,14 @@ class Topic(models.Model):
     #  Auto-incrementing 'id' field is automatically set by Django
     slug = models.SlugField(unique=True)
     name = models.CharField(max_length=100, unique=True)
+
+    def get_absolute_url(self):
+        """Return the canonical URL for a topic.
+
+        Returns:
+            URL as string.
+        """
+        return reverse("pikau:topic", args=[self.slug])
 
     def __str__(self):
         """Text representation of Topic object.
@@ -172,7 +192,7 @@ class PikauCourse(models.Model):
     """Model for Pikau Course."""
 
     #  Auto-incrementing 'id' field is automatically set by Django
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(unique=True, max_length=200)
     name = models.CharField(max_length=200, unique=True)
     language = models.CharField(max_length=20, choices=LANGUAGE_CHOICES)
     readiness_level = models.IntegerField(
@@ -183,14 +203,14 @@ class PikauCourse(models.Model):
     )
     topic = models.ForeignKey(
         Topic,
-        on_delete=models.CASCADE,
+        on_delete=models.PROTECT,
         related_name="pikau_courses",
         blank=True,
         null=True,
     )
     level = models.ForeignKey(
         Level,
-        on_delete=models.CASCADE,
+        on_delete=models.PROTECT,
         related_name="pikau_courses",
         blank=True,
         null=True,
@@ -217,7 +237,7 @@ class PikauCourse(models.Model):
         blank=True,
     )
     trailer_video = models.URLField(blank=True)
-    cover_photo = models.CharField(max_length=100, default="images/pikau-course-cover.png")
+    cover_photo = models.CharField(max_length=100, default="images/core-education/pikau-course-cover.png")
     overview = models.TextField(blank=True)
     study_plan = models.TextField(blank=True)
     assessment_description = models.TextField(blank=True)
@@ -234,14 +254,14 @@ class PikauCourse(models.Model):
     __previous_status = None
     manager = models.ForeignKey(
         User,
-        on_delete=models.CASCADE,
+        on_delete=models.SET_NULL,
         related_name="pikau_courses",
         blank=True,
         null=True,
     )
     milestone = models.ForeignKey(
         Milestone,
-        on_delete=models.CASCADE,
+        on_delete=models.PROTECT,
         related_name="pikau_courses",
         blank=True,
         null=True,
@@ -272,11 +292,11 @@ class PikauCourse(models.Model):
 class PikauUnit(models.Model):
     """Model for Pikau Unit."""
 
-    slug = models.SlugField()
+    slug = models.SlugField(max_length=200)
     number = models.PositiveSmallIntegerField()
     pikau_course = models.ForeignKey(
         PikauCourse,
-        on_delete=models.CASCADE,
+        on_delete=models.PROTECT,
         related_name="content"
     )
     name = models.CharField(max_length=200)

@@ -12,7 +12,7 @@
         Kia Takatū ā-Matihiko: Content Pipeline Assistant
       {% endblock custom_title %}
     </title>
-    <link rel="icon" href="{% static 'images/flame-stage-5-favicon.png' %}" sizes="32x32" type="image/png">
+    <link rel="icon" href="{% static 'images/core-education/flame-stage-5-favicon.png' %}" sizes="32x32" type="image/png">
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/website.css' %}">
     {% block css %}
@@ -25,7 +25,7 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <a class="navbar-brand mb-0 h1" href="{% url 'index' %}">
-          <img src="{% static 'images/flame-stage-5.png' %}" height="30" class="d-inline-block align-top" alt="">
+          <img src="{% static 'images/core-education/flame-stage-5.png' %}" height="30" class="d-inline-block align-top" alt="">
           Content Pipeline Assistant
         </a>
         <a href="https://github.com/uccser/kia-takatu-a-matihiko/releases" class="badge badge-danger mr-3">
@@ -36,7 +36,7 @@
             <a class="nav-item nav-link" href="{% url 'pikau:index' %}">
               {% trans "Pīkau" %}
             </a>
-            <a class="nav-item nav-link" href="{% url 'files:index' %}">
+            <a class="nav-item nav-link" href="{% url 'files:file_list' %}">
               {% trans "Files" %}
             </a>
           </div>
@@ -63,6 +63,18 @@
         <div class="row">
           <div class="col-12">
             {% render_breadcrumbs %}
+
+            {% if messages %}
+              {% for message in messages %}
+                <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %} alert-dismissible fade show">
+                  {{ message }}
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+              {% endfor %}
+            {% endif %}
+
             {% block custom_page_heading %}
               <h1>
                 {% block page_heading %}
@@ -100,7 +112,7 @@
                   {% trans "Pīkau" %}
                 </a>
               <li>
-                <a href="{% url 'files:index' %}">
+                <a href="{% url 'files:file_list' %}">
                   {% trans "Files" %}
                 </a>
               </li>

@@ -24,6 +24,24 @@ urlpatterns = [
     path(
         "",
         views.FileList.as_view(),
-        name="index"
+        name="file_list"
+    ),
+    # eg: /files/file/view/file-1/
+    path(
+        "file/view/<slug:slug>/",
+        views.FileDetailView.as_view(),
+        name="file_detail"
+    ),
+    # eg: /files/file/create/
+    path(
+        "file/create/",
+        views.FileCreateView.as_view(),
+        name="file_create"
+    ),
+    # eg: /files/file/update/file-1/
+    path(
+        "file/update/<slug:slug>/",
+        views.FileUpdateView.as_view(),
+        name="file_update"
     ),
 ]

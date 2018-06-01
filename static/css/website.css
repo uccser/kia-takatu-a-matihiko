@@ -39,6 +39,7 @@ footer > .container {
 }
 .bg-size-cover {
   background-size: cover;
+  background-position: left;
 }
 .list-style-flame {
   list-style: none;
@@ -47,7 +48,7 @@ footer > .container {
 .list-style-flame li:before {
   content: "";
   display: inline-block;
-  background: url("../images/flame-stage-5.png") no-repeat left top;
+  background: url("../images/core-education/flame-stage-5.png") no-repeat left top;
   height: 1.2rem;
   width: 1rem;
   background-size: contain;
@@ -121,4 +122,17 @@ footer > .container {
 }
 .permalink {
   margin: 4rem 0;
+}
+.asteriskField {
+  color: #dc3545;
+}
+.slug-input {
+  font-family: monospace;
+}
+.form-inline label {
+  margin-right: 0.5rem;
+}
+.no-underline,
+.no-underline:hover {
+  text-decoration: none !important;
 }

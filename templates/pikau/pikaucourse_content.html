@@ -13,37 +13,102 @@
 {% endblock breadcrumbs %}
 
 {% block custom_page_heading %}
-  <div class="jumbotron bg-size-cover"{% if pikau_course.cover_photo %} style="background-image:url({% static pikau_course.cover_photo %});"{% endif %}>
-    <h1 class="text-white text-center">{{ pikau_course.name }}</h1>
-  </div>
-{% endblock custom_page_heading %}
-
-{% block content %}
   <div class="alert alert-warning" role="alert">
     <small><strong>Note:</strong> These pages aim to display how content will be viewed on iQualify, however this consistency is not guaranteed. Different icons are used for licensing reasons.</small>
   </div>
 
-  <h2>Overview</h2>
-  {% render_html_field pikau_course.overview %}
+  <div class="jumbotron bg-size-cover" id="pikau-jumbrotron">
+    <h1 class="text-white text-center">{{ pikau_course.name }}</h1>
+    <div class="row align-items-center mt-4">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4 text-center">
+        {% if pikau_course.trailer_video %}
+          <a href="{{ pikau_course.trailer_video }}" id="watch-intro-button" class="iqualify-shadow btn btn-link no-underline">
+            <img src="" class="d-block m-auto tab-icon">
+            Watch intro
+          </a>
+        {% endif %}
+      </div>
+      <div class="col-sm-4 text-right">
+        <a href="{% url 'pikau:pikau_unit' pikau_course.slug pikau_course.content.all.0.slug %}" class="btn btn-light">
+          Start the course 🡢
+        </a>
+      </div>
+    </div>
+  </div>
+{% endblock custom_page_heading %}
 
-  <h2>Contents</h2>
-  {% for unit in pikau_course.content.all %}
-    {% if unit.module_name %}
-      {% ifchanged unit.module_name %}
-        <div class="btn-spacer"></div>
-        <div class="btn btn-light btn-block btn-pikau-module">
-          {{ unit.module_name }}
-        </div>
-      {% endifchanged %}
-    {% elif not forloop.first %}
-      <div class="btn-spacer"></div>
-    {% endif %}
-    <a href="{% url 'pikau:pikau_unit' pikau_course.slug unit.slug %}" class="btn btn-light btn-block btn-pikau-unit">
-      <span class="mr-5 text-muted">&#8413;</span> {{ unit.name }}
-    </a>
-  {% endfor %}
+{% block content %}
+  <ul class="nav nav-tabs nav-fill mb-2 px-4" id="iqualify-tabs" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="overview-tab" data-toggle="tab" href="#overview" role="tab" aria-controls="overview" aria-selected="true">
+        <img src="{% static 'images/icons/icons8/flag.png' %}" class="d-block m-auto tab-icon">
+        Overview
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="contents-tab" data-toggle="tab" href="#contents" role="tab" aria-controls="contents" aria-selected="false">
+        <img src="{% static 'images/icons/icons8/compass.png' %}" class="d-block m-auto tab-icon">
+        Contents
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="assessments-tab" data-toggle="tab" href="#assessments" role="tab" aria-controls="assessments" aria-selected="false">
+        <img src="{% static 'images/icons/icons8/shield.png' %}" class="d-block m-auto tab-icon">
+        Assessments
+      </a>
+    </li>
+  </ul>
+  <div class="tab-content" id="iqualify-tabs-content">
+    <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
+      {% render_html_field pikau_course.overview %}
+    </div>
+    <div class="tab-pane fade" id="contents" role="tabpanel" aria-labelledby="contents-tab">
+      {% for unit in pikau_course.content.all %}
+        {% if unit.module_name %}
+          {% ifchanged unit.module_name %}
+            <div class="btn-spacer"></div>
+            <div class="btn btn-light btn-block btn-pikau-module">
+              {{ unit.module_name }}
+            </div>
+          {% endifchanged %}
+        {% elif not forloop.first %}
+          <div class="btn-spacer"></div>
+        {% endif %}
+        <a href="{% url 'pikau:pikau_unit' pikau_course.slug unit.slug %}" class="btn btn-light btn-block btn-pikau-unit">
+          <span class="ml-3 mr-5 text-muted">&#8413;</span> {{ unit.name }}
+        </a>
+      {% endfor %}
+    </div>
+    <div class="tab-pane fade" id="assessments" role="tabpanel" aria-labelledby="assessments-tab">
+      {% render_html_field pikau_course.assessment_description %}
+
+      {% render_html_field pikau_course.assessment_items %}
+    </div>
+  </div>
 {% endblock content %}
 
 {% block css %}
   <link rel="stylesheet" href="{% static 'css/iqualify.css' %}">
+  {% include 'pikau/snippets/pikau_jumbotron_styles.html' %}
+  <style>
+    #watch-intro-button {
+      background: url("{% static 'images/icons/icons8/play-button-white.png' %}");
+      background-position: top;
+      background-repeat: no-repeat;
+      padding-top: 3em;
+      font-size: 18px;
+      font-weight: 500;
+      color: #f0f0f0;
+      transition: none;
+    }
+    #watch-intro-button:hover {
+      background: url("{% static 'images/icons/icons8/play-button-blue.png' %}");
+      background-position: top;
+      background-repeat: no-repeat;
+      padding-top: 3em;
+      color: #00ccb0;
+      transition: none;
+    }
+  </style>
 {% endblock css %}

@@ -15,10 +15,10 @@ class GlossaryTermLoader(BaseLoader):
 
         for term_slug, term_data in glossary_data.items():
             term_name = term_data["term"]
-            term_description = term_data["description"]
+            term_definition = term_data["definition"]
             defaults = {
                 "term": term_name,
-                "description": term_description,
+                "definition": term_definition,
             }
             glossary_term, created = GlossaryTerm.objects.update_or_create(
                 slug=term_slug,

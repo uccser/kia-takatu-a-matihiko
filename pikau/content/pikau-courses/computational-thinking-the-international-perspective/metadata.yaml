@@ -1,0 +1,26 @@
+name: "Computational thinking - The international perspective"
+status: 2
+language: en
+topic: ct
+level: all
+tags:
+  - introductory
+cover-photo: images/pikau/ct-around-the-world.png
+trailer-video: https://www.youtube.com/embed/zSfzB-Z-mKM
+
+overview: overview.md
+content:
+  - slug: international-perspective
+    file: defining-ct/international-perspective.md
+    module: Defining computational thinking
+  - slug: existing-experience
+    file: defining-ct/existing-experience.md
+    module: Defining computational thinking
+  - slug: other-ways-of-looking-at-ct
+    file: defining-ct/other-ways-of-looking-at-ct.md
+    module: Defining computational thinking
+  - slug: wrapping-up
+    file: wrapping-up.md
+  - slug: references
+    file: references.md
+assessment-items: assessment-items.md

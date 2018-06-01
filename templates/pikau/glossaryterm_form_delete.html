@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% load django_bootstrap_breadcrumbs %}
+{% load crispy_forms_tags %}
+
+{% block breadcrumbs %}
+  {% breadcrumb "Home" "/" %}
+  {% breadcrumb "Pīkau" "pikau:index" %}
+  {% breadcrumb "Glossary" "pikau:glossaryterm_list" %}
+  {% breadcrumb "Delete glossary definition" "" %}
+{% endblock breadcrumbs %}
+
+{% block page_heading %}
+  Delete glossary definition
+{% endblock page_heading %}
+
+{% block content %}
+  <form method="post">{% csrf_token %}
+    <p>Are you sure you want to delete "{{ object }}"?</p>
+    <input type="submit" value="Confirm" />
+  </form>
+{% endblock content %}

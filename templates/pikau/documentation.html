@@ -158,7 +158,7 @@
               {% for num,level in readiness_levels.items %}
                 <div class="my-1">
                   {% with num|stringformat:"s" as readiness_level %}
-                    {% with "images/flame-stage-"|add:readiness_level|add:".png" as flame_image %}
+                    {% with "images/core-education/flame-stage-"|add:readiness_level|add:".png" as flame_image %}
                       <img src="{% static flame_image %}" class="icon-small">
                     {% endwith %}
                   {% endwith %}
@@ -320,12 +320,21 @@
     <li>Ordered lists (either with numbers of letters)</li>
     <li>Headings (only levels 2 and 3)</li>
     <li>Tables</li>
-    <li>Images</li>
     <li>Links (to external pages or within pīkau)</li>
   </ul>
 
   <p>
-    The following advanced formatting styles are available on iQualify, and the table below lists how to use these on Google Drive.
+    The following can <strong>only</strong> be used within standard content pages, <strong>not</strong> within the 'Overview' section or within boxed text (see below):
+  </p>
+
+  <ul>
+    <li>Images or image slideshows</li>
+    <li>Videos (YouTube and Vimeo)</li>
+  </ul>
+
+  <p>
+    The following boxed text formatting styles are available on iQualify and can <strong>only</strong> be used within standard content pages, <strong>not</strong> within 'Overview' section.
+    The table below lists how to use these on Google Drive.
   </p>
 
   <div class="alert alert-warning" role="alert">
