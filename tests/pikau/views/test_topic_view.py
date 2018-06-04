@@ -16,7 +16,7 @@ class TopicViewTest(BaseTestWithDB):
         url = reverse("pikau:topic", kwargs={"slug": "topic-1"})
         response = self.client.get(url)
         self.assertEqual(200, response.status_code)
-        self.assertEqual(url, "/pikau/topics/topic-1/")
+        self.assertEqual(url, "/pikau/topics/view/topic-1/")
 
     def test_pikau_topic_view_with_invalid_slug(self):
         topic = self.test_data.create_topic(1)

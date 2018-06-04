@@ -65,7 +65,7 @@ class PikauTestDataGenerator:
         glossary_term = GlossaryTerm(
             slug="glossary-term-{}".format(number),
             term="Glossary Term {}".format(number),
-            description="<p>Description for glossary term {}.</p>".format(number),
+            definition="<p>Description for glossary term {}.</p>".format(number),
         )
         glossary_term.save()
         return glossary_term
