@@ -25,8 +25,8 @@ class MilestoneModelTest(BaseTestWithDB):
     def test_milestone_model_two_milestones(self):
         date_1 = self.current_time
         date_2 = self.current_time + dt.timedelta(days=30)
-        milestone_1 = self.test_data.create_milestone(1, date_1)
-        milestone_2 = self.test_data.create_milestone(2, date_2)
+        self.test_data.create_milestone(1, date_1)
+        self.test_data.create_milestone(2, date_2)
         self.assertQuerysetEqual(
             Milestone.objects.all(),
             [
@@ -38,10 +38,10 @@ class MilestoneModelTest(BaseTestWithDB):
 
     def test_milestone_model_uniqueness(self):
         date = self.current_time
-        milestone = self.test_data.create_milestone(1, date)
+        self.test_data.create_milestone(1, date)
         self.assertRaises(
-            IntegrityError, 
-            lambda: self.test_data.create_milestone(1, date), 
+            IntegrityError,
+            lambda: self.test_data.create_milestone(1, date),
         )
 
     def test_milestone_model_str(self):
@@ -65,8 +65,8 @@ class MilestoneModelTest(BaseTestWithDB):
     def test_milestone_model_ordering(self):
         date_1 = self.current_time
         date_2 = self.current_time + dt.timedelta(days=30)
-        milestone_1 = self.test_data.create_milestone(1, date_2)
-        milestone_2 = self.test_data.create_milestone(2, date_1)
+        self.test_data.create_milestone(1, date_2)
+        self.test_data.create_milestone(2, date_1)
         self.assertQuerysetEqual(
             Milestone.objects.all(),
             [
