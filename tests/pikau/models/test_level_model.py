@@ -12,26 +12,26 @@ class LevelModelTest(BaseTestWithDB):
         self.test_data = PikauTestDataGenerator()
 
     def test_level_model_one_level(self):
-    	level = self.test_data.create_level(1)
-    	query_result = Level.objects.get(slug="level-1")
-    	self.assertEqual(query_result, level)
+        level = self.test_data.create_level(1)
+        query_result = Level.objects.get(slug="level-1")
+        self.assertEqual(query_result, level)
 
     def test_level_model_two_levels(self):
-    	level_1 = self.test_data.create_level(1)
-    	level_2 = self.test_data.create_level(2)
-    	self.assertQuerysetEqual(
-    		Level.objects.all(),
-    		[
-    		    "<Level: level-1-name>",
-    		    "<Level: level-2-name>",
-    		],
-    		ordered=False
-    	)
+        self.test_data.create_level(1)
+        self.test_data.create_level(2)
+        self.assertQuerysetEqual(
+            Level.objects.all(),
+            [
+                "<Level: level-1-name>",
+                "<Level: level-2-name>",
+            ],
+            ordered=False
+        )
 
     def test_level_model_uniqueness(self):
-        level = self.test_data.create_level(1)
+        self.test_data.create_level(1)
         self.assertRaises(
-            IntegrityError, 
+            IntegrityError,
             lambda: self.test_data.create_level(1)
         )
 
