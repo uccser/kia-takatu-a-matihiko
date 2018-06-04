@@ -14,7 +14,7 @@ class ReadinessLevelViewTest(BaseTestWithDB):
         url = reverse("pikau:readiness_level_list")
         response = self.client.get(url)
         self.assertEqual(200, response.status_code)
-            
+
         readiness_levels = response.context["readiness_levels"]
         for level in range(1, 6):
             level_data = readiness_levels[level]
@@ -22,8 +22,8 @@ class ReadinessLevelViewTest(BaseTestWithDB):
             self.assertEqual(num_of_courses_on_level, 0)
 
     def test_readiness_level_list_view_with_one_course_for_all_levels(self):
-    	# create 1 course under each readiness level
-    	for level in range(1, 6):
+        # create 1 course under each readiness level
+        for level in range(1, 6):
             pikau_course = self.test_data.create_pikau_course(level)
             pikau_course.readiness_level = level
             pikau_course.save()
@@ -31,7 +31,7 @@ class ReadinessLevelViewTest(BaseTestWithDB):
             url = reverse("pikau:readiness_level_list")
             response = self.client.get(url)
             self.assertEqual(200, response.status_code)
-            
+
             readiness_levels = response.context["readiness_levels"]
             level_data = readiness_levels[level]
             num_of_courses_on_level = level_data["count"]
@@ -53,7 +53,7 @@ class ReadinessLevelViewTest(BaseTestWithDB):
         url = reverse("pikau:readiness_level_list")
         response = self.client.get(url)
         self.assertEqual(200, response.status_code)
-            
+
         readiness_levels = response.context["readiness_levels"]
         level_data = readiness_levels[4]
         num_of_courses_on_level = level_data["count"]
@@ -83,7 +83,7 @@ class ReadinessLevelViewTest(BaseTestWithDB):
         url = reverse("pikau:readiness_level_list")
         response = self.client.get(url)
         self.assertEqual(200, response.status_code)
-            
+
         readiness_levels = response.context["readiness_levels"]
         level_1_data = readiness_levels[1]
         level_2_data = readiness_levels[2]
