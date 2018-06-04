@@ -17,8 +17,8 @@ class TagModelTest(BaseTestWithDB):
         self.assertEqual(query_result, tag)
 
     def test_tag_model_two_tags(self):
-        tag_1 = self.test_data.create_tag(1)
-        tag_2 = self.test_data.create_tag(2)
+        self.test_data.create_tag(1)
+        self.test_data.create_tag(2)
         self.assertQuerysetEqual(
             Tag.objects.all(),
             [
@@ -29,9 +29,9 @@ class TagModelTest(BaseTestWithDB):
         )
 
     def test_tag_model_uniqueness(self):
-        tag = self.test_data.create_tag(1)
+        self.test_data.create_tag(1)
         self.assertRaises(
-            IntegrityError, 
+            IntegrityError,
             lambda: self.test_data.create_tag(1)
         )
 
