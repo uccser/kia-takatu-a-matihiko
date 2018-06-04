@@ -19,8 +19,8 @@ class PikauUnitModelTest(BaseTestWithDB):
 
     def test_pikau_unit_model_two_units_with_module_name(self):
         pikau_course = self.test_data.create_pikau_course("1")
-        pikau_unit_1 = self.test_data.create_pikau_unit(pikau_course, 1, True)
-        pikau_unit_2 = self.test_data.create_pikau_unit(pikau_course, 2, True)
+        self.test_data.create_pikau_unit(pikau_course, 1, True)
+        self.test_data.create_pikau_unit(pikau_course, 2, True)
         self.assertQuerysetEqual(
             PikauUnit.objects.all(),
             [
@@ -32,8 +32,8 @@ class PikauUnitModelTest(BaseTestWithDB):
 
     def test_pikau_unit_model_two_units_without_module_name(self):
         pikau_course = self.test_data.create_pikau_course("1")
-        pikau_unit_1 = self.test_data.create_pikau_unit(pikau_course, 1)
-        pikau_unit_2 = self.test_data.create_pikau_unit(pikau_course, 2)
+        self.test_data.create_pikau_unit(pikau_course, 1)
+        self.test_data.create_pikau_unit(pikau_course, 2)
         self.assertQuerysetEqual(
             PikauUnit.objects.all(),
             [
@@ -45,9 +45,9 @@ class PikauUnitModelTest(BaseTestWithDB):
 
     def test_pikau_unit_model_uniqueness(self):
         pikau_course = self.test_data.create_pikau_course("1")
-        pikau_unit = self.test_data.create_pikau_unit(pikau_course, 1)
+        self.test_data.create_pikau_unit(pikau_course, 1)
         self.assertRaises(
-            IntegrityError, 
+            IntegrityError,
             lambda: self.test_data.create_pikau_unit(pikau_course, 1)
         )
 
@@ -69,9 +69,9 @@ class PikauUnitModelTest(BaseTestWithDB):
 
     def test_pikau_unit_model_ordering(self):
         pikau_course = self.test_data.create_pikau_course("1")
-        pikau_unit_1 = self.test_data.create_pikau_unit(pikau_course, 1)
-        pikau_unit_2 = self.test_data.create_pikau_unit(pikau_course, 2)
-        pikau_unit_3 = self.test_data.create_pikau_unit(pikau_course, 3)
+        self.test_data.create_pikau_unit(pikau_course, 1)
+        self.test_data.create_pikau_unit(pikau_course, 2)
+        self.test_data.create_pikau_unit(pikau_course, 3)
         self.assertQuerysetEqual(
             PikauUnit.objects.all(),
             [
