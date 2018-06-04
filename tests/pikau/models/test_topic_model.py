@@ -12,26 +12,26 @@ class TopicModelTest(BaseTestWithDB):
         self.test_data = PikauTestDataGenerator()
 
     def test_topic_model_one_topic(self):
-    	topic = self.test_data.create_topic(1)
-    	query_result = Topic.objects.get(slug="topic-1")
-    	self.assertEqual(query_result, topic)
+        topic = self.test_data.create_topic(1)
+        query_result = Topic.objects.get(slug="topic-1")
+        self.assertEqual(query_result, topic)
 
     def test_topic_model_two_topics(self):
-    	topic_1 = self.test_data.create_topic(1)
-    	topic_2 = self.test_data.create_topic(2)
-    	self.assertQuerysetEqual(
-    		Topic.objects.all(),
-    		[
-    		    "<Topic: topic-1-name>",
-    		    "<Topic: topic-2-name>",
-    		],
-    		ordered=False
-    	)
+        self.test_data.create_topic(1)
+        self.test_data.create_topic(2)
+        self.assertQuerysetEqual(
+            Topic.objects.all(),
+            [
+                "<Topic: topic-1-name>",
+                "<Topic: topic-2-name>",
+            ],
+           ordered=False
+        )
 
     def test_topic_model_uniqueness(self):
-        topic = self.test_data.create_topic(1)
+        self.test_data.create_topic(1)
         self.assertRaises(
-            IntegrityError, 
+            IntegrityError,
             lambda: self.test_data.create_topic(1)
         )
 
