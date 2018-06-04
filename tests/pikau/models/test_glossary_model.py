@@ -17,8 +17,8 @@ class GlossaryModelTest(BaseTestWithDB):
         self.assertEqual(query_result, glossary_term)
 
     def test_glossary_model_two_glossary_terms(self):
-        glossary_term_1 = self.test_data.create_glossary_term(1)
-        glossary_term_2 = self.test_data.create_glossary_term(2)
+        self.test_data.create_glossary_term(1)
+        self.test_data.create_glossary_term(2)
         self.assertQuerysetEqual(
             GlossaryTerm.objects.all(),
             [
@@ -29,9 +29,9 @@ class GlossaryModelTest(BaseTestWithDB):
         )
 
     def test_glossary_model_uniqueness(self):
-        gloasary_term = self.test_data.create_glossary_term(1)
+        self.test_data.create_glossary_term(1)
         self.assertRaises(
-            IntegrityError, 
+            IntegrityError,
             lambda: self.test_data.create_glossary_term(1)
         )
 
