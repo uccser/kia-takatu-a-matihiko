@@ -12,7 +12,7 @@ class PikauUnitViewTest(BaseTestWithDB):
 
     def test_pikau_unit_view_with_valid_slug(self):
         pikau_course = self.test_data.create_pikau_course(1)
-        pikau_unit = self.test_data.create_pikau_unit(pikau_course, 1)
+        self.test_data.create_pikau_unit(pikau_course, 1)
 
         kwargs = {
             "course_slug": "pikau-course-1",
@@ -22,13 +22,13 @@ class PikauUnitViewTest(BaseTestWithDB):
         response = self.client.get(url)
         self.assertEqual(200, response.status_code)
         self.assertEqual(
-            url, 
+            url,
             "/pikau/pikau-courses/pikau-course-1/content/pikau-unit-1/"
         )
 
     def test_pikau_unit_view_with_invalid_unit_slug(self):
         pikau_course = self.test_data.create_pikau_course(1)
-        pikau_unit = self.test_data.create_pikau_unit(pikau_course, 1)
+        self.test_data.create_pikau_unit(pikau_course, 1)
 
         kwargs = {
             "course_slug": "pikau-course-1",
@@ -40,7 +40,7 @@ class PikauUnitViewTest(BaseTestWithDB):
 
     def test_pikau_unit_view_with_invalid_course_slug(self):
         pikau_course = self.test_data.create_pikau_course(1)
-        pikau_unit = self.test_data.create_pikau_unit(pikau_course, 1)
+        self.test_data.create_pikau_unit(pikau_course, 1)
 
         kwargs = {
             "course_slug": "pikau-course-2",
@@ -52,8 +52,8 @@ class PikauUnitViewTest(BaseTestWithDB):
 
     def test_pikau_unit_view_context_with_previous_unit(self):
         pikau_course = self.test_data.create_pikau_course(1)
-        pikau_unit_1 = self.test_data.create_pikau_unit(pikau_course, 1)
-        pikau_unit_2 = self.test_data.create_pikau_unit(pikau_course, 2)
+        self.test_data.create_pikau_unit(pikau_course, 1)
+        self.test_data.create_pikau_unit(pikau_course, 2)
 
         kwargs = {
             "course_slug": "pikau-course-1",
@@ -67,8 +67,8 @@ class PikauUnitViewTest(BaseTestWithDB):
 
     def test_pikau_unit_view_context_with_next_unit(self):
         pikau_course = self.test_data.create_pikau_course(1)
-        pikau_unit_1 = self.test_data.create_pikau_unit(pikau_course, 1)
-        pikau_unit_2 = self.test_data.create_pikau_unit(pikau_course, 2)
+        self.test_data.create_pikau_unit(pikau_course, 1)
+        self.test_data.create_pikau_unit(pikau_course, 2)
 
         kwargs = {
             "course_slug": "pikau-course-1",
@@ -82,9 +82,9 @@ class PikauUnitViewTest(BaseTestWithDB):
 
     def test_pikau_unit_view_context_with_previous_and_next_unit(self):
         pikau_course = self.test_data.create_pikau_course(1)
-        pikau_unit_1 = self.test_data.create_pikau_unit(pikau_course, 1)
-        pikau_unit_2 = self.test_data.create_pikau_unit(pikau_course, 2)
-        pikau_unit_3 = self.test_data.create_pikau_unit(pikau_course, 3)
+        self.test_data.create_pikau_unit(pikau_course, 1)
+        self.test_data.create_pikau_unit(pikau_course, 2)
+        self.test_data.create_pikau_unit(pikau_course, 3)
 
         kwargs = {
             "course_slug": "pikau-course-1",
@@ -101,7 +101,7 @@ class PikauUnitViewTest(BaseTestWithDB):
 
     def test_pikau_unit_view_context_with_no_previous_or_next_units(self):
         pikau_course = self.test_data.create_pikau_course(1)
-        pikau_unit_1 = self.test_data.create_pikau_unit(pikau_course, 1)
+        self.test_data.create_pikau_unit(pikau_course, 1)
 
         kwargs = {
             "course_slug": "pikau-course-1",
