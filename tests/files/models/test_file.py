@@ -4,6 +4,7 @@ from tests.files.FileTestDataGenerator import FileTestDataGenerator
 from files.models import File
 from django.db import IntegrityError
 
+
 class FileModelTest(BaseTestWithDB):
 
     def __init__(self, *args, **kwargs):
@@ -30,8 +31,8 @@ class FileModelTest(BaseTestWithDB):
         self.assertEqual(query_result, file)
 
     def test_file_model_two_files(self):
-        file_1 = self.test_data.create_file(1)
-        file_2 = self.test_data.create_file(2)
+        self.test_data.create_file(1)
+        self.test_data.create_file(2)
         self.assertQuerysetEqual(
             File.objects.all(),
             [
@@ -42,8 +43,8 @@ class FileModelTest(BaseTestWithDB):
         )
 
     def test_file_model_uniqueness(self):
-        file = self.test_data.create_file(1)
+        self.test_data.create_file(1)
         self.assertRaises(
-            IntegrityError, 
+            IntegrityError,
             lambda: self.test_data.create_file(1)
         )
