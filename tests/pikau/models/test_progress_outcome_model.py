@@ -12,13 +12,13 @@ class ProgressOutcomeModelTest(BaseTestWithDB):
         self.test_data = PikauTestDataGenerator()
 
     def test_progress_outcome_model_one_progress_outcome(self):
-    	progress_outcome = self.test_data.create_progress_outcome(1)
-    	query_result = ProgressOutcome.objects.get(slug="progress-outcome-1")
-    	self.assertEqual(query_result, progress_outcome)
+        progress_outcome = self.test_data.create_progress_outcome(1)
+        query_result = ProgressOutcome.objects.get(slug="progress-outcome-1")
+        self.assertEqual(query_result, progress_outcome)
 
     def test_progress_outcome_model_two_progress_outcomes(self):
-        progress_outcome_1 = self.test_data.create_progress_outcome(1)
-        progress_outcome_2 = self.test_data.create_progress_outcome(2)
+        self.test_data.create_progress_outcome(1)
+        self.test_data.create_progress_outcome(2)
         self.assertQuerysetEqual(
             ProgressOutcome.objects.all(),
             [
@@ -29,10 +29,10 @@ class ProgressOutcomeModelTest(BaseTestWithDB):
         )
 
     def test_progress_outcome_model_uniqueness(self):
-        progress_outcome = self.test_data.create_progress_outcome(1)
+        self.test_data.create_progress_outcome(1)
         self.assertRaises(
-            IntegrityError, 
-            lambda: self.test_data.create_progress_outcome(1), 
+            IntegrityError,
+            lambda: self.test_data.create_progress_outcome(1),
         )
 
     def test_progress_outcome_model_str(self):
@@ -57,6 +57,3 @@ class ProgressOutcomeModelTest(BaseTestWithDB):
     #             exemplars="progress-outcome-1",
     #         ),
     #     )
-        
-
-        
