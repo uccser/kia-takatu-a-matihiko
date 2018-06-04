@@ -17,8 +17,8 @@ class GoalModelTest(BaseTestWithDB):
         self.assertEqual(query_result, goal)
 
     def test_goal_model_two_goals(self):
-        goal_1 = self.test_data.create_goal(1)
-        goal_2 = self.test_data.create_goal(2)
+        self.test_data.create_goal(1)
+        self.test_data.create_goal(2)
         self.assertQuerysetEqual(
             Goal.objects.all(),
             [
@@ -29,9 +29,9 @@ class GoalModelTest(BaseTestWithDB):
         )
 
     def test_goal_model_uniqueness(self):
-        goal = self.test_data.create_goal(1)
+        self.test_data.create_goal(1)
         self.assertRaises(
-            IntegrityError, 
+            IntegrityError,
             lambda: self.test_data.create_goal(1)
         )
 
