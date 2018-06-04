@@ -4,6 +4,7 @@ from tests.files.FileTestDataGenerator import FileTestDataGenerator
 from files.models import Licence
 from django.db import IntegrityError
 
+
 class LicenceModelTest(BaseTestWithDB):
 
     def __init__(self, *args, **kwargs):
@@ -23,8 +24,8 @@ class LicenceModelTest(BaseTestWithDB):
         self.assertEqual(query_result, licence)
 
     def test_licence_model_two_licences(self):
-        licence_1 = self.test_data.create_licence(1)
-        licence_2 = self.test_data.create_licence(2)
+        self.test_data.create_licence(1)
+        self.test_data.create_licence(2)
         self.assertQuerysetEqual(
             Licence.objects.all(),
             [
@@ -35,16 +36,16 @@ class LicenceModelTest(BaseTestWithDB):
         )
 
     def test_licence_model_uniqueness(self):
-        licence = self.test_data.create_licence(1)
+        self.test_data.create_licence(1)
         self.assertRaises(
-            IntegrityError, 
+            IntegrityError,
             lambda: self.test_data.create_licence(1)
         )
 
     def test_licence_model_ordering(self):
-        licence_3 = self.test_data.create_licence(3)
-        licence_1 = self.test_data.create_licence(1)
-        licence_2 = self.test_data.create_licence(2)
+        self.test_data.create_licence(3)
+        self.test_data.create_licence(1)
+        self.test_data.create_licence(2)
         self.assertQuerysetEqual(
             Licence.objects.all(),
             [
