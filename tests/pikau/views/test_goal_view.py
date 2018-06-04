@@ -17,7 +17,7 @@ class GoalViewTest(BaseTestWithDB):
         self.assertEqual(len(response.context["goals"]), 0)
 
     def test_pikau_goal_view_with_one_goal(self):
-        goal = self.test_data.create_goal(1)
+        self.test_data.create_goal(1)
 
         url = reverse("pikau:goal_list")
         response = self.client.get(url)
@@ -29,8 +29,8 @@ class GoalViewTest(BaseTestWithDB):
         )
 
     def test_pikau_goal_view_with_two_goals(self):
-        goal_1 = self.test_data.create_goal(1)
-        goal_2 = self.test_data.create_goal(2)
+        self.test_data.create_goal(1)
+        self.test_data.create_goal(2)
 
         url = reverse("pikau:goal_list")
         response = self.client.get(url)
@@ -39,15 +39,15 @@ class GoalViewTest(BaseTestWithDB):
         self.assertQuerysetEqual(
             response.context["goals"],
             [
-                "<Goal: <p>Description for goal 1.</p>>", 
+                "<Goal: <p>Description for goal 1.</p>>",
                 "<Goal: <p>Description for goal 2.</p>>",
             ]
         )
 
     def test_pikau_goal_view_order(self):
-        goal_3 = self.test_data.create_goal(3)
-        goal_2 = self.test_data.create_goal(2)
-        goal_1 = self.test_data.create_goal(1)
+        self.test_data.create_goal(3)
+        self.test_data.create_goal(2)
+        self.test_data.create_goal(1)
 
         url = reverse("pikau:goal_list")
         response = self.client.get(url)
@@ -56,7 +56,7 @@ class GoalViewTest(BaseTestWithDB):
         self.assertQuerysetEqual(
             response.context["goals"],
             [
-                "<Goal: <p>Description for goal 1.</p>>", 
+                "<Goal: <p>Description for goal 1.</p>>",
                 "<Goal: <p>Description for goal 2.</p>>",
                 "<Goal: <p>Description for goal 3.</p>>",
             ]
