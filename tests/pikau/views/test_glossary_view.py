@@ -29,8 +29,8 @@ class GlossaryViewTest(BaseTestWithDB):
         )
 
     def test_pikau_glossary_view_with_two_definitions(self):
-        term_1 = self.test_data.create_glossary_term(1)
-        term_2 = self.test_data.create_glossary_term(2)
+        self.test_data.create_glossary_term(1)
+        self.test_data.create_glossary_term(2)
 
         url = reverse("pikau:glossaryterm_list")
         response = self.client.get(url)
@@ -39,16 +39,16 @@ class GlossaryViewTest(BaseTestWithDB):
         self.assertQuerysetEqual(
             response.context["glossaryterm_list"],
             [
-                "<GlossaryTerm: Glossary Term 1>", 
+                "<GlossaryTerm: Glossary Term 1>",
                 "<GlossaryTerm: Glossary Term 2>",
             ],
             ordered=False
         )
 
     def test_pikau_glossary_view_order(self):
-        term_3 = self.test_data.create_glossary_term(3)
-        term_2 = self.test_data.create_glossary_term(2)
-        term_1 = self.test_data.create_glossary_term(1)
+        self.test_data.create_glossary_term(3)
+        self.test_data.create_glossary_term(2)
+        self.test_data.create_glossary_term(1)
 
         url = reverse("pikau:glossaryterm_list")
         response = self.client.get(url)
