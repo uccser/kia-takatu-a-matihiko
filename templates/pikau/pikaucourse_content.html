@@ -30,9 +30,11 @@
         {% endif %}
       </div>
       <div class="col-sm-4 text-right">
-        <a href="{% url 'pikau:pikau_unit' pikau_course.slug pikau_course.content.all.0.slug %}" class="btn btn-light">
-          Start the course 🡢
-        </a>
+        {% if pikau_course.content.all %}
+          <a href="{% url 'pikau:pikau_unit' pikau_course.slug pikau_course.content.all.0.slug %}" class="btn btn-light">
+            Start the course 🡢
+          </a>
+        {% endif %}
       </div>
     </div>
   </div>
