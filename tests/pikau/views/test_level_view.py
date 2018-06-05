@@ -11,7 +11,7 @@ class LevelViewTest(BaseTestWithDB):
         self.test_data = PikauTestDataGenerator()
 
     def test_pikau_level_view_with_valid_slug(self):
-        level = self.test_data.create_level(1)
+        self.test_data.create_level(1)
 
         url = reverse("pikau:level", kwargs={"slug": "level-1"})
         response = self.client.get(url)
@@ -19,7 +19,7 @@ class LevelViewTest(BaseTestWithDB):
         self.assertEqual(url, "/pikau/levels/level-1/")
 
     def test_pikau_level_view_with_invalid_slug(self):
-        level = self.test_data.create_level(1)
+        self.test_data.create_level(1)
 
         url = reverse("pikau:level", kwargs={"slug": "level-5"})
         response = self.client.get(url)
@@ -32,7 +32,7 @@ class LevelViewTest(BaseTestWithDB):
         self.assertEqual(len(response.context["levels"]), 0)
 
     def test_pikau_level_list_view_with_one_level(self):
-        level = self.test_data.create_level(1)
+        self.test_data.create_level(1)
 
         url = reverse("pikau:level_list")
         response = self.client.get(url)
@@ -44,8 +44,8 @@ class LevelViewTest(BaseTestWithDB):
         )
 
     def test_pikau_level_list_view_with_two_levels(self):
-        level_1 = self.test_data.create_level(1)
-        level_2 = self.test_data.create_level(2)
+        self.test_data.create_level(1)
+        self.test_data.create_level(2)
 
         url = reverse("pikau:level_list")
         response = self.client.get(url)
@@ -60,9 +60,9 @@ class LevelViewTest(BaseTestWithDB):
         )
 
     def test_pikau_level_list_view_order(self):
-        level_3 = self.test_data.create_level(3)
-        level_2 = self.test_data.create_level(2)
-        level_1 = self.test_data.create_level(1)
+        self.test_data.create_level(3)
+        self.test_data.create_level(2)
+        self.test_data.create_level(1)
 
         url = reverse("pikau:level_list")
         response = self.client.get(url)
