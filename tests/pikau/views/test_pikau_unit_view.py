@@ -52,7 +52,7 @@ class PikauUnitViewTest(BaseTestWithDB):
 
     def test_pikau_unit_view_context_with_previous_unit(self):
         pikau_course = self.test_data.create_pikau_course(1)
-        self.test_data.create_pikau_unit(pikau_course, 1)
+        previous_pikau_unit = self.test_data.create_pikau_unit(pikau_course, 1)
         self.test_data.create_pikau_unit(pikau_course, 2)
 
         kwargs = {
@@ -63,12 +63,12 @@ class PikauUnitViewTest(BaseTestWithDB):
         response = self.client.get(url)
         self.assertEqual(200, response.status_code)
         previous_unit = response.context["previous_unit"]
-        self.assertEqual(previous_unit, pikau_unit_1)
+        self.assertEqual(previous_unit, previous_pikau_unit)
 
     def test_pikau_unit_view_context_with_next_unit(self):
         pikau_course = self.test_data.create_pikau_course(1)
         self.test_data.create_pikau_unit(pikau_course, 1)
-        self.test_data.create_pikau_unit(pikau_course, 2)
+        next_pikau_unit = self.test_data.create_pikau_unit(pikau_course, 2)
 
         kwargs = {
             "course_slug": "pikau-course-1",
@@ -78,13 +78,13 @@ class PikauUnitViewTest(BaseTestWithDB):
         response = self.client.get(url)
         self.assertEqual(200, response.status_code)
         next_unit = response.context["next_unit"]
-        self.assertEqual(next_unit, pikau_unit_2)
+        self.assertEqual(next_unit, next_pikau_unit)
 
     def test_pikau_unit_view_context_with_previous_and_next_unit(self):
         pikau_course = self.test_data.create_pikau_course(1)
-        self.test_data.create_pikau_unit(pikau_course, 1)
+        previous_pikau_unit = self.test_data.create_pikau_unit(pikau_course, 1)
         self.test_data.create_pikau_unit(pikau_course, 2)
-        self.test_data.create_pikau_unit(pikau_course, 3)
+        next_pikau_unit = self.test_data.create_pikau_unit(pikau_course, 3)
 
         kwargs = {
             "course_slug": "pikau-course-1",
@@ -95,9 +95,9 @@ class PikauUnitViewTest(BaseTestWithDB):
         self.assertEqual(200, response.status_code)
 
         previous_unit = response.context["previous_unit"]
-        self.assertEqual(previous_unit, pikau_unit_1)
+        self.assertEqual(previous_unit, previous_pikau_unit)
         next_unit = response.context["next_unit"]
-        self.assertEqual(next_unit, pikau_unit_3)
+        self.assertEqual(next_unit, next_pikau_unit)
 
     def test_pikau_unit_view_context_with_no_previous_or_next_units(self):
         pikau_course = self.test_data.create_pikau_course(1)
