@@ -4,9 +4,7 @@ from django.urls import reverse
 from http import HTTPStatus
 
 from pikau.models import (
-    Level,
     ProgressOutcome,
-    Topic,
     Tag,
     STATUS_CHOICES,
     READINESS_LEVELS,
@@ -31,13 +29,13 @@ class DocumentationViewTest(BaseTestWithDB):
         self.assertEqual(response.context["status_stages"], STATUS_CHOICES)
 
     def test_documentation_view_context_topics(self):
-        topic_1 = self.test_data.create_topic(1)
-        topic_2 = self.test_data.create_topic(2)
+        self.test_data.create_topic(1)
+        self.test_data.create_topic(2)
 
         response = self.client.get(reverse("pikau:docs"))
         self.assertEqual(HTTPStatus.OK, response.status_code)
         self.assertQuerysetEqual(
-            response.context["topics"], 
+            response.context["topics"],
             [
                 "<Topic: topic-1-name>",
                 "<Topic: topic-2-name>",
@@ -45,8 +43,8 @@ class DocumentationViewTest(BaseTestWithDB):
         )
 
     def test_documentation_view_context_levels(self):
-        level_1 = self.test_data.create_level(1)
-        level_2 = self.test_data.create_level(2)
+        self.test_data.create_level(1)
+        self.test_data.create_level(2)
 
         response = self.client.get(reverse("pikau:docs"))
         self.assertEqual(HTTPStatus.OK, response.status_code)
@@ -59,8 +57,8 @@ class DocumentationViewTest(BaseTestWithDB):
         )
 
     def test_documentation_view_context_progress_outcomes(self):
-        progress_outcome_1 = self.test_data.create_progress_outcome(1)
-        progress_outcome_2 = self.test_data.create_progress_outcome(2)
+        self.test_data.create_progress_outcome(1)
+        self.test_data.create_progress_outcome(2)
 
         response = self.client.get(reverse("pikau:docs"))
         self.assertEqual(HTTPStatus.OK, response.status_code)
