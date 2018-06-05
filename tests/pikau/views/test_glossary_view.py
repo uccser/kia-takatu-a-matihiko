@@ -17,7 +17,7 @@ class GlossaryViewTest(BaseTestWithDB):
         self.assertEqual(len(response.context["glossaryterm_list"]), 0)
 
     def test_pikau_glossary_view_with_one_definition(self):
-        term = self.test_data.create_glossary_term(1)
+        self.test_data.create_glossary_term(1)
 
         url = reverse("pikau:glossaryterm_list")
         response = self.client.get(url)
