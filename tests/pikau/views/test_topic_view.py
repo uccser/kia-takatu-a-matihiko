@@ -11,7 +11,7 @@ class TopicViewTest(BaseTestWithDB):
         self.test_data = PikauTestDataGenerator()
 
     def test_pikau_topic_view_with_valid_slug(self):
-        topic = self.test_data.create_topic(1)
+        self.test_data.create_topic(1)
 
         url = reverse("pikau:topic", kwargs={"slug": "topic-1"})
         response = self.client.get(url)
@@ -19,7 +19,7 @@ class TopicViewTest(BaseTestWithDB):
         self.assertEqual(url, "/pikau/topics/view/topic-1/")
 
     def test_pikau_topic_view_with_invalid_slug(self):
-        topic = self.test_data.create_topic(1)
+        self.test_data.create_topic(1)
 
         url = reverse("pikau:topic", kwargs={"slug": "topic-5"})
         response = self.client.get(url)
@@ -32,7 +32,7 @@ class TopicViewTest(BaseTestWithDB):
         self.assertEqual(len(response.context["topics"]), 0)
 
     def test_pikau_topic_list_view_with_one_topic(self):
-        topic = self.test_data.create_topic(1)
+        self.test_data.create_topic(1)
 
         url = reverse("pikau:topic_list")
         response = self.client.get(url)
@@ -44,8 +44,8 @@ class TopicViewTest(BaseTestWithDB):
         )
 
     def test_pikau_topic_list_view_with_two_topics(self):
-        topic_1 = self.test_data.create_topic(1)
-        topic_2 = self.test_data.create_topic(2)
+        self.test_data.create_topic(1)
+        self.test_data.create_topic(2)
 
         url = reverse("pikau:topic_list")
         response = self.client.get(url)
@@ -54,16 +54,15 @@ class TopicViewTest(BaseTestWithDB):
         self.assertQuerysetEqual(
             response.context["topics"],
             [
-    		    "<Topic: topic-1-name>",
-    		    "<Topic: topic-2-name>",
+                "<Topic: topic-1-name>",
+                "<Topic: topic-2-name>",
             ]
         )
 
-
     def test_pikau_topic_list_view_order(self):
-        topic_3 = self.test_data.create_topic(3)
-        topic_2 = self.test_data.create_topic(2)
-        topic_1 = self.test_data.create_topic(1)
+        self.test_data.create_topic(3)
+        self.test_data.create_topic(2)
+        self.test_data.create_topic(1)
 
         url = reverse("pikau:topic_list")
         response = self.client.get(url)
