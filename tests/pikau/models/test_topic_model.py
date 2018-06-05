@@ -25,7 +25,7 @@ class TopicModelTest(BaseTestWithDB):
                 "<Topic: topic-1-name>",
                 "<Topic: topic-2-name>",
             ],
-           ordered=False
+            ordered=False
         )
 
     def test_topic_model_uniqueness(self):
