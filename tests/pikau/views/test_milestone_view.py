@@ -22,7 +22,7 @@ class MilestoneViewTest(BaseTestWithDB):
         self.assertEqual(len(response.context["milestones"]), 0)
 
     def test_pikau_milestone_list_view_with_one_milestone(self):
-        milestone = self.test_data.create_milestone(1, self.current_time)
+        self.test_data.create_milestone(1, self.current_time)
 
         url = reverse("pikau:milestone_list")
         response = self.client.get(url)
@@ -36,8 +36,8 @@ class MilestoneViewTest(BaseTestWithDB):
     def test_pikau_milestone_list_view_order(self):
         date_1 = self.current_time
         date_2 = self.current_time + dt.timedelta(days=30)
-        milestone_1 = self.test_data.create_milestone(1, date_2)
-        milestone_2 = self.test_data.create_milestone(2, date_1)
+        self.test_data.create_milestone(1, date_2)
+        self.test_data.create_milestone(2, date_1)
 
         url = reverse("pikau:milestone_list")
         response = self.client.get(url)
@@ -51,7 +51,7 @@ class MilestoneViewTest(BaseTestWithDB):
         )
 
     def test_pikau_milestone_list_view_with_two_milestones(self):
-        milestone = self.test_data.create_milestone(1, self.current_time)
+        self.test_data.create_milestone(1, self.current_time)
 
         url = reverse("pikau:milestone_list")
         response = self.client.get(url)
@@ -75,7 +75,7 @@ class MilestoneViewTest(BaseTestWithDB):
         self.assertEqual(200, response.status_code)
 
         milestones = response.context["milestones"]
-        milestone_1 = milestones[0] 
+        milestone_1 = milestones[0]
         milestone_1_status_3_course_count = milestone_1.status[3]
         milestone_1_status_7_course_count = milestone_1.status[7]
         self.assertEqual(milestone_1_status_3_course_count, 1)
@@ -103,17 +103,17 @@ class MilestoneViewTest(BaseTestWithDB):
         self.assertEqual(404, response.status_code)
 
     def test_milestone_view_with_valid_pk(self):
-        milestone = self.test_data.create_milestone(1, self.current_time)
+        self.test_data.create_milestone(1, self.current_time)
         url = reverse("pikau:milestone", kwargs={"pk": 1})
         response = self.client.get(url)
         self.assertEqual(200, response.status_code)
         self.assertEqual(
-            url, 
+            url,
             "/pikau/milestones/1/"
         )
 
     def test_milestone_view_with_invalid_pk(self):
-        milestone = self.test_data.create_milestone(1, self.current_time)
+        self.test_data.create_milestone(1, self.current_time)
         url = reverse("pikau:milestone", kwargs={"pk": 5})
         response = self.client.get(url)
         self.assertEqual(404, response.status_code)
