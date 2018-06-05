@@ -11,7 +11,7 @@ class ProgressOutcomeViewTest(BaseTestWithDB):
         self.test_data = PikauTestDataGenerator()
 
     def test_pikau_progress_outcome_view_with_valid_slug(self):
-        progress_outcome = self.test_data.create_progress_outcome(1)
+        self.test_data.create_progress_outcome(1)
 
         kwargs = {
             "slug": "progress-outcome-1",
@@ -20,12 +20,12 @@ class ProgressOutcomeViewTest(BaseTestWithDB):
         response = self.client.get(url)
         self.assertEqual(200, response.status_code)
         self.assertEqual(
-            url, 
+            url,
             "/pikau/progress-outcomes/progress-outcome-1/"
         )
 
     def test_pikau_progress_outcome_view_with_invalid_slug(self):
-        progress_outcome = self.test_data.create_progress_outcome(1)
+        self.test_data.create_progress_outcome(1)
 
         kwargs = {
             "slug": "progress-outcome-5",
