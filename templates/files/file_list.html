@@ -31,7 +31,7 @@
   {% if unknown_licences %}
     <div class="alert alert-danger" role="alert">
       <h4 class="alert-heading">Warning!</h4>
-      <a href="{% url 'files:file_list' %}?licence=3" class="alert-link">{{ unknown_licences }} file{{ unknown_licences|pluralize }}</a> do{{ unknown_licences|pluralize:"es," }} not have a licence listed!
+      <a href="{% url 'files:file_list' %}?licence={{ unknown_licence_id }}" class="alert-link">{{ unknown_licences }} file{{ unknown_licences|pluralize }}</a> do{{ unknown_licences|pluralize:"es," }} not have a licence listed!
     </div>
   {% endif %}
 
