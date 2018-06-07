@@ -19,6 +19,7 @@ class FileLoader(BaseLoader):
                 "name": file_data["name"],
                 "filename": file_data["filename"],
                 "location": file_data["location"],
+                "direct_link": file_data.get("direct-link", ""),
                 "licence": licence,
                 "description": file_data.get("description", ""),
             }

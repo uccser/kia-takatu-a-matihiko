@@ -74,6 +74,7 @@ class BaseLoader():
             raise CouldNotFindMarkdownFileError(md_file_path, config_file_path)
 
         custom_processors = self.converter.processor_defaults()
+        custom_processors.remove("scratch")
         if remove_title:
             custom_processors.add("remove-title")
         self.converter.update_processors(custom_processors)

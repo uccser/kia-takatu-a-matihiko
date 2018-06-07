@@ -27,3 +27,6 @@ content:
   - slug: references
     file: references.md
 assessment-items: assessment-items.md
+
+extra-files:
+  - jeannette-wing-jpg

@@ -1,0 +1,8 @@
+{% load static %}
+
+{% if record.media_type == "Image" %}
+  <img src="{% static 'images/icons/icons8/image.png' %}" class="icon-1-1 mr-2">
+{% elif record.media_type == "Video" %}
+  <img src="{% static 'images/icons/icons8/video.png' %}" class="icon-1-1 mr-2">
+{% endif %}
+{{ record.media_type }}

@@ -99,6 +99,9 @@ footer > .container {
 .icon {
   width: 2.5rem;
 }
+.icon-1-1 {
+  width: 1.1rem;
+}
 .icon-small {
   width: 1rem;
 }
@@ -135,4 +138,10 @@ footer > .container {
 .no-underline,
 .no-underline:hover {
   text-decoration: none !important;
+}
+#file-image-preview {
+  max-height: 25em;
+}
+.file-image-preview-small {
+  max-width: 10em;
 }
