@@ -24,3 +24,8 @@ content:
   - slug: references
     file: references.md
 assessment-items: assessment-items.md
+
+extra-files:
+  - ct-loading-planes-trimmed
+  - csfg-algorithms-trailer
+  - ct-six-elements-of-digital-devices

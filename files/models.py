@@ -52,9 +52,10 @@ class File(models.Model):
     """Model for file."""
 
     slug = models.SlugField(unique=True)
-    filename = models.CharField(max_length=200)
+    name = models.CharField(max_length=200, unique=True)
+    filename = models.CharField(max_length=200, unique=True)
     description = models.TextField(blank=True)
-    location = models.URLField()
+    location = models.URLField(unique=True)
     licence = models.ForeignKey(
         Licence,
         on_delete=models.CASCADE,
@@ -77,7 +78,7 @@ class File(models.Model):
         Returns:
             String describing file.
         """
-        return self.filename
+        return self.name
 
     def __repr__(self):
         """Text representation of File object for developers.

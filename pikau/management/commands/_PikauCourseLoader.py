@@ -3,6 +3,7 @@
 import os.path
 from django.db import transaction
 from utils.BaseLoader import BaseLoader
+from pikau.utils.find_file import find_file
 from pikau.models import (
     PikauCourse,
     PikauUnit,
@@ -12,6 +13,7 @@ from pikau.models import (
     GlossaryTerm,
     ProgressOutcome,
 )
+from files.models import File
 
 CONFIG_FILE = "pikau-courses.yaml"
 COVER_PHOTO_DEFAULT = "images/core-education/pikau-course-cover.png"
@@ -62,14 +64,17 @@ class PikauCourseLoader(BaseLoader):
                     remove_title=False,
                 ).html_string
 
+            cover_photo = pikau_course_metadata.get("cover-photo", COVER_PHOTO_DEFAULT)
+            trailer_video = pikau_course_metadata.get("trailer-video", "")
+
             defaults = {
                 "name": pikau_course_metadata["name"],
                 "status": pikau_course_metadata["status"],
                 "language": pikau_course_metadata["language"],
                 "topic": Topic.objects.get(slug=pikau_course_metadata["topic"]),
                 "level": Level.objects.get(slug=pikau_course_metadata["level"]),
-                "trailer_video": pikau_course_metadata.get("trailer-video", ""),
-                "cover_photo": pikau_course_metadata.get("cover-photo", COVER_PHOTO_DEFAULT),
+                "trailer_video": trailer_video,
+                "cover_photo": cover_photo,
                 "overview": pikau_course_overview,
                 "readiness_level": pikau_course_metadata.get("readiness-level"),
                 "study_plan": pikau_course_study_plan,
@@ -82,6 +87,14 @@ class PikauCourseLoader(BaseLoader):
                 defaults=defaults,
             )
 
+            # Check cover photo, trailer video, and extra files are logged
+            pikau_course.files.add(find_file(filename=cover_photo))
+            if trailer_video:
+                pikau_course.files.add(find_file(filename=trailer_video))
+            for file_slug in pikau_course_metadata.get("extra-files", list()):
+                pikau_course.files.add(find_file(slug=file_slug))
+
+
             # Delete all existing units for course
             # since the will be loaded from raw data.
             PikauUnit.objects.filter(pikau_course=pikau_course).delete()
@@ -92,6 +105,11 @@ class PikauCourseLoader(BaseLoader):
                     heading_required=True,
                     remove_title=True,
                 )
+                print(unit_content.required_files["images"])
+                # Check files in content
+                for filename in unit_content.required_files["images"]:
+                    pikau_course.files.add(find_file(filename=filename))
+
                 pikau_course.content.create(
                     slug=unit_data["slug"],
                     pikau_course=pikau_course,
