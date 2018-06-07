@@ -79,6 +79,11 @@ class File(models.Model):
     )
 
     def media_type(self):
+        """Return label for media type.
+
+        Returns:
+            String label of media type.
+        """
         if any(substring in self.direct_link for substring in VIDEO_PROVIDERS):
             label = "Video"
         elif self.direct_link.endswith(IMAGE_EXTENSIONS):

@@ -22,6 +22,14 @@ class FileTable(tables.Table):
     licence = tables.RelatedLinkColumn()
 
     def render_media_type(self, value):
+        """Render template for media type column.
+
+        Args:
+            value: Value for column.
+
+        Returns:
+            Rendered string for column.
+        """
         if value in ("Image", "Video"):
             context = {"image_path": "images/icons/icons8/{}.png".format(value)}
             image = render_to_string("files/previews/type-icon.html", context=context)
