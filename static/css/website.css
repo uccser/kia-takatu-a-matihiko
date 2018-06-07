@@ -142,3 +142,6 @@ footer > .container {
 #file-image-preview {
   max-height: 25em;
 }
+.file-image-preview-small {
+  max-width: 10em;
+}

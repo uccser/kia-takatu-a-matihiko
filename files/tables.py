@@ -11,6 +11,10 @@ class FileTable(tables.Table):
     """Table to display all files."""
 
     name = tables.LinkColumn()
+    preview = tables.TemplateColumn(
+        template_name="files/previews/preview.html",
+        verbose_name="Preview",
+    )
     media_type_rendered = tables.TemplateColumn(
         template_name="files/previews/type-icon.html",
         verbose_name="Media type",
