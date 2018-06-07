@@ -6,8 +6,8 @@ from django.db.models import Q, Count
 
 GRAPH_TEMPLATE = (
     "digraph {{"
-    "graph [bgcolor=transparent,fontname=inherit];"
-    "node [shape=box,fillcolor=white,style=filled,fontname=inherit];"
+    'graph [bgcolor=transparent,fontname="helvetica"];'
+    'node [shape=box,fillcolor=white,style=filled,fontname="helvetica", margin=0.1];'
     "{nodes}"
     "{edges}"
     "}}"
