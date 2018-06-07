@@ -3,7 +3,6 @@
 from django.db import models
 from django.core.exceptions import ObjectDoesNotExist
 from django.urls import reverse
-from django.utils.text import slugify
 
 
 def default_licence():

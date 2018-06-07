@@ -13,7 +13,6 @@ from pikau.models import (
     GlossaryTerm,
     ProgressOutcome,
 )
-from files.models import File
 
 CONFIG_FILE = "pikau-courses.yaml"
 COVER_PHOTO_DEFAULT = "images/core-education/pikau-course-cover.png"
@@ -93,7 +92,6 @@ class PikauCourseLoader(BaseLoader):
                 pikau_course.files.add(find_file(filename=trailer_video))
             for file_slug in pikau_course_metadata.get("extra-files", list()):
                 pikau_course.files.add(find_file(slug=file_slug))
-
 
             # Delete all existing units for course
             # since the will be loaded from raw data.

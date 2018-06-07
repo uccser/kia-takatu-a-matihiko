@@ -1,12 +1,23 @@
-""""""
+"""Find file object for given filename or slug."""
 
 from os.path import basename
 from django.core.exceptions import ObjectDoesNotExist
-from django.urls import reverse
 from files.models import File
 
 
 def find_file(filename=None, slug=None):
+    """Find file object for given filename or slug.
+
+    Args:
+        filename (str): String of file filename.
+        slug (str): String of file slug.
+
+    Returns:
+        File object.
+
+    Raises:
+        ValueError: If file object cannot be found.
+    """
     if not filename and not slug:
         raise ValueError("One keyword argument is required: filename or slug")
     try:
