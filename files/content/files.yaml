@@ -140,7 +140,20 @@ edsger-wybe-dijkstra-jpg:
   licence: cc-by-sa-3
 pagerank-png:
   name: PageRank
-  filename: ":PageRank-hi-res.png"
+  filename: "PageRank-hi-res.png"
   location: "https://commons.wikimedia.org/wiki/File:PageRank-hi-res.png"
   direct-link: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/PageRank-hi-res.png/640px-PageRank-hi-res.png"
   licence: cc-by-sa-2-5
+# TODO: To find pīkau usage
+jeannette-wing-jpg:
+  name: Jeannette Wing
+  filename: "Jeannette Wing, Davos 2013.jpg"
+  location: "https://commons.wikimedia.org/wiki/File:Jeannette_Wing,_Davos_2013.jpg"
+  direct-link: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Jeannette_Wing%2C_Davos_2013.jpg/532px-Jeannette_Wing%2C_Davos_2013.jpg"
+  licence: cc-by-sa-2
+khwarizmi-amirkabir-png:
+  name: Khwarizmi Amirkabir University of Technology
+  filename: "Khwarizmi Amirkabir University of Technology.png"
+  location: "https://commons.wikimedia.org/wiki/File:Khwarizmi_Amirkabir_University_of_Technology.png"
+  direct-link: "https://upload.wikimedia.org/wikipedia/commons/a/a6/Khwarizmi_Amirkabir_University_of_Technology.png"
+  licence: cc-by-sa-3

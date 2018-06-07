@@ -4,6 +4,9 @@ unknown:
 cc0:
   name: "CC0 - No Rights Reserved"
   url: "https://creativecommons.org/share-your-work/public-domain/cc0/"
+cc-by-sa-2:
+  name:  "Creative Commons (BY-SA 2.0)"
+  url: "https://creativecommons.org/licenses/by-sa/2.0/"
 cc-by-sa-2-5:
   name:  "Creative Commons (BY-SA 2.5)"
   url: "https://creativecommons.org/licenses/by-sa/2.5/"
