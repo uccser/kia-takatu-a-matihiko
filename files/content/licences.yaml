@@ -1,6 +1,24 @@
-- name:  "Unknown"
+unknown:
+  name:  "Unknown"
   url: "https://creativecommons.org/choose/"
-- name:  "Creative Commons (BY-SA 4.0)"
+cc0:
+  name: "CC0 - No Rights Reserved"
+  url: "https://creativecommons.org/share-your-work/public-domain/cc0/"
+cc-by-sa-2:
+  name:  "Creative Commons (BY-SA 2.0)"
+  url: "https://creativecommons.org/licenses/by-sa/2.0/"
+cc-by-sa-2-5:
+  name:  "Creative Commons (BY-SA 2.5)"
+  url: "https://creativecommons.org/licenses/by-sa/2.5/"
+cc-by-sa-3:
+  name:  "Creative Commons (BY-SA 3.0)"
+  url: "https://creativecommons.org/licenses/by-sa/3.0/"
+cc-by-sa-4:
+  name:  "Creative Commons (BY-SA 4.0)"
   url: "https://creativecommons.org/licenses/by-sa/4.0/"
-- name:  "Creative Commons (BY-NC-SA 4.0)"
+cc-by-nc-sa-4:
+  name:  "Creative Commons (BY-NC-SA 4.0)"
   url: "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+public-domain:
+  name: Public Domain
+  url: "https://wiki.creativecommons.org/wiki/Public_domain"

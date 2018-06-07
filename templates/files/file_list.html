@@ -24,14 +24,15 @@
 {% block content %}
   <p>
     {% blocktrans trimmed %}
-      This page lists files used within <a href='http://www.kiatakatu.ac.nz/'>Kia Takatū ā-Matihiko</a>.
+      This page lists files used within <a href="http://www.kiatakatu.ac.nz/">Kia Takatū ā-Matihiko</a>.
+      For retrieving licence information for images from Wikipedia and Wikimedia Commons use the <a href="https://www.lizenzhinweisgenerator.de/?lang=en">Attribution Generator</a>.
     {% endblocktrans %}
   </p>
 
   {% if unknown_licences %}
     <div class="alert alert-danger" role="alert">
       <h4 class="alert-heading">Warning!</h4>
-      <a href="{% url 'files:file_list' %}?licence=3" class="alert-link">{{ unknown_licences }} file{{ unknown_licences|pluralize }}</a> do{{ unknown_licences|pluralize:"es," }} not have a licence listed!
+      <a href="{% url 'files:file_list' %}?licence={{ unknown_licence_id }}" class="alert-link">{{ unknown_licences }} file{{ unknown_licences|pluralize }}</a> do{{ unknown_licences|pluralize:"es," }} not have a licence listed!
     </div>
   {% endif %}
 

@@ -1,5 +1,6 @@
 name: "Getting the most out of pīkau"
 status: 6
+readiness-level: 1
 overview: overview.md
 language: en
 topic: housekeeping
@@ -7,6 +8,7 @@ level: all
 tags:
   - introductory
 cover-photo: images/core-education/banner-mahuika-maui.png
+trailer-video: https://vimeo.com/272882311/8e4cf1de3f
 content:
   - slug: introduction-to-pikau
     file: introduction-to-pikau.md

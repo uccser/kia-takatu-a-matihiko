@@ -3,6 +3,7 @@
 {% load static %}
 {% load render_html_field %}
 {% load django_bootstrap_breadcrumbs %}
+{% load render_table from django_tables2 %}
 
 {% block breadcrumbs %}
   {% breadcrumb "Home" "/" %}
@@ -35,7 +36,6 @@
 {% endblock custom_page_heading %}
 
 {% block content %}
-
   <div class="border my-3 p-3 text-center">
     <h2>Development Information</h2>
 
@@ -182,6 +182,12 @@
   {% if pikau_course.trailer_video %}
     <h2>Trailer Video</h2>
     <p><a href="{{ pikau_course.trailer_video }}">View</a></p>
+  {% endif %}
+
+  {% if pikau_course.files %}
+    <h2 id="file-list">Files</h2>
+
+    {% render_table table %}
   {% endif %}
 
   {% if pikau_course.resources %}

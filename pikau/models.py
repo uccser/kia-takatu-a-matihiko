@@ -5,6 +5,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.template import defaultfilters
 from django.urls import reverse
+from files.models import File
+
 
 LANGUAGE_CHOICES = (
     ("en", "English"),
@@ -242,7 +244,11 @@ class PikauCourse(models.Model):
     study_plan = models.TextField(blank=True)
     assessment_description = models.TextField(blank=True)
     assessment_items = models.TextField(blank=True)
-    # TODO: Add resources
+    files = models.ManyToManyField(
+        File,
+        related_name="pikau_courses",
+        blank=True,
+    )
 
     # Development attributes
     development_folder = models.URLField(blank=True)

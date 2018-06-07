@@ -14,6 +14,7 @@ from files.tables import FileTable
 from files.filters import FileFilter
 from files.models import (
     File,
+    default_licence,
 )
 from files.forms import (
     FileForm,
@@ -36,6 +37,7 @@ class FileList(LoginRequiredMixin, SingleTableMixin, FilterView):
         """
         context = super(FileList, self).get_context_data(**kwargs)
         context["unknown_licences"] = File.objects.filter(licence__name="Unknown").count()
+        context["unknown_licence_id"] = default_licence()
         return context
 
 

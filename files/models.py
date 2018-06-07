@@ -2,7 +2,21 @@
 
 from django.db import models
 from django.core.exceptions import ObjectDoesNotExist
+from django.template.loader import render_to_string
 from django.urls import reverse
+
+VIDEO_PROVIDERS = (
+    "youtube",
+    "vimeo",
+)
+
+IMAGE_EXTENSIONS = (
+    ".jpeg",
+    ".jpg",
+    ".png",
+    ".gif",
+    ".svg",
+)
 
 
 def default_licence():
@@ -12,7 +26,7 @@ def default_licence():
         Licence 'Unknown' if available, otherwise None.
     """
     try:
-        default = Licence.objects.get(name="Unknown").pk
+        default = Licence.objects.get(slug="unknown").pk
     except ObjectDoesNotExist:
         default = None
     return default
@@ -21,6 +35,7 @@ def default_licence():
 class Licence(models.Model):
     """Model for licence."""
 
+    slug = models.SlugField(unique=True)
     name = models.CharField(max_length=200, unique=True)
     url = models.URLField()
 
@@ -50,9 +65,11 @@ class File(models.Model):
     """Model for file."""
 
     slug = models.SlugField(unique=True)
-    filename = models.CharField(max_length=200)
-    description = models.TextField(blank=True)
+    name = models.CharField(max_length=200, unique=True)
+    filename = models.CharField(max_length=200, unique=True)
     location = models.URLField()
+    direct_link = models.URLField(blank=True)
+    description = models.TextField(blank=True)
     licence = models.ForeignKey(
         Licence,
         on_delete=models.CASCADE,
@@ -60,6 +77,47 @@ class File(models.Model):
         default=default_licence,
         null=True,
     )
+
+    def media_type(self):
+        """Return label for media type.
+
+        Returns:
+            String label of media type.
+        """
+        if any(substring in self.direct_link for substring in VIDEO_PROVIDERS):
+            label = "Video"
+        elif self.direct_link.endswith(IMAGE_EXTENSIONS):
+            label = "Image"
+        else:
+            label = "Unknown"
+        return label
+
+    def preview_html(self):
+        """Return HTML for preview.
+
+        Returns:
+            HTML as a string.
+        """
+        # YouTube video
+        if "youtube" in self.direct_link:
+            context = {"direct_link": self.direct_link}
+            html = render_to_string("files/previews/youtube.html", context=context)
+        # Vimeo video
+        elif "vimeo" in self.direct_link:
+            context = {"video_id": self.direct_link.split("/")[3]}
+            html = render_to_string("files/previews/vimeo.html", context=context)
+        # Direct image URL
+        elif self.direct_link.startswith("http"):
+            context = {"direct_link": self.direct_link}
+            html = render_to_string("files/previews/external-image.html", context=context)
+        # Relative image
+        elif self.direct_link:
+            context = {"direct_link": self.direct_link}
+            html = render_to_string("files/previews/internal-image.html", context=context)
+        # Unsupported preview
+        else:
+            html = "No preview available"
+        return html
 
     def get_absolute_url(self):
         """Return the URL for a file.
@@ -75,7 +133,7 @@ class File(models.Model):
         Returns:
             String describing file.
         """
-        return self.filename
+        return self.name
 
     def __repr__(self):
         """Text representation of File object for developers.

@@ -1,5 +1,5 @@
 /*
-Viz.js 2.0.0-pre.8 (Graphviz 2.40.1, Emscripten 1.37.36)
+Viz.js 2.0.0 (Graphviz 2.40.1, Emscripten 1.37.36)
 */
 (function(global) {
 var Module = function(Module) {

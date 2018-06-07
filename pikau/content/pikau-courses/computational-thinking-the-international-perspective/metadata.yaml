@@ -1,5 +1,6 @@
 name: "Computational thinking - The international perspective"
 status: 2
+readiness-level: 1
 language: en
 topic: ct
 level: all
@@ -7,6 +8,8 @@ tags:
   - introductory
 cover-photo: images/pikau/ct-around-the-world.png
 trailer-video: https://www.youtube.com/embed/zSfzB-Z-mKM
+prerequisites:
+  - what-is-computational-thinking
 
 overview: overview.md
 content:
@@ -24,3 +27,6 @@ content:
   - slug: references
     file: references.md
 assessment-items: assessment-items.md
+
+extra-files:
+  - jeannette-wing-jpg

@@ -1,5 +1,6 @@
 name: "What is computational thinking?"
 status: 5
+readiness-level: 1
 language: en
 topic: ct
 level: all
@@ -7,6 +8,8 @@ tags:
   - introductory
 cover-photo: images/pikau/what-is-ct.png
 trailer-video: https://www.youtube.com/embed/zSfzB-Z-mKM
+prerequisites:
+  - getting-the-most-out-of-pikau
 
 overview: overview.md
 content:
@@ -24,3 +27,8 @@ content:
   - slug: references
     file: references.md
 assessment-items: assessment-items.md
+
+extra-files:
+  - ct-loading-planes-trimmed-mov
+  - csfg-algorithms-trailer-mp4
+  - ct-six-elements-of-digital-devices-mp4

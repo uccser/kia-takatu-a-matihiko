@@ -1,7 +1,7 @@
 # Base dependencies go here
 
 # Django
-django==2.0.5
+django==2.0.6
 whitenoise==3.3.1
 django-heroku==0.3.1
 django-environ==0.4.4
@@ -22,4 +22,4 @@ argon2-cffi==18.1.0
 # Users
 django-allauth==0.36.0
 django-crispy-forms==1.7.2
-django-anymail==2.2
+django-anymail==3.0
