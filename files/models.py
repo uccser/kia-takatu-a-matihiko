@@ -3,6 +3,7 @@
 from django.db import models
 from django.core.exceptions import ObjectDoesNotExist
 from django.urls import reverse
+from django.utils.text import slugify
 
 
 def default_licence():
@@ -12,7 +13,7 @@ def default_licence():
         Licence 'Unknown' if available, otherwise None.
     """
     try:
-        default = Licence.objects.get(name="Unknown").pk
+        default = Licence.objects.get(slug="unknown").pk
     except ObjectDoesNotExist:
         default = None
     return default
@@ -21,6 +22,7 @@ def default_licence():
 class Licence(models.Model):
     """Model for licence."""
 
+    slug = models.SlugField(unique=True)
     name = models.CharField(max_length=200, unique=True)
     url = models.URLField()
 
