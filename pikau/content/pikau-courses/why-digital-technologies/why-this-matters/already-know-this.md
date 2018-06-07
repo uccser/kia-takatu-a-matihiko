@@ -22,7 +22,6 @@ Language, symbols, and text are a big part of digital technologies, and students
 Coming up with ideas for digital outcomes involves creativity.
 Perhaps counter-intuitively, creativity thrives when there are constraints on what can be done. Working within the constraints of what can be done digitally provides opportunities for creativity in the rich realm of possibilities to explore.
 
-
 These are all capabilities that you may have already been encouraging in your students.
 
 And while *digital* technologies may seem new, you may already have been doing parts of it while you have been teaching and learning in the technology learning area.

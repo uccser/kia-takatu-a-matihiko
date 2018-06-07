@@ -20,7 +20,6 @@ You can use it to see how the three numbers specify the colour.
 
 ## Green screening - the hard way!
 
-
 {image file-path="images/pikau/arnold-the-wonder-parrot.jpg" alignment="center" caption="true"}
 
 Arnold the Wonder Parrot

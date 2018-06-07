@@ -53,8 +53,9 @@ class File(models.Model):
     slug = models.SlugField(unique=True)
     name = models.CharField(max_length=200, unique=True)
     filename = models.CharField(max_length=200, unique=True)
+    location = models.URLField()
+    direct_link = models.URLField(blank=True)
     description = models.TextField(blank=True)
-    location = models.URLField(unique=True)
     licence = models.ForeignKey(
         Licence,
         on_delete=models.CASCADE,

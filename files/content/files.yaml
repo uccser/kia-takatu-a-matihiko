@@ -2,60 +2,145 @@ banner-mahuika-maui-png:
   name: "Mahuika and Māui Banner"
   filename: "banner-mahuika-maui.png"
   location: "https://drive.google.com/open?id=1NJfnUmj6et78-o8Eov2i7fgZdauR_myE"
+  direct-link: "images/core-education/banner-mahuika-maui.png"
 maui-face-png:
   name: "Māui face"
   filename: "maui-face.png"
   location: "https://drive.google.com/open?id=1NU2glbUDS928aBwKgivX4GdoyKKkbMmo"
+  direct-link: "images/core-education/maui-face.png"
 mahuika-face-png:
   name: "Mahuika face"
   filename: "mahuika-face.png"
   location: "https://drive.google.com/open?id=1396r4RQjZxZdyAPVzDm3o0heDJit1m_E"
+  direct-link: "images/core-education/mahuika-face.png"
 what-is-ct-png:
   name: "What is CT?"
   filename: "what-is-ct.png"
   location: "images/pikau/what-is-ct.png"
+  direct-link: "images/pikau/what-is-ct.png"
   licence: cc-by-sa-4
 ct-around-the-world-png:
   name: "CT around the world"
   filename: "ct-around-the-world.png"
   location: "images/pikau/ct-around-the-world.png"
+  direct-link: "images/pikau/ct-around-the-world.png"
   licence: cc-by-sa-4
 arnold-the-wonder-parrot-jpg:
   name: "Arnold the Wonder Parrot"
   filename: "arnold-the-wonder-parrot.jpg"
   location: "images/pikau/arnold-the-wonder-parrot.jpg"
+  direct-link: "images/pikau/arnold-the-wonder-parrot.jpg"
   licence: cc-by-sa-4
-information-theory-activity:
+information-theory-activity-jpg:
   name: "Information Theory CS Unplugged Activity"
   filename: "information-theory-activity.jpg"
   location: "images/pikau/information-theory-activity.jpg"
+  direct-link: "images/pikau/information-theory-activity.jpg"
   licence: cc-by-sa-4
 placeholder-video:
   name: "Kia Takatū ā-Matihiko Placeholder Video"
   filename: "https://www.youtube.com/embed/zSfzB-Z-mKM"
   location: "https://www.youtube.com/embed/zSfzB-Z-mKM"
+  direct-link: "https://www.youtube.com/embed/zSfzB-Z-mKM"
   licence: cc-by-sa-4
-ct-loading-planes-trimmed:
+ct-loading-planes-trimmed-mov:
   name: "CT Loading Planes - Trimmed"
   filename: "CT loading planes trimmed.mov"
   location: "https://vimeo.com/273809039/eb5cb42933"
+  direct-link: "https://vimeo.com/273809039/eb5cb42933"
   licence: cc-by-sa-4
-ct-six-elements-of-digital-devices:
+ct-six-elements-of-digital-devices-mp4:
   name: "Six elements of digital devices"
   filename: "six elements of digital devices.mp4"
   location: "https://vimeo.com/273813250/f251e2a3d4"
+  direct-link: "https://vimeo.com/273813250/f251e2a3d4"
   licence: cc-by-sa-4
-digital-images:
+digital-images-mp4:
   name: "Digital images"
   filename: "digital images.mp4"
   location: "https://vimeo.com/273824548/770c5c1c48"
+  direct-link: "https://vimeo.com/273824548/770c5c1c48"
   licence: cc-by-sa-4
-csfg-algorithms-trailer:
+csfg-algorithms-trailer-mp4:
   name: "Computer Science Field Guide: Algorithms"
   filename: "Computer Science Field Guide - Algorithms.mp4"
   location: "https://vimeo.com/69609500"
+  direct-link: "https://vimeo.com/69609500"
   licence: cc-by-sa-4
 getting-the-most-out-of-pikau:
   name: Getting the most out of pīkau
-  filename: https://vimeo.com/272882311/8e4cf1de3f
-  location: https://vimeo.com/272882311/8e4cf1de3f
+  filename: "https://vimeo.com/272882311/8e4cf1de3f"
+  location: "https://vimeo.com/272882311/8e4cf1de3f"
+  direct-link: "https://vimeo.com/272882311/8e4cf1de3f"
+1983-cpa-5426-png:
+  name: Muḥammad ibn Mūsā al-Ḵwārizmī
+  filename: 1983 CPA 5426 (1).png
+  location: "https://commons.wikimedia.org/wiki/File:1983_CPA_5426_(1).png"
+  direct-link: "https://upload.wikimedia.org/wikipedia/commons/1/11/1983_CPA_5426_%281%29.png"
+  licence: public-domain
+  description: "This work is not an object of copyright according to article 1259 of Book IV of the Civil Code of the Russian Federation No. 230-FZ of December 18, 2006."
+euklid-von-alexandria-1-jpg:
+  name: Euklid-von-Alexandria
+  filename: Euklid-von-Alexandria_1.jpg
+  location: "https://commons.wikimedia.org/wiki/File:Euklid-von-Alexandria_1.jpg"
+  direct-link: "https://upload.wikimedia.org/wikipedia/commons/3/30/Euklid-von-Alexandria_1.jpg"
+  licence: public-domain
+  description: "This work is in the public domain in its country of origin and other countries and areas where the copyright term is the author's life plus 70 years or less."
+telescope-with-stars-jpg:
+  name: Telescope in front of stars
+  filename: science.jpg
+  location: "https://www.timelinecoverbanner.com/covers/telescope-knowledge-mystery-and-science-Facebook-cover/"
+  direct-link: "https://www.timelinecoverbanner.com/facebook-covers/2013/01/science.jpg"
+  licence: cc0
+design-desk-display-jpg:
+  name: User frustrated in front of computer
+  filename: design-desk-display-313690.jpg
+  location: "https://www.pexels.com/photo/design-desk-display-eyewear-313690/"
+  licence: cc0
+dt3e-interviews-with-teachers-mp4:
+  name: "DT3e - Interviews with teachers"
+  filename: "DT3e interviews with teachers.mp4"
+  location: "https://vimeo.com/273841538"
+  direct-link: "https://vimeo.com/273841538"
+  licence: cc-by-sa-4
+use-modify-create-diagram-svg:
+  name: Use-Modify-Create Learning Progression Diagram
+  filename: "use-modify-create-diagram.svg"
+  location: "images/pikau/use-modify-create-diagram.svg"
+  direct-link: "images/pikau/use-modify-create-diagram.svg"
+  licence: cc-by-sa-4
+technology-diagram-jpg:
+  name: NZ Curriculum Technology Diagram
+  filename: "technology-diagram.jpg"
+  location: "images/core-education/technology-diagram.jpg"
+  direct-link: "images/core-education/technology-diagram.jpg"
+oudjat-svg:
+  name: Oudjat
+  filename: "Oudjat.SVG"
+  location: "https://commons.wikimedia.org/wiki/File:Oudjat.SVG"
+  direct-link: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Oudjat.SVG/500px-Oudjat.SVG.png"
+  licence: cc-by-sa-3
+eratosthene-png:
+  name: Eratosthene
+  filename: "Eratosthene.01.png"
+  location: "https://commons.wikimedia.org/wiki/File:Eratosthene.01.png"
+  direct-link: "https://upload.wikimedia.org/wikipedia/commons/b/b3/Eratosthene.01.png"
+  licence: public-domain
+ada-lovelace-jpg:
+  name: Ada Lovelace
+  filename: "Ada Lovelace portrait.jpg"
+  location: "https://commons.wikimedia.org/wiki/File:Ada_Lovelace_portrait.jpg"
+  direct-link: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Ada_Lovelace_portrait.jpg/334px-Ada_Lovelace_portrait.jpg"
+  licence: public-domain
+edsger-wybe-dijkstra-jpg:
+  name: Edsger Wybe Dijkstra
+  filename: "Edsger Wybe Dijkstra.jpg"
+  location: "https://commons.wikimedia.org/wiki/File:Edsger_Wybe_Dijkstra.jpg"
+  direct-link: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Edsger_Wybe_Dijkstra.jpg/450px-Edsger_Wybe_Dijkstra.jpg"
+  licence: cc-by-sa-3
+pagerank-png:
+  name: PageRank
+  filename: ":PageRank-hi-res.png"
+  location: "https://commons.wikimedia.org/wiki/File:PageRank-hi-res.png"
+  direct-link: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/PageRank-hi-res.png/640px-PageRank-hi-res.png"
+  licence: cc-by-sa-2-5
