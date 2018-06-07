@@ -136,3 +136,6 @@ footer > .container {
 .no-underline:hover {
   text-decoration: none !important;
 }
+#file-image-preview {
+  max-height: 25em;
+}

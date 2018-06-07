@@ -9,29 +9,49 @@
 {% endblock breadcrumbs %}
 
 {% block page_heading %}
+  {{ file.name }}
   <div class="float-right">
     {% with text='Update file' %}
       {% url 'files:file_update' file.slug as update_url %}
       {% include "snippets/update_button.html" %}
     {% endwith %}
   </div>
-  File:<br>
-  <span class="text-muted">{{ file.name }}</span>
 {% endblock page_heading %}
 
-{% block content %}
-  <p><a href="{{ file.location }}">{{ file.filename }}</a></p>
+{% block content_container %}
+  <div class="col-12 col-sm-9 col-md-6">
+    <ul class="list-unstyled">
+      <li>
+        <strong>Location:</strong> <a href="{{ file.location }}">{{ file.filename }}</a>
+      </li>
+      <li>
+        <strong>Licence:</strong> <a href="{{ file.licence.get_absolute_url }}">{{ file.licence.name }}</a>
+      </li>
+      <li>
+        <strong>Slug:</strong> <code>{{ file.slug }}</code>
+      </li>
+    </ul>
 
-  <p><strong>Licence:</strong> <a href="{{ file.licence.get_absolute_url }}">{{ file.licence.name }}</a></p>
-
-  <p>{{ file.description }}</p>
-
-  <p><strong>Slug:</strong> <code>{{ file.slug }}</code></p>
-
-  <p><strong>Pīkau courses:</strong> {{ file.pikau_courses.count }}</p>
-  <div class="row">
-    {% for pikau_course in file.pikau_courses.all %}
-      {% include "pikau/snippets/pikau_course_card.html" %}
-    {% endfor %}
+    <p>{{ file.description }}</p>
   </div>
-{% endblock content %}
+
+  <div class="col">
+    <h3>Preview</h3>
+    {% if file.direct_link %}
+      {{ file.preview_html }}
+    {% else %}
+      No preview available.
+    {% endif %}
+  </div>
+
+  <div class="col-12">
+    <h2>File Usage</h2>
+
+    <p><strong>Pīkau courses:</strong> {{ file.pikau_courses.count }}</p>
+    <div class="row">
+      {% for pikau_course in file.pikau_courses.all %}
+        {% include "pikau/snippets/pikau_course_card.html" %}
+      {% endfor %}
+    </div>
+  </div>
+{% endblock content_container %}

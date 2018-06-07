@@ -2,6 +2,7 @@
 
 from django.db import models
 from django.core.exceptions import ObjectDoesNotExist
+from django.template.loader import render_to_string
 from django.urls import reverse
 
 
@@ -63,6 +64,33 @@ class File(models.Model):
         default=default_licence,
         null=True,
     )
+
+    def preview_html(self):
+        """Return HTML for preview.
+
+        Returns:
+            HTML as a string.
+        """
+        # YouTube video
+        if "youtube" in self.direct_link:
+            context = {"direct_link": self.direct_link}
+            html = render_to_string("files/previews/youtube.html", context=context)
+        # Vimeo video
+        elif "vimeo" in self.direct_link:
+            context = {"video_id": self.direct_link.split("/")[3]}
+            html = render_to_string("files/previews/vimeo.html", context=context)
+        # Direct image URL
+        elif self.direct_link.startswith("http"):
+            context = {"direct_link": self.direct_link}
+            html = render_to_string("files/previews/external-image.html", context=context)
+        # Relative image
+        elif self.direct_link:
+            context = {"direct_link": self.direct_link}
+            html = render_to_string("files/previews/internal-image.html", context=context)
+        # Unsupported preview
+        else:
+            html = "No preview available"
+        return html
 
     def get_absolute_url(self):
         """Return the URL for a file.
