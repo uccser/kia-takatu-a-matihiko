@@ -25,7 +25,7 @@
 
   <p><strong>Pikau Courses:</strong> {{ glossaryterm.pikau_courses.count }}</p>
   <div class="row">
-    {% for pikau_course in level.pikau_courses.all %}
+    {% for pikau_course in glossaryterm.pikau_courses.all %}
       {% include "pikau/snippets/pikau_course_card.html" %}
     {% endfor %}
   </div>

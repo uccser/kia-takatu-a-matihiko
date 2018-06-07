@@ -1,0 +1,42 @@
+banner-mahuika-maui-png:
+  name: "Mahuika and Māui Banner"
+  filename: "banner-mahuika-maui.png"
+  location: "https://drive.google.com/open?id=1NJfnUmj6et78-o8Eov2i7fgZdauR_myE"
+maui-face-png:
+  name: "Māui face"
+  filename: "maui-face.png"
+  location: "https://drive.google.com/open?id=1NU2glbUDS928aBwKgivX4GdoyKKkbMmo"
+mahuika-face-png:
+  name: "Mahuika face"
+  filename: "mahuika-face.png"
+  location: "https://drive.google.com/open?id=1396r4RQjZxZdyAPVzDm3o0heDJit1m_E"
+what-is-ct-png:
+  name: "What is CT?"
+  filename: "what-is-ct.png"
+  location: "images/pikau/what-is-ct.png"
+  licence: cc-by-sa-4
+ct-around-the-world-png:
+  name: "CT around the world"
+  filename: "ct-around-the-world.png"
+  location: "images/pikau/ct-around-the-world.png"
+  licence: cc-by-sa-4
+placeholder-video:
+  name: "Kia Takatū ā-Matihiko Placeholder Video"
+  filename: "https://www.youtube.com/embed/zSfzB-Z-mKM"
+  location: "https://www.youtube.com/embed/zSfzB-Z-mKM"
+  licence: cc-by-sa-4
+ct-loading-planes-trimmed:
+  name: "CT Loading Planes - Trimmed"
+  filename: "CT loading planes trimmed.mov"
+  location: "https://vimeo.com/273809039/eb5cb42933"
+  licence: cc-by-sa-4
+ct-six-elements-of-digital-devices:
+  name: "Six elements of digital devices"
+  filename: "six elements of digital devices.mp4"
+  location: "https://vimeo.com/273813250/f251e2a3d4"
+  licence: cc-by-sa-4
+csfg-algorithms-trailer:
+  name: "Computer Science Field Guide: Algorithms"
+  filename: "Computer Science Field Guide - Algorithms.mp4"
+  location: "https://vimeo.com/69609500"
+  licence: cc-by-sa-4

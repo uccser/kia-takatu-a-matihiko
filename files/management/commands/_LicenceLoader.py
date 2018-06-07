@@ -13,12 +13,13 @@ class LicenceLoader(BaseLoader):
         """Load the licences into the database."""
         licences = self.load_yaml_file("licences.yaml")
 
-        for licence_data in licences:
+        for licence_slug, licence_data in licences.items():
             defaults = {
+                "name": licence_data["name"],
                 "url": licence_data["url"],
             }
             licence, created = Licence.objects.update_or_create(
-                name=licence_data["name"],
+                slug=licence_slug,
                 defaults=defaults,
             )
             self.log_object_creation(created, licence)

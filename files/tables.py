@@ -9,12 +9,12 @@ from files.models import (
 class FileTable(tables.Table):
     """Table to display all files."""
 
-    filename = tables.LinkColumn()
+    name = tables.LinkColumn()
     licence = tables.RelatedLinkColumn()
 
     class Meta:
         """Meta attributes for FileTable class."""
 
         model = File
-        fields = ("filename", "licence")
-        order_by = "filename"
+        fields = ("name", "licence")
+        order_by = "name"

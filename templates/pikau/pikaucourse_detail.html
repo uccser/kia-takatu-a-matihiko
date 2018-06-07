@@ -35,7 +35,6 @@
 {% endblock custom_page_heading %}
 
 {% block content %}
-
   <div class="border my-3 p-3 text-center">
     <h2>Development Information</h2>
 
@@ -182,6 +181,18 @@
   {% if pikau_course.trailer_video %}
     <h2>Trailer Video</h2>
     <p><a href="{{ pikau_course.trailer_video }}">View</a></p>
+  {% endif %}
+
+  {% if pikau_course.files %}
+    <h2>Files</h2>
+
+    <ul>
+      {% for file in pikau_course.files.all %}
+        <li>
+          <a href="{{ file.get_absolute_url }}">{{ file.name }}</a>
+        </li>
+      {% endfor %}
+    </ul>
   {% endif %}
 
   {% if pikau_course.resources %}
