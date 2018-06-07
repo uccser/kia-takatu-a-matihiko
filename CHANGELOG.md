@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.6.0 (Pre-release)
+
+*This release requires a database wipe due to new migrations.*
+
+- Add "Why digital technologies?" pīkau.
+- Store and load readiness level for pīkau.
+- Ensure pīkau title fits within pathway diagram nodes. (fixes #56)
+- Fix bug where file licence warning displayed wrong licence. (fixes #60)
+- Load file data from loader.
+- Check files used in pīkau are listed within files application.
+- Display links between files and pīkau. (fixes #61)
+- Display image preview for files. (fixes #35)
+- Add test cases.
+- Dependency updates:
+  - Update django from 2.0.5 to 2.0.6.
+  - Update django-anymail 2.2 to 3.0.
+
 ## 0.5.1 (Pre-release)
 
 - Fix bug where slug max length was too short for titles.
