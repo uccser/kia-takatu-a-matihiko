@@ -103,7 +103,6 @@ class PikauCourseLoader(BaseLoader):
                     heading_required=True,
                     remove_title=True,
                 )
-                print(unit_content.required_files["images"])
                 # Check files in content
                 for filename in unit_content.required_files["images"]:
                     pikau_course.files.add(find_file(filename=filename))

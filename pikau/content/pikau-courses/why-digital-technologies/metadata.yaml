@@ -1,0 +1,29 @@
+name: "Why digital technologies?"
+status: 5
+language: en
+topic: general
+level: all
+tags:
+  - introductory
+cover-photo: images/pikau/information-theory-activity.jpg
+trailer-video: https://www.youtube.com/embed/zSfzB-Z-mKM
+
+overview: overview.md
+content:
+  - slug: users-or-creators
+    file: why-this-matters/users-or-creators.md
+    module: Why this matters...
+  - slug: already-know-this
+    file: why-this-matters/already-know-this.md
+    module: Why this matters...
+  - slug: how-are-students-better-off
+    file: why-this-matters/how-are-students-better-off.md
+    module: Why this matters...
+  - slug: is-it-all-about-devices
+    file: why-this-matters/is-it-all-about-devices.md
+    module: Why this matters...
+  - slug: wrapping-up
+    file: wrapping-up.md
+
+extra-files:
+  - digital-images

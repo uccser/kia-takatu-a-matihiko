@@ -20,6 +20,16 @@ ct-around-the-world-png:
   filename: "ct-around-the-world.png"
   location: "images/pikau/ct-around-the-world.png"
   licence: cc-by-sa-4
+arnold-the-wonder-parrot-jpg:
+  name: "Arnold the Wonder Parrot"
+  filename: "arnold-the-wonder-parrot.jpg"
+  location: "images/pikau/arnold-the-wonder-parrot.jpg"
+  licence: cc-by-sa-4
+information-theory-activity:
+  name: "Information Theory CS Unplugged Activity"
+  filename: "information-theory-activity.jpg"
+  location: "images/pikau/information-theory-activity.jpg"
+  licence: cc-by-sa-4
 placeholder-video:
   name: "Kia Takatū ā-Matihiko Placeholder Video"
   filename: "https://www.youtube.com/embed/zSfzB-Z-mKM"
@@ -35,8 +45,17 @@ ct-six-elements-of-digital-devices:
   filename: "six elements of digital devices.mp4"
   location: "https://vimeo.com/273813250/f251e2a3d4"
   licence: cc-by-sa-4
+digital-images:
+  name: "Digital images"
+  filename: "digital images.mp4"
+  location: "https://vimeo.com/273824548/770c5c1c48"
+  licence: cc-by-sa-4
 csfg-algorithms-trailer:
   name: "Computer Science Field Guide: Algorithms"
   filename: "Computer Science Field Guide - Algorithms.mp4"
   location: "https://vimeo.com/69609500"
   licence: cc-by-sa-4
+getting-the-most-out-of-pikau:
+  name: Getting the most out of pīkau
+  filename: https://vimeo.com/272882311/8e4cf1de3f
+  location: https://vimeo.com/272882311/8e4cf1de3f
