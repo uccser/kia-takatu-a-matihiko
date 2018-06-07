@@ -3,6 +3,7 @@
 {% load static %}
 {% load render_html_field %}
 {% load django_bootstrap_breadcrumbs %}
+{% load render_table from django_tables2 %}
 
 {% block breadcrumbs %}
   {% breadcrumb "Home" "/" %}
@@ -186,13 +187,7 @@
   {% if pikau_course.files %}
     <h2>Files</h2>
 
-    <ul>
-      {% for file in pikau_course.files.all %}
-        <li>
-          <a href="{{ file.get_absolute_url }}">{{ file.name }}</a>
-        </li>
-      {% endfor %}
-    </ul>
+    {% render_table table %}
   {% endif %}
 
   {% if pikau_course.resources %}

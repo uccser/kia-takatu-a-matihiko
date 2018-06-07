@@ -39,6 +39,7 @@ from pikau.mixins import (
 from pikau.forms import (
     GlossaryForm,
 )
+from files.tables import FileTable
 
 NUMBER_OF_FLAME_STAGES = 7
 
@@ -219,6 +220,16 @@ class PikauCourseDetailView(LoginRequiredMixin, DetailView):
 
     context_object_name = "pikau_course"
     model = PikauCourse
+
+    def get_context_data(self, **kwargs):
+        """Provide the context data for the pikau course view.
+
+        Returns:
+            Dictionary of context data.
+        """
+        context = super(PikauCourseDetailView, self).get_context_data(**kwargs)
+        context["table"] = FileTable(self.object.files.all())
+        return context
 
 
 class PikauCourseContentView(LoginRequiredMixin, DetailView):

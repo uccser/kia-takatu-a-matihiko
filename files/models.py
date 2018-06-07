@@ -5,6 +5,19 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.template.loader import render_to_string
 from django.urls import reverse
 
+VIDEO_PROVIDERS = (
+    "youtube",
+    "vimeo",
+)
+
+IMAGE_EXTENSIONS = (
+    ".jpeg",
+    ".jpg",
+    ".png",
+    ".gif",
+    ".svg",
+)
+
 
 def default_licence():
     """Return default licence object.
@@ -64,6 +77,15 @@ class File(models.Model):
         default=default_licence,
         null=True,
     )
+
+    def media_type(self):
+        if any(substring in self.direct_link for substring in VIDEO_PROVIDERS):
+            label = "Video"
+        elif self.direct_link.endswith(IMAGE_EXTENSIONS):
+            label = "Image"
+        else:
+            label = "Unknown"
+        return label
 
     def preview_html(self):
         """Return HTML for preview.
