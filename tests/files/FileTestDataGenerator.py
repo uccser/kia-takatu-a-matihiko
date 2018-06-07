@@ -27,9 +27,10 @@ class FileTestDataGenerator:
         """
         file_object = File(
             slug="file-{}".format(number),
-            filename="File {}".format(number),
+            name="File {}".format(number),
+            filename="file-{}.ext".format(number),
             description="Description for file {}".format(number),
-            location="https://www.example.com",
+            location="https://www.example.com/{}".format(number),
         )
         file_object.save()
         if licence:
@@ -46,6 +47,7 @@ class FileTestDataGenerator:
             File object.
         """
         licence = Licence(
+            slug="licence-{}".format(number),
             name="Licence {}".format(number),
             url="https://www.example.com/licence-{}".format(number),
         )
