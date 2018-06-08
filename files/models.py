@@ -74,7 +74,8 @@ class File(models.Model):
         unique=True,
         verbose_name="Name",
     )
-    filename = models.CharField(max_length=200,
+    filename = models.CharField(
+        max_length=200,
         unique=True,
         verbose_name="Filename",
     )
