@@ -44,4 +44,10 @@ urlpatterns = [
         views.FileUpdateView.as_view(),
         name="file_update"
     ),
+    # eg: /files/export/csv/
+    path(
+        "export/csv/",
+        views.file_list_csv,
+        name="file_list_export_csv"
+    ),
 ]
