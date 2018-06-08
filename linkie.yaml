@@ -1,0 +1,12 @@
+exclude_directories:
+  - .git/
+
+file_types:
+  - html
+  - md
+  - rst
+  - txt
+
+skip_urls:
+  # Used in template
+  - https://player.vimeo.com/video/{{
