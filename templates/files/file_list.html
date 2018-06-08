@@ -18,6 +18,14 @@
       {% url 'files:file_create' as add_url %}
       {% include "snippets/add_button.html" %}
     {% endwith %}
+    <div class="dropdown d-inline">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="fileDownloadButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Download
+      </button>
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="fileDownloadButton">
+        <a class="dropdown-item" href="{% url 'files:file_list_export_csv' %}" download>CSV</a>
+      </div>
+    </div>
   </div>
 {% endblock page_heading %}
 

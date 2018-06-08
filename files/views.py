@@ -19,6 +19,7 @@ from files.models import (
 from files.forms import (
     FileForm,
 )
+from djqscsv import render_to_csv_response
 
 
 class FileList(LoginRequiredMixin, SingleTableMixin, FilterView):
@@ -65,3 +66,29 @@ class FileUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     template_name = "files/file_form_update.html"
     success_message = "File updated!"
     success_url = reverse_lazy("files:file_list")
+
+
+def file_list_csv(request):
+    """Export all files as CSV.
+
+    Args:
+        request (Request): User request.
+
+    Returns:
+        CSV response of all files.
+    """
+    files = File.objects.all().values(
+        "name",
+        "licence__name",
+        "location",
+        "filename",
+        "description",
+    ).order_by(
+        "name",
+    )
+    return render_to_csv_response(
+        files,
+        append_datestamp=True,
+        field_header_map={"licence__name": "Licence"},
+        filename="ktam_file_licence_data"
+    )

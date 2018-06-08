@@ -36,7 +36,11 @@ class Licence(models.Model):
     """Model for licence."""
 
     slug = models.SlugField(unique=True)
-    name = models.CharField(max_length=200, unique=True)
+    name = models.CharField(
+        max_length=200,
+        unique=True,
+        verbose_name="Name",
+    )
     url = models.URLField()
 
     class Meta:
@@ -65,11 +69,21 @@ class File(models.Model):
     """Model for file."""
 
     slug = models.SlugField(unique=True)
-    name = models.CharField(max_length=200, unique=True)
-    filename = models.CharField(max_length=200, unique=True)
-    location = models.URLField()
+    name = models.CharField(
+        max_length=200,
+        unique=True,
+        verbose_name="Name",
+    )
+    filename = models.CharField(max_length=200,
+        unique=True,
+        verbose_name="Filename",
+    )
+    location = models.URLField(verbose_name="Location")
     direct_link = models.URLField(blank=True)
-    description = models.TextField(blank=True)
+    description = models.TextField(
+        blank=True,
+        verbose_name="Description",
+    )
     licence = models.ForeignKey(
         Licence,
         on_delete=models.CASCADE,
