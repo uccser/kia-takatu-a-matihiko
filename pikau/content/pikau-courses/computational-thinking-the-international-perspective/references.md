@@ -1,6 +1,6 @@
 # References
 
-- [Jeannette Wing’s original paper](http://doi.org/http://doi.acm.org/10.1145/1118178.1118215): Wing, J. M. (2006). Computational thinking. Commun. ACM, 49(3), 33–35. [She has made it available publicly on her web site](http://www.cs.cmu.edu/afs/cs/usr/wing/www/publications/Wing06.pdf)
+- [Jeannette Wing’s original paper](http://doi.acm.org/10.1145/1118178.1118215): Wing, J. M. (2006). Computational thinking. Commun. ACM, 49(3), 33–35. [She has made it available publicly on her web site](http://www.cs.cmu.edu/afs/cs/usr/wing/www/publications/Wing06.pdf)
 
 - Grover, S., & Pea, R. (2013). Computational Thinking in K--12: A Review of the State of the Field. Educational Researcher, 42(1), 38–43. Available as [PDF](http://journals.sagepub.com/doi/pdf/10.3102/0013189X12463051) and as [HTML](http://journals.sagepub.com/doi/full/10.3102/0013189X12463051)
 

@@ -16,6 +16,8 @@ jobs:
     - script: python manage.py loaddata
     - script: flake8
     - script: pydocstyle --count --explain
+    - script: linkie linkie.yaml
+      if: type = pull_request
 after_success:
   - coverage xml -i
   - coverage report -m --skip-covered
