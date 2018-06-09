@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load static %}
+{% load django_bootstrap_breadcrumbs %}
+
+{% block breadcrumbs %}
+  {% breadcrumb "Home" "/" %}
+  {% breadcrumb "File Tracking" "" %}
+{% endblock breadcrumbs %}
+
+{% block page_heading %}
+  File Tracking
+{% endblock page_heading %}
+
+{% block content %}
+
+  <div class="media mt-4 mb-5">
+    <img class="align-self-center mr-3" src="{% static 'images/icons/icons8/web.png' %}">
+    <div class="media-body">
+      <h4 class="mt-0">Project items</h4>
+      <p>View all logged items (websites, print media, etc).</p>
+      <a class="btn btn-primary" href="{% url 'files:project_item_list' %}" role="button">
+        {% trans "View Project items" %}
+      </a>
+    </div>
+  </div>
+
+  <div class="media mt-4 mb-5">
+    <img class="align-self-center mr-3" src="{% static 'images/icons/icons8/image-file.png' %}">
+    <div class="media-body">
+      <h4 class="mt-0">Files</h4>
+      <p>View all files (images, video, etc) with their licences.</p>
+      <a class="btn btn-primary" href="{% url 'files:file_list' %}" role="button">
+        {% trans "View Files" %}
+      </a>
+    </div>
+  </div>
+{% endblock content %}

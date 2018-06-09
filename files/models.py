@@ -1,7 +1,7 @@
 """Models for the files application."""
 
 from django.db import models
-from django.core.exceptions import ObjectDoesNotExist
+from django.core.exceptions import ObjectDoesNotExist, ValidationError
 from django.template.loader import render_to_string
 from django.urls import reverse
 
@@ -167,7 +167,10 @@ class ProjectItem(models.Model):
         unique=True,
         verbose_name="Name",
     )
-    url = models.URLField(verbose_name="Location (URL)")
+    url = models.URLField(
+        blank=True,
+        verbose_name="Location (URL)",
+    )
     description = models.TextField(
         blank=True,
         verbose_name="Description",
@@ -178,3 +181,38 @@ class ProjectItem(models.Model):
         related_name="project_items",
         blank=True,
     )
+
+    def clean(self):
+        """Don't allow name to be blank."""
+        if not self.name:
+            raise ValidationError("Name cannot be empty.")
+
+    def get_absolute_url(self):
+        """Return the URL for a project item.
+
+        Returns:
+            URL as string.
+        """
+        if self.url:
+            url = self.url
+        elif self.pikau_course:
+            url = self.pikau_course.get_absolute_url() + "#file-list"
+        else:
+            url = None
+        return url
+
+    def __str__(self):
+        """Text representation of project item object.
+
+        Returns:
+            String describing project item.
+        """
+        return self.name
+
+    def __repr__(self):
+        """Text representation of project item object for developers.
+
+        Returns:
+            String describing project item.
+        """
+        return "Project item: {}".format(self.name)

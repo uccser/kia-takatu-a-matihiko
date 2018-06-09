@@ -13,6 +13,8 @@ from pikau.models import (
     GlossaryTerm,
     ProgressOutcome,
 )
+from files.models import ProjectItem
+
 
 CONFIG_FILE = "pikau-courses.yaml"
 COVER_PHOTO_DEFAULT = "images/core-education/pikau-course-cover.png"
@@ -86,12 +88,21 @@ class PikauCourseLoader(BaseLoader):
                 defaults=defaults,
             )
 
+            # If no project item, create one
+            if not hasattr(pikau_course, "project_item") or pikau_course.project_item is None:
+                project_item = ProjectItem.objects.create(
+                    name=pikau_course.name,
+                    pikau_course=pikau_course,
+                )
+                pikau_course.project_item = project_item
+                pikau_course.save()
+
             # Check cover photo, trailer video, and extra files are logged
-            pikau_course.files.add(find_file(filename=cover_photo))
+            pikau_course.project_item.files.add(find_file(filename=cover_photo))
             if trailer_video:
-                pikau_course.files.add(find_file(filename=trailer_video))
+                pikau_course.project_item.files.add(find_file(filename=trailer_video))
             for file_slug in pikau_course_metadata.get("extra-files", list()):
-                pikau_course.files.add(find_file(slug=file_slug))
+                pikau_course.project_item.files.add(find_file(slug=file_slug))
 
             # Delete all existing units for course
             # since the will be loaded from raw data.
@@ -105,7 +116,7 @@ class PikauCourseLoader(BaseLoader):
                 )
                 # Check files in content
                 for filename in unit_content.required_files["images"]:
-                    pikau_course.files.add(find_file(filename=filename))
+                    pikau_course.project_item.files.add(find_file(filename=filename))
 
                 pikau_course.content.create(
                     slug=unit_data["slug"],

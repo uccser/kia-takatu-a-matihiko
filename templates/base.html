@@ -36,8 +36,8 @@
             <a class="nav-item nav-link" href="{% url 'pikau:index' %}">
               {% trans "Pīkau" %}
             </a>
-            <a class="nav-item nav-link" href="{% url 'files:file_list' %}">
-              {% trans "Files" %}
+            <a class="nav-item nav-link" href="{% url 'files:index' %}">
+              {% trans "File Tracking" %}
             </a>
           </div>
           <div class="navbar-nav ml-auto">
@@ -112,8 +112,8 @@
                   {% trans "Pīkau" %}
                 </a>
               <li>
-                <a href="{% url 'files:file_list' %}">
-                  {% trans "Files" %}
+                <a href="{% url 'files:index' %}">
+                  {% trans "File Tracking" %}
                 </a>
               </li>
               <li>
@@ -150,6 +150,7 @@
     <script src="{% static 'js/jquery-3.3.1.slim.min.js' %}"></script>
     <script src="{% static 'js/popper.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/website.js' %}"></script>
     {% block scripts %}
     {% endblock scripts %}
   </body>

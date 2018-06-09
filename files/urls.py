@@ -20,34 +20,46 @@ from . import views
 app_name = "files"
 
 urlpatterns = [
-    # eg: /files/
+    # eg: /file-tracking/
     path(
         "",
-        views.FileList.as_view(),
+        views.IndexView.as_view(),
+        name="index"
+    ),
+    # eg: /file-tracking/file/list/
+    path(
+        "files/list/",
+        views.FileListView.as_view(),
         name="file_list"
     ),
-    # eg: /files/file/view/file-1/
+    # eg: /file-tracking/file/view/file-1/
     path(
-        "file/view/<slug:slug>/",
+        "files/view/<slug:slug>/",
         views.FileDetailView.as_view(),
         name="file_detail"
     ),
-    # eg: /files/file/create/
+    # eg: /file-tracking/file/create/
     path(
-        "file/create/",
+        "files/create/",
         views.FileCreateView.as_view(),
         name="file_create"
     ),
-    # eg: /files/file/update/file-1/
+    # eg: /file-tracking/file/update/file-1/
     path(
-        "file/update/<slug:slug>/",
+        "files/update/<slug:slug>/",
         views.FileUpdateView.as_view(),
         name="file_update"
     ),
-    # eg: /files/export/csv/
+    # eg: /file-tracking/export/csv/
     path(
         "export/csv/",
         views.file_list_csv,
         name="file_list_export_csv"
+    ),
+    # # eg: /file-tracking/item/view/item-1/
+    path(
+        "items/list/",
+        views.ProjectItemListView.as_view(),
+        name="project_item_list"
     ),
 ]

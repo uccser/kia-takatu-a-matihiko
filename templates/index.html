@@ -7,7 +7,7 @@
 {% endblock page_heading %}
 
 {% block body_container %}
-  <div class="jumbotron jumbotron-fluid bg-brand-light-purple text-white">
+  <div class="jumbotron jumbotron-fluid bg-brand-light-purple text-white py-5">
     <div class="container">
       <img src="{% static 'images/core-education/logo-white-text.png' %}" style="width:20rem;">
       <h1 class="display-3">Content Pipeline Assistant</h1>
@@ -20,35 +20,15 @@
         <li>Track content as it is developed, from draft to release.</li>
         <li>Allow authors to see the links between content.</li>
         <li>Allow authors to see coverage of content against specific goals.</li>
+        <li>Track project files and their usage.</li>
       </ul>
     </div>
   </div>
 
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-12 col-md-10 col-lg-8">
-        <p>
-          The existing pipeline of collaboratively writing content on Google Drive to publishing on iQualify is not altered, but is supported by this website which shows the progress, links, and coverage of content.
-        </p>
-
-        <div class="d-flex justify-content-center align-items-center">
-          <div class="m-2">
-            <img class="img-fluid flex-fill" src="{% static 'images/google-drive-logo.png' %}">
-          </div>
-          <div class="m-2 text-center">
-            <img class="img-fluid flex-fill" src="{% static 'images/icons/icons8/right-arrow.png' %}" style="max-width:50%;">
-          </div>
-          <div class="m-2">
-            <img class="img-fluid flex-fill" src="{% static 'images/iqualify-logo.png' %}">
-          </div>
-        </div>
-        <p class="text-center border-left border-bottom border-right mb-4">
-          This pipeline is supported by the <strong>Content Pipeline Assistant</strong>
-        </p>
-
-        <p>Available sections on this website:</p>
-
-        <div class="media mt-4 mb-5">
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-12 col-lg-6">
+        <div class="media mb-4">
           <img class="align-self-center mr-3" src="{% static 'images/icons/icons8/classroom.png' %}">
           <div class="media-body">
             <h4 class="mt-0">Pīkau</h4>
@@ -58,19 +38,21 @@
             </a>
           </div>
         </div>
-
-        <div class="media mt-4 mb-5">
+      </div>
+      <div class="col-12 col-lg-6">
+        <div class="media mb-4">
           <img class="align-self-center mr-3" src="{% static 'images/icons/icons8/check-file.png' %}">
           <div class="media-body">
-            <h4 class="mt-0">Files</h4>
+            <h4 class="mt-0">File Tracking</h4>
             <p>Lists files used within this project with their licences.</p>
-            <a class="btn btn-primary" href="{% url 'files:file_list' %}" role="button">
-              View files
+            <a class="btn btn-primary" href="{% url 'files:index' %}" role="button">
+              View file tracking
             </a>
           </div>
         </div>
-
-        <div class="media my-5">
+      </div>
+      <div class="col-12 col-lg-6">
+        <div class="media my-4">
           <img class="align-self-center mr-3" src="{% static 'images/icons/icons8/groups.png' %}">
           <div class="media-body">
             <h4 class="mt-0">Digital Leaders</h4>
@@ -80,8 +62,9 @@
             </a>
           </div>
         </div>
-
-        <div class="media my-5">
+      </div>
+      <div class="col-12 col-lg-6">
+        <div class="media my-4">
           <img class="align-self-center mr-3" src="{% static 'images/icons/icons8/faq.png' %}">
           <div class="media-body">
             <h4 class="mt-0">Frequently Asked Questions</h4>

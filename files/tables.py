@@ -4,6 +4,7 @@ from django.template.loader import render_to_string
 import django_tables2 as tables
 from files.models import (
     File,
+    ProjectItem,
 )
 
 
@@ -41,4 +42,17 @@ class FileTable(tables.Table):
 
         model = File
         fields = ("name", "media_type_rendered", "licence")
+        order_by = "name"
+
+
+class ProjectItemTable(tables.Table):
+    """Table to display all project items."""
+
+    name = tables.LinkColumn()
+
+    class Meta:
+        """Meta attributes for ProjectItemTable class."""
+
+        model = ProjectItem
+        fields = ("name", )
         order_by = "name"
