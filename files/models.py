@@ -157,3 +157,24 @@ class File(models.Model):
             String describing file.
         """
         return "File: {}".format(self.slug)
+
+
+class ProjectItem(models.Model):
+    """Model for project item."""
+
+    name = models.CharField(
+        max_length=300,
+        unique=True,
+        verbose_name="Name",
+    )
+    url = models.URLField(verbose_name="Location (URL)")
+    description = models.TextField(
+        blank=True,
+        verbose_name="Description",
+    )
+    files = models.ManyToManyField(
+        File,
+        verbose_name="Files",
+        related_name="project_items",
+        blank=True,
+    )

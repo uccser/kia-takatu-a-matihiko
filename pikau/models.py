@@ -5,7 +5,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.template import defaultfilters
 from django.urls import reverse
-from files.models import File
+from files.models import ProjectItem
 
 
 LANGUAGE_CHOICES = (
@@ -244,10 +244,12 @@ class PikauCourse(models.Model):
     study_plan = models.TextField(blank=True)
     assessment_description = models.TextField(blank=True)
     assessment_items = models.TextField(blank=True)
-    files = models.ManyToManyField(
-        File,
-        related_name="pikau_courses",
+    project_item = models.OneToOneField(
+        ProjectItem,
+        on_delete=models.CASCADE,
+        related_name="pikau_course",
         blank=True,
+        null=True,
     )
 
     # Development attributes
