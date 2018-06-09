@@ -10,3 +10,7 @@ file_types:
 skip_urls:
   # Used in template
   - https://player.vimeo.com/video/{{
+  # Linkie on Travis CI counts these as broken, investigate at later stage
+  - http://journals.sagepub.com/doi/pdf/10.3102/0013189X12463051
+  - http://journals.sagepub.com/doi/full/10.3102/0013189X12463051
+  - https://vimeo.com/228628929
