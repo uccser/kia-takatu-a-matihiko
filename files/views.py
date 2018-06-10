@@ -1,7 +1,8 @@
 """Views for the files application."""
 
-import csv
+from djqscsv import render_to_csv_response
 from django.http import HttpResponse
+from django.utils import timezone
 from django_tables2 import SingleTableMixin
 from django_filters.views import FilterView
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -102,57 +103,24 @@ def file_list_csv(request):
     Returns:
         CSV response of all files.
     """
-    response = HttpResponse(content_type="text/csv")
-    response["Content-Disposition"] = 'attachment; filename="ktam_file_licence_data_{datetime}.csv"'.format(datetime=1)
-    writer = csv.writer(response)
-
-    files = File.objects.order_by(
+    files = File.objects.all().values(
+        "title",
+        "author",
+        "location",
+        "filename",
+        "description",
+        "licence__name",
+        "project_items__name",
+    ).order_by(
         "title",
         "project_items__name",
     )
-    writer.writerow(
-        [
-            "Title",
-            "Author",
-            "Location",
-            "Filename",
-            "Description",
-            "Licence",
-            "Attribution (Text)",
-            "Attribution (HTML)",
-            "Used in item",
-        ]
+    return render_to_csv_response(
+        files,
+        append_datestamp=True,
+        field_header_map={"licence__name": "Licence"},
+        filename="ktam_file_licence_data"
     )
-    for file_obj in files:
-        if file_obj.project_items.exists():
-            for project_item in file_obj.project_items.order_by("name"):
-                writer.writerow(
-                    [
-                        file_obj.title,
-                        file_obj.author,
-                        file_obj.location,
-                        file_obj.filename,
-                        file_obj.description,
-                        file_obj.licence.name,
-                        file_obj.attribution(),
-                        file_obj.attribution(html=True),
-                        project_item.name,
-                    ]
-                )
-        else:
-            writer.writerow(
-                [
-                    file_obj.title,
-                    file_obj.author,
-                    file_obj.location,
-                    file_obj.filename,
-                    file_obj.description,
-                    file_obj.licence.name,
-                    file_obj.attribution(),
-                    file_obj.attribution(html=True),
-                ]
-            )
-    return response
 
 
 class ProjectItemListView(LoginRequiredMixin, SingleTableMixin, ListView):

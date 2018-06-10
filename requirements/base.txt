@@ -10,6 +10,7 @@ django-bootstrap-breadcrumbs==0.9.1
 # template so should be updated when original is updated in package.
 django-tables2==2.0.0a3
 django-filter==1.1.0
+django-queryset-csv==1.0.1
 
 # Content Loading
 verto==0.7.4
