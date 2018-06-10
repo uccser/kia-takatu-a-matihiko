@@ -98,6 +98,28 @@ class File(models.Model):
         null=True,
     )
 
+    def attribution(self, html=False):
+        """Create text attribution.
+
+        Args:
+            html (bool): True if should return HTML.
+
+        Returns:
+            String of licence attribute.
+        """
+        if html:
+            template = "{author}, <a href=\"{location}\">{title}</a>, <a href=\"{licence_url}\">{licence}</a>"
+        else:
+            template = "{author} ({location}), {title}, {licence} ({licence_url})"
+        attribution_text = template.format(
+            author=self.author,
+            location=self.location,
+            title=self.title,
+            licence=self.licence.name,
+            licence_url=self.licence.url,
+        )
+        return attribution_text
+
     def media_type(self):
         """Return label for media type.
 

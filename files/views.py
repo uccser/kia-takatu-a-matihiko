@@ -1,5 +1,7 @@
 """Views for the files application."""
 
+import csv
+from django.http import HttpResponse
 from django_tables2 import SingleTableMixin
 from django_filters.views import FilterView
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -25,7 +27,6 @@ from files.models import (
 from files.forms import (
     FileForm,
 )
-from djqscsv import render_to_csv_response
 
 
 class IndexView(LoginRequiredMixin, TemplateView):
@@ -67,6 +68,8 @@ class FileDetailView(LoginRequiredMixin, DetailView):
         """
         context = super(FileDetailView, self).get_context_data(**kwargs)
         context["table"] = ProjectItemTable(self.object.project_items.all())
+        context["attribution_text"] = self.object.attribution()
+        context["attribution_html"] = self.object.attribution(html=True)
         return context
 
 
@@ -99,21 +102,57 @@ def file_list_csv(request):
     Returns:
         CSV response of all files.
     """
-    files = File.objects.all().values(
-        "name",
-        "licence__name",
-        "location",
-        "filename",
-        "description",
-    ).order_by(
-        "name",
+    response = HttpResponse(content_type="text/csv")
+    response["Content-Disposition"] = 'attachment; filename="ktam_file_licence_data_{datetime}.csv"'.format(datetime=1)
+    writer = csv.writer(response)
+
+    files = File.objects.order_by(
+        "title",
+        "project_items__name",
     )
-    return render_to_csv_response(
-        files,
-        append_datestamp=True,
-        field_header_map={"licence__name": "Licence"},
-        filename="ktam_file_licence_data"
+    writer.writerow(
+        [
+            "Title",
+            "Author",
+            "Location",
+            "Filename",
+            "Description",
+            "Licence",
+            "Attribution (Text)",
+            "Attribution (HTML)",
+            "Used in item",
+        ]
     )
+    for file_obj in files:
+        if file_obj.project_items.exists():
+            for project_item in file_obj.project_items.order_by("name"):
+                writer.writerow(
+                    [
+                        file_obj.title,
+                        file_obj.author,
+                        file_obj.location,
+                        file_obj.filename,
+                        file_obj.description,
+                        file_obj.licence.name,
+                        file_obj.attribution(),
+                        file_obj.attribution(html=True),
+                        project_item.name,
+                    ]
+                )
+        else:
+            writer.writerow(
+                [
+                    file_obj.title,
+                    file_obj.author,
+                    file_obj.location,
+                    file_obj.filename,
+                    file_obj.description,
+                    file_obj.licence.name,
+                    file_obj.attribution(),
+                    file_obj.attribution(html=True),
+                ]
+            )
+    return response
 
 
 class ProjectItemListView(LoginRequiredMixin, SingleTableMixin, ListView):

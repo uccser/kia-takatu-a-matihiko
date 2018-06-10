@@ -50,6 +50,25 @@
   </div>
 
   <div class="col-12">
+    <h2>Attributions</h2>
+
+    <table class="table">
+      <tbody>
+        <tr>
+          <td class="no-wrap"><strong>Text</strong></td>
+          <td>{{ attribution_text }}</td>
+        </tr>
+        <tr>
+          <td class="no-wrap"><strong>HTML</strong></td>
+          <td>{{ attribution_html|safe }}</td>
+        </tr>
+        <tr>
+          <td class="no-wrap"><strong>HTML (raw)</strong></td>
+          <td><code>{{ attribution_html|escape }}</code></td>
+        </tr>
+      </tbody>
+    </table>
+
     <h2>File Usage</h2>
 
     {% render_table table %}
