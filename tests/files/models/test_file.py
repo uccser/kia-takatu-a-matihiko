@@ -46,5 +46,6 @@ class FileModelTest(BaseTestWithDB):
         self.test_data.create_file(1)
         self.assertRaises(
             IntegrityError,
-            lambda: self.test_data.create_file(1)
+            self.test_data.create_file,
+            1,
         )
