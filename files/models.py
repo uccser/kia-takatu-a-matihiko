@@ -17,7 +17,7 @@ IMAGE_EXTENSIONS = (
     ".gif",
     ".svg",
 )
-
+GOOGLE_DRIVE_IMAGE_PREFIX = "https://docs.google.com/uc?id="
 
 def default_licence():
     """Return default licence object.
@@ -128,7 +128,7 @@ class File(models.Model):
         """
         if any(substring in self.direct_link for substring in VIDEO_PROVIDERS):
             label = "Video"
-        elif self.direct_link.endswith(IMAGE_EXTENSIONS):
+        elif self.direct_link.endswith(IMAGE_EXTENSIONS) or self.direct_link.startswith(GOOGLE_DRIVE_IMAGE_PREFIX):
             label = "Image"
         else:
             label = "Unknown"

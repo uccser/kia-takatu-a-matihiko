@@ -120,11 +120,12 @@ dt3e-interviews-with-teachers-mp4:
   licence: cc-by-sa-4
 use-modify-create-diagram-svg:
   title: Use-Modify-Create Learning Progression Diagram
-  author: "University of Canterbury Computer Science Education Research Group"
+  author: "University of Canterbury Computer Science Education Research Group - Based off diagram by Irene Lee"
   filename: "use-modify-create-diagram.svg"
   location: "images/pikau/use-modify-create-diagram.svg"
   direct-link: "images/pikau/use-modify-create-diagram.svg"
   licence: cc-by-sa-4
+  description: "Based off Irene Lee's diagram (fig 5, Lee, I., Martin, F., & Apone, K. (2014). Integrating Computational Thinking Across the K--8 Curriculum. ACM Inroads, 5(4), 64–71. http://doi.org/10.1145/2684721.2684736)"
 technology-diagram-jpg:
   title: NZ Curriculum Technology Diagram
   author: "New Zealand Ministry of Education"
@@ -179,3 +180,39 @@ khwarizmi-amirkabir-png:
   location: "https://commons.wikimedia.org/wiki/File:Khwarizmi_Amirkabir_University_of_Technology.png"
   direct-link: "https://upload.wikimedia.org/wikipedia/commons/a/a6/Khwarizmi_Amirkabir_University_of_Technology.png"
   licence: cc-by-sa-3
+
+binary-numbers-child-drawing-jpg:
+  title: "Child drawing binary numbers"
+  author: "University of Canterbury Computer Science Education Research Group"
+  filename: "IMG_2324.jpg"
+  location: "https://drive.google.com/drive/folders/1zi8CFByiUiFuWTlvnxR4rr24309o3t5I"
+  direct-link: "https://docs.google.com/uc?id=1UGb95eM0uRAulYnyw3hhDH0-AVlsgDO7"
+  licence: cc-by-sa-4
+information-theory-activity-large-jpg:
+  title: "Information Theory CS Unplugged Activity - Large"
+  author: "CS Unplugged"
+  filename: "IMG_3939.jpg"
+  location: "https://drive.google.com/open?id=1DY-z9Kpk0gu1MF3uG7ObipAo8Avs5910"
+  direct-link: "https://docs.google.com/uc?id=1DY-z9Kpk0gu1MF3uG7ObipAo8Avs5910"
+  licence: cc-by-sa-4
+girl-on-computer-jpg:
+  title: "Girl working on a computer"
+  author: "University of Canterbury Computer Science Education Research Group"
+  filename: "IMG_2231.jpg"
+  location: "https://drive.google.com/file/d/1nVuvi6fnNUcNxIrpOFaSJs-rns3d3JUS"
+  direct-link: "https://docs.google.com/uc?id=1nVuvi6fnNUcNxIrpOFaSJs-rns3d3JUS"
+  licence: cc-by-sa-4
+sorting-network-girls-outside-jpg:
+  title: "Sorting network by girls outside"
+  author: "University of Canterbury Computer Science Education Research Group"
+  filename: "DSC_4940.jpg"
+  location: "https://drive.google.com/open?id=1habzlrpbleUO6CO2k2ceTNoTsxkpQogP"
+  direct-link: "https://docs.google.com/uc?id=1habzlrpbleUO6CO2k2ceTNoTsxkpQogP"
+  licence: cc-by-sa-4
+parity-trick-girls-jpg:
+  title: "Parity trick by girls in classroom"
+  author: "University of Canterbury Computer Science Education Research Group"
+  filename: "IMG_3922.jpg"
+  location: "https://drive.google.com/open?id=1xYbDYY8CVh8JauZEUKQtwFhqUEBcdjF1"
+  direct-link: "https://docs.google.com/uc?id=1xYbDYY8CVh8JauZEUKQtwFhqUEBcdjF1"
+  licence: cc-by-sa-4
