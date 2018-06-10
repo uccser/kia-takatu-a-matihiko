@@ -11,16 +11,18 @@ from files.models import (
 class FileTable(tables.Table):
     """Table to display all files."""
 
-    name = tables.LinkColumn()
+    title = tables.LinkColumn()
     preview = tables.TemplateColumn(
         template_name="files/previews/preview.html",
         verbose_name="Preview",
+        orderable=False,
     )
     media_type_rendered = tables.TemplateColumn(
         template_name="files/previews/type-icon.html",
         verbose_name="Media type",
+        orderable=False,
     )
-    licence = tables.RelatedLinkColumn()
+    licence = tables.RelatedLinkColumn(orderable=False)
 
     def render_media_type(self, value):
         """Render template for media type column.
@@ -41,8 +43,8 @@ class FileTable(tables.Table):
         """Meta attributes for FileTable class."""
 
         model = File
-        fields = ("name", "media_type_rendered", "licence")
-        order_by = "name"
+        fields = ("title", "media_type_rendered", "licence")
+        order_by = "title"
 
 
 class ProjectItemTable(tables.Table):

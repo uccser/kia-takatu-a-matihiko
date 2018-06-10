@@ -69,10 +69,15 @@ class File(models.Model):
     """Model for file."""
 
     slug = models.SlugField(unique=True)
-    name = models.CharField(
+    title = models.CharField(
         max_length=200,
         unique=True,
-        verbose_name="Name",
+        verbose_name="Title",
+    )
+    author = models.CharField(
+        max_length=200,
+        blank=True,
+        verbose_name="Author",
     )
     filename = models.CharField(
         max_length=200,
@@ -148,7 +153,7 @@ class File(models.Model):
         Returns:
             String describing file.
         """
-        return self.name
+        return self.title
 
     def __repr__(self):
         """Text representation of File object for developers.

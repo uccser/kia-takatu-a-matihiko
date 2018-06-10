@@ -16,7 +16,8 @@ class FileLoader(BaseLoader):
         for file_slug, file_data in files.items():
             licence = Licence.objects.get(slug=file_data.get("licence", "unknown"))
             defaults = {
-                "name": file_data["name"],
+                "title": file_data["title"],
+                "author": file_data.get("author", ""),
                 "filename": file_data["filename"],
                 "location": file_data["location"],
                 "direct_link": file_data.get("direct-link", ""),

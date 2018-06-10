@@ -59,6 +59,16 @@ class FileDetailView(LoginRequiredMixin, DetailView):
 
     model = File
 
+    def get_context_data(self, **kwargs):
+        """Provide the context data for the view.
+
+        Returns:
+            Dictionary of context data.
+        """
+        context = super(FileDetailView, self).get_context_data(**kwargs)
+        context["table"] = ProjectItemTable(self.object.project_items.all())
+        return context
+
 
 class FileCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     """View for creating a glossary definition."""

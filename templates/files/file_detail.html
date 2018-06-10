@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% load django_bootstrap_breadcrumbs %}
+{% load render_table from django_tables2 %}
 
 {% block breadcrumbs %}
   {% breadcrumb "Home" "/" %}
@@ -10,7 +11,7 @@
 {% endblock breadcrumbs %}
 
 {% block page_heading %}
-  {{ file.name }}
+  {{ file.title }}
   <div class="float-right">
     {% with text='Update file' %}
       {% url 'files:file_update' file.slug as update_url %}
@@ -22,6 +23,9 @@
 {% block content_container %}
   <div class="col-12 col-sm-9 col-md-6">
     <ul class="list-unstyled">
+      <li>
+        <strong>Author:</strong> {{ file.author }}
+      </li>
       <li>
         <strong>Location:</strong> <a href="{{ file.location }}">{{ file.filename }}</a>
       </li>
@@ -48,11 +52,6 @@
   <div class="col-12">
     <h2>File Usage</h2>
 
-    <p><strong>Pīkau courses:</strong> {{ file.pikau_courses.count }}</p>
-    <div class="row">
-      {% for pikau_course in file.pikau_courses.all %}
-        {% include "pikau/snippets/pikau_course_card.html" %}
-      {% endfor %}
-    </div>
+    {% render_table table %}
   </div>
 {% endblock content_container %}
