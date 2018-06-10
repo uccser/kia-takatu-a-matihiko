@@ -49,10 +49,17 @@ class ProjectItemTable(tables.Table):
     """Table to display all project items."""
 
     name = tables.LinkColumn()
+    file_count = tables.Column(
+        empty_values=(),
+        orderable=False,
+    )
+
+    def render_file_count(self, record):
+        return record.files.count()
 
     class Meta:
         """Meta attributes for ProjectItemTable class."""
 
         model = ProjectItem
-        fields = ("name", )
+        fields = ("name", "item_type")
         order_by = "name"

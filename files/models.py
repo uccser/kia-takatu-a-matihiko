@@ -162,6 +162,17 @@ class File(models.Model):
 class ProjectItem(models.Model):
     """Model for project item."""
 
+    ITEM_TYPE_WEBPAGE = 1
+    ITEM_TYPE_PIKAU = 20
+    ITEM_TYPE_PRINT = 50
+    ITEM_TYPE_OTHER = 99
+    ITEM_TYPE_CHOICES = (
+        (ITEM_TYPE_WEBPAGE, "Webpage"),
+        (ITEM_TYPE_PIKAU, "Pīkau"),
+        (ITEM_TYPE_PRINT, "Print Media"),
+        (ITEM_TYPE_OTHER, "Other"),
+    )
+
     name = models.CharField(
         max_length=300,
         unique=True,
@@ -180,6 +191,11 @@ class ProjectItem(models.Model):
         verbose_name="Files",
         related_name="project_items",
         blank=True,
+    )
+    item_type = models.PositiveSmallIntegerField(
+        choices=ITEM_TYPE_CHOICES,
+        default=ITEM_TYPE_OTHER,
+        verbose_name="Type",
     )
 
     def clean(self):
