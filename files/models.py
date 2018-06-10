@@ -109,9 +109,9 @@ class File(models.Model):
             String of licence attribute.
         """
         if html:
-            template = "{author}, <a href=\"{location}\">{title}</a>, <a href=\"{licence_url}\">{licence}</a>"
+            template = "<a href=\"{location}\">{title}</a>, {author}, <a href=\"{licence_url}\">{licence}</a>"
         else:
-            template = "{author} ({location}), {title}, {licence} ({licence_url})"
+            template = "{title} ({location}), {author}, {licence} ({licence_url})"
         attribution_text = template.format(
             author=self.author,
             location=self.location,
