@@ -55,6 +55,14 @@ class ProjectItemTable(tables.Table):
     )
 
     def render_file_count(self, record):
+        """Calculate value for file count column.
+
+        Args:
+            record (ProjectItem): The project item for this row.
+
+        Returns:
+            An integer of the number of connected files.
+        """
         return record.files.count()
 
     class Meta:
