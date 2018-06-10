@@ -246,7 +246,7 @@ class PikauCourse(models.Model):
     assessment_items = models.TextField(blank=True)
     project_item = models.OneToOneField(
         ProjectItem,
-        on_delete=models.CASCADE,
+        on_delete=models.SET_NULL,
         related_name="pikau_course",
         blank=True,
         null=True,

@@ -212,7 +212,7 @@ class ProjectItem(models.Model):
         if self.url:
             url = self.url
         elif self.pikau_course:
-            url = self.pikau_course.get_absolute_url() + "#file-list"
+            url = self.pikau_course.get_absolute_url()
         else:
             url = None
         return url

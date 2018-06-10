@@ -93,6 +93,7 @@ class PikauCourseLoader(BaseLoader):
                 project_item = ProjectItem.objects.create(
                     name=pikau_course.name,
                     pikau_course=pikau_course,
+                    item_type=ProjectItem.ITEM_TYPE_PIKAU,
                 )
                 pikau_course.project_item = project_item
                 pikau_course.save()
