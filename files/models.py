@@ -19,6 +19,7 @@ IMAGE_EXTENSIONS = (
 )
 GOOGLE_DRIVE_IMAGE_PREFIX = "https://docs.google.com/uc?id="
 
+
 def default_licence():
     """Return default licence object.
 

@@ -1,8 +1,5 @@
 """Views for the files application."""
 
-from djqscsv import render_to_csv_response
-from django.http import HttpResponse
-from django.utils import timezone
 from django_tables2 import SingleTableMixin
 from django_filters.views import FilterView
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -28,6 +25,7 @@ from files.models import (
 from files.forms import (
     FileForm,
 )
+from djqscsv import render_to_csv_response
 
 
 class IndexView(LoginRequiredMixin, TemplateView):
