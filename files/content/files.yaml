@@ -1,158 +1,218 @@
 banner-mahuika-maui-png:
-  name: "Mahuika and Māui Banner"
+  title: "Mahuika and Māui Banner"
+  author: "CORE Education"
   filename: "banner-mahuika-maui.png"
   location: "https://drive.google.com/open?id=1NJfnUmj6et78-o8Eov2i7fgZdauR_myE"
   direct-link: "images/core-education/banner-mahuika-maui.png"
 maui-face-png:
-  name: "Māui face"
+  title: "Māui face"
+  author: "CORE Education"
   filename: "maui-face.png"
   location: "https://drive.google.com/open?id=1NU2glbUDS928aBwKgivX4GdoyKKkbMmo"
   direct-link: "images/core-education/maui-face.png"
 mahuika-face-png:
-  name: "Mahuika face"
+  title: "Mahuika face"
+  author: "CORE Education"
   filename: "mahuika-face.png"
   location: "https://drive.google.com/open?id=1396r4RQjZxZdyAPVzDm3o0heDJit1m_E"
   direct-link: "images/core-education/mahuika-face.png"
 what-is-ct-png:
-  name: "What is CT?"
+  title: "What is CT?"
+  author: "University of Canterbury Computer Science Education Research Group"
   filename: "what-is-ct.png"
   location: "images/pikau/what-is-ct.png"
   direct-link: "images/pikau/what-is-ct.png"
   licence: cc-by-sa-4
 ct-around-the-world-png:
-  name: "CT around the world"
+  title: "CT around the world"
+  author: "University of Canterbury Computer Science Education Research Group"
   filename: "ct-around-the-world.png"
   location: "images/pikau/ct-around-the-world.png"
   direct-link: "images/pikau/ct-around-the-world.png"
   licence: cc-by-sa-4
 arnold-the-wonder-parrot-jpg:
-  name: "Arnold the Wonder Parrot"
+  title: "Arnold the Wonder Parrot"
+  author: "CS Unplugged"
   filename: "arnold-the-wonder-parrot.jpg"
   location: "images/pikau/arnold-the-wonder-parrot.jpg"
   direct-link: "images/pikau/arnold-the-wonder-parrot.jpg"
   licence: cc-by-sa-4
 information-theory-activity-jpg:
-  name: "Information Theory CS Unplugged Activity"
+  title: "Information Theory CS Unplugged Activity"
+  author: "CS Unplugged"
   filename: "information-theory-activity.jpg"
   location: "images/pikau/information-theory-activity.jpg"
   direct-link: "images/pikau/information-theory-activity.jpg"
   licence: cc-by-sa-4
 placeholder-video:
-  name: "Kia Takatū ā-Matihiko Placeholder Video"
+  title: "Kia Takatū ā-Matihiko Placeholder Video"
   filename: "https://www.youtube.com/embed/zSfzB-Z-mKM"
   location: "https://www.youtube.com/embed/zSfzB-Z-mKM"
   direct-link: "https://www.youtube.com/embed/zSfzB-Z-mKM"
   licence: cc-by-sa-4
 ct-loading-planes-trimmed-mov:
-  name: "CT Loading Planes - Trimmed"
+  title: "CT Loading Planes - Trimmed"
+  author: "University of Canterbury Computer Science Education Research Group"
   filename: "CT loading planes trimmed.mov"
   location: "https://vimeo.com/273809039/eb5cb42933"
   direct-link: "https://vimeo.com/273809039/eb5cb42933"
   licence: cc-by-sa-4
 ct-six-elements-of-digital-devices-mp4:
-  name: "Six elements of digital devices"
+  title: "Six elements of digital devices"
+  author: "University of Canterbury Computer Science Education Research Group"
   filename: "six elements of digital devices.mp4"
   location: "https://vimeo.com/273813250/f251e2a3d4"
   direct-link: "https://vimeo.com/273813250/f251e2a3d4"
   licence: cc-by-sa-4
 digital-images-mp4:
-  name: "Digital images"
+  title: "Digital images"
+  author: "University of Canterbury Computer Science Education Research Group"
   filename: "digital images.mp4"
   location: "https://vimeo.com/273824548/770c5c1c48"
   direct-link: "https://vimeo.com/273824548/770c5c1c48"
   licence: cc-by-sa-4
 csfg-algorithms-trailer-mp4:
-  name: "Computer Science Field Guide: Algorithms"
+  title: "Computer Science Field Guide: Algorithms"
+  author: "Computer Science Field Guide"
   filename: "Computer Science Field Guide - Algorithms.mp4"
   location: "https://vimeo.com/69609500"
   direct-link: "https://vimeo.com/69609500"
   licence: cc-by-sa-4
 getting-the-most-out-of-pikau:
-  name: Getting the most out of pīkau
+  title: Getting the most out of pīkau
+  author: "CORE Education"
   filename: "https://vimeo.com/272882311/8e4cf1de3f"
   location: "https://vimeo.com/272882311/8e4cf1de3f"
   direct-link: "https://vimeo.com/272882311/8e4cf1de3f"
 1983-cpa-5426-png:
-  name: Muḥammad ibn Mūsā al-Ḵwārizmī
+  title: Muḥammad ibn Mūsā al-Ḵwārizmī
   filename: 1983 CPA 5426 (1).png
+  author: Unknown
   location: "https://commons.wikimedia.org/wiki/File:1983_CPA_5426_(1).png"
   direct-link: "https://upload.wikimedia.org/wikipedia/commons/1/11/1983_CPA_5426_%281%29.png"
   licence: public-domain
   description: "This work is not an object of copyright according to article 1259 of Book IV of the Civil Code of the Russian Federation No. 230-FZ of December 18, 2006."
 euklid-von-alexandria-1-jpg:
-  name: Euklid-von-Alexandria
+  title: Euklid-von-Alexandria
   filename: Euklid-von-Alexandria_1.jpg
+  author: Unknown
   location: "https://commons.wikimedia.org/wiki/File:Euklid-von-Alexandria_1.jpg"
   direct-link: "https://upload.wikimedia.org/wikipedia/commons/3/30/Euklid-von-Alexandria_1.jpg"
   licence: public-domain
   description: "This work is in the public domain in its country of origin and other countries and areas where the copyright term is the author's life plus 70 years or less."
 telescope-with-stars-jpg:
-  name: Telescope in front of stars
+  title: Telescope in front of stars
   filename: science.jpg
   location: "https://www.timelinecoverbanner.com/covers/telescope-knowledge-mystery-and-science-Facebook-cover/"
   direct-link: "https://www.timelinecoverbanner.com/facebook-covers/2013/01/science.jpg"
   licence: cc0
 design-desk-display-jpg:
-  name: User frustrated in front of computer
+  title: User frustrated in front of computer
   filename: design-desk-display-313690.jpg
   location: "https://www.pexels.com/photo/design-desk-display-eyewear-313690/"
   licence: cc0
 dt3e-interviews-with-teachers-mp4:
-  name: "DT3e - Interviews with teachers"
+  title: "DT3e - Interviews with teachers"
+  author: "University of Canterbury Computer Science Education Research Group"
   filename: "DT3e interviews with teachers.mp4"
   location: "https://vimeo.com/273841538"
   direct-link: "https://vimeo.com/273841538"
   licence: cc-by-sa-4
 use-modify-create-diagram-svg:
-  name: Use-Modify-Create Learning Progression Diagram
+  title: Use-Modify-Create Learning Progression Diagram
+  author: "University of Canterbury Computer Science Education Research Group - Based off diagram by Irene Lee"
   filename: "use-modify-create-diagram.svg"
   location: "images/pikau/use-modify-create-diagram.svg"
   direct-link: "images/pikau/use-modify-create-diagram.svg"
   licence: cc-by-sa-4
+  description: "Based off Irene Lee's diagram (fig 5, Lee, I., Martin, F., & Apone, K. (2014). Integrating Computational Thinking Across the K--8 Curriculum. ACM Inroads, 5(4), 64–71. http://doi.org/10.1145/2684721.2684736)"
 technology-diagram-jpg:
-  name: NZ Curriculum Technology Diagram
+  title: NZ Curriculum Technology Diagram
+  author: "New Zealand Ministry of Education"
   filename: "technology-diagram.jpg"
-  location: "images/core-education/technology-diagram.jpg"
+  location: "http://nzcurriculum.tki.org.nz/The-New-Zealand-Curriculum/Technology/Learning-area-structure"
   direct-link: "images/core-education/technology-diagram.jpg"
 oudjat-svg:
-  name: Oudjat
+  title: Oudjat
+  author: Benoît Stella
   filename: "Oudjat.SVG"
   location: "https://commons.wikimedia.org/wiki/File:Oudjat.SVG"
   direct-link: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Oudjat.SVG/500px-Oudjat.SVG.png"
   licence: cc-by-sa-3
 eratosthene-png:
-  name: Eratosthene
+  title: Eratosthene
   filename: "Eratosthene.01.png"
   location: "https://commons.wikimedia.org/wiki/File:Eratosthene.01.png"
   direct-link: "https://upload.wikimedia.org/wikipedia/commons/b/b3/Eratosthene.01.png"
   licence: public-domain
 ada-lovelace-jpg:
-  name: Ada Lovelace
+  title: Ada Lovelace
+  author: Alfred Edward Chalon
   filename: "Ada Lovelace portrait.jpg"
   location: "https://commons.wikimedia.org/wiki/File:Ada_Lovelace_portrait.jpg"
   direct-link: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Ada_Lovelace_portrait.jpg/334px-Ada_Lovelace_portrait.jpg"
   licence: public-domain
 edsger-wybe-dijkstra-jpg:
-  name: Edsger Wybe Dijkstra
+  title: Edsger Wybe Dijkstra
+  author: Hamilton Richards
   filename: "Edsger Wybe Dijkstra.jpg"
   location: "https://commons.wikimedia.org/wiki/File:Edsger_Wybe_Dijkstra.jpg"
   direct-link: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Edsger_Wybe_Dijkstra.jpg/450px-Edsger_Wybe_Dijkstra.jpg"
   licence: cc-by-sa-3
 pagerank-png:
-  name: PageRank
+  title: PageRank
+  author: FML
   filename: "PageRank-hi-res.png"
   location: "https://commons.wikimedia.org/wiki/File:PageRank-hi-res.png"
   direct-link: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/PageRank-hi-res.png/640px-PageRank-hi-res.png"
   licence: cc-by-sa-2-5
 jeannette-wing-jpg:
-  name: Jeannette Wing
+  title: Jeannette Wing
+  author: World Economic Forum
   filename: "Jeannette Wing, Davos 2013.jpg"
   location: "https://commons.wikimedia.org/wiki/File:Jeannette_Wing,_Davos_2013.jpg"
   direct-link: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Jeannette_Wing%2C_Davos_2013.jpg/532px-Jeannette_Wing%2C_Davos_2013.jpg"
   licence: cc-by-sa-2
 khwarizmi-amirkabir-png:
-  name: Khwarizmi Amirkabir University of Technology
+  title: Khwarizmi Amirkabir University of Technology
+  author: M. Tomczak
   filename: "Khwarizmi Amirkabir University of Technology.png"
   location: "https://commons.wikimedia.org/wiki/File:Khwarizmi_Amirkabir_University_of_Technology.png"
   direct-link: "https://upload.wikimedia.org/wikipedia/commons/a/a6/Khwarizmi_Amirkabir_University_of_Technology.png"
   licence: cc-by-sa-3
+
+binary-numbers-child-drawing-jpg:
+  title: "Child drawing binary numbers"
+  author: "University of Canterbury Computer Science Education Research Group"
+  filename: "IMG_2324.jpg"
+  location: "https://drive.google.com/drive/folders/1zi8CFByiUiFuWTlvnxR4rr24309o3t5I"
+  direct-link: "https://docs.google.com/uc?id=1UGb95eM0uRAulYnyw3hhDH0-AVlsgDO7"
+  licence: cc-by-sa-4
+information-theory-activity-large-jpg:
+  title: "Information Theory CS Unplugged Activity - Large"
+  author: "CS Unplugged"
+  filename: "IMG_3939.jpg"
+  location: "https://drive.google.com/open?id=1DY-z9Kpk0gu1MF3uG7ObipAo8Avs5910"
+  direct-link: "https://docs.google.com/uc?id=1DY-z9Kpk0gu1MF3uG7ObipAo8Avs5910"
+  licence: cc-by-sa-4
+girl-on-computer-jpg:
+  title: "Girl working on a computer"
+  author: "University of Canterbury Computer Science Education Research Group"
+  filename: "IMG_2231.jpg"
+  location: "https://drive.google.com/file/d/1nVuvi6fnNUcNxIrpOFaSJs-rns3d3JUS"
+  direct-link: "https://docs.google.com/uc?id=1nVuvi6fnNUcNxIrpOFaSJs-rns3d3JUS"
+  licence: cc-by-sa-4
+sorting-network-girls-outside-jpg:
+  title: "Sorting network by girls outside"
+  author: "University of Canterbury Computer Science Education Research Group"
+  filename: "DSC_4940.jpg"
+  location: "https://drive.google.com/open?id=1habzlrpbleUO6CO2k2ceTNoTsxkpQogP"
+  direct-link: "https://docs.google.com/uc?id=1habzlrpbleUO6CO2k2ceTNoTsxkpQogP"
+  licence: cc-by-sa-4
+parity-trick-girls-jpg:
+  title: "Parity trick by girls in classroom"
+  author: "University of Canterbury Computer Science Education Research Group"
+  filename: "IMG_3922.jpg"
+  location: "https://drive.google.com/open?id=1xYbDYY8CVh8JauZEUKQtwFhqUEBcdjF1"
+  direct-link: "https://docs.google.com/uc?id=1xYbDYY8CVh8JauZEUKQtwFhqUEBcdjF1"
+  licence: cc-by-sa-4

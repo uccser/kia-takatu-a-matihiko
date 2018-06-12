@@ -1,23 +1,21 @@
 {% extends "base.html" %}
 
+{% load i18n %}
+{% load static %}
+{% load render_table from django_tables2 %}
 {% load django_bootstrap_breadcrumbs %}
 {% load crispy_forms_tags %}
 
 {% block breadcrumbs %}
   {% breadcrumb "Home" "/" %}
   {% breadcrumb "File Tracking" "files:index" %}
-  {% breadcrumb "Files" "files:file_list" %}
-  {% breadcrumb "Create file" "" %}
+  {% breadcrumb "Project Items" "" %}
 {% endblock breadcrumbs %}
 
 {% block page_heading %}
-  Create new file
+  Project Items
 {% endblock page_heading %}
 
 {% block content %}
-  {% crispy form %}
+  {% render_table table %}
 {% endblock content %}
-
-{% block scripts %}
- {% include 'snippets/slugify.html' %}
-{% endblock scripts %}

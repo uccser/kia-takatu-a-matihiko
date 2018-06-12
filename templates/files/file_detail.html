@@ -1,15 +1,18 @@
 {% extends "base.html" %}
 
+{% load static %}
 {% load django_bootstrap_breadcrumbs %}
+{% load render_table from django_tables2 %}
 
 {% block breadcrumbs %}
   {% breadcrumb "Home" "/" %}
+  {% breadcrumb "File Tracking" "files:index" %}
   {% breadcrumb "Files" "files:file_list" %}
   {% breadcrumb file.filename "" %}
 {% endblock breadcrumbs %}
 
 {% block page_heading %}
-  {{ file.name }}
+  {{ file.title }}
   <div class="float-right">
     {% with text='Update file' %}
       {% url 'files:file_update' file.slug as update_url %}
@@ -21,6 +24,9 @@
 {% block content_container %}
   <div class="col-12 col-sm-9 col-md-6">
     <ul class="list-unstyled">
+      <li>
+        <strong>Author:</strong> {{ file.author }}
+      </li>
       <li>
         <strong>Location:</strong> <a href="{{ file.location }}">{{ file.filename }}</a>
       </li>
@@ -45,13 +51,51 @@
   </div>
 
   <div class="col-12">
+    <h2>Attributions</h2>
+
+    <table class="table">
+      <tbody>
+        <tr>
+          <td>
+            <span class="h5 no-wrap">Text</span><br>
+            <button class="btn btn-sm btn-attribution p-1" data-clipboard-target="#attribution-text">
+              Copy
+            </button>
+          </td>
+          <td id="attribution-text">{{ attribution_text }}</td>
+        </tr>
+        <tr>
+          <td>
+            <span class="h5 no-wrap">HTML</span><br>
+            <button class="btn btn-sm btn-attribution p-1" data-clipboard-target="#attribution-html">
+              Copy
+            </button>
+          </td>
+          <td id="attribution-html">{{ attribution_html|safe }}</td>
+        </tr>
+        <tr>
+          <td>
+            <span class="h5 no-wrap">HTML (raw)</span><br>
+            <button class="btn btn-sm btn-attribution p-1" data-clipboard-target="#attribution-html-raw">
+              Copy
+            </button>
+          </td>
+          <td id="attribution-html-raw"><code>{{ attribution_html|escape }}</code></td>
+        </tr>
+      </tbody>
+    </table>
+
     <h2>File Usage</h2>
 
-    <p><strong>Pīkau courses:</strong> {{ file.pikau_courses.count }}</p>
-    <div class="row">
-      {% for pikau_course in file.pikau_courses.all %}
-        {% include "pikau/snippets/pikau_course_card.html" %}
-      {% endfor %}
-    </div>
+    {% render_table table %}
   </div>
 {% endblock content_container %}
+
+{% block scripts %}
+  <script src="{% static 'js/clipboard.min.js' %}"></script>
+  <script>
+    $(document).ready(function() {
+      new ClipboardJS('.btn-attribution');
+    });
+  </script>
+{% endblock scripts %}

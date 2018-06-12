@@ -228,7 +228,8 @@ class PikauCourseDetailView(LoginRequiredMixin, DetailView):
             Dictionary of context data.
         """
         context = super(PikauCourseDetailView, self).get_context_data(**kwargs)
-        context["table"] = FileTable(self.object.files.all())
+        if self.object.project_item:
+            context["table"] = FileTable(self.object.project_item.files.all())
         return context
 
 

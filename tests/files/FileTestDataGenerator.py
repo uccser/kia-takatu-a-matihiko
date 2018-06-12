@@ -27,7 +27,7 @@ class FileTestDataGenerator:
         """
         file_object = File(
             slug="file-{}".format(number),
-            name="File {}".format(number),
+            title="File {}".format(number),
             filename="file-{}.ext".format(number),
             description="Description for file {}".format(number),
             location="https://www.example.com/{}".format(number),

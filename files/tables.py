@@ -4,22 +4,25 @@ from django.template.loader import render_to_string
 import django_tables2 as tables
 from files.models import (
     File,
+    ProjectItem,
 )
 
 
 class FileTable(tables.Table):
     """Table to display all files."""
 
-    name = tables.LinkColumn()
+    title = tables.LinkColumn()
     preview = tables.TemplateColumn(
         template_name="files/previews/preview.html",
         verbose_name="Preview",
+        orderable=False,
     )
     media_type_rendered = tables.TemplateColumn(
         template_name="files/previews/type-icon.html",
         verbose_name="Media type",
+        orderable=False,
     )
-    licence = tables.RelatedLinkColumn()
+    licence = tables.RelatedLinkColumn(orderable=False)
 
     def render_media_type(self, value):
         """Render template for media type column.
@@ -40,5 +43,33 @@ class FileTable(tables.Table):
         """Meta attributes for FileTable class."""
 
         model = File
-        fields = ("name", "media_type_rendered", "licence")
+        fields = ("title", "media_type_rendered", "licence")
+        order_by = "title"
+
+
+class ProjectItemTable(tables.Table):
+    """Table to display all project items."""
+
+    name = tables.LinkColumn()
+    file_count = tables.Column(
+        empty_values=(),
+        orderable=False,
+    )
+
+    def render_file_count(self, record):
+        """Calculate value for file count column.
+
+        Args:
+            record (ProjectItem): The project item for this row.
+
+        Returns:
+            An integer of the number of connected files.
+        """
+        return record.files.count()
+
+    class Meta:
+        """Meta attributes for ProjectItemTable class."""
+
+        model = ProjectItem
+        fields = ("name", "item_type")
         order_by = "name"

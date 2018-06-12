@@ -6,14 +6,20 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.views.generic import (
+    TemplateView,
     DetailView,
     CreateView,
     UpdateView,
+    ListView,
 )
-from files.tables import FileTable
+from files.tables import (
+    FileTable,
+    ProjectItemTable,
+)
 from files.filters import FileFilter
 from files.models import (
     File,
+    ProjectItem,
     default_licence,
 )
 from files.forms import (
@@ -22,7 +28,13 @@ from files.forms import (
 from djqscsv import render_to_csv_response
 
 
-class FileList(LoginRequiredMixin, SingleTableMixin, FilterView):
+class IndexView(LoginRequiredMixin, TemplateView):
+    """View for the files homepage that renders from a template."""
+
+    template_name = "files/index.html"
+
+
+class FileListView(LoginRequiredMixin, SingleTableMixin, FilterView):
     """View for the file list page."""
 
     template_name = "files/file_list.html"
@@ -36,7 +48,7 @@ class FileList(LoginRequiredMixin, SingleTableMixin, FilterView):
         Returns:
             Dictionary of context data.
         """
-        context = super(FileList, self).get_context_data(**kwargs)
+        context = super(FileListView, self).get_context_data(**kwargs)
         context["unknown_licences"] = File.objects.filter(licence__name="Unknown").count()
         context["unknown_licence_id"] = default_licence()
         return context
@@ -46,6 +58,18 @@ class FileDetailView(LoginRequiredMixin, DetailView):
     """View for a file."""
 
     model = File
+
+    def get_context_data(self, **kwargs):
+        """Provide the context data for the view.
+
+        Returns:
+            Dictionary of context data.
+        """
+        context = super(FileDetailView, self).get_context_data(**kwargs)
+        context["table"] = ProjectItemTable(self.object.project_items.all())
+        context["attribution_text"] = self.object.attribution()
+        context["attribution_html"] = self.object.attribution(html=True)
+        return context
 
 
 class FileCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
@@ -78,13 +102,16 @@ def file_list_csv(request):
         CSV response of all files.
     """
     files = File.objects.all().values(
-        "name",
-        "licence__name",
+        "title",
+        "author",
         "location",
         "filename",
         "description",
+        "licence__name",
+        "project_items__name",
     ).order_by(
-        "name",
+        "title",
+        "project_items__name",
     )
     return render_to_csv_response(
         files,
@@ -92,3 +119,11 @@ def file_list_csv(request):
         field_header_map={"licence__name": "Licence"},
         filename="ktam_file_licence_data"
     )
+
+
+class ProjectItemListView(LoginRequiredMixin, SingleTableMixin, ListView):
+    """View for the project item list page."""
+
+    template_name = "files/project_item_list.html"
+    model = ProjectItem
+    table_class = ProjectItemTable

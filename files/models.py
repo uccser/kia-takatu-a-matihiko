@@ -1,7 +1,7 @@
 """Models for the files application."""
 
 from django.db import models
-from django.core.exceptions import ObjectDoesNotExist
+from django.core.exceptions import ObjectDoesNotExist, ValidationError
 from django.template.loader import render_to_string
 from django.urls import reverse
 
@@ -17,6 +17,7 @@ IMAGE_EXTENSIONS = (
     ".gif",
     ".svg",
 )
+GOOGLE_DRIVE_IMAGE_PREFIX = "https://docs.google.com/uc?id="
 
 
 def default_licence():
@@ -69,10 +70,15 @@ class File(models.Model):
     """Model for file."""
 
     slug = models.SlugField(unique=True)
-    name = models.CharField(
+    title = models.CharField(
         max_length=200,
         unique=True,
-        verbose_name="Name",
+        verbose_name="Title",
+    )
+    author = models.CharField(
+        max_length=200,
+        blank=True,
+        verbose_name="Author",
     )
     filename = models.CharField(
         max_length=200,
@@ -93,6 +99,28 @@ class File(models.Model):
         null=True,
     )
 
+    def attribution(self, html=False):
+        """Create text attribution.
+
+        Args:
+            html (bool): True if should return HTML.
+
+        Returns:
+            String of licence attribute.
+        """
+        if html:
+            template = "<a href=\"{location}\">{title}</a>, {author}, <a href=\"{licence_url}\">{licence}</a>"
+        else:
+            template = "{title} ({location}), {author}, {licence} ({licence_url})"
+        attribution_text = template.format(
+            author=self.author,
+            location=self.location,
+            title=self.title,
+            licence=self.licence.name,
+            licence_url=self.licence.url,
+        )
+        return attribution_text
+
     def media_type(self):
         """Return label for media type.
 
@@ -101,7 +129,7 @@ class File(models.Model):
         """
         if any(substring in self.direct_link for substring in VIDEO_PROVIDERS):
             label = "Video"
-        elif self.direct_link.endswith(IMAGE_EXTENSIONS):
+        elif self.direct_link.endswith(IMAGE_EXTENSIONS) or self.direct_link.startswith(GOOGLE_DRIVE_IMAGE_PREFIX):
             label = "Image"
         else:
             label = "Unknown"
@@ -148,7 +176,7 @@ class File(models.Model):
         Returns:
             String describing file.
         """
-        return self.name
+        return self.title
 
     def __repr__(self):
         """Text representation of File object for developers.
@@ -157,3 +185,78 @@ class File(models.Model):
             String describing file.
         """
         return "File: {}".format(self.slug)
+
+
+class ProjectItem(models.Model):
+    """Model for project item."""
+
+    ITEM_TYPE_WEBPAGE = 1
+    ITEM_TYPE_PIKAU = 20
+    ITEM_TYPE_PRINT = 50
+    ITEM_TYPE_OTHER = 99
+    ITEM_TYPE_CHOICES = (
+        (ITEM_TYPE_WEBPAGE, "Webpage"),
+        (ITEM_TYPE_PIKAU, "Pīkau"),
+        (ITEM_TYPE_PRINT, "Print Media"),
+        (ITEM_TYPE_OTHER, "Other"),
+    )
+
+    name = models.CharField(
+        max_length=300,
+        unique=True,
+        verbose_name="Name",
+    )
+    url = models.URLField(
+        blank=True,
+        verbose_name="Location (URL)",
+    )
+    description = models.TextField(
+        blank=True,
+        verbose_name="Description",
+    )
+    files = models.ManyToManyField(
+        File,
+        verbose_name="Files",
+        related_name="project_items",
+        blank=True,
+    )
+    item_type = models.PositiveSmallIntegerField(
+        choices=ITEM_TYPE_CHOICES,
+        default=ITEM_TYPE_OTHER,
+        verbose_name="Type",
+    )
+
+    def clean(self):
+        """Don't allow name to be blank."""
+        if not self.name:
+            raise ValidationError("Name cannot be empty.")
+
+    def get_absolute_url(self):
+        """Return the URL for a project item.
+
+        Returns:
+            URL as string.
+        """
+        if self.url:
+            url = self.url
+        elif self.pikau_course:
+            url = self.pikau_course.get_absolute_url()
+        else:
+            url = None
+        return url
+
+    def __str__(self):
+        """Text representation of project item object.
+
+        Returns:
+            String describing project item.
+        """
+        return self.name
+
+    def __repr__(self):
+        """Text representation of project item object for developers.
+
+        Returns:
+            String describing project item.
+        """
+        return "Project item: {}".format(self.name)
