@@ -13,19 +13,17 @@ prerequisites:
 
 overview: overview.md
 content:
-  - slug: international-perspective
-    file: defining-ct/international-perspective.md
+  - slug: defining-ct
     module: Defining computational thinking
-  - slug: existing-experience
-    file: defining-ct/existing-experience.md
-    module: Defining computational thinking
-  - slug: other-ways-of-looking-at-ct
-    file: defining-ct/other-ways-of-looking-at-ct.md
-    module: Defining computational thinking
+    units:
+      - international-perspective
+      - existing-experience
+      - other-ways-of-looking-at-ct
   - slug: wrapping-up
-    file: wrapping-up.md
-  - slug: references
-    file: references.md
+    module: Wrapping up
+    units:
+      - wrapping-up
+      - references
 assessment-items: assessment-items.md
 
 extra-files:

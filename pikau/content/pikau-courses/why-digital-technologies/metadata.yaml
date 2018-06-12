@@ -13,26 +13,19 @@ prerequisites:
 
 overview: overview.md
 content:
-  - slug: users-or-creators
-    file: why-this-matters/users-or-creators.md
+  - slug: why-this-matters
     module: Why this matters...
-  - slug: already-know-this
-    file: why-this-matters/already-know-this.md
-    module: Why this matters...
-  - slug: how-are-students-better-off
-    file: why-this-matters/how-are-students-better-off.md
-    module: Why this matters...
-  - slug: is-it-all-about-devices
-    file: why-this-matters/is-it-all-about-devices.md
-    module: Why this matters...
-  - slug: what-about-all-the-jargon
-    file: why-this-matters/what-about-all-the-jargon.md
-    module: Why this matters...
-  - slug: structure-of-learning-area
-    file: why-this-matters/structure-of-learning-area.md
-    module: Why this matters...
-  - slug: where-to-next
-    file: where-to-next.md
+    units:
+      - users-or-creators
+      - already-know-this
+      - how-are-students-better-off
+      - is-it-all-about-devices
+      - what-about-all-the-jargon
+      - structure-of-learning-area
+  - slug: wrapping-up
+    module: Wrapping up
+    units:
+      - where-to-next
 
 assessment-items: assessment-items.md
 

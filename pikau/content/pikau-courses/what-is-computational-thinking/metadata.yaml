@@ -13,19 +13,20 @@ prerequisites:
 
 overview: overview.md
 content:
-  - slug: introduction
-    file: why-this-matters/introduction.md
+  - slug: why-this-matters
     module: Why this matters...
-  - slug: already-know-this
-    file: why-this-matters/already-know-this.md
-    module: Why this matters...
-  - slug: ct-in-nzc
-    file: defining-ct/ct-in-nzc.md
+    units:
+      - introduction
+      - already-know-this
+  - slug: defining-ct
     module: Defining computational thinking
+    units:
+      - ct-in-nzc
   - slug: wrapping-up
-    file: wrapping-up.md
-  - slug: references
-    file: references.md
+    module: Wrapping up
+    units:
+      - wrapping-up
+      - references
 assessment-items: assessment-items.md
 
 extra-files:

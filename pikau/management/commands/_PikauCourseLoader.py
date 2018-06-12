@@ -108,25 +108,31 @@ class PikauCourseLoader(BaseLoader):
             # Delete all existing units for course
             # since the will be loaded from raw data.
             PikauUnit.objects.filter(pikau_course=pikau_course).delete()
-            for (number, unit_data) in enumerate(pikau_course_metadata["content"]):
-                unit_content = self.convert_md_file(
-                    unit_data["file"],
-                    CONFIG_FILE,
-                    heading_required=True,
-                    remove_title=True,
-                )
-                # Check files in content
-                for filename in unit_content.required_files["images"]:
-                    pikau_course.project_item.files.add(find_file(filename=filename))
 
-                pikau_course.content.create(
-                    slug=unit_data["slug"],
-                    pikau_course=pikau_course,
-                    name=unit_content.title,
-                    content=unit_content.html_string,
-                    module_name=unit_data.get("module"),
-                    number=number,
-                )
+            pikau_course_number = 1
+            for module_data in pikau_course_metadata["content"]:
+                module_slug = module_data["slug"]
+                module_name = module_data["module"]
+                for unit_slug in module_data["units"]:
+                    unit_content = self.convert_md_file(
+                        os.path.join(module_slug, unit_slug) + ".md",
+                        CONFIG_FILE,
+                        heading_required=True,
+                        remove_title=True,
+                    )
+                    # Check files in content
+                    for filename in unit_content.required_files["images"]:
+                        pikau_course.project_item.files.add(find_file(filename=filename))
+
+                    pikau_course.content.create(
+                        slug=unit_slug,
+                        pikau_course=pikau_course,
+                        name=unit_content.title,
+                        content=unit_content.html_string,
+                        module_name=module_name,
+                        number=pikau_course_number,
+                    )
+                    pikau_course_number += 1
 
             for pikau_course_tag_slug in pikau_course_metadata.get("tags", list()):
                 pikau_course.tags.add(Tag.objects.get(slug=pikau_course_tag_slug))

@@ -16,18 +16,20 @@ resources:
   - files/example.txt
 
 content:
-  - slug: introduction
-    file: introduction.md
-  - slug: try-it-out-activity-1
-    file: try-it-out/activity-1.md
+  - slug: welcome
+    module: Welcome
+    units:
+      - introduction
+  - slug: try-it-out
     module: Try it out
-  - slug: try-it-out-activity-2
-    file: try-it-out/activity-2.md
-    module: Try it out
-  - slug: concepts
-    file: concepts.md
-  - slug: reflection
-    file: reflection.md
+    units:
+      - activity-1
+      - activity-2
+  - slug: wrapping-up
+    module: Wrapping up
+    units:
+      - concepts
+      - reflection
 
 glossary:
   - example-term-1

@@ -10,6 +10,8 @@ tags:
 cover-photo: images/core-education/banner-mahuika-maui.png
 trailer-video: https://vimeo.com/272882311/8e4cf1de3f
 content:
-  - slug: introduction-to-pikau
-    file: introduction-to-pikau.md
+  - slug: welcome
+    module: Welcome
+    units:
+      - introduction-to-pikau
 assessment-items: assessment-items.md
