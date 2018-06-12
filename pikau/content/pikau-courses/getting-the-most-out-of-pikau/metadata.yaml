@@ -14,4 +14,5 @@ content:
     module: Welcome
     units:
       - introduction-to-pikau
+      - discussion
 assessment-items: assessment-items.md

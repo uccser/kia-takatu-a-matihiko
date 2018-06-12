@@ -1,11 +1,13 @@
-This pīkau guides you through how to get the most from the time you are investing into the Kiatakatū-ā-matikhiko / Digital Readiness program to prepare you for teaching the new Digital Technologies content.
+### Welcome to Kia Takatū a Matihiko | Digital Readiness
 
-Kiatakatū has been written by a diverse group of people, ranging from international award for services to computer science education winner Tim Bell, to at-the-whiteboard classroom teachers. The material has been trialed and refined to what we know works for learners.
+This programme prepares you for teaching the new digital technologies curriculum content.
 
-Our aim is to support you to feel confident to effectively implement the new Digital Technologies content, and to have fun while doing so.
+Our aim is to support you to feel confident to effectively implement the new digital technologies content – and to have fun while doing so.
+This pīkau | toolkit guides you through how to get the most from the time you are investing into the programme.
 
-By the end of this pīkau you should be able to:
+**By the end of this pīkau | toolkit, you will be able to:**
 
-- Identify how to efficiently get the most from each pīkau.
+- Describe what a pīkau is
+- Explain what similarities you have with Māui and Mahuika in your approach to learning about the new digital technologies content
 
-**This particular pīkau can be completed be either watching the introduction video above, or reading the text contents.**
+This pīkau | toolkit can be completed by watching the introduction video above, or reading the contents on the next page, then contributing to the discussion in Ngā Kiriahi.
