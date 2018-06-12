@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 
+{% load static %}
 {% load django_bootstrap_breadcrumbs %}
 {% load render_table from django_tables2 %}
 
@@ -55,16 +56,31 @@
     <table class="table">
       <tbody>
         <tr>
-          <td class="no-wrap"><strong>Text</strong></td>
-          <td>{{ attribution_text }}</td>
+          <td>
+            <span class="h5 no-wrap">Text</span><br>
+            <button class="btn btn-sm btn-attribution p-1" data-clipboard-target="#attribution-text">
+              Copy
+            </button>
+          </td>
+          <td id="attribution-text">{{ attribution_text }}</td>
         </tr>
         <tr>
-          <td class="no-wrap"><strong>HTML</strong></td>
-          <td>{{ attribution_html|safe }}</td>
+          <td>
+            <span class="h5 no-wrap">HTML</span><br>
+            <button class="btn btn-sm btn-attribution p-1" data-clipboard-target="#attribution-html">
+              Copy
+            </button>
+          </td>
+          <td id="attribution-html">{{ attribution_html|safe }}</td>
         </tr>
         <tr>
-          <td class="no-wrap"><strong>HTML (raw)</strong></td>
-          <td><code>{{ attribution_html|escape }}</code></td>
+          <td>
+            <span class="h5 no-wrap">HTML (raw)</span><br>
+            <button class="btn btn-sm btn-attribution p-1" data-clipboard-target="#attribution-html-raw">
+              Copy
+            </button>
+          </td>
+          <td id="attribution-html-raw"><code>{{ attribution_html|escape }}</code></td>
         </tr>
       </tbody>
     </table>
@@ -74,3 +90,12 @@
     {% render_table table %}
   </div>
 {% endblock content_container %}
+
+{% block scripts %}
+  <script src="{% static 'js/clipboard.min.js' %}"></script>
+  <script>
+    $(document).ready(function() {
+      new ClipboardJS('.btn-attribution');
+    });
+  </script>
+{% endblock scripts %}
