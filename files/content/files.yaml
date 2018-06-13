@@ -4,18 +4,21 @@ banner-mahuika-maui-png:
   filename: "banner-mahuika-maui.png"
   location: "https://drive.google.com/open?id=1NJfnUmj6et78-o8Eov2i7fgZdauR_myE"
   direct-link: "images/core-education/banner-mahuika-maui.png"
+  licence: crown-copyright
 maui-face-png:
   title: "Māui face"
   author: "CORE Education"
   filename: "maui-face.png"
   location: "https://drive.google.com/open?id=1NU2glbUDS928aBwKgivX4GdoyKKkbMmo"
   direct-link: "images/core-education/maui-face.png"
+  licence: crown-copyright
 mahuika-face-png:
   title: "Mahuika face"
   author: "CORE Education"
   filename: "mahuika-face.png"
   location: "https://drive.google.com/open?id=1396r4RQjZxZdyAPVzDm3o0heDJit1m_E"
   direct-link: "images/core-education/mahuika-face.png"
+  licence: crown-copyright
 what-is-ct-png:
   title: "What is CT?"
   author: "University of Canterbury Computer Science Education Research Group"
@@ -132,6 +135,7 @@ technology-diagram-jpg:
   filename: "technology-diagram.jpg"
   location: "http://nzcurriculum.tki.org.nz/The-New-Zealand-Curriculum/Technology/Learning-area-structure"
   direct-link: "images/core-education/technology-diagram.jpg"
+  licence: crown-copyright
 oudjat-svg:
   title: Oudjat
   author: Benoît Stella

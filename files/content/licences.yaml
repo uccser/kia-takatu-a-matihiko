@@ -22,3 +22,6 @@ cc-by-nc-sa-4:
 public-domain:
   name: Public Domain
   url: "https://wiki.creativecommons.org/wiki/Public_domain"
+crown-copyright:
+  name: Crown copyright ©
+  url: "https://www.education.govt.nz/footer/copyright/"

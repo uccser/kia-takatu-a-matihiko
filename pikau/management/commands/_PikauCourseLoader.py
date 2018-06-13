@@ -2,6 +2,7 @@
 
 import os.path
 from django.db import transaction
+from django.core.exceptions import ObjectDoesNotExist
 from utils.BaseLoader import BaseLoader
 from pikau.utils.find_file import find_file
 from pikau.models import (
@@ -98,6 +99,19 @@ class PikauCourseLoader(BaseLoader):
                 pikau_course.project_item = project_item
                 pikau_course.save()
 
+            for pikau_course_tag_slug in pikau_course_metadata.get("tags", list()):
+                pikau_course.tags.add(Tag.objects.get(slug=pikau_course_tag_slug))
+
+            for pikau_course_progress_outcome_slug in pikau_course_metadata.get("progress-outcomes", list()):
+                outcome = ProgressOutcome.objects.get(slug=pikau_course_progress_outcome_slug)
+                pikau_course.progress_outcomes.add(outcome)
+
+            for pikau_course_glossary_term_slug in pikau_course_metadata.get("glossary", list()):
+                pikau_course.glossary_terms.add(GlossaryTerm.objects.get(slug=pikau_course_glossary_term_slug))
+
+            for pikau_course_prerequisite_slug in pikau_course_metadata.get("prerequisites", list()):
+                pikau_course.prerequisites.add(PikauCourse.objects.get(slug=pikau_course_prerequisite_slug))
+
             # Check cover photo, trailer video, and extra files are logged
             pikau_course.project_item.files.add(find_file(filename=cover_photo))
             if trailer_video:
@@ -134,19 +148,44 @@ class PikauCourseLoader(BaseLoader):
                     )
                     pikau_course_number += 1
 
-            for pikau_course_tag_slug in pikau_course_metadata.get("tags", list()):
-                pikau_course.tags.add(Tag.objects.get(slug=pikau_course_tag_slug))
-
-            for pikau_course_progress_outcome_slug in pikau_course_metadata.get("progress-outcomes", list()):
-                outcome = ProgressOutcome.objects.get(slug=pikau_course_progress_outcome_slug)
-                pikau_course.progress_outcomes.add(outcome)
-
-            for pikau_course_glossary_term_slug in pikau_course_metadata.get("glossary", list()):
-                pikau_course.glossary_terms.add(GlossaryTerm.objects.get(slug=pikau_course_glossary_term_slug))
-
-            for pikau_course_prerequisite_slug in pikau_course_metadata.get("prerequisites", list()):
-                pikau_course.prerequisites.add(PikauCourse.objects.get(slug=pikau_course_prerequisite_slug))
-
+            # Add attributions page
+            if pikau_course.project_item.files.exists():
+                pikau_course_files = pikau_course.project_item.files.order_by("title")
+                html = "<ul>"
+                for pikau_course_file in pikau_course_files:
+                    html += "<li>{}</li>".format(pikau_course_file.attribution(html=True))
+                html += "</ul>"
+                pikau_course.content.create(
+                    slug="attributions",
+                    pikau_course=pikau_course,
+                    name="Attributions",
+                    content=html,
+                    module_name=module_name,
+                    number=pikau_course_number,
+                )
+                pikau_course_number += 1
             self.log_object_creation(created, pikau_course)
+
+        pikau_courses_with_postreqs = PikauCourse.objects.filter(postrequisites__isnull=False).distinct()
+        for pikau_course in pikau_courses_with_postreqs:
+            try:
+                wrapping_up_unit = PikauUnit.objects.get(
+                    pikau_course=pikau_course,
+                    slug="wrapping-up"
+                )
+            except ObjectDoesNotExist:
+                wrapping_up_unit = None
+            if wrapping_up_unit:
+                html = wrapping_up_unit.content
+                html += "<p>You might like to continue your journey with these pīkau:</p>"
+                html += "<ul>"
+                for postrequisite in pikau_course.postrequisites.order_by("name"):
+                    html += "<li><a href='{href}'>{text}</a></li>".format(
+                        href=postrequisite.get_absolute_url(),
+                        text=postrequisite.name,
+                    )
+                html += "</ul>"
+                wrapping_up_unit.content = html
+                wrapping_up_unit.save()
 
         self.log("All pikau courses loaded!\n")
