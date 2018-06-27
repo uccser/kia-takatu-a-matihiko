@@ -15,7 +15,7 @@ django-queryset-csv==1.0.1
 # Content Loading
 verto==0.7.4
 python-markdown-math==0.5
-PyYAML==3.12
+PyYAML==4.1
 
 # Password storage
 argon2-cffi==18.1.0
