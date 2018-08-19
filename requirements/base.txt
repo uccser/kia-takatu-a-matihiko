@@ -18,7 +18,7 @@ python-markdown-math==0.5
 PyYAML==3.12
 
 # Password storage
-argon2-cffi==18.1.0
+argon2-cffi==18.2.0
 
 # Users
 django-allauth==0.36.0
