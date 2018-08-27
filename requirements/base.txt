@@ -21,6 +21,6 @@ PyYAML==3.12
 argon2-cffi==18.1.0
 
 # Users
-django-allauth==0.36.0
+django-allauth==0.37.0
 django-crispy-forms==1.7.2
 django-anymail==3.0
